@@ -70,6 +70,15 @@ run_com_node: #Run commands in PHP container c=[commands]
 
 #####################################
 ###                               ###
+###       Work with Laravel       ###
+###                               ###
+#####################################
+
+create_api_controller: #create controller name=[controllerName]
+	@sudo docker-compose exec $(php) php artisan make:controller ..\\..\\Api\\V1\\Controllers\\$(name)
+
+#####################################
+###                               ###
 ###          Work with FE         ###
 ###                               ###
 #####################################
