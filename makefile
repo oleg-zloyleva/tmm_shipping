@@ -77,6 +77,9 @@ run_com_node: #Run commands in PHP container c=[commands]
 create_api_controller: #create controller name=[controllerName]
 	@sudo docker-compose exec $(php) php artisan make:controller ..\\..\\Api\\V1\\Controllers\\$(name)
 
+create_request: #create FormRequest name=[controllerName]
+	@sudo docker-compose exec $(php) php artisan make:request $(name)
+
 create_mailer: #create mailer name=[controllerName]
 	@sudo docker-compose exec $(php) php artisan make:mail $(name)
 
