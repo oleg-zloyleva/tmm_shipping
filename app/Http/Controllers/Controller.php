@@ -14,7 +14,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
  *     basePath="/",
  *     @SWG\Info(
  *         version="0.1.0",
- *         title="This is my website cool API",
+ *         title="TMM International inc API",
  *         description="Api description...",
  *         termsOfService="",
  *         @SWG\Contact(
@@ -38,6 +38,13 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
  *   type="apiKey",
  *   in="header",
  *   name="Authorization"
+ * )
+ */
+
+/**
+ *
+ * @SWG\Tag(
+ *   name="Emails"
  * )
  */
 class Controller extends BaseController

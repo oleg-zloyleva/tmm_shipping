@@ -11,28 +11,6 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Auth;
 
 
-/**
- * @SWG\Get(
- *     path="/api/auth/me",
- *     summary="Get data about ME",
- *     tags={"User"},
- *     security={
- *       {"Authorization": {}}
- *     },
- *     @SWG\Response(
- *         response=200,
- *         description="successful operation",
- *         @SWG\Schema(
- *             type="array",
- *             @SWG\Items(ref="#/definitions/User")
- *         ),
- *     ),
- *     @SWG\Response(
- *         response="401",
- *         description="Unauthorized user",
- *     ),
- * )
- */
 class UserController extends Controller
 {
     /**
