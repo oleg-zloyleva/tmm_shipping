@@ -555,7 +555,8 @@
                         "schema": {
                             "$ref": "#/definitions/ContactUs"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "John"
                     },
                     {
                         "name": "SecondName",
@@ -565,7 +566,8 @@
                         "schema": {
                             "$ref": "#/definitions/ContactUs"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "Dou"
                     },
                     {
                         "name": "Phone",
@@ -575,7 +577,8 @@
                         "schema": {
                             "$ref": "#/definitions/ContactUs"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "380991234567"
                     },
                     {
                         "name": "Email",
@@ -585,7 +588,9 @@
                         "schema": {
                             "$ref": "#/definitions/ContactUs"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "format": "email",
+                        "default": "John@test.com"
                     },
                     {
                         "name": "Message",
@@ -594,7 +599,8 @@
                         "schema": {
                             "$ref": "#/definitions/ContactUs"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam"
                     }
                 ],
                 "responses": {
@@ -622,7 +628,8 @@
                         "schema": {
                             "$ref": "#/definitions/ContactUs"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "Freight Type"
                     },
                     {
                         "name": "Weight",
@@ -631,7 +638,8 @@
                         "schema": {
                             "$ref": "#/definitions/ContactUs"
                         },
-                        "type": "number"
+                        "type": "number",
+                        "default": "120"
                     },
                     {
                         "name": "ShippingFrom",
@@ -640,7 +648,8 @@
                         "schema": {
                             "$ref": "#/definitions/ContactUs"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "New York"
                     },
                     {
                         "name": "ShippingTo",
@@ -650,7 +659,8 @@
                         "schema": {
                             "$ref": "#/definitions/ContactUs"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "Odessa"
                     },
                     {
                         "name": "Email",
@@ -660,7 +670,9 @@
                         "schema": {
                             "$ref": "#/definitions/ContactUs"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "format": "email",
+                        "default": "John@test.com"
                     },
                     {
                         "name": "Details",
@@ -669,7 +681,8 @@
                         "schema": {
                             "$ref": "#/definitions/ContactUs"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam"
                     }
                 ],
                 "responses": {

@@ -39,6 +39,7 @@
  *          description="Enter first name",
  *          type="string",
  *          required=true,
+ *          default="Freight Type",
  *          @SWG\Schema(ref="#/definitions/ContactUs"),
  *      ),
  *      @SWG\Parameter(
@@ -46,6 +47,7 @@
  *          in="formData",
  *          description="Enter Weight",
  *          type="number",
+ *          default="120",
  *          @SWG\Schema(ref="#/definitions/ContactUs"),
  *      ),
  *      @SWG\Parameter(
@@ -53,6 +55,7 @@
  *          in="formData",
  *          description="Enter ShippingFrom",
  *          type="string",
+ *          default="New York",
  *          @SWG\Schema(ref="#/definitions/ContactUs"),
  *      ),
  *      @SWG\Parameter(
@@ -61,6 +64,7 @@
  *          description="Enter ShippingTo",
  *          type="string",
  *          required=true,
+ *          default="Odessa",
  *          @SWG\Schema(ref="#/definitions/ContactUs"),
  *      ),
  *      @SWG\Parameter(
@@ -69,6 +73,8 @@
  *          description="Enter Email",
  *          type="string",
  *          required=true,
+ *          format="email",
+ *          default="John@test.com",
  *          @SWG\Schema(ref="#/definitions/ContactUs"),
  *      ),
  *      @SWG\Parameter(
@@ -76,6 +82,7 @@
  *          in="formData",
  *          description="Enter Details",
  *          type="string",
+ *          default="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
  *          @SWG\Schema(ref="#/definitions/ContactUs"),
  *      ),
  *      @SWG\Response(

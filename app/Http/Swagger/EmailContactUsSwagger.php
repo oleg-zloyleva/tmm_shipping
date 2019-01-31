@@ -35,6 +35,7 @@
  *          description="Enter first name",
  *          type="string",
  *          required=true,
+ *          default="John",
  *          @SWG\Schema(ref="#/definitions/ContactUs"),
  *      ),
  *      @SWG\Parameter(
@@ -43,6 +44,7 @@
  *          description="Enter second name",
  *          type="string",
  *          required=true,
+ *          default="Dou",
  *          @SWG\Schema(ref="#/definitions/ContactUs"),
  *      ),
  *      @SWG\Parameter(
@@ -51,6 +53,7 @@
  *          description="Enter Phone",
  *          type="string",
  *          required=true,
+ *          default="380991234567",
  *          @SWG\Schema(ref="#/definitions/ContactUs"),
  *      ),
  *      @SWG\Parameter(
@@ -58,7 +61,9 @@
  *          in="formData",
  *          description="Enter Email",
  *          type="string",
+ *          format="email",
  *          required=true,
+ *          default="John@test.com",
  *          @SWG\Schema(ref="#/definitions/ContactUs"),
  *      ),
  *      @SWG\Parameter(
@@ -66,6 +71,7 @@
  *          in="formData",
  *          description="Enter Message",
  *          type="string",
+ *          default="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
  *          @SWG\Schema(ref="#/definitions/ContactUs"),
  *      ),
  *      @SWG\Response(
