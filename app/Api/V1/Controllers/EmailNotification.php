@@ -3,6 +3,7 @@
 namespace App\Api\V1\Controllers;
 
 use App\Http\Requests\Email\ContactUsRequest;
+use App\Mail\ContactUsEmail;
 use App\Mail\TestEmail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -30,7 +31,9 @@ class EmailNotification extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function test(){
+
         Mail::to("test@test.com")->send(new TestEmail());
+
         return response()->json(["status" => "ok"]);
     }
 
@@ -40,7 +43,7 @@ class EmailNotification extends Controller
      */
     public function contactUs(ContactUsRequest $request){
 
-        Mail::to("test@test.com")->send(new TestEmail());
+        Mail::to("test@test.com")->send(new ContactUsEmail());
 
         return response()->json([
             "status" => "ok",
