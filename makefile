@@ -77,6 +77,9 @@ run_com_node: #Run commands in PHP container c=[commands]
 create_api_controller: #create controller name=[controllerName]
 	@sudo docker-compose exec $(php) php artisan make:controller ..\\..\\Api\\V1\\Controllers\\$(name)
 
+create_mailer: #create mailer name=[controllerName]
+	@sudo docker-compose exec $(php) php artisan make:mail $(name)
+
 #####################################
 ###                               ###
 ###          Work with FE         ###
@@ -91,7 +94,7 @@ tinker: #Run tinker
 
 
 refresh: #Refresh the database and run all database seeds
-	@sudo docker-compose exec app $(php) artisan migrate:refresh --seed
+	@@sudo docker exec -it $(container_php) bash -c 'php artisan migrate:refresh --seed'
 
 
 clear_cache: #clear laravel cache php artisan optimize --force php artisan config:cache php artisan route:cache
