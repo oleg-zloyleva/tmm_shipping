@@ -2,6 +2,7 @@
 
 namespace App\Api\V1\Controllers;
 
+use App\Http\Requests\Email\AirShippingOrderRequest;
 use App\Http\Requests\Email\ContactUsRequest;
 use App\Http\Requests\Email\QuickQuoteRequest;
 use App\Mail\ContactUsEmail;
@@ -71,4 +72,85 @@ class EmailNotification extends Controller
             "Details" => $request->Details,
         ]);
     }
+
+    public function airShippingOrder(AirShippingOrderRequest $request){
+        return response()->json([
+            "status" => "ok",
+            "comment" => $request->comment,
+            "consignee" => $request->consignee,
+            "descriptionOfGoods" => $request->descriptionOfGoods,
+            "notifyParty" => $request->notifyParty,
+            "sendDocumentTo" => $request->sendDocumentTo,
+            "shipper" => $request->shipper,
+        ]);
+    }
 }
+
+//{
+//  "comment": {
+//    "comment": ""
+//	},
+//	"consignee":{
+//    "address": "",
+//		"city": "afdsfasd",
+//		"country": "Algeria",
+//		"email": "fdgsdfg@gmail.com",
+//		"fax": "",
+//		"firstName": "dfghsdfg",
+//		"phone": "23452345234",
+//		"province": "",
+//		"secondName": "sdfgasdf",
+//		"state": "",
+//		"tid": "asdfasd",
+//		"zip": ""
+//	},
+//	"descriptionOfGoods":{
+//    "from": "asdfad",
+//		"to": "dsfadsfa"
+//	},
+//	"notifyParty":{
+//    "address": "",
+//		"city": "sadfasd",
+//		"country": "Afghanistan",
+//		"firstName": "sadfasd",
+//		"notifyParty": "",
+//		"province": "",
+//		"secondName": "asdfasdf",
+//		"state": "",
+//		"zip": ""
+//	},
+//	"sendDocumentTo":{
+//    "address": "",
+//		"airWaybill": "",
+//		"city": "asdfasdf",
+//		"country": "Albania",
+//		"firstName": "asdfasdf",
+//		"province": "",
+//		"secondName": "asdfasdf",
+//		"state": "",
+//		"zip": ""
+//	},
+//	"shipper":{
+//    "address": "",
+//		"city": "rgfhdfgh",
+//		"country": "Albania",
+//		"email": "dfghsdf@gmail.com",
+//		"fax": "",
+//		"firstName": "fghsdfg",
+//		"phone": "54623456345",
+//		"province": "",
+//		"secondName": "fdghdfg",
+//		"state": "",
+//		"tid": "3452345",
+//		"zip": ""
+//	},
+//	"vehicle":{
+//    "body": "",
+//		"colour": "",
+//		"make": "",
+//		"model": "",
+//		"valueOfVehicle": "",
+//		"vin": "",
+//		"year": ""
+//	}
+//}

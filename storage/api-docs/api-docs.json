@@ -36,6 +36,507 @@
                 }
             }
         },
+        "/api/email/air_shipping_order": {
+            "post": {
+                "tags": [
+                    "Emails"
+                ],
+                "summary": "Send QuickQuote to email",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "name": "comment[comment]",
+                        "in": "formData",
+                        "description": "Enter comment",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "consignee[address]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "consignee[city]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "consignee[country]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "consignee[email]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "consignee[fax]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "consignee[firstName]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "consignee[province]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "consignee[secondName]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "consignee[state]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "consignee[tid]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "consignee[zip]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "descriptionOfGoods[from]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "descriptionOfGoods[to]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "notifyParty[address]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "notifyParty[city]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "notifyParty[country]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "notifyParty[firstName]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "notifyParty[notifyParty]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "notifyParty[province]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "notifyParty[secondName]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "notifyParty[state]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "notifyParty[zip]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "sendDocumentTo[address]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "sendDocumentTo[airWaybill]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "sendDocumentTo[city]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "sendDocumentTo[country]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "sendDocumentTo[firstName]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "sendDocumentTo[province]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "sendDocumentTo[secondName]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "sendDocumentTo[state]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "sendDocumentTo[zip]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "shipper[address]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "shipper[city]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "shipper[country]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "shipper[email]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "shipper[fax]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "shipper[firstName]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "shipper[phone]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "shipper[province]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "shipper[secondName]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "shipper[state]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "shipper[tid]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "shipper[zip]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "vehicle[body]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "vehicle[colour]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "vehicle[make]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "vehicle[model]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "vehicle[valueOfVehicle]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "vehicle[vin]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "vehicle[year]",
+                        "in": "formData",
+                        "description": "Enter ...",
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
         "/api/email/contact_us": {
             "post": {
                 "tags": [
@@ -127,7 +628,6 @@
                         "name": "Weight",
                         "in": "formData",
                         "description": "Enter Weight",
-                        "required": true,
                         "schema": {
                             "$ref": "#/definitions/ContactUs"
                         },
@@ -137,7 +637,6 @@
                         "name": "ShippingFrom",
                         "in": "formData",
                         "description": "Enter ShippingFrom",
-                        "required": true,
                         "schema": {
                             "$ref": "#/definitions/ContactUs"
                         },
@@ -182,6 +681,163 @@
         }
     },
     "definitions": {
+        "AirShippingOrder": {
+            "properties": {
+                "comment[comment]": {
+                    "type": "sting"
+                },
+                "consignee[address]": {
+                    "type": "sting"
+                },
+                "consignee[city]": {
+                    "type": "sting"
+                },
+                "consignee[country]": {
+                    "type": "sting"
+                },
+                "consignee[email]": {
+                    "type": "sting"
+                },
+                "consignee[fax]": {
+                    "type": "sting"
+                },
+                "consignee[firstName]": {
+                    "type": "sting"
+                },
+                "consignee[province]": {
+                    "type": "sting"
+                },
+                "consignee[secondName]": {
+                    "type": "sting"
+                },
+                "consignee[state]": {
+                    "type": "sting"
+                },
+                "consignee[tid]": {
+                    "type": "sting"
+                },
+                "consignee[zip]": {
+                    "type": "sting"
+                },
+                "descriptionOfGoods[from]": {
+                    "type": "sting"
+                },
+                "descriptionOfGoods[to]": {
+                    "type": "sting"
+                },
+                "notifyParty[address]": {
+                    "type": "sting"
+                },
+                "notifyParty[city]": {
+                    "type": "sting"
+                },
+                "notifyParty[country]": {
+                    "type": "sting"
+                },
+                "notifyParty[firstName]": {
+                    "type": "sting"
+                },
+                "notifyParty[notifyParty]": {
+                    "type": "sting"
+                },
+                "notifyParty[province]": {
+                    "type": "sting"
+                },
+                "notifyParty[secondName]": {
+                    "type": "sting"
+                },
+                "notifyParty[state]": {
+                    "type": "sting"
+                },
+                "notifyParty[zip]": {
+                    "type": "sting"
+                },
+                "sendDocumentTo[address]": {
+                    "type": "sting"
+                },
+                "sendDocumentTo[airWaybill]": {
+                    "type": "sting"
+                },
+                "sendDocumentTo[city]": {
+                    "type": "sting"
+                },
+                "sendDocumentTo[country]": {
+                    "type": "sting"
+                },
+                "sendDocumentTo[firstName]": {
+                    "type": "sting"
+                },
+                "sendDocumentTo[province]": {
+                    "type": "sting"
+                },
+                "sendDocumentTo[secondName]": {
+                    "type": "sting"
+                },
+                "sendDocumentTo[state]": {
+                    "type": "sting"
+                },
+                "sendDocumentTo[zip]": {
+                    "type": "sting"
+                },
+                "shipper[address]": {
+                    "type": "sting"
+                },
+                "shipper[city]": {
+                    "type": "sting"
+                },
+                "shipper[country]": {
+                    "type": "sting"
+                },
+                "shipper[email]": {
+                    "type": "sting"
+                },
+                "shipper[fax]": {
+                    "type": "sting"
+                },
+                "shipper[firstName]": {
+                    "type": "sting"
+                },
+                "shipper[phone]": {
+                    "type": "sting"
+                },
+                "shipper[province]": {
+                    "type": "sting"
+                },
+                "shipper[secondName]": {
+                    "type": "sting"
+                },
+                "shipper[state]": {
+                    "type": "sting"
+                },
+                "shipper[tid]": {
+                    "type": "sting"
+                },
+                "shipper[zip]": {
+                    "type": "sting"
+                },
+                "vehicle[body]": {
+                    "type": "sting"
+                },
+                "vehicle[colour]": {
+                    "type": "sting"
+                },
+                "vehicle[make]": {
+                    "type": "sting"
+                },
+                "vehicle[model]": {
+                    "type": "sting"
+                },
+                "vehicle[valueOfVehicle]": {
+                    "type": "sting"
+                },
+                "vehicle[vin]": {
+                    "type": "sting"
+                },
+                "vehicle[year]": {
+                    "type": "sting"
+                }
+            }
+        },
         "ContactUs": {
             "properties": {
                 "FirstName": {
