@@ -49,485 +49,537 @@
                     {
                         "name": "comment[comment]",
                         "in": "formData",
-                        "description": "Enter comment",
+                        "description": "Enter your comment",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam"
                     },
                     {
                         "name": "consignee[address]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter consignee->address",
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "Pobedy str. 54"
                     },
                     {
                         "name": "consignee[city]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter consignee->city",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "Odessa"
                     },
                     {
                         "name": "consignee[country]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter consignee->country",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "Ukraine"
                     },
                     {
                         "name": "consignee[email]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter consignee->email",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "format": "email",
+                        "default": "John@test.com"
                     },
                     {
                         "name": "consignee[fax]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter consignee->fax",
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "+380991234567"
                     },
                     {
                         "name": "consignee[firstName]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter consignee->firstName",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "John"
                     },
                     {
                         "name": "consignee[province]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter consignee->province",
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "Odesskaya"
                     },
                     {
                         "name": "consignee[secondName]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter consignee->secondName",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "Dou"
                     },
                     {
                         "name": "consignee[state]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter consignee->state",
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "Odessa state"
                     },
                     {
                         "name": "consignee[tid]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter consignee->tid",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "number",
+                        "default": "Odessa state"
                     },
                     {
                         "name": "consignee[zip]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter consignee->zip",
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "number",
+                        "default": "69000"
                     },
                     {
                         "name": "descriptionOfGoods[from]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter descriptionOfGoods->from",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "Some description from"
                     },
                     {
                         "name": "descriptionOfGoods[to]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter descriptionOfGoods->to",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "Some description to"
                     },
                     {
                         "name": "notifyParty[address]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter notifyParty->address",
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "notify: Novaya str."
                     },
                     {
                         "name": "notifyParty[city]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter notifyParty->city",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "notify: Kiev"
                     },
                     {
                         "name": "notifyParty[country]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter notifyParty->country",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "notify: country"
                     },
                     {
                         "name": "notifyParty[firstName]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter notifyParty->firstName",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "notify: Ben"
                     },
                     {
                         "name": "notifyParty[notifyParty]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter notifyParty->notifyParty",
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "notify: notifyParty"
                     },
                     {
                         "name": "notifyParty[province]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter notifyParty->province",
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "notify: Kievskaya"
                     },
                     {
                         "name": "notifyParty[secondName]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter notifyParty->secondName",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "notify: Gun"
                     },
                     {
                         "name": "notifyParty[state]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter notifyParty->state",
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "notify: Kiev state"
                     },
                     {
                         "name": "notifyParty[zip]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter notifyParty->zip",
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "65023"
                     },
                     {
                         "name": "sendDocumentTo[address]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter sendDocumentTo",
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "Levaya str."
                     },
                     {
                         "name": "sendDocumentTo[airWaybill]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter sendDocumentTo->airWaybill",
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "air Way bill"
                     },
                     {
                         "name": "sendDocumentTo[city]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter sendDocumentTo->city",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "Kherson"
                     },
                     {
                         "name": "sendDocumentTo[country]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter sendDocumentTo->country",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "Kherson"
                     },
                     {
                         "name": "sendDocumentTo[firstName]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter sendDocumentTo->firstName",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "Ivan"
                     },
                     {
                         "name": "sendDocumentTo[province]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter sendDocumentTo->province",
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "Kherson province"
                     },
                     {
                         "name": "sendDocumentTo[secondName]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter sendDocumentTo->secondName",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "Ivanov"
                     },
                     {
                         "name": "sendDocumentTo[state]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter sendDocumentTo->state",
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "Kherson state"
                     },
                     {
                         "name": "sendDocumentTo[zip]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter sendDocumentTo->zip",
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "25078"
                     },
                     {
                         "name": "shipper[address]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter shipper->address",
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "Uglovaya str."
                     },
                     {
                         "name": "shipper[city]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter shipper->city",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "Lviv"
                     },
                     {
                         "name": "shipper[country]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter shipper->country",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "Ukraine"
                     },
                     {
                         "name": "shipper[email]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter shipper->email",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "Ivan@gamail.com"
                     },
                     {
                         "name": "shipper[fax]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter shipper->fax",
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "+38951234567"
                     },
                     {
                         "name": "shipper[firstName]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter shipper->firstName",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "Fedor"
                     },
                     {
                         "name": "shipper[phone]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter shipper->phone",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "+38951234533"
                     },
                     {
                         "name": "shipper[province]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter shipper->province",
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "Lviv province"
                     },
                     {
                         "name": "shipper[secondName]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter shipper->secondName",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "Bond"
                     },
                     {
                         "name": "shipper[state]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter shipper->state",
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "Lviv state"
                     },
                     {
                         "name": "shipper[tid]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter shipper->tid",
                         "required": true,
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "1111222233334444"
                     },
                     {
                         "name": "shipper[zip]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter shipper->zip",
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "440444"
                     },
                     {
                         "name": "vehicle[body]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter vehicle->body",
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "sedan"
                     },
                     {
                         "name": "vehicle[colour]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter vehicle->colour",
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "red"
                     },
                     {
                         "name": "vehicle[make]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter vehicle->make",
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "Toyota"
                     },
                     {
                         "name": "vehicle[model]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter vehicle->model",
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "Hilux"
                     },
                     {
                         "name": "vehicle[valueOfVehicle]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter vehicle->valueOfVehicle",
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "3"
                     },
                     {
                         "name": "vehicle[vin]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter vehicle->vin",
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "JTE4D12D45623453233"
                     },
                     {
                         "name": "vehicle[year]",
                         "in": "formData",
-                        "description": "Enter ...",
+                        "description": "Enter vehicle->year",
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "string"
+                        "type": "string",
+                        "default": "2018"
                     }
                 ],
                 "responses": {
