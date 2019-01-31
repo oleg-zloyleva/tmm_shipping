@@ -41,7 +41,7 @@
                 "tags": [
                     "Emails"
                 ],
-                "summary": "Send contact us info t email",
+                "summary": "Send contact us info to email",
                 "consumes": [
                     "application/x-www-form-urlencoded"
                 ],
@@ -102,6 +102,83 @@
                     }
                 }
             }
+        },
+        "/api/email/quick_quote": {
+            "post": {
+                "tags": [
+                    "Emails"
+                ],
+                "summary": "Send QuickQuote to email",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "name": "FreightType",
+                        "in": "formData",
+                        "description": "Enter first name",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ContactUs"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "Weight",
+                        "in": "formData",
+                        "description": "Enter Weight",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ContactUs"
+                        },
+                        "type": "number"
+                    },
+                    {
+                        "name": "ShippingFrom",
+                        "in": "formData",
+                        "description": "Enter ShippingFrom",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ContactUs"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "ShippingTo",
+                        "in": "formData",
+                        "description": "Enter ShippingTo",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ContactUs"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "Email",
+                        "in": "formData",
+                        "description": "Enter Email",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ContactUs"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "Details",
+                        "in": "formData",
+                        "description": "Enter Details",
+                        "schema": {
+                            "$ref": "#/definitions/ContactUs"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -120,6 +197,28 @@
                     "type": "sting"
                 },
                 "Message": {
+                    "type": "sting"
+                }
+            }
+        },
+        "QuickQuote": {
+            "properties": {
+                "FreightType": {
+                    "type": "sting"
+                },
+                "Weight": {
+                    "type": "sting"
+                },
+                "ShippingFrom": {
+                    "type": "sting"
+                },
+                "ShippingTo": {
+                    "type": "sting"
+                },
+                "Email": {
+                    "type": "sting"
+                },
+                "Details": {
                     "type": "sting"
                 }
             }

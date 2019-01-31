@@ -2,8 +2,9 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
+//use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\JsonResponse;
+use Dingo\Api\Http\FormRequest;
 
 abstract class Request extends FormRequest
 {

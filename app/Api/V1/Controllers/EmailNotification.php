@@ -3,7 +3,9 @@
 namespace App\Api\V1\Controllers;
 
 use App\Http\Requests\Email\ContactUsRequest;
+use App\Http\Requests\Email\QuickQuoteRequest;
 use App\Mail\ContactUsEmail;
+use App\Mail\QuickQouteEmail;
 use App\Mail\TestEmail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -52,6 +54,21 @@ class EmailNotification extends Controller
             "requestPhone" => $request->Phone,
             "requestEmail" => $request->Email,
             "requestMessage" => $request->Message??"",
+        ]);
+    }
+
+    public function quickQuote(QuickQuoteRequest $request){
+
+        Mail::to("test@test.com")->send(new QuickQouteEmail());
+
+        return response()->json([
+            "status" => "ok",
+            "FreightType" => $request->FreightType,
+            "Weight" => $request->Weight,
+            "ShippingFrom" => $request->ShippingFrom,
+            "ShippingTo" => $request->ShippingTo,
+            "Email" => $request->Email,
+            "Details" => $request->Details,
         ]);
     }
 }

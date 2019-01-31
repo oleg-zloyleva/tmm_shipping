@@ -110,7 +110,8 @@ composer_update: #update vendors
 composer_dump: #update vendors
 	@sudo docker exec -it $(container_php) bash -c 'php composer.phar dump-autoload'
 
-
+clear_log:
+	@sudo cat /dev/null > storage/logs/laravel.log; sudo cat /dev/null > storage/logs/queue-worker.log
 
 swagger_publish: #publish swagger conf
 	@sudo docker exec -it $(container_php) bash -c 'php artisan l5-swagger:publish'
