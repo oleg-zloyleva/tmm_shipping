@@ -123,6 +123,17 @@
                         "default": "John"
                     },
                     {
+                        "name": "consignee[phone]",
+                        "in": "formData",
+                        "description": "Enter consignee->phone",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "string",
+                        "default": "+38971234567"
+                    },
+                    {
                         "name": "consignee[province]",
                         "in": "formData",
                         "description": "Enter consignee->province",
@@ -161,8 +172,8 @@
                         "schema": {
                             "$ref": "#/definitions/AirShippingOrder"
                         },
-                        "type": "number",
-                        "default": "Odessa state"
+                        "type": "string",
+                        "default": "tid123456789"
                     },
                     {
                         "name": "consignee[zip]",

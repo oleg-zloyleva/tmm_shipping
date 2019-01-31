@@ -298,6 +298,15 @@
  *          @SWG\Schema(ref="#/definitions/AirShippingOrder"),
  *      ),
  *     @SWG\Parameter(
+ *          name="consignee[phone]",
+ *          in="formData",
+ *          description="Enter consignee->phone",
+ *          type="string",
+ *          required=true,
+ *          default="+38971234567",
+ *          @SWG\Schema(ref="#/definitions/AirShippingOrder"),
+ *      ),
+ *     @SWG\Parameter(
  *          name="consignee[province]",
  *          in="formData",
  *          description="Enter consignee->province",
@@ -326,9 +335,9 @@
  *          name="consignee[tid]",
  *          in="formData",
  *          description="Enter consignee->tid",
- *          type="number",
+ *          type="string",
  *          required=true,
- *          default="Odessa state",
+ *          default="tid123456789",
  *          @SWG\Schema(ref="#/definitions/AirShippingOrder"),
  *      ),
  *     @SWG\Parameter(
