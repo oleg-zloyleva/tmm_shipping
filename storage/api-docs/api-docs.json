@@ -25,7 +25,7 @@
                 "tags": [
                     "Emails"
                 ],
-                "summary": "Get get test responce",
+                "summary": "Send test email",
                 "responses": {
                     "200": {
                         "description": "successful operation"
@@ -35,9 +35,95 @@
                     }
                 }
             }
+        },
+        "/api/email/contact_us": {
+            "post": {
+                "tags": [
+                    "Emails"
+                ],
+                "summary": "Send contact us info t email",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "name": "FirstName",
+                        "in": "formData",
+                        "description": "Enter first name",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ContactUs"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "SecondName",
+                        "in": "formData",
+                        "description": "Enter second name",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ContactUs"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "Phone",
+                        "in": "formData",
+                        "description": "Enter Phone",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ContactUs"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "Email",
+                        "in": "formData",
+                        "description": "Enter Email",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ContactUs"
+                        },
+                        "type": "string"
+                    },
+                    {
+                        "name": "Message",
+                        "in": "formData",
+                        "description": "Enter Message",
+                        "schema": {
+                            "$ref": "#/definitions/ContactUs"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
         }
     },
     "definitions": {
+        "ContactUs": {
+            "properties": {
+                "FirstName": {
+                    "type": "sting"
+                },
+                "SecondName": {
+                    "type": "sting"
+                },
+                "Phone": {
+                    "type": "sting"
+                },
+                "Email": {
+                    "type": "sting"
+                },
+                "Message": {
+                    "type": "sting"
+                }
+            }
+        },
         "User": {
             "properties": {
                 "id": {
