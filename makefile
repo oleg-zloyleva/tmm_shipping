@@ -74,7 +74,10 @@ run_com_node: #Run commands in PHP container c=[commands]
 ###                               ###
 #####################################
 
-create_api_controller: #create controller name=[controllerName]
+create_controller: #create controller name=[controllerName]
+	@sudo docker-compose exec $(php) php artisan make:controller $(name)
+
+create_api_controller: #create API controller name=[controllerName]
 	@sudo docker-compose exec $(php) php artisan make:controller ..\\..\\Api\\V1\\Controllers\\$(name)
 
 create_request: #create FormRequest name=[controllerName]
@@ -94,6 +97,9 @@ watch: #Run watch
 
 tinker: #Run tinker
 	@sudo docker-compose exec $(php) php artisan tinker
+
+route: #Run tinker
+	@sudo docker-compose exec $(php) php artisan route:list
 
 
 refresh: #Refresh the database and run all database seeds

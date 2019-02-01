@@ -1,7 +1,7 @@
 FROM node:8.10.0-alpine
 
-WORKDIR /home/app
-COPY . /home/app
+WORKDIR /var/www
+COPY . /var/www
 
 RUN npm install --quiet
 
