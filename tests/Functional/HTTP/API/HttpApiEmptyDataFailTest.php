@@ -6,6 +6,7 @@ use App\TestCase;
 
 class HttpApiEmptyDataFailTest extends TestCase
 {
+
     public function testContactUs()
     {
         $response = $this->post("/api/email/contact_us");
