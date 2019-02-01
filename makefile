@@ -74,8 +74,17 @@ run_com_node: #Run commands in PHP container c=[commands]
 ###                               ###
 #####################################
 
-create_api_controller: #create controller name=[controllerName]
+create_controller: #create controller name=[controllerName]
+	@sudo docker-compose exec $(php) php artisan make:controller $(name)
+
+create_api_controller: #create API controller name=[controllerName]
 	@sudo docker-compose exec $(php) php artisan make:controller ..\\..\\Api\\V1\\Controllers\\$(name)
+
+create_request: #create FormRequest name=[controllerName]
+	@sudo docker-compose exec $(php) php artisan make:request $(name)
+
+create_mailer: #create mailer name=[controllerName]
+	@sudo docker-compose exec $(php) php artisan make:mail $(name)
 
 #####################################
 ###                               ###
@@ -89,9 +98,12 @@ watch: #Run watch
 tinker: #Run tinker
 	@sudo docker-compose exec $(php) php artisan tinker
 
+route: #Run tinker
+	@sudo docker-compose exec $(php) php artisan route:list
+
 
 refresh: #Refresh the database and run all database seeds
-	@sudo docker-compose exec app $(php) artisan migrate:refresh --seed
+	@@sudo docker exec -it $(container_php) bash -c 'php artisan migrate:refresh --seed'
 
 
 clear_cache: #clear laravel cache php artisan optimize --force php artisan config:cache php artisan route:cache
@@ -104,7 +116,8 @@ composer_update: #update vendors
 composer_dump: #update vendors
 	@sudo docker exec -it $(container_php) bash -c 'php composer.phar dump-autoload'
 
-
+clear_log:
+	@sudo cat /dev/null > storage/logs/laravel.log; sudo cat /dev/null > storage/logs/queue-worker.log
 
 swagger_publish: #publish swagger conf
 	@sudo docker exec -it $(container_php) bash -c 'php artisan l5-swagger:publish'

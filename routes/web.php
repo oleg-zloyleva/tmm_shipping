@@ -16,6 +16,9 @@ Route::get('reset_password/{token}', ['as' => 'password.reset', function($token)
     // implement your reset password route here!
 }]);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', "PageController@index")->name('home');
+Route::get('/about', "PageController@about")->name('about');
+Route::get('/services', "PageController@services")->name('services');
+Route::get('/rates', "PageController@rates")->name('rates');
+Route::get('/contacts', "PageController@contacts")->name('contacts');
+Route::get('/order', "PageController@order")->name('order');

@@ -6,6 +6,10 @@
  */
 
 require('./bootstrap');
+require('./main');
+
+require('./calculate');
+require('./order');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

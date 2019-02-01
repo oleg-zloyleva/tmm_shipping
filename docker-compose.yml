@@ -1,6 +1,14 @@
 version: '3'
 services:
 
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: "${DOCKER_PREFIX}-mailhog"
+    ports:
+      - "8025:8025"
+    networks:
+      - app-network
+
   nodejs:
     build:
       context: .
@@ -11,8 +19,9 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - .:/home/app/
-      - /home/app/node_modules
+      - ./:/var/www
+    networks:
+      - app-network
 
   #PHP Service
   app:
@@ -23,6 +32,9 @@ services:
     container_name: "${DOCKER_PREFIX}-app"
     restart: unless-stopped
     tty: true
+    depends_on:
+      - db
+      - mailhog
     environment:
       SERVICE_NAME: app
       SERVICE_TAGS: dev
@@ -39,6 +51,8 @@ services:
     container_name: "${DOCKER_PREFIX}-webserver"
     restart: unless-stopped
     tty: true
+    depends_on:
+      - app
     ports:
       - "80:80"
       - "443:443"
