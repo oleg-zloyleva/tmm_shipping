@@ -395,9 +395,32 @@ function sendFormShipper() {
 
     console.log('%c send form', 'color: green; font-size: 16px; font-weight: 600;', $sendForms);
 
+    sendFormHandler($sendForms);
 }
 
+function sendFormHandler(data) {
 
+    $.ajax({
+        type: "POST",
+        url: "/api/email/air_shipping_order",
+        data: $.param(data),
+        success: function () {
+            $('#message-success').addClass('fadeIn');
+            $('#form-quick-quote').trigger("reset");
+            setTimeout(function () {
+                $('#message-success').removeClass('fadeIn');
+            }, 4000);
+        },
+        error: function (error) {
+            console.log('Error', error);
+            $('#message-server-error').addClass('fadeIn');
+            setTimeout(function () {
+                $('#message-server-error').removeClass('fadeIn');
+            }, 4000);
+        }
+    });
+
+}
 
 
 

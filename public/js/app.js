@@ -43672,7 +43672,9 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
-  // === SEARCH === //
+  var quick_quote = "/api/email/quick_quote";
+  var contact_us = "/api/email/contact_us"; // === SEARCH === //
+
   $('#btn-search').on('click', function () {
     console.log($('#inp-search').val());
     $('#inp-search').val('');
@@ -43847,7 +43849,7 @@ $(document).ready(function () {
   function sendFormQuickQuote() {
     $.ajax({
       type: "POST",
-      url: "mail.php",
+      url: quick_quote,
       data: $('#form-quick-quote').serialize(),
       success: function success() {
         $('#message-success').addClass('fadeIn');
@@ -43900,7 +43902,7 @@ $(document).ready(function () {
   function sendFormContacts() {
     $.ajax({
       type: "POST",
-      url: "mail.php",
+      url: contact_us,
       data: $('#form-contacts').serialize(),
       success: function success() {
         $('#message-success').addClass('fadeIn');
@@ -44328,6 +44330,29 @@ function sendFormShipper() {
   }
 
   console.log('%c send form', 'color: green; font-size: 16px; font-weight: 600;', $sendForms);
+  sendFormHandler($sendForms);
+}
+
+function sendFormHandler(data) {
+  $.ajax({
+    type: "POST",
+    url: "/api/email/air_shipping_order",
+    data: $.param(data),
+    success: function success() {
+      $('#message-success').addClass('fadeIn');
+      $('#form-quick-quote').trigger("reset");
+      setTimeout(function () {
+        $('#message-success').removeClass('fadeIn');
+      }, 4000);
+    },
+    error: function error(_error) {
+      console.log('Error', _error);
+      $('#message-server-error').addClass('fadeIn');
+      setTimeout(function () {
+        $('#message-server-error').removeClass('fadeIn');
+      }, 4000);
+    }
+  });
 }
 
 /***/ }),
