@@ -10,6 +10,7 @@ use App\Mail\QuickQouteEmail;
 use App\Mail\TestEmail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Mail;
 
 use Barryvdh\DomPDF\Facade as PDF;
@@ -36,14 +37,13 @@ class EmailNotification extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function test(){
-
         $pdf = PDF::loadHTML("<div>PDF pdf</div>")->setPaper('a4', 'landscape')->setWarnings(false);
-
         $pdf->save('pdf/myfile.pdf');
-//        dd($pdf->output());
-        Mail::to("test@test.com")->send(new TestEmail($pdf->output()));
 
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadHTML('<h1>Test pdf letter</h1>');
 
+        Mail::to("test@test.com")->send(new TestEmail($pdf->stream()));
 
         return response()->json(["status" => "ok"]);
     }
@@ -54,7 +54,10 @@ class EmailNotification extends Controller
      */
     public function contactUs(ContactUsRequest $request){
 
-        Mail::to("test@test.com")->send(new ContactUsEmail());
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadView('pdf.contact_us', $request->all());
+
+        Mail::to("test@test.com")->send(new ContactUsEmail($pdf->stream()));
 
         return response()->json([
             "status" => "ok",
