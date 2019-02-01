@@ -5,6 +5,7 @@ namespace App\Api\V1\Controllers;
 use App\Http\Requests\Email\AirShippingOrderRequest;
 use App\Http\Requests\Email\ContactUsRequest;
 use App\Http\Requests\Email\QuickQuoteRequest;
+use App\Mail\AirShippingOrderEmail;
 use App\Mail\ContactUsEmail;
 use App\Mail\QuickQouteEmail;
 use App\Mail\TestEmail;
@@ -73,17 +74,14 @@ class EmailNotification extends Controller
         Mail::to("test@test.com")->send(new QuickQouteEmail($this->pdf->stream()));
 
         return response()->json([
-            "status" => "ok",
-            "FreightType" => $request->FreightType,
-            "Weight" => $request->Weight,
-            "ShippingFrom" => $request->ShippingFrom,
-            "ShippingTo" => $request->ShippingTo,
-            "Email" => $request->Email,
-            "Details" => $request->Details,
+            "status" => "ok"
         ]);
     }
 
     public function airShippingOrder(AirShippingOrderRequest $request){
+        $this->pdf->loadView('pdf.air_shipping_order', $request->all());
+        Mail::to("test@test.com")->send(new AirShippingOrderEmail($this->pdf->stream()));
+
         return response()->json([
             "status" => "ok",
             "comment" => $request->comment,
