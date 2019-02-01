@@ -60,12 +60,7 @@ class EmailNotification extends Controller
         Mail::to("test@test.com")->send(new ContactUsEmail($pdf->stream()));
 
         return response()->json([
-            "status" => "ok",
-            "requestFirstName" => $request->FirstName,
-            "requestSecondName" => $request->SecondName,
-            "requestPhone" => $request->Phone,
-            "requestEmail" => $request->Email,
-            "requestMessage" => $request->Message??"",
+            "status" => "ok"
         ]);
     }
 
