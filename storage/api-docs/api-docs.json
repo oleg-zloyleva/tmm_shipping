@@ -208,6 +208,16 @@
                         "default": "Some description to"
                     },
                     {
+                        "name": "descriptionOfGoods[insurance]",
+                        "in": "formData",
+                        "description": "Enter descriptionOfGoods->insurance",
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "boolean",
+                        "default": "false"
+                    },
+                    {
                         "name": "notifyParty[address]",
                         "in": "formData",
                         "description": "Enter notifyParty->address",
@@ -394,6 +404,26 @@
                         },
                         "type": "string",
                         "default": "25078"
+                    },
+                    {
+                        "name": "shipper[business]",
+                        "in": "formData",
+                        "description": "Enter shipper->business",
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "boolean",
+                        "default": "false"
+                    },
+                    {
+                        "name": "shipper[citizen]",
+                        "in": "formData",
+                        "description": "Enter shipper->citizen",
+                        "schema": {
+                            "$ref": "#/definitions/AirShippingOrder"
+                        },
+                        "type": "boolean",
+                        "default": "false"
                     },
                     {
                         "name": "shipper[address]",
@@ -801,6 +831,9 @@
                 "descriptionOfGoods[to]": {
                     "type": "sting"
                 },
+                "descriptionOfGoods[insurance]": {
+                    "type": "boolean"
+                },
                 "notifyParty[address]": {
                     "type": "sting"
                 },
@@ -854,6 +887,12 @@
                 },
                 "sendDocumentTo[zip]": {
                     "type": "sting"
+                },
+                "shipper[business]": {
+                    "type": "boolean"
+                },
+                "shipper[citizen]": {
+                    "type": "boolean"
                 },
                 "shipper[address]": {
                     "type": "sting"

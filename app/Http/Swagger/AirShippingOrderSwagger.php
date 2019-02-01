@@ -65,6 +65,10 @@
  *          property="descriptionOfGoods[to]",
  *          type="sting"
  *      ),
+ *     @SWG\Property(
+ *          property="descriptionOfGoods[insurance]",
+ *          type="boolean"
+ *      ),
  *
  *     **************************************************
  *
@@ -146,6 +150,14 @@
  *
  *     **************************************************
  *
+ *     @SWG\Property(
+ *          property="shipper[business]",
+ *          type="boolean"
+ *      ),
+ *     @SWG\Property(
+ *          property="shipper[citizen]",
+ *          type="boolean"
+ *      ),
  *     @SWG\Property(
  *          property="shipper[address]",
  *          type="sting"
@@ -369,6 +381,14 @@
  *          default="Some description to",
  *          @SWG\Schema(ref="#/definitions/AirShippingOrder"),
  *      ),
+ *     @SWG\Parameter(
+ *          name="descriptionOfGoods[insurance]",
+ *          in="formData",
+ *          description="Enter descriptionOfGoods->insurance",
+ *          type="boolean",
+ *          default="false",
+ *          @SWG\Schema(ref="#/definitions/AirShippingOrder"),
+ *      ),
  *
  *     **************************************************
  *
@@ -448,6 +468,9 @@
  *          default="65023",
  *          @SWG\Schema(ref="#/definitions/AirShippingOrder"),
  *      ),
+ *
+ *     **************************************************
+ *
  *     @SWG\Parameter(
  *          name="sendDocumentTo[address]",
  *          in="formData",
@@ -522,6 +545,25 @@
  *          description="Enter sendDocumentTo->zip",
  *          type="string",
  *          default="25078",
+ *          @SWG\Schema(ref="#/definitions/AirShippingOrder"),
+ *      ),
+ *
+ *     **************************************************
+ *
+ *     @SWG\Parameter(
+ *          name="shipper[business]",
+ *          in="formData",
+ *          description="Enter shipper->business",
+ *          type="boolean",
+ *          default="false",
+ *          @SWG\Schema(ref="#/definitions/AirShippingOrder"),
+ *      ),
+ *     @SWG\Parameter(
+ *          name="shipper[citizen]",
+ *          in="formData",
+ *          description="Enter shipper->citizen",
+ *          type="boolean",
+ *          default="false",
  *          @SWG\Schema(ref="#/definitions/AirShippingOrder"),
  *      ),
  *     @SWG\Parameter(

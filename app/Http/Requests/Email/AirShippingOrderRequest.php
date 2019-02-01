@@ -34,6 +34,7 @@ class AirShippingOrderRequest extends Request
             "descriptionOfGoods" => "required|array",
                 "descriptionOfGoods.from" => "required|string",
                 "descriptionOfGoods.to" => "required|string",
+                "descriptionOfGoods.insurance" => "string",
 
             "notifyParty" => "required|array",
                 "notifyParty.address" => "string",
@@ -58,6 +59,8 @@ class AirShippingOrderRequest extends Request
                 "sendDocumentTo.zip" => "string",
 
             "shipper" => "required|array",
+                "shipper.business" => "string",
+                "shipper.citizen" => "string",
                 "shipper.address" => "string",
                 "shipper.city" => "required|string",
                 "shipper.country" => "required|string",

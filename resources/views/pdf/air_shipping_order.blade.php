@@ -9,7 +9,7 @@
 </head>
 <body>
 <div>
-    <h1>Air Shipping Order Letter</h1>
+    <h1>Air/Ocean Shipping Order Letter</h1>
 </div>
 <div>
     <div><h3>Comment</h3></div>
@@ -34,6 +34,7 @@
     <div><h3>Description Of Goods</h3></div>
     <div><b>from:</b> <i>{{ $descriptionOfGoods["from"] }}</i></div>
     <div><b>to:</b> <i>{{ $descriptionOfGoods["to"] }}</i></div>
+    <div><b>insurance:</b> <i>{{ $descriptionOfGoods["insurance"]??"No" }}</i></div>
 
     <hr>
     <div><h3>notify Party</h3></div>
@@ -61,6 +62,8 @@
 
     <hr>
     <div><h3>Shipper</h3></div>
+    <div><b>business:</b> <i>{{ $shipper["business"]??"No" }}</i></div>
+    <div><b>citizen:</b> <i>{{ $shipper["citizen"]??"No" }}</i></div>
     <div><b>address:</b> <i>{{ $shipper["address"] }}</i></div>
     <div><b>city:</b> <i>{{ $shipper["city"] }}</i></div>
     <div><b>country:</b> <i>{{ $shipper["country"] }}</i></div>
