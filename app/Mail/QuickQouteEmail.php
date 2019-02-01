@@ -11,14 +11,15 @@ class QuickQouteEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    protected $content;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($content)
     {
-        //
+        $this->content = $content;
     }
 
     /**
@@ -28,6 +29,6 @@ class QuickQouteEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.quick_quote');
+        return $this->view('mails.quick_quote')->attachData($this->content, "quick_quote.pdf", ['mime' => 'application/pdf',]);
     }
 }

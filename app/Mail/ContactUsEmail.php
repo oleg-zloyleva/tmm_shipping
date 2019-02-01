@@ -29,6 +29,6 @@ class ContactUsEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.contact_us')->attachData($this->content, "mail.pdf", ['mime' => 'application/pdf',]);
+        return $this->view('mails.contact_us')->attachData($this->content, "contact_us.pdf", ['mime' => 'application/pdf',]);
     }
 }

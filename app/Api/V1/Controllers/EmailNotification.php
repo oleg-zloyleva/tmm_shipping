@@ -33,17 +33,22 @@ use Barryvdh\DomPDF\Facade as PDF;
 
 class EmailNotification extends Controller
 {
+    protected $pdf;
+
+    public function __construct(){
+        $this->pdf = App::make('dompdf.wrapper');
+    }
+
     /**
      * @return \Illuminate\Http\JsonResponse
      */
     public function test(){
-        $pdf = PDF::loadHTML("<div>PDF pdf</div>")->setPaper('a4', 'landscape')->setWarnings(false);
-        $pdf->save('pdf/myfile.pdf');
+        //$pdf = PDF::loadHTML("<div>PDF pdf</div>")->setPaper('a4', 'landscape')->setWarnings(false);
+        //$pdf->save('pdf/myfile.pdf');
 
-        $pdf = App::make('dompdf.wrapper');
-        $pdf->loadHTML('<h1>Test pdf letter</h1>');
+        $this->pdf->loadHTML('<h1>Test pdf letter</h1>');
 
-        Mail::to("test@test.com")->send(new TestEmail($pdf->stream()));
+        Mail::to("test@test.com")->send(new TestEmail($this->pdf->stream()));
 
         return response()->json(["status" => "ok"]);
     }
@@ -53,11 +58,9 @@ class EmailNotification extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function contactUs(ContactUsRequest $request){
+        $this->pdf->loadView('pdf.contact_us', $request->all());
 
-        $pdf = App::make('dompdf.wrapper');
-        $pdf->loadView('pdf.contact_us', $request->all());
-
-        Mail::to("test@test.com")->send(new ContactUsEmail($pdf->stream()));
+        Mail::to("test@test.com")->send(new ContactUsEmail($this->pdf->stream()));
 
         return response()->json([
             "status" => "ok"
@@ -65,8 +68,9 @@ class EmailNotification extends Controller
     }
 
     public function quickQuote(QuickQuoteRequest $request){
+        $this->pdf->loadView('pdf.quick_quote', $request->all());
 
-        Mail::to("test@test.com")->send(new QuickQouteEmail());
+        Mail::to("test@test.com")->send(new QuickQouteEmail($this->pdf->stream()));
 
         return response()->json([
             "status" => "ok",
