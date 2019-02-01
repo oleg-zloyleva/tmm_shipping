@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 
+use Barryvdh\DomPDF\Facade as PDF;
+
 /**
  * @SWG\Post(
  *     path="/api/email/test",
@@ -35,7 +37,13 @@ class EmailNotification extends Controller
      */
     public function test(){
 
-        Mail::to("test@test.com")->send(new TestEmail());
+        $pdf = PDF::loadHTML("<div>PDF pdf</div>")->setPaper('a4', 'landscape')->setWarnings(false);
+
+        $pdf->save('pdf/myfile.pdf');
+//        dd($pdf->output());
+        Mail::to("test@test.com")->send(new TestEmail($pdf->output()));
+
+
 
         return response()->json(["status" => "ok"]);
     }

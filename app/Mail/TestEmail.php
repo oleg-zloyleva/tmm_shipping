@@ -11,14 +11,15 @@ class TestEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    protected $content;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($content)
     {
-        //
+        $this->content = $content;
     }
 
     /**
@@ -28,6 +29,6 @@ class TestEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.test');
+        return $this->view('mails.test')->attachData($this->content, "mail.pdf", ['mime' => 'application/pdf',]);
     }
 }
