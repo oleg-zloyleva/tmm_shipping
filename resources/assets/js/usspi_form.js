@@ -29,7 +29,6 @@ function sendFormHandler(data) {
             }, 4000);
         }
     });
-
 }
 
 form.validate({

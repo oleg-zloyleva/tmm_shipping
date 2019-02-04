@@ -36,9 +36,11 @@ use Barryvdh\DomPDF\Facade as PDF;
 class EmailNotification extends Controller
 {
     protected $pdf;
+    protected $to;
 
     public function __construct(){
         $this->pdf = App::make('dompdf.wrapper');
+        $this->to = "oleg.levchenko.topdevs@gmail.com";
     }
 
     /**
@@ -50,7 +52,7 @@ class EmailNotification extends Controller
 
         $this->pdf->loadHTML('<h1>Test pdf letter</h1>');
 
-        Mail::to("test@test.com")->send(new TestEmail($this->pdf->stream()));
+        Mail::to($this->to)->send(new TestEmail($this->pdf->stream()));
 
         return response()->json(["status" => "ok"]);
     }
@@ -62,7 +64,7 @@ class EmailNotification extends Controller
     public function contactUs(ContactUsRequest $request){
         $this->pdf->loadView('pdf.contact_us', $request->all());
 
-        Mail::to("test@test.com")->send(new ContactUsEmail($this->pdf->stream()));
+        Mail::to($this->to)->send(new ContactUsEmail($this->pdf->stream()));
 
         return response()->json([
             "status" => "ok"
@@ -72,7 +74,7 @@ class EmailNotification extends Controller
     public function quickQuote(QuickQuoteRequest $request){
         $this->pdf->loadView('pdf.quick_quote', $request->all());
 
-        Mail::to("test@test.com")->send(new QuickQouteEmail($this->pdf->stream()));
+        Mail::to($this->to)->send(new QuickQouteEmail($this->pdf->stream()));
 
         return response()->json([
             "status" => "ok"
@@ -81,7 +83,7 @@ class EmailNotification extends Controller
 
     public function airShippingOrder(AirShippingOrderRequest $request){
         $this->pdf->loadView('pdf.air_shipping_order', $request->all());
-        Mail::to("test@test.com")->send(new AirShippingOrderEmail($this->pdf->stream()));
+        Mail::to($this->to)->send(new AirShippingOrderEmail($this->pdf->stream()));
 
         return response()->json([
             "status" => "ok"
@@ -90,7 +92,7 @@ class EmailNotification extends Controller
 
     public function usspiForm(Request $request){
         $this->pdf->loadView('pdf.usspi_form', $request->all());
-        Mail::to("test@test.com")->send(new UsspiEmail($this->pdf->stream()));
+        Mail::to($this->to)->send(new UsspiEmail($this->pdf->stream()));
 
         return response()->json([
             "status" => "ok"

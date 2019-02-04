@@ -12359,7 +12359,9 @@ function totalBill() {
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
-  // === SEARCH === //
+  var quick_quote = "/api/email/quick_quote";
+  var contact_us = "/api/email/contact_us"; // === SEARCH === //
+
   $('#btn-search').on('click', function () {
     console.log($('#inp-search').val());
     $('#inp-search').val('');
@@ -12534,7 +12536,7 @@ $(document).ready(function () {
   function sendFormQuickQuote() {
     $.ajax({
       type: "POST",
-      url: "mail.php",
+      url: quick_quote,
       data: $('#form-quick-quote').serialize(),
       success: function success() {
         $('#message-success').addClass('fadeIn');
@@ -12587,7 +12589,7 @@ $(document).ready(function () {
   function sendFormContacts() {
     $.ajax({
       type: "POST",
-      url: "mail.php",
+      url: contact_us,
       data: $('#form-contacts').serialize(),
       success: function success() {
         $('#message-success').addClass('fadeIn');
