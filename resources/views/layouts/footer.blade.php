@@ -16,8 +16,9 @@
     </div>
 </section>
 
-{{--<script src="libs/bootstrap/js/bootstrap.min.js"></script>--}}
-<script src="{{ asset('js/app.js') }}"></script>
+
+<script src="{{ asset('js/libs/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('js/libs/bootstrap/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/libs/slick/slick.js') }}"></script>
 
 @switch(true)
@@ -91,5 +92,6 @@
 
 
 <script src="{{ asset('js/libs/select2/select2.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
