@@ -17,7 +17,7 @@
         <div><b>Shipping From:</b> <i>{{ $ShippingFrom }}</i></div>
         <div><b>Shipping To:</b> <i>{{ $ShippingTo }}</i></div>
         <div><b>Email:</b> <i>{{ $Email }}</i></div>
-        <div><b>Details:</b> <i>{{ $Details??'' }}</i></div>
+        <div><b>Details:</b> <i>{{ $Details }}</i></div>
     </div>
 </body>
 </html>

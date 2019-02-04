@@ -1,0 +1,43 @@
+/* === BASIC === */
+@import './fonts.scss';
+@import './color.scss';
+
+
+/* === BOOTSTRAP === */
+@import "./libs/bootstrap/functions";
+@import "./libs/bootstrap/variables";
+@import "./libs/bootstrap/mixins";
+@import './libs/bootstrap/grid';
+@import "./libs/bootstrap/transitions";
+@import "./libs/bootstrap/navbar";
+
+
+/* === FontAwesome === */
+@import './libs/fontawesome/css/fontawesome-all.min.css';
+
+/* === SELECT2 === */
+@import './libs/select2/select2.css';
+
+/* === SLICK === */
+@import './libs/slick/slick.css';
+@import './libs/slick/slick-theme.css';
+
+
+/* === MAIN === */
+/*@import './reset.scss';*/
+@import './basic.scss';
+/*@import './login.scss';*/
+/*@import './sign-up.scss';*/
+@import './header.scss';
+@import './services.scss';
+@import './partners.scss';
+@import './quick-quote.scss';
+@import './footer.scss';
+
+
+/* === PAGES === */
+@import './page_about.scss';
+@import './page_services.scss';
+@import './page_rates.scss';
+@import './page_contacts.scss';
+@import './page_order.scss';

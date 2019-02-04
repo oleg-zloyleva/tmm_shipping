@@ -5,12 +5,12 @@
                 <div class="buttons-control" id="buttons-control">
                     <button class="buttons-control__btn active" data-order="air">AIR SHIPPING FORM</button>
                     <button class="buttons-control__btn" data-order="ocean">OCEAN SHIPPING FORM</button>
+                    <button class="buttons-control__btn" data-order="usspi">USPPI Written Authorization</button>
                 </div>
             </div>
             <div class="col-md-12 col-lg-9 col-xl-8">
                 <div class="order-block">
-
-                    <div class="slider-order">
+                    <div class="slider-order" id="slider-order">
                         <div class="slider-order__slide">
                             <form id="form-shipper">
                                 <div class="slider-order__title">SHIPPER</div>
@@ -509,6 +509,47 @@
                                 </button>
                             </div>
                             <div class="required-fields" id="required-fields">Fill in required fields</div>
+                        </div>
+                    </div>
+
+                    <div class="usspi-block" id="usspi-block">
+                        <div class="usspi-block__title">
+                            WRITTEN AUTHORIZATION TO PREPARE OR <br>TRANSMIT SHIPPER’S EXPORT INFORMATION
+                        </div>
+                        <div class="usspi-block__content">
+                            <div class="content-authorize">I, <input class="inp-content"><input class="inp-content">, authorize</div>
+                            TMM international, to act as forwarding agent for export control and customs purposes and to sign any Shipper’s Export Declaration (SED), or transmit such export information electronically, which may be required by law or regulation in connection with the exportation or transportation of any merchandise on behalf of said U.S. Principal Party in Interest. The U.S. Principal Party in Interest certifies that necessary and proper documentation to accurately complete the SED or transmit the information electronically is and will be provided to the said forwarding Agent. The U.S. Principal Party in Interest further understands that civil and criminal penalties may be imposed for making false or fraudulent statements or for the violation of any United State laws or regulations on exportation and agrees to be bound by all statements of said agent based upon information or documentation provided by exporter to said agent.
+                            <div class="content-signature">
+                                <label class="label-content">
+                                    Signature:
+                                    <input class="inp-content inp-signature">*<input class="inp-content">
+                                </label>
+                            </div>
+                            <div class="content-print">
+                                <label class="label-content">
+                                    Print Name:
+                                    <input class="inp-content inp-print">
+                                </label>
+                            </div>
+                            <div class="content-ein">
+                                <label class="label-content">
+                                    E.I.N. (TAX ID):
+                                    <input class="inp-content inp-ein">
+                                </label>
+                            </div>
+                            <div class="content-title">
+                                <label class="label-content">
+                                    Title:
+                                    <input class="inp-content inp-title">*<input class="inp-content">
+                                </label>
+                            </div>
+                            <div class="content-date">
+                                <label class="label-content">
+                                    Date:
+                                    <input class="inp-content inp-date">*<input class="inp-content">
+                                </label>
+                            </div>
+                            <button class="usspi-block__btn">Send</button>
                         </div>
                     </div>
                 </div>

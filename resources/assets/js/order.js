@@ -41,11 +41,18 @@ $('.buttons-control__btn').on('click', function () {
     }
 
     if ($this.attr('data-order') === 'ocean') {
+        $('#slider-order').css('display', 'block');
         $('#air-block').css('display', 'none');
         $('#ocean-block').css('display', 'block');
-    } else {
+        $('#usspi-block').css('display', 'none');
+    } else if ($this.attr('data-order') === 'air') {
+        $('#slider-order').css('display', 'block');
         $('#air-block').css('display', 'block');
         $('#ocean-block').css('display', 'none');
+        $('#usspi-block').css('display', 'none');
+    } else {
+        $('#usspi-block').css('display', 'block');
+        $('#slider-order').css('display', 'none');
     }
 });
 
@@ -395,32 +402,9 @@ function sendFormShipper() {
 
     console.log('%c send form', 'color: green; font-size: 16px; font-weight: 600;', $sendForms);
 
-    sendFormHandler($sendForms);
 }
 
-function sendFormHandler(data) {
 
-    $.ajax({
-        type: "POST",
-        url: "/api/email/air_shipping_order",
-        data: $.param(data),
-        success: function () {
-            $('#message-success').addClass('fadeIn');
-            $('#form-quick-quote').trigger("reset");
-            setTimeout(function () {
-                $('#message-success').removeClass('fadeIn');
-            }, 4000);
-        },
-        error: function (error) {
-            console.log('Error', error);
-            $('#message-server-error').addClass('fadeIn');
-            setTimeout(function () {
-                $('#message-server-error').removeClass('fadeIn');
-            }, 4000);
-        }
-    });
-
-}
 
 
 
