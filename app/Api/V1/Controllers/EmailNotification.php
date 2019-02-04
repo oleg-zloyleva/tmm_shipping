@@ -83,13 +83,7 @@ class EmailNotification extends Controller
         Mail::to("test@test.com")->send(new AirShippingOrderEmail($this->pdf->stream()));
 
         return response()->json([
-            "status" => "ok",
-            "comment" => $request->comment,
-            "consignee" => $request->consignee,
-            "descriptionOfGoods" => $request->descriptionOfGoods,
-            "notifyParty" => $request->notifyParty,
-            "sendDocumentTo" => $request->sendDocumentTo,
-            "shipper" => $request->shipper,
+            "status" => "ok"
         ]);
     }
 }

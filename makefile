@@ -98,6 +98,10 @@ create_test: #create test name=[testName]
 watch: #Run watch
 	@sudo docker-compose exec $(nodejs) npm run watch
 
+
+test_class: #test specific class name="$(name)"
+	@sudo docker exec -it $(container_php) bash -c 'vendor/bin/phpunit --filter $(name)'
+
 tinker: #Run tinker
 	@sudo docker-compose exec $(php) php artisan tinker
 
