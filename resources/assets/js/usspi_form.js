@@ -1,4 +1,4 @@
-import "jquery-validation"; // On error -> export default module
+import "jquery-validation"; //Todo On error -> add "export default" to module
 
 const form = $( "#usspi-form" );
 
@@ -12,7 +12,7 @@ form.on("submit",function (e) {
 function sendFormHandler(data) {
     $.ajax({
         type: "POST",
-        url: "/api/email/usspi_form",
+        url: "/api/email/usspi_",
         data: data,
         success: function () {
             $('#message-success').addClass('fadeIn');

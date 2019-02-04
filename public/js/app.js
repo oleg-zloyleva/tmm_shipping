@@ -13059,7 +13059,7 @@ function sendFormHandler(data) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery_validation__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery-validation */ "./node_modules/jquery-validation/dist/jquery.validate.js");
- // On error -> export default module
+ //Todo On error -> add "export default" to module
 
 var form = $("#usspi-form");
 form.on("submit", function (e) {
@@ -13073,7 +13073,7 @@ form.on("submit", function (e) {
 function sendFormHandler(data) {
   $.ajax({
     type: "POST",
-    url: "/api/email/usspi_form",
+    url: "/api/email/usspi_",
     data: data,
     success: function success() {
       $('#message-success').addClass('fadeIn');

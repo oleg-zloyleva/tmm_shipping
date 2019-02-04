@@ -11,5 +11,6 @@ $api->version('v1', function (Router $api) {
         $api->post('contact_us', ['uses' => "App\\Api\\V1\\Controllers\\EmailNotification@contactUs"]);
         $api->post('quick_quote', ['uses' => "App\\Api\\V1\\Controllers\\EmailNotification@quickQuote"]);
         $api->post('air_shipping_order', ['uses' => "App\\Api\\V1\\Controllers\\EmailNotification@airShippingOrder"]);
+        $api->post('usspi_form', ['uses' => "App\\Api\\V1\\Controllers\\EmailNotification@usspiForm"]);
     });
 });

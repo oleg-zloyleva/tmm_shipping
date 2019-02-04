@@ -9,6 +9,7 @@ use App\Mail\AirShippingOrderEmail;
 use App\Mail\ContactUsEmail;
 use App\Mail\QuickQouteEmail;
 use App\Mail\TestEmail;
+use App\Mail\UsspiEmail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\App;
@@ -86,73 +87,15 @@ class EmailNotification extends Controller
             "status" => "ok"
         ]);
     }
-}
 
-//{
-//  "comment": {
-//    "comment": ""
-//	},
-//	"consignee":{
-//    "address": "",
-//		"city": "afdsfasd",
-//		"country": "Algeria",
-//		"email": "fdgsdfg@gmail.com",
-//		"fax": "",
-//		"firstName": "dfghsdfg",
-//		"phone": "23452345234",
-//		"province": "",
-//		"secondName": "sdfgasdf",
-//		"state": "",
-//		"tid": "asdfasd",
-//		"zip": ""
-//	},
-//	"descriptionOfGoods":{
-//    "from": "asdfad",
-//		"to": "dsfadsfa"
-//	},
-//	"notifyParty":{
-//    "address": "",
-//		"city": "sadfasd",
-//		"country": "Afghanistan",
-//		"firstName": "sadfasd",
-//		"notifyParty": "",
-//		"province": "",
-//		"secondName": "asdfasdf",
-//		"state": "",
-//		"zip": ""
-//	},
-//	"sendDocumentTo":{
-//    "address": "",
-//		"airWaybill": "",
-//		"city": "asdfasdf",
-//		"country": "Albania",
-//		"firstName": "asdfasdf",
-//		"province": "",
-//		"secondName": "asdfasdf",
-//		"state": "",
-//		"zip": ""
-//	},
-//	"shipper":{
-//    "address": "",
-//		"city": "rgfhdfgh",
-//		"country": "Albania",
-//		"email": "dfghsdf@gmail.com",
-//		"fax": "",
-//		"firstName": "fghsdfg",
-//		"phone": "54623456345",
-//		"province": "",
-//		"secondName": "fdghdfg",
-//		"state": "",
-//		"tid": "3452345",
-//		"zip": ""
-//	},
-//	"vehicle":{
-//    "body": "",
-//		"colour": "",
-//		"make": "",
-//		"model": "",
-//		"valueOfVehicle": "",
-//		"vin": "",
-//		"year": ""
-//	}
-//}
+    public function usspiForm(Request $request){
+        $this->pdf->loadView('pdf.usspi_form', $request->all());
+        Mail::to("test@test.com")->send(new UsspiEmail($this->pdf->stream()));
+
+        return response()->json([
+            "status" => "ok"
+        ]);
+
+
+    }
+}
