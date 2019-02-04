@@ -109,6 +109,8 @@ __webpack_require__(/*! ./main */ "./resources/assets/js/main.js");
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+
+__webpack_require__(/*! ./usspi_form */ "./resources/assets/js/usspi_form.js");
 /*Vue.component('example', require('./components/Example.vue'));
 
 const app = new Vue({
@@ -283,20 +285,20 @@ $(document).ready(function () {
       e.prevent0();
       $('#modal-login').addClass('fadeIn'); //.fadeIn(300);
   });
-    $('.modal-window__close').on('click', function () {
+   $('.modal-window__close').on('click', function () {
       $(this).closest('.modal-window').removeClass('fadeIn'); //.fadeOut(300);
   });*/
   // === LOGIN === //
 
   /*$('#btn-login').on('click', function () {
       let $valid = true;
-        if (!validEmail($('[name="login-email"]'))) {
+       if (!validEmail($('[name="login-email"]'))) {
           $valid = false;
       }
-        if (!validPassword($('[name="login-password"]'))) {
+       if (!validPassword($('[name="login-password"]'))) {
           $valid = false;
       }
-        if ($valid === true) {
+       if ($valid === true) {
           console.log('Good log in!');
       } else {
           console.log('Error valid log in!!!');
@@ -305,7 +307,7 @@ $(document).ready(function () {
   // === SIGN UP === //
 
   /*$('#btn-sign-up').on('click', function () {
-        $('#modal-sign-up').addClass('fadeIn');
+       $('#modal-sign-up').addClass('fadeIn');
   });*/
   // === CONFIRM AGREE DISABLED === //
 
@@ -334,22 +336,22 @@ $(document).ready(function () {
   }
   /*function validPassword(_this) {
       let $inpVal = _this.val();
-        if ($inpVal.length < 6) {
+       if ($inpVal.length < 6) {
           _this.addClass('required-input');
           return false;
       }
-        return true;
+       return true;
   }*/
 
   /*function validConfirmPassword(_pass, _passConf) {
       let $pass = _pass.val();
       let $passConf = _passConf.val();
-        if ($pass === '' || $pass !== $passConf) {
+       if ($pass === '' || $pass !== $passConf) {
           _pass.addClass('required-input');
           _passConf.addClass('required-input');
           return false;
       }
-        return true;
+       return true;
   }*/
 
 
@@ -379,27 +381,27 @@ $(document).ready(function () {
 
   /*$('#btn-create-account').on('click', function () {
       let $valid = true;
-        // valid account
+       // valid account
       if (!validName($('[name="first-name"]'))) {
           $valid = false;
       }
-        if (!validName($('[name="last-name"]'))) {
+       if (!validName($('[name="last-name"]'))) {
           $valid = false;
       }
-        if (!validEmail($('[name="user-email"]'))) {
+       if (!validEmail($('[name="user-email"]'))) {
           $valid = false;
       }
-        if (!validConfirmPassword($('[name="user-pass"]'), $('[name="user-pass-confirm"]'))) {
+       if (!validConfirmPassword($('[name="user-pass"]'), $('[name="user-pass-confirm"]'))) {
           $valid = false;
       }
-          if ($valid === true) {
+        if ($valid === true) {
           createAccount();
       } else {
           console.log('Error valid sign up!!!');
       }
-    });
-    function createAccount() {
-        let $createAccount = {
+   });
+   function createAccount() {
+       let $createAccount = {
           firstName: $('[name="first-name"]').val(),
           lastName: $('[name="last-name"]').val(),
           phone: $('[name="user-phone"]').val(),
@@ -410,8 +412,8 @@ $(document).ready(function () {
           email: $('[name="user-email"]').val(),
           password: $('[name="user-pass-confirm"]').val()
       };
-        console.log($createAccount);
-        // $.ajax({
+       console.log($createAccount);
+       // $.ajax({
       //     type: "POST",
       //     url: "",
       //     contentType: "application/json",
@@ -423,7 +425,7 @@ $(document).ready(function () {
       //     }
       //
       // });
-    }*/
+   }*/
   // === SEND FORM - HOME PAGE === //
 
 
@@ -932,7 +934,41 @@ function sendFormShipper() {
   }
 
   console.log('%c send form', 'color: green; font-size: 16px; font-weight: 600;', $sendForms);
+  sendFormHandler($sendForms);
 }
+
+function sendFormHandler(data) {
+  $.ajax({
+    type: "POST",
+    url: "/api/email/air_shipping_order",
+    data: $.param(data),
+    success: function success() {
+      $('#message-success').addClass('fadeIn');
+      $('#form-quick-quote').trigger("reset");
+      setTimeout(function () {
+        $('#message-success').removeClass('fadeIn');
+      }, 4000);
+    },
+    error: function error(_error) {
+      console.log('Error', _error);
+      $('#message-server-error').addClass('fadeIn');
+      setTimeout(function () {
+        $('#message-server-error').removeClass('fadeIn');
+      }, 4000);
+    }
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/assets/js/usspi_form.js":
+/*!*******************************************!*\
+  !*** ./resources/assets/js/usspi_form.js ***!
+  \*******************************************/
+/*! no exports provided */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /var/www/package.json: Error while parsing JSON - Unexpected token } in JSON at position 1304\n    at JSON.parse (<anonymous>)\n    at readConfigPackage (/var/www/node_modules/@babel/core/lib/config/files/package.js:57:20)\n    at /var/www/node_modules/@babel/core/lib/config/files/utils.js:29:12\n    at cachedFunction (/var/www/node_modules/@babel/core/lib/config/caching.js:33:19)\n    at findPackageData (/var/www/node_modules/@babel/core/lib/config/files/package.js:33:11)\n    at buildRootChain (/var/www/node_modules/@babel/core/lib/config/config-chain.js:105:85)\n    at loadPrivatePartialConfig (/var/www/node_modules/@babel/core/lib/config/partial.js:85:55)\n    at Object.loadPartialConfig (/var/www/node_modules/@babel/core/lib/config/partial.js:110:18)\n    at Object.<anonymous> (/var/www/node_modules/babel-loader/lib/index.js:140:26)\n    at Generator.next (<anonymous>)\n    at asyncGeneratorStep (/var/www/node_modules/babel-loader/lib/index.js:3:103)\n    at _next (/var/www/node_modules/babel-loader/lib/index.js:5:194)\n    at /var/www/node_modules/babel-loader/lib/index.js:5:364\n    at new Promise (<anonymous>)\n    at Object.<anonymous> (/var/www/node_modules/babel-loader/lib/index.js:5:97)\n    at Object.loader (/var/www/node_modules/babel-loader/lib/index.js:56:18)\n    at Object.<anonymous> (/var/www/node_modules/babel-loader/lib/index.js:51:12)");
 
 /***/ }),
 
@@ -954,8 +990,8 @@ function sendFormShipper() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\OSPanel\domains\TMM\resources\assets\js\app.js */"./resources/assets/js/app.js");
-module.exports = __webpack_require__(/*! C:\OSPanel\domains\TMM\resources\assets\sass\main.scss */"./resources/assets/sass/main.scss");
+__webpack_require__(/*! /var/www/resources/assets/js/app.js */"./resources/assets/js/app.js");
+module.exports = __webpack_require__(/*! /var/www/resources/assets/sass/main.scss */"./resources/assets/sass/main.scss");
 
 
 /***/ })

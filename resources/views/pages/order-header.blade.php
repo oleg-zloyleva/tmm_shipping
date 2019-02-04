@@ -513,44 +513,46 @@
                     </div>
 
                     <div class="usspi-block" id="usspi-block">
-                        <div class="usspi-block__title">
-                            WRITTEN AUTHORIZATION TO PREPARE OR <br>TRANSMIT SHIPPER’S EXPORT INFORMATION
-                        </div>
-                        <div class="usspi-block__content">
-                            <div class="content-authorize">I, <input class="inp-content"><input class="inp-content">, authorize</div>
-                            TMM international, to act as forwarding agent for export control and customs purposes and to sign any Shipper’s Export Declaration (SED), or transmit such export information electronically, which may be required by law or regulation in connection with the exportation or transportation of any merchandise on behalf of said U.S. Principal Party in Interest. The U.S. Principal Party in Interest certifies that necessary and proper documentation to accurately complete the SED or transmit the information electronically is and will be provided to the said forwarding Agent. The U.S. Principal Party in Interest further understands that civil and criminal penalties may be imposed for making false or fraudulent statements or for the violation of any United State laws or regulations on exportation and agrees to be bound by all statements of said agent based upon information or documentation provided by exporter to said agent.
-                            <div class="content-signature">
-                                <label class="label-content">
-                                    Signature:
-                                    <input class="inp-content inp-signature">*<input class="inp-content">
-                                </label>
+                        <form action="" id="usspi-form">
+                            <div class="usspi-block__title">
+                                WRITTEN AUTHORIZATION TO PREPARE OR <br>TRANSMIT SHIPPER’S EXPORT INFORMATION
                             </div>
-                            <div class="content-print">
-                                <label class="label-content">
-                                    Print Name:
-                                    <input class="inp-content inp-print">
-                                </label>
+                            <div class="usspi-block__content">
+                                <div class="content-authorize">I, <input class="inp-content" name="firstExporterName"><input class="inp-content" name="secondExporterName">, authorize</div>
+                                TMM international, to act as forwarding agent for export control and customs purposes and to sign any Shipper’s Export Declaration (SED), or transmit such export information electronically, which may be required by law or regulation in connection with the exportation or transportation of any merchandise on behalf of said U.S. Principal Party in Interest. The U.S. Principal Party in Interest certifies that necessary and proper documentation to accurately complete the SED or transmit the information electronically is and will be provided to the said forwarding Agent. The U.S. Principal Party in Interest further understands that civil and criminal penalties may be imposed for making false or fraudulent statements or for the violation of any United State laws or regulations on exportation and agrees to be bound by all statements of said agent based upon information or documentation provided by exporter to said agent.
+                                <div class="content-signature">
+                                    <label class="label-content">
+                                        Signature:
+                                        <input class="inp-content inp-signature" name="signatureFirst">*<input class="inp-content" name="signatureSecond">
+                                    </label>
+                                </div>
+                                <div class="content-print">
+                                    <label class="label-content">
+                                        Print Name:
+                                        <input class="inp-content inp-print" name="printName">
+                                    </label>
+                                </div>
+                                <div class="content-ein">
+                                    <label class="label-content">
+                                        E.I.N. (TAX ID):
+                                        <input class="inp-content inp-ein" name="einTaxId">
+                                    </label>
+                                </div>
+                                <div class="content-title">
+                                    <label class="label-content">
+                                        Title:
+                                        <input class="inp-content inp-title" name="titleFirst">*<input class="inp-content" name="titleSecond">
+                                    </label>
+                                </div>
+                                <div class="content-date">
+                                    <label class="label-content">
+                                        Date:
+                                        <input class="inp-content inp-date" name="dateFirst">*<input class="inp-content" name="dateSecond">
+                                    </label>
+                                </div>
+                                <button class="usspi-block__btn" id="usspi-block__btn">Send</button>
                             </div>
-                            <div class="content-ein">
-                                <label class="label-content">
-                                    E.I.N. (TAX ID):
-                                    <input class="inp-content inp-ein">
-                                </label>
-                            </div>
-                            <div class="content-title">
-                                <label class="label-content">
-                                    Title:
-                                    <input class="inp-content inp-title">*<input class="inp-content">
-                                </label>
-                            </div>
-                            <div class="content-date">
-                                <label class="label-content">
-                                    Date:
-                                    <input class="inp-content inp-date">*<input class="inp-content">
-                                </label>
-                            </div>
-                            <button class="usspi-block__btn">Send</button>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

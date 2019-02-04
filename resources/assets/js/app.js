@@ -15,6 +15,8 @@ require('./main');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+require('./usspi_form');
+
 /*Vue.component('example', require('./components/Example.vue'));
 
 const app = new Vue({
