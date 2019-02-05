@@ -40,7 +40,7 @@ class EmailNotification extends Controller
 
     public function __construct(){
         $this->pdf = App::make('dompdf.wrapper');
-        $this->to = "oleg.levchenko.topdevs@gmail.com";
+        $this->to = "zloyleva@gmail.com";
     }
 
     /**
