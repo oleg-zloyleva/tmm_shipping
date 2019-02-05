@@ -5,11 +5,7 @@ namespace App\Api\V1\Controllers;
 use App\Http\Requests\Email\AirShippingOrderRequest;
 use App\Http\Requests\Email\ContactUsRequest;
 use App\Http\Requests\Email\QuickQuoteRequest;
-use App\Mail\AirShippingOrderEmail;
-use App\Mail\ContactUsEmail;
-use App\Mail\QuickQouteEmail;
-use App\Mail\TestEmail;
-use App\Mail\UsspiEmail;
+use App\Mail\PdfFileToEmail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\App;
@@ -52,7 +48,9 @@ class EmailNotification extends Controller
 
         $this->pdf->loadHTML('<h1>Test pdf letter</h1>');
 
-        Mail::to($this->to)->send(new TestEmail($this->pdf->stream()));
+        Mail::to($this->to)->send(
+            new PdfFileToEmail($this->pdf->stream(),'mails.test',"mail.pdf")
+        );
 
         return response()->json(["status" => "ok"]);
     }
@@ -64,7 +62,9 @@ class EmailNotification extends Controller
     public function contactUs(ContactUsRequest $request){
         $this->pdf->loadView('pdf.contact_us', $request->all());
 
-        Mail::to($this->to)->send(new ContactUsEmail($this->pdf->stream()));
+        Mail::to($this->to)->send(
+            new PdfFileToEmail($this->pdf->stream(), "mails.contact_us","contact_us.pdf")
+        );
 
         return response()->json([
             "status" => "ok"
@@ -74,7 +74,9 @@ class EmailNotification extends Controller
     public function quickQuote(QuickQuoteRequest $request){
         $this->pdf->loadView('pdf.quick_quote', $request->all());
 
-        Mail::to($this->to)->send(new QuickQouteEmail($this->pdf->stream()));
+        Mail::to($this->to)->send(
+            new PdfFileToEmail($this->pdf->stream(),'mails.quick_quote',"quick_quote.pdf")
+        );
 
         return response()->json([
             "status" => "ok"
@@ -83,7 +85,9 @@ class EmailNotification extends Controller
 
     public function airShippingOrder(AirShippingOrderRequest $request){
         $this->pdf->loadView('pdf.air_shipping_order', $request->all());
-        Mail::to($this->to)->send(new AirShippingOrderEmail($this->pdf->stream()));
+        Mail::to($this->to)->send(
+            new PdfFileToEmail($this->pdf->stream(),'mails.air_shipping_order',"air_shipping_order.pdf")
+        );
 
         return response()->json([
             "status" => "ok"
@@ -92,7 +96,9 @@ class EmailNotification extends Controller
 
     public function usspiForm(Request $request){
         $this->pdf->loadView('pdf.usspi_form', $request->all());
-        Mail::to($this->to)->send(new UsspiEmail($this->pdf->stream()));
+        Mail::to($this->to)->send(
+            new PdfFileToEmail($this->pdf->stream(),'mails.usspi_form',"usspi_form.pdf")
+        );
 
         return response()->json([
             "status" => "ok"
