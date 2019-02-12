@@ -9,7 +9,7 @@
 </head>
 <body>
     <div>
-        <h1>Contact Us Letter</h1>
+        <h1>Quick Quote Letter</h1>
     </div>
     <div>
         <div><b>Freight Type:</b> <i>{{ $FreightType }}</i></div>
