@@ -90,12 +90,10 @@
 /*!****************************************************************!*\
   !*** ./node_modules/jquery-validation/dist/jquery.validate.js ***!
   \****************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function(module) {/*!
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
  * jQuery Validation Plugin v1.19.0
  *
  * https://jqueryvalidation.org/
@@ -103,14 +101,13 @@ __webpack_require__.r(__webpack_exports__);
  * Copyright (c) 2018 Jörn Zaefferer
  * Released under the MIT license
  */
-/* harmony default export */ __webpack_exports__["default"] = (function( factory ) {
-	if ( typeof define === "function" && __webpack_require__(/*! !webpack amd options */ "./node_modules/webpack/buildin/amd-options.js") ) {
-		define( ["jquery"], factory );
-	} else if ( true && module.exports) {
-		module.exports = factory( __webpack_require__( /*! jquery */ "./node_modules/jquery/dist/jquery.js" ) );
-	} else {
-		factory( jQuery );
-	}
+(function( factory ) {
+	if ( true ) {
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	} else {}
 }(function( $ ) {
 
 $.extend( $.fn, {
@@ -1745,7 +1742,6 @@ if ( $.ajaxPrefilter ) {
 }
 return $;
 }));
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../webpack/buildin/harmony-module.js */ "./node_modules/webpack/buildin/harmony-module.js")(module)))
 
 /***/ }),
 
@@ -12125,55 +12121,6 @@ return jQuery;
 
 /***/ }),
 
-/***/ "./node_modules/webpack/buildin/amd-options.js":
-/*!****************************************!*\
-  !*** (webpack)/buildin/amd-options.js ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {/* globals __webpack_amd_options__ */
-module.exports = __webpack_amd_options__;
-
-/* WEBPACK VAR INJECTION */}.call(this, {}))
-
-/***/ }),
-
-/***/ "./node_modules/webpack/buildin/harmony-module.js":
-/*!*******************************************!*\
-  !*** (webpack)/buildin/harmony-module.js ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = function(originalModule) {
-	if (!originalModule.webpackPolyfill) {
-		var module = Object.create(originalModule);
-		// module.parent = undefined by default
-		if (!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
-		});
-		Object.defineProperty(module, "exports", {
-			enumerable: true
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
-
-
-/***/ }),
-
 /***/ "./resources/assets/js/app.js":
 /*!************************************!*\
   !*** ./resources/assets/js/app.js ***!
@@ -12375,20 +12322,20 @@ $(document).ready(function () {
       e.prevent0();
       $('#modal-login').addClass('fadeIn'); //.fadeIn(300);
   });
-   $('.modal-window__close').on('click', function () {
+    $('.modal-window__close').on('click', function () {
       $(this).closest('.modal-window').removeClass('fadeIn'); //.fadeOut(300);
   });*/
   // === LOGIN === //
 
   /*$('#btn-login').on('click', function () {
       let $valid = true;
-       if (!validEmail($('[name="login-email"]'))) {
+        if (!validEmail($('[name="login-email"]'))) {
           $valid = false;
       }
-       if (!validPassword($('[name="login-password"]'))) {
+        if (!validPassword($('[name="login-password"]'))) {
           $valid = false;
       }
-       if ($valid === true) {
+        if ($valid === true) {
           console.log('Good log in!');
       } else {
           console.log('Error valid log in!!!');
@@ -12397,7 +12344,7 @@ $(document).ready(function () {
   // === SIGN UP === //
 
   /*$('#btn-sign-up').on('click', function () {
-       $('#modal-sign-up').addClass('fadeIn');
+        $('#modal-sign-up').addClass('fadeIn');
   });*/
   // === CONFIRM AGREE DISABLED === //
 
@@ -12426,22 +12373,22 @@ $(document).ready(function () {
   }
   /*function validPassword(_this) {
       let $inpVal = _this.val();
-       if ($inpVal.length < 6) {
+        if ($inpVal.length < 6) {
           _this.addClass('required-input');
           return false;
       }
-       return true;
+        return true;
   }*/
 
   /*function validConfirmPassword(_pass, _passConf) {
       let $pass = _pass.val();
       let $passConf = _passConf.val();
-       if ($pass === '' || $pass !== $passConf) {
+        if ($pass === '' || $pass !== $passConf) {
           _pass.addClass('required-input');
           _passConf.addClass('required-input');
           return false;
       }
-       return true;
+        return true;
   }*/
 
 
@@ -12471,27 +12418,27 @@ $(document).ready(function () {
 
   /*$('#btn-create-account').on('click', function () {
       let $valid = true;
-       // valid account
+        // valid account
       if (!validName($('[name="first-name"]'))) {
           $valid = false;
       }
-       if (!validName($('[name="last-name"]'))) {
+        if (!validName($('[name="last-name"]'))) {
           $valid = false;
       }
-       if (!validEmail($('[name="user-email"]'))) {
+        if (!validEmail($('[name="user-email"]'))) {
           $valid = false;
       }
-       if (!validConfirmPassword($('[name="user-pass"]'), $('[name="user-pass-confirm"]'))) {
+        if (!validConfirmPassword($('[name="user-pass"]'), $('[name="user-pass-confirm"]'))) {
           $valid = false;
       }
-        if ($valid === true) {
+          if ($valid === true) {
           createAccount();
       } else {
           console.log('Error valid sign up!!!');
       }
-   });
-   function createAccount() {
-       let $createAccount = {
+    });
+    function createAccount() {
+        let $createAccount = {
           firstName: $('[name="first-name"]').val(),
           lastName: $('[name="last-name"]').val(),
           phone: $('[name="user-phone"]').val(),
@@ -12502,8 +12449,8 @@ $(document).ready(function () {
           email: $('[name="user-email"]').val(),
           password: $('[name="user-pass-confirm"]').val()
       };
-       console.log($createAccount);
-       // $.ajax({
+        console.log($createAccount);
+        // $.ajax({
       //     type: "POST",
       //     url: "",
       //     contentType: "application/json",
@@ -12515,7 +12462,7 @@ $(document).ready(function () {
       //     }
       //
       // });
-   }*/
+    }*/
   // === SEND FORM - HOME PAGE === //
 
 
@@ -13061,6 +13008,7 @@ function sendFormHandler(data) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery_validation__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery-validation */ "./node_modules/jquery-validation/dist/jquery.validate.js");
+/* harmony import */ var jquery_validation__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery_validation__WEBPACK_IMPORTED_MODULE_0__);
  //Todo On error -> add "export default" to module
 
 var form = $("#usspi-form");
@@ -13190,8 +13138,8 @@ form.validate({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /var/www/resources/assets/js/app.js */"./resources/assets/js/app.js");
-module.exports = __webpack_require__(/*! /var/www/resources/assets/sass/main.scss */"./resources/assets/sass/main.scss");
+__webpack_require__(/*! C:\OSPanel\domains\TMM\resources\assets\js\app.js */"./resources/assets/js/app.js");
+module.exports = __webpack_require__(/*! C:\OSPanel\domains\TMM\resources\assets\sass\main.scss */"./resources/assets/sass/main.scss");
 
 
 /***/ })
