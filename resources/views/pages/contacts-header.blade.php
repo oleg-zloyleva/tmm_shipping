@@ -41,18 +41,23 @@
             <div class="contacts-info">
                 <div class="contacts-info__fax">
                     <img class="img" src="img/telephone.png" alt="Phone home">
-                    <div class="contacts-info__text">1 (917) 412-3231 <br>Alex</div>
-                    <img class="icon-soc" src="img/viber.png" alt="Viber">
-                    <img class="icon-soc" src="img/watsapp.png" alt="Watsapp">
-                </div>
-                <!-- <div class="contacts-info__phone">
-                    <img class="img" src="img/phone.png" alt="Phone">
                     <div class="contacts-info__text">
-                        <span>1 (917) 517-0707</span>
+                        <div class="number_phone">1 (917) 412-3231 &nbsp;&nbsp;Alex</div>
                         <img class="icon-soc" src="img/viber.png" alt="Viber">
                         <img class="icon-soc" src="img/watsapp.png" alt="Watsapp">
                     </div>
-                </div> -->
+                </div>
+                <div class="contacts-info__phone">
+                    <img class="img" src="img/phone.png" alt="Phone">
+                    <div class="contacts-info__text">
+                        <div class="number_phone">
+                            <div class="phone_row">1 (917) 517-0707 &nbsp;&nbsp;Alex</div>
+                            <div>380 (50) 718-10-52 &nbsp;&nbsp;Alex</div>
+                        </div>
+                        <img class="icon-soc" src="img/viber.png" alt="Viber">
+                        <img class="icon-soc" src="img/watsapp.png" alt="Watsapp">
+                    </div>
+                </div>
                 <div class="contacts-info__email">
                     <img class="img" src="img/mail.png" alt="Mail">
                     <div class="contacts-info__text">
