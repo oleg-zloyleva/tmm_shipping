@@ -4622,8 +4622,12 @@ input:disabled {
   overflow: auto;
 }
 
+#admin .admin-block .table__body .table__row:hover {
+  background-color: rgba(140, 208, 145, 0.4);
+}
+
 #admin .admin-block .table__body::-webkit-scrollbar {
-  width: 3px;
+  width: 4px;
 }
 
 #admin .admin-block .table__body::-webkit-scrollbar-track {

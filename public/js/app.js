@@ -12129,6 +12129,47 @@ return jQuery;
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
+  $.getJSON("./js/ground.json", function (data) {
+    // console.log('%c data ground', 'color: blue; font-weight: 600; font-size: 16px;', data);
+    var $auction, $location, $port, $price;
+
+    for (var auction in data) {
+      $auction = auction;
+
+      for (var location in data[auction]) {
+        $location = location;
+        var port = data[auction][location];
+
+        for (var price in port) {
+          $port = price;
+          $price = port[price];
+          var addRow = '<div class="table__row">' + '    <div class="table__col">' + $auction + '</div>' + '    <div class="table__col">' + $location + '</div>' + '    <div class="table__col">' + $port + '</div>' + '    <div class="table__col">' + $price + '</div>' + '    <div class="table__col">' + '        <button class="delete-row">Delete</button>' + '    </div>' + '</div>';
+          $('.table-body-ground').append(addRow);
+        }
+      }
+    }
+  });
+  $.getJSON("./js/ocean.json", function (data) {
+    // console.log('%c data ocean', 'color: blue; font-weight: 600; font-size: 16px;', data);
+    var $port, $destination, $price;
+
+    for (var port in data) {
+      $port = port;
+
+      for (var destination in data[port]) {
+        $destination = destination;
+        $price = data[port][destination];
+        var addRow = '<div class="table__row">' + '    <div class="table__col">' + $port + '</div>' + '    <div class="table__col">' + $destination + '</div>' + '    <div class="table__col">' + $price + '</div>' + '    <div class="table__col">' + '        <button class="delete-row">Delete</button>' + '    </div>' + '</div>';
+        $('.table-body-ocean').append(addRow);
+      }
+    }
+  });
+  /* ===============================================*/
+
+  /* ===============================================*/
+
+  /* ===============================================*/
+
   $('.btn-control-admin').on('click', function () {
     var $this = $(this);
 

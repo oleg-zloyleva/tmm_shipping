@@ -52,35 +52,7 @@
                     </div>
                 </div>
 
-                <div class="table__body table-body-ground">
-                    <div class="table__row">
-                        <div class="table__col">INSURANCE</div>
-                        <div class="table__col">Little Rock</div>
-                        <div class="table__col">Houston</div>
-                        <div class="table__col">550</div>
-                        <div class="table__col">
-                            <button class="delete-row">Delete</button>
-                        </div>
-                    </div>
-                    <div class="table__row">
-                        <div class="table__col">MANHEIM</div>
-                        <div class="table__col">Arizona</div>
-                        <div class="table__col">Chicago</div>
-                        <div class="table__col">750</div>
-                        <div class="table__col">
-                            <button class="delete-row">Delete</button>
-                        </div>
-                    </div>
-                    <div class="table__row">
-                        <div class="table__col">COPART</div>
-                        <div class="table__col">Mobile</div>
-                        <div class="table__col">Florida</div>
-                        <div class="table__col">1250</div>
-                        <div class="table__col">
-                            <button class="delete-row">Delete</button>
-                        </div>
-                    </div>
-                </div>
+                <div class="table__body table-body-ground"></div>
             </div>
 
             <div class="table table-ocean">
@@ -108,40 +80,7 @@
                     </div>
                 </div>
 
-                <div class="table__body table-body-ocean">
-                    <div class="table__row">
-                        <div class="table__col">NEW YORK, NJ</div>
-                        <div class="table__col">KOTKA, FINLAND / PER VEHICLE</div>
-                        <div class="table__col">750</div>
-                        <div class="table__col">
-                            <button class="delete-row">Delete</button>
-                        </div>
-                    </div>
-                    <div class="table__row">
-                        <div class="table__col">NEW YORK, NJ</div>
-                        <div class="table__col">ST.PETERSBURG, RUSSIA / PER VEHICLE</div>
-                        <div class="table__col">950</div>
-                        <div class="table__col">
-                            <button class="delete-row">Delete</button>
-                        </div>
-                    </div>
-                    <div class="table__row">
-                        <div class="table__col">NEW YORK, NJ</div>
-                        <div class="table__col">KLAIPEDA, LITHUANIA / PER VEHICLE</div>
-                        <div class="table__col">900</div>
-                        <div class="table__col">
-                            <button class="delete-row">Delete</button>
-                        </div>
-                    </div>
-                    <div class="table__row">
-                        <div class="table__col">NEW YORK, NJ</div>
-                        <div class="table__col">RIGA, LATVIA / PER VEHICLE</div>
-                        <div class="table__col">950</div>
-                        <div class="table__col">
-                            <button class="delete-row">Delete</button>
-                        </div>
-                    </div>
-                </div>
+                <div class="table__body table-body-ocean"></div>
             </div>
 
         </div>
