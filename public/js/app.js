@@ -12121,6 +12121,65 @@ return jQuery;
 
 /***/ }),
 
+/***/ "./resources/assets/js/admin.js":
+/*!**************************************!*\
+  !*** ./resources/assets/js/admin.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+  $('.btn-control-admin').on('click', function () {
+    var $this = $(this);
+
+    if (!$this.hasClass('active')) {
+      $('.btn-control-admin').removeClass('active');
+      $this.addClass('active');
+    }
+
+    if ($this.attr('data-trans') === 'ground') {
+      $('.table-ocean').hide();
+      $('.table-ground').show();
+    } else {
+      $('.table-ground').hide();
+      $('.table-ocean').show();
+    }
+  });
+  $('.add-row-ground').on('click', function () {
+    var auction = $('[name="auction-ground"]').val();
+    var location = $('[name="location-ground"]').val();
+    var port = $('[name="port-ground"]').val();
+    var price = $('[name="price-ground"]').val();
+    var addRow = '<div class="table__row">' + '    <div class="table__col">' + auction + '</div>' + '    <div class="table__col">' + location + '</div>' + '    <div class="table__col">' + port + '</div>' + '    <div class="table__col">' + price + '</div>' + '    <div class="table__col">' + '        <button class="delete-row">Delete</button>' + '    </div>' + '</div>';
+
+    if (auction !== '' && location !== '' && port !== '' && price !== '') {
+      $('.table-body-ground').prepend(addRow);
+      $('[name="auction-ground"]').val('');
+      $('[name="location-ground"]').val('');
+      $('[name="port-ground"]').val('');
+      $('[name="price-ground"]').val('');
+    }
+  });
+  $('.add-row-ocean').on('click', function () {
+    var port = $('[name="port-ocean"]').val();
+    var destination = $('[name="destination-ocean"]').val();
+    var price = $('[name="price-ocean"]').val();
+    var addRow = '<div class="table__row">' + '    <div class="table__col">' + port + '</div>' + '    <div class="table__col">' + destination + '</div>' + '    <div class="table__col">' + price + '</div>' + '    <div class="table__col">' + '        <button class="delete-row">Delete</button>' + '    </div>' + '</div>';
+
+    if (port !== '' && destination !== '' && price !== '') {
+      $('.table-body-ocean').prepend(addRow);
+      $('[name="port-ocean"]').val('');
+      $('[name="destination-ocean"]').val('');
+      $('[name="price-ocean"]').val('');
+    }
+  });
+  $('body').on('click', '.delete-row', function () {
+    $(this).closest('.table__row').remove();
+  });
+});
+
+/***/ }),
+
 /***/ "./resources/assets/js/app.js":
 /*!************************************!*\
   !*** ./resources/assets/js/app.js ***!
@@ -12138,6 +12197,8 @@ __webpack_require__(/*! ./calculate */ "./resources/assets/js/calculate.js");
 __webpack_require__(/*! ./order */ "./resources/assets/js/order.js");
 
 __webpack_require__(/*! ./main */ "./resources/assets/js/main.js");
+
+__webpack_require__(/*! ./admin */ "./resources/assets/js/admin.js");
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

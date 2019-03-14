@@ -8,6 +8,7 @@
 require('./calculate');
 require('./order');
 require('./main');
+require('./admin');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
