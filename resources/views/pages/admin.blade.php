@@ -44,7 +44,7 @@
                             <input class="table__inp" name="port-ground">
                         </div>
                         <div class="table__col">
-                            <input class="table__inp" name="price-ground">
+                            <input class="table__inp only-number" name="price-ground">
                         </div>
                         <div class="table__col">
                             <button class="add-row add-row-ground">Add</button>
@@ -100,7 +100,7 @@
                             <input class="table__inp" name="destination-ocean">
                         </div>
                         <div class="table__col">
-                            <input class="table__inp" name="price-ocean">
+                            <input class="table__inp only-number" name="price-ocean">
                         </div>
                         <div class="table__col">
                             <button class="add-row add-row-ocean">Add</button>
