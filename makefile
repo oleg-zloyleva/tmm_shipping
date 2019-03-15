@@ -86,6 +86,9 @@ create_request: #create FormRequest name=[controllerName]
 create_mailer: #create mailer name=[controllerName]
 	@sudo docker-compose exec $(php) php artisan make:mail $(name)
 
+create_seeder: #create seeder name=[seederName]
+	@sudo docker-compose exec $(php) php artisan make:seeder $(name)TableSeeder
+
 create_test: #create test name=[testName]
 	@sudo docker-compose exec $(php) php artisan make:test $(name)Test
 
