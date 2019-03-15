@@ -24,8 +24,6 @@ Route::get('/contacts', "PageController@contacts")->name('contacts');
 Route::get('/order', "PageController@order")->name('order');
 
 Route::get('/admin', "AdminPageController@index")->name('admin');
-//Auth::routes();
-
 
 Route::get('/login', "Auth\LoginController@showLoginForm")->name('showLoginForm');
 Route::post('/login', "Auth\LoginController@login")->name('login');
