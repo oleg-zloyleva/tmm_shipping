@@ -78,7 +78,7 @@ create_controller: #create controller name=[controllerName]
 	@sudo docker-compose exec $(php) php artisan make:controller $(name)
 
 create_model: #create model name=[modelName]
-	@sudo docker-compose exec $(php) php artisan make:model $(name) -m
+	@sudo docker-compose exec $(php) php artisan make:model Models/$(name) -m
 
 create_api_controller: #create API controller name=[controllerName]
 	@sudo docker-compose exec $(php) php artisan make:controller ..\\..\\Api\\V1\\Controllers\\$(name)
