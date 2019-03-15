@@ -23,9 +23,7 @@ Route::get('/rates', "PageController@rates")->name('rates');
 Route::get('/contacts', "PageController@contacts")->name('contacts');
 Route::get('/order', "PageController@order")->name('order');
 
-Route::get('/admin', function() {
-    return view('pages.admin');
-})->name('admin');
+Route::get('/admin', "AdminPageController@index")->name('admin');
 //Auth::routes();
 
 

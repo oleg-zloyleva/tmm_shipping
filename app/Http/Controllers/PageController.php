@@ -23,6 +23,7 @@ class PageController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(){
+        dd(auth()->user());
         $this->page["home"] = "active";
         return view('pages.home', ["page" => $this->page]);
     }
