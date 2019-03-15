@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
-    var quick_quote = "/api/email/quick_quote";
-    var contact_us = "/api/email/contact_us";
+    var quick_quote = "/email/quick_quote";
+    var contact_us = "/email/contact_us";
 
     // === SEARCH === //
     $('#btn-search').on('click', function () {
@@ -19,55 +19,6 @@ $(document).ready(function () {
     });
 
 
-    // === MODAL LOGIN === //
-    /*$('#login').on('click', function (e) {
-        e.prevent0();
-        $('#modal-login').addClass('fadeIn'); //.fadeIn(300);
-    });
-
-    $('.modal-window__close').on('click', function () {
-        $(this).closest('.modal-window').removeClass('fadeIn'); //.fadeOut(300);
-    });*/
-
-
-    // === LOGIN === //
-    /*$('#btn-login').on('click', function () {
-        let $valid = true;
-
-        if (!validEmail($('[name="login-email"]'))) {
-            $valid = false;
-        }
-
-        if (!validPassword($('[name="login-password"]'))) {
-            $valid = false;
-        }
-
-        if ($valid === true) {
-            console.log('Good log in!');
-        } else {
-            console.log('Error valid log in!!!');
-        }
-    });*/
-
-
-    // === SIGN UP === //
-    /*$('#btn-sign-up').on('click', function () {
-
-        $('#modal-sign-up').addClass('fadeIn');
-    });*/
-
-
-    // === CONFIRM AGREE DISABLED === //
-    /*$('#confirm-agree').on('change', function () {
-        let $thisChecked = $(this).prop('checked');
-        if ($thisChecked === true) {
-            $('#btn-create-account').removeClass('btn-disabled').prop('disabled', false);
-        } else {
-            $('#btn-create-account').addClass('btn-disabled').prop('disabled', true);
-        }
-    });*/
-
-
     // === INPUT VALIDATION === //
     function validEmail(_this) {
         let $inpVal = _this.val();
@@ -80,30 +31,6 @@ $(document).ready(function () {
 
         return true;
     }
-
-    /*function validPassword(_this) {
-        let $inpVal = _this.val();
-
-        if ($inpVal.length < 6) {
-            _this.addClass('required-input');
-            return false;
-        }
-
-        return true;
-    }*/
-
-    /*function validConfirmPassword(_pass, _passConf) {
-        let $pass = _pass.val();
-        let $passConf = _passConf.val();
-
-        if ($pass === '' || $pass !== $passConf) {
-            _pass.addClass('required-input');
-            _passConf.addClass('required-input');
-            return false;
-        }
-
-        return true;
-    }*/
 
     function validName(_this) {
         let $inpVal = _this.val();
@@ -126,69 +53,6 @@ $(document).ready(function () {
 
         return true;
     }
-
-
-    // === CREATE ACCOUNT - SIGN UP === //
-    /*$('#btn-create-account').on('click', function () {
-        let $valid = true;
-
-        // valid account
-        if (!validName($('[name="first-name"]'))) {
-            $valid = false;
-        }
-
-        if (!validName($('[name="last-name"]'))) {
-            $valid = false;
-        }
-
-        if (!validEmail($('[name="user-email"]'))) {
-            $valid = false;
-        }
-
-        if (!validConfirmPassword($('[name="user-pass"]'), $('[name="user-pass-confirm"]'))) {
-            $valid = false;
-        }
-
-
-        if ($valid === true) {
-            createAccount();
-        } else {
-            console.log('Error valid sign up!!!');
-        }
-
-    });
-
-    function createAccount() {
-
-        let $createAccount = {
-            firstName: $('[name="first-name"]').val(),
-            lastName: $('[name="last-name"]').val(),
-            phone: $('[name="user-phone"]').val(),
-            company: $('[name="company"]').val(),
-            country: $('[name="country"]').val(),
-            street: $('[name="street"]').val(),
-            code: $('[name="code"]').val(),
-            email: $('[name="user-email"]').val(),
-            password: $('[name="user-pass-confirm"]').val()
-        };
-
-        console.log($createAccount);
-
-        // $.ajax({
-        //     type: "POST",
-        //     url: "",
-        //     contentType: "application/json",
-        //     data: JSON.stringify($createAccount),
-        //     success: function (data) {
-        //
-        //         console.log(data);
-        //
-        //     }
-        //
-        // });
-
-    }*/
-
 
     // === SEND FORM - HOME PAGE === //
     $('#btn-send-quick-quote').on('click', function () {

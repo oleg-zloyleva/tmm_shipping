@@ -4,6 +4,11 @@
  * include Vue and Vue Resource. This gives a great starting point for
  * building robust, powerful web applications using Vue and Laravel.
  */
+require('./bootstrap');
+
+window.Vue = require('vue');
+
+import Vue from 'vue';
 
 require('./calculate');
 require('./order');
@@ -18,8 +23,10 @@ require('./admin');
 
 require('./usspi_form');
 
-/*Vue.component('example', require('./components/Example.vue'));
+console.log("app was loaded....");
+// Vue.component('example', require('./components/Example.vue'));
+Vue.component('rate-calc-component', require('./components/RateCalculatorComponent/RateCalculatorComponent').default);
 
 const app = new Vue({
     el: '#app'
-});*/
+});
