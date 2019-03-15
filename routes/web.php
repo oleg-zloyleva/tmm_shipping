@@ -28,3 +28,12 @@ Route::get('/admin', "AdminPageController@index")->name('admin');
 Route::get('/login', "Auth\LoginController@showLoginForm")->name('showLoginForm');
 Route::post('/login', "Auth\LoginController@login")->name('login');
 Route::get('/logout', "Auth\LoginController@logout")->name('logout');
+
+Route::group(['prefix' => 'email'], function() {
+    Route::post('/test', "EmailNotification@test");
+    Route::post('/contact_us', "EmailNotification@contactUs");
+    Route::post('/quick_quote', "EmailNotification@quickQuote");
+
+    //$api->post('air_shipping_order', ['uses' => "App\\Api\\V1\\Controllers\\EmailNotification@airShippingOrder"]);
+    //$api->post('usspi_form', ['uses' => "App\\Api\\V1\\Controllers\\EmailNotification@usspiForm"]);
+});
