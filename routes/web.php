@@ -37,3 +37,4 @@ Route::group(['prefix' => 'email'], function() {
     //$api->post('air_shipping_order', ['uses' => "App\\Api\\V1\\Controllers\\EmailNotification@airShippingOrder"]);
     //$api->post('usspi_form', ['uses' => "App\\Api\\V1\\Controllers\\EmailNotification@usspiForm"]);
 });
+
