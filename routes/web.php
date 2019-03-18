@@ -23,8 +23,6 @@ Route::get('/rates', "PageController@rates")->name('rates');
 Route::get('/contacts', "PageController@contacts")->name('contacts');
 Route::get('/order', "PageController@order")->name('order');
 
-Route::get('/admin', "AdminPageController@index")->name('admin');
-
 Route::get('/login', "Auth\LoginController@showLoginForm")->name('showLoginForm');
 Route::post('/login', "Auth\LoginController@login")->name('login');
 Route::get('/logout', "Auth\LoginController@logout")->name('logout');
@@ -38,3 +36,7 @@ Route::group(['prefix' => 'email'], function() {
     //$api->post('usspi_form', ['uses' => "App\\Api\\V1\\Controllers\\EmailNotification@usspiForm"]);
 });
 
+Route::group(['prefix' => 'admin','middleware'=>'auth'], function() {
+    Route::get('/home', "AdminPageController@index")->name('admin');
+    Route::get('/oceanDeliveryPriceList', "AdminPageController@oceanDeliveryPriceList")->name('oceanDeliveryPriceList');
+});

@@ -7,19 +7,9 @@ use Illuminate\Support\Collection;
 
 class OceanDeliveryPrice extends Model
 {
-    public function oceanExitPorts(){
-        return $this->belongsTo(OceanExitPort::class,"ocean_exit_port_id");
-    }
+    protected $fillable = ['ocean_exit_port_id','ocean_destination_port_id','price'];
 
-    public function oceanDestinationPorts(){
-        return $this->belongsTo(OceanDestinationPort::class,"ocean_destination_port_id");
-    }
-
-    /**
-     * @return \Illuminate\Support\Collection
-     */
-    public function allWithRelations():Collection
-    {
-        return $this->with('oceanExitPorts','oceanDestinationPorts')->get();
+    public function destinationPorts(){
+        return $this->belongsTo(OceanDestinationPort::class,'ocean_destination_port_id','id');
     }
 }

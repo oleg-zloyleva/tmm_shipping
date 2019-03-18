@@ -9,6 +9,13 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import Vue from 'vue';
+import 'bootstrap/dist/css/bootstrap.css';
+
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faTrashAlt, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+library.add(faTrashAlt,faPlus);
+Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 require('./calculate');
 require('./order');
@@ -26,6 +33,7 @@ require('./usspi_form');
 console.log("app was loaded....");
 // Vue.component('example', require('./components/Example.vue'));
 Vue.component('rate-calc-component', require('./components/RateCalculatorComponent/RateCalculatorComponent').default);
+Vue.component('ocean-delivery-component', require('./components/OceanDeliveryPriceList/OceanDeliveryPriceListComponent').default);
 
 const app = new Vue({
     el: '#app'
