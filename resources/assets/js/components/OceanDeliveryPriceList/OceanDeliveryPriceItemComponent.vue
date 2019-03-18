@@ -4,25 +4,20 @@
             {{ item.name }}
         </div>
         <div class="destination-ports-with-prices col-9">
-            <div class="price-item d-flex my-1 py-1" v-for="price in item.prices" :key="price.id">
-                <div class="destination-ports col-8 d-flex align-items-center">
-                    {{ price.destination_ports.name }}
-                </div>
-                <div class="price col-2 d-flex align-items-center">
-                    {{ price.price }}
-                </div>
-                <div class="action col-2 d-flex align-items-center">
-                    <button class="btn btn-outline-danger"><font-awesome-icon icon="trash-alt" /></button>
-                </div>
-            </div>
+            <ocean-delivery-destination-component
+                    v-for="price in item.prices"
+                    :key="price.id"
+                    :price="price"
+            ></ocean-delivery-destination-component>
         </div>
     </div>
 </template>
 
 <script>
+    Vue.component('ocean-delivery-destination-component', require('./OceanDeliveryDestinationPortComponent').default);
     export default {
         name: "OceanDeliveryPriceItemComponent",
-        props:['item']
+        props:['item'],
     }
 </script>
 
