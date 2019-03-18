@@ -57,9 +57,7 @@ class OceanDeliveryPriceTableSeeder extends Seeder
                 'name' => $key,
             ]);
             collect($item)->each(function ($price, $destinationPort) use($exitPort) {
-                $destinationPortFinal = factory(\App\Models\OceanDestinationPort::class)->create([
-                    'name' => $destinationPort,
-                ]);
+                $destinationPortFinal = \App\Models\OceanDestinationPort::firstOrCreate(['name' => $destinationPort,]);
                 factory(\App\Models\OceanDeliveryPrice::class)->create([
                     'ocean_exit_port_id' => $exitPort->id,
                     'ocean_destination_port_id' => $destinationPortFinal->id,
