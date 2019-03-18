@@ -11501,8 +11501,46 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "RateCalculatorComponent"
+  name: "RateCalculatorComponent",
+  props: {
+    data: {
+      type: Array,
+      require: true
+    }
+  },
+  data: function data() {
+    return {
+      exitPort: null,
+      destinationPorts: [],
+      selectedDestinationPort: {
+        price: 0
+      }
+    };
+  },
+  methods: {
+    selectExitPortHandler: function selectExitPortHandler() {
+      console.log("selectExitPortHandler");
+      this.destinationPorts = this.exitPort.prices;
+      this.selectedDestinationPort = {
+        price: 0
+      };
+    }
+  },
+  computed: {
+    isCanSelectDestinationPort: function isCanSelectDestinationPort() {
+      return !this.exitPort;
+    },
+    oceanPrice: function oceanPrice() {
+      if (this.selectedDestinationPort && "price" in this.selectedDestinationPort) {
+        return this.selectedDestinationPort.price;
+      }
+
+      return 0;
+    }
+  }
 });
 
 /***/ }),
@@ -49013,265 +49051,327 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { attrs: { id: "rates" } }, [
+    _c("h2", [_vm._v("Rate Calculator")]),
+    _vm._v(" "),
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "col-md-12 offset-md-0 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2"
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "calculate-block",
+              attrs: { id: "calculate-block" }
+            },
+            [
+              _c("h4", [_vm._v("Calculate")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "calculate-block__row" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _c("div", { staticClass: "calculate-block__ocean" }, [
+                  _c("h5", [_vm._v("Ocean Transportation")]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "ocean-row ocean-none" }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "ocean-row" }, [
+                    _c("label", { attrs: { for: "ocean-port" } }, [
+                      _vm._v("Exit port:")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.exitPort,
+                            expression: "exitPort"
+                          }
+                        ],
+                        attrs: { id: "ocean-port" },
+                        on: {
+                          change: [
+                            function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.exitPort = $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            },
+                            _vm.selectExitPortHandler
+                          ]
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          {
+                            attrs: { value: "null", selected: "", disabled: "" }
+                          },
+                          [_vm._v("Choose destination")]
+                        ),
+                        _vm._v(" "),
+                        _vm._l(_vm.data, function(item) {
+                          return _c(
+                            "option",
+                            { key: item.id, domProps: { value: item } },
+                            [_vm._v(_vm._s(item.name))]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "ocean-row" }, [
+                    _c("label", { attrs: { for: "destination" } }, [
+                      _vm._v("Destination:")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.selectedDestinationPort,
+                            expression: "selectedDestinationPort"
+                          }
+                        ],
+                        staticClass: "select-calculate",
+                        attrs: {
+                          name: "destination",
+                          id: "destination",
+                          disabled: _vm.isCanSelectDestinationPort
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.selectedDestinationPort = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      _vm._l(_vm.destinationPorts, function(port) {
+                        return _c("option", { domProps: { value: port } }, [
+                          _vm._v(_vm._s(port.destination_ports.name))
+                        ])
+                      }),
+                      0
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "ocean-row" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "ocean-trans",
+                        attrs: { for: "ocean-trans" }
+                      },
+                      [_vm._v("Ocean Transport:")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.oceanPrice,
+                          expression: "oceanPrice"
+                        }
+                      ],
+                      staticClass: "only-number",
+                      attrs: { id: "ocean-trans", value: "0.00", disabled: "" },
+                      domProps: { value: _vm.oceanPrice },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.oceanPrice = $event.target.value
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "dollar" }, [_vm._v("$")])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(2)
+                ])
+              ]),
+              _vm._v(" "),
+              _vm._m(3),
+              _vm._v(" "),
+              _c(
+                "button",
+                { staticClass: "btn-make-order", attrs: { id: "make-order" } },
+                [_vm._v("Make Order")]
+              )
+            ]
+          )
+        ]
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "rates" } }, [
-      _c("h2", [_vm._v("Rate Calculator")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-6 offset-md-3" }, [
-          _c("p", [
-            _vm._v(
-              "You can calculate a cost of trasportation of your car from auction to destination"
-            )
-          ])
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-6 offset-md-3" }, [
+        _c("p", [
+          _vm._v(
+            "You can calculate a cost of trasportation of your car from auction to destination"
+          )
         ])
-      ]),
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "calculate-block__ground" }, [
+      _c("h5", [_vm._v("Ground Transportation")]),
       _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "ground-row" }, [
+        _c("label", { attrs: { for: "auction" } }, [_vm._v("Auction:")]),
+        _vm._v(" "),
         _c(
-          "div",
+          "select",
           {
-            staticClass:
-              "col-md-12 offset-md-0 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2"
+            staticClass: "select-calculate",
+            attrs: { name: "auction", id: "auction" }
           },
           [
-            _c(
-              "div",
-              {
-                staticClass: "calculate-block",
-                attrs: { id: "calculate-block" }
-              },
-              [
-                _c("h4", [_vm._v("Calculate")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "calculate-block__row" }, [
-                  _c("div", { staticClass: "calculate-block__ground" }, [
-                    _c("h5", [_vm._v("Ground Transportation")]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "ground-row" }, [
-                      _c("label", { attrs: { for: "auction" } }, [
-                        _vm._v("Auction:")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          staticClass: "select-calculate",
-                          attrs: { name: "auction", id: "auction" }
-                        },
-                        [
-                          _c(
-                            "option",
-                            { attrs: { value: "0", selected: "" } },
-                            [_vm._v("Choose auction")]
-                          )
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "ground-row" }, [
-                      _c("label", { attrs: { for: "location" } }, [
-                        _vm._v("Location:")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          staticClass: "select-calculate",
-                          attrs: { name: "location", id: "location" }
-                        },
-                        [
-                          _c(
-                            "option",
-                            { attrs: { value: "0", selected: "" } },
-                            [_vm._v("Choose location")]
-                          )
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "ground-row" }, [
-                      _c("label", { attrs: { for: "ground-port" } }, [
-                        _vm._v("Exit port:")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          staticClass: "select-calculate",
-                          attrs: { name: "ground-port", id: "ground-port" }
-                        },
-                        [
-                          _c(
-                            "option",
-                            { attrs: { value: "0", selected: "" } },
-                            [_vm._v("Choose exit port")]
-                          )
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "ground-row" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "ground-trans",
-                          attrs: { for: "ground-trans" }
-                        },
-                        [_vm._v("Ground Transport:")]
-                      ),
-                      _vm._v(" "),
-                      _c("input", {
-                        staticClass: "only-number",
-                        attrs: {
-                          id: "ground-trans",
-                          value: "0.00",
-                          disabled: ""
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "dollar" }, [_vm._v("$")])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "ground-row" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "call-message",
-                          attrs: { id: "call-message-ground" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                There are no prices in this direction. Сontact us for more information.\n                            "
-                          )
-                        ]
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "calculate-block__ocean" }, [
-                    _c("h5", [_vm._v("Ocean Transportation")]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "ocean-row ocean-none" }),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "ocean-row" }, [
-                      _c("label", { attrs: { for: "ocean-port" } }, [
-                        _vm._v("Exit port:")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          staticClass: "select-calculate",
-                          attrs: { name: "ocean-port", id: "ocean-port" }
-                        },
-                        [
-                          _c(
-                            "option",
-                            { attrs: { value: "0", selected: "" } },
-                            [_vm._v("Choose exit port")]
-                          )
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "ocean-row" }, [
-                      _c("label", { attrs: { for: "destination" } }, [
-                        _vm._v("Destination:")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          staticClass: "select-calculate",
-                          attrs: { name: "destination", id: "destination" }
-                        },
-                        [
-                          _c(
-                            "option",
-                            { attrs: { value: "0", selected: "" } },
-                            [_vm._v("Choose destination")]
-                          )
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "ocean-row" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "ocean-trans",
-                          attrs: { for: "ocean-trans" }
-                        },
-                        [_vm._v("Ocean Transport:")]
-                      ),
-                      _vm._v(" "),
-                      _c("input", {
-                        staticClass: "only-number",
-                        attrs: {
-                          id: "ocean-trans",
-                          value: "0.00",
-                          disabled: ""
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "dollar" }, [_vm._v("$")])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "ocean-row" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "call-message",
-                          attrs: { id: "call-message-ocean" }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                There are no prices in this direction. Сontact us for more information.\n                            "
-                          )
-                        ]
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "total-block" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "total-block__label",
-                      attrs: { for: "total" }
-                    },
-                    [_vm._v("Total bill:")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass: "total-block__inp only-number",
-                    attrs: { id: "total", value: "0.00", disabled: "" }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "dollar" }, [_vm._v("$")])
-                ]),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn-make-order",
-                    attrs: { id: "make-order" }
-                  },
-                  [_vm._v("Make Order")]
-                )
-              ]
+            _c("option", { attrs: { value: "0", selected: "" } }, [
+              _vm._v("Choose auction")
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "ground-row" }, [
+        _c("label", { attrs: { for: "location" } }, [_vm._v("Location:")]),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            staticClass: "select-calculate",
+            attrs: { name: "location", id: "location" }
+          },
+          [
+            _c("option", { attrs: { value: "0", selected: "" } }, [
+              _vm._v("Choose location")
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "ground-row" }, [
+        _c("label", { attrs: { for: "ground-port" } }, [_vm._v("Exit port:")]),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            staticClass: "select-calculate",
+            attrs: { name: "ground-port", id: "ground-port" }
+          },
+          [
+            _c("option", { attrs: { value: "0", selected: "" } }, [
+              _vm._v("Choose exit port")
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "ground-row" }, [
+        _c(
+          "label",
+          { staticClass: "ground-trans", attrs: { for: "ground-trans" } },
+          [_vm._v("Ground Transport:")]
+        ),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "only-number",
+          attrs: { id: "ground-trans", value: "0.00", disabled: "" }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "dollar" }, [_vm._v("$")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "ground-row" }, [
+        _c(
+          "div",
+          { staticClass: "call-message", attrs: { id: "call-message-ground" } },
+          [
+            _vm._v(
+              "\n                                There are no prices in this direction. Сontact us for more information.\n                            "
             )
           ]
         )
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "ocean-row" }, [
+      _c(
+        "div",
+        { staticClass: "call-message", attrs: { id: "call-message-ocean" } },
+        [
+          _vm._v(
+            "\n                                There are no prices in this direction. Сontact us for more information.\n                            "
+          )
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "total-block" }, [
+      _c(
+        "label",
+        { staticClass: "total-block__label", attrs: { for: "total" } },
+        [_vm._v("Total bill:")]
+      ),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "total-block__inp only-number",
+        attrs: { id: "total", value: "0.00", disabled: "" }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "dollar" }, [_vm._v("$")])
     ])
   }
 ]

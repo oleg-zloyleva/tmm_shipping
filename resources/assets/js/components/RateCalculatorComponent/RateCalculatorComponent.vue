@@ -48,19 +48,21 @@
                             <div class="ocean-row ocean-none"></div>
                             <div class="ocean-row">
                                 <label for="ocean-port">Exit port:</label>
-                                <select class="select-calculate" name="ocean-port" id="ocean-port">
-                                    <option value="0" selected>Choose exit port</option>
+                                <!--<select class="select-calculate" name="ocean-port" id="ocean-port" v-model="exitPort">-->
+                                <select id="ocean-port" v-model="exitPort" @change="selectExitPortHandler">
+                                    <option value="null" selected disabled>Choose destination</option>
+                                    <option :value="item" v-for="item in data" :key="item.id">{{ item.name }}</option>
                                 </select>
                             </div>
                             <div class="ocean-row">
                                 <label for="destination">Destination:</label>
-                                <select class="select-calculate" name="destination" id="destination">
-                                    <option value="0" selected>Choose destination</option>
+                                <select class="select-calculate" name="destination" id="destination" :disabled="isCanSelectDestinationPort" v-model="selectedDestinationPort">
+                                    <option :value="port" v-for="port in destinationPorts">{{ port.destination_ports.name }}</option>
                                 </select>
                             </div>
                             <div class="ocean-row">
                                 <label class="ocean-trans" for="ocean-trans">Ocean Transport:</label>
-                                <input class="only-number" id="ocean-trans" value="0.00" disabled>
+                                <input class="only-number" id="ocean-trans" value="0.00" disabled v-model="oceanPrice">
                                 <div class="dollar">$</div>
                             </div>
                             <div class="ocean-row">
@@ -85,7 +87,42 @@
 
 <script>
     export default {
-        name: "RateCalculatorComponent"
+        name: "RateCalculatorComponent",
+        props:{
+            data:{
+                type: Array,
+                require: true
+            },
+        },
+        data(){
+            return {
+                exitPort: null,
+                destinationPorts: [],
+                selectedDestinationPort:{
+                    price:0
+                },
+            }
+        },
+        methods:{
+            selectExitPortHandler(){
+                console.log("selectExitPortHandler");
+                this.destinationPorts = this.exitPort.prices;
+                this.selectedDestinationPort = {
+                    price:0
+                };
+            }
+        },
+        computed:{
+            isCanSelectDestinationPort(){
+                return ! this.exitPort;
+            },
+            oceanPrice(){
+                if(this.selectedDestinationPort && "price" in this.selectedDestinationPort){
+                    return this.selectedDestinationPort.price
+                }
+                return 0;
+            }
+        }
     }
 </script>
 

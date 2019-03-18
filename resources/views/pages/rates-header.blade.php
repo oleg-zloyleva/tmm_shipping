@@ -1,2 +1,4 @@
 
-<rate-calc-component></rate-calc-component>
+<rate-calc-component
+    :data="{{ $data }}"
+></rate-calc-component>
