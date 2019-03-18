@@ -11218,6 +11218,10 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -11238,7 +11242,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AddOceanDeliveryPriceListComponent",
-  props: ['destinationPorts']
+  props: ['destinationPorts', 'itemId'],
+  data: function data() {
+    return {
+      item: {
+        ocean_exit_port_id: null,
+        ocean_destination_port_id: null,
+        price: null
+      }
+    };
+  },
+  created: function created() {
+    this.item.ocean_exit_port_id = this.itemId;
+  },
+  methods: {
+    submitAddItem: function submitAddItem() {
+      //Todo add validation!
+      axios.post("/admin/oceanDeliveryPriceList", _objectSpread({}, this.item)).then(function (res) {
+        console.log(res);
+
+        if (res.data.status) {
+          document.location.reload(true);
+        }
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -11325,6 +11353,7 @@ Vue.component('ocean-delivery-destination-component', __webpack_require__(/*! ./
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -48695,45 +48724,105 @@ var render = function() {
     "div",
     { staticClass: "col-12 d-flex justify-content-center my-2" },
     [
-      _c("form", { staticClass: "form-inline" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c(
-            "select",
-            { staticClass: "form-control" },
-            _vm._l(_vm.destinationPorts, function(port) {
-              return _c("option", { key: port.id }, [_vm._v(_vm._s(port.name))])
-            }),
-            0
-          )
-        ]),
-        _vm._v(" "),
-        _vm._m(0),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c(
-            "button",
-            { staticClass: "btn btn-outline-success" },
-            [_c("font-awesome-icon", { attrs: { icon: "plus" } })],
-            1
-          )
-        ])
-      ])
+      _c(
+        "form",
+        {
+          staticClass: "form-inline",
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.submitAddItem($event)
+            }
+          }
+        },
+        [
+          _c("div", { staticClass: "form-group" }, [
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.item.ocean_destination_port_id,
+                    expression: "item.ocean_destination_port_id"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { required: "" },
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.item,
+                      "ocean_destination_port_id",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  }
+                }
+              },
+              _vm._l(_vm.destinationPorts, function(port) {
+                return _c(
+                  "option",
+                  { key: port.id, domProps: { value: port.id } },
+                  [_vm._v(_vm._s(port.name))]
+                )
+              }),
+              0
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group mx-2" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.item.price,
+                  expression: "item.price"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "number",
+                placeholder: "Enter price",
+                required: "",
+                min: "1",
+                step: "0.01"
+              },
+              domProps: { value: _vm.item.price },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.item, "price", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c(
+              "button",
+              { staticClass: "btn btn-outline-success" },
+              [_c("font-awesome-icon", { attrs: { icon: "plus" } })],
+              1
+            )
+          ])
+        ]
+      )
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group mx-2" }, [
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "number", placeholder: "Enter price" }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -48861,7 +48950,7 @@ var render = function() {
             _c("ocean-delivery-item-component", { attrs: { item: item } }),
             _vm._v(" "),
             _c("add-ocean-delivery-price-component", {
-              attrs: { destinationPorts: _vm.destinationPorts }
+              attrs: { destinationPorts: _vm.destinationPorts, itemId: item.id }
             })
           ],
           1

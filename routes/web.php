@@ -39,5 +39,6 @@ Route::group(['prefix' => 'email'], function() {
 Route::group(['prefix' => 'admin','middleware'=>'auth'], function() {
     Route::get('/home', "AdminPageController@index")->name('admin');
     Route::get('/oceanDeliveryPriceList', "AdminPageController@oceanDeliveryPriceList")->name('oceanDeliveryPriceList');
+    Route::post('/oceanDeliveryPriceList', "AdminPageController@addOceanDeliveryPriceItem")->name('addOceanDeliveryPriceItem');
     Route::delete('/deleteOceanDeliveryPriceItem/{item_id}', "AdminPageController@deleteOceanDeliveryPriceItem")->name('deleteOceanDeliveryPriceItem')->where('item_id', '[0-9]+');
 });

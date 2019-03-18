@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OceanDeliveryPrice\OceanDeliveryPriceItemAddRequest;
 use App\Models\OceanDeliveryPrice;
 use App\Models\OceanDestinationPort;
 use App\Models\OceanExitPort;
@@ -35,6 +36,16 @@ class AdminPageController extends Controller
             "data" => $exitPort->getAllWithRelations(),
             "destinationPorts" => $destinationPort->getAll()
         ]);
+    }
+
+    /**
+     * @param \App\Http\Requests\OceanDeliveryPrice\OceanDeliveryPriceItemAddRequest $request
+     * @param \App\Models\OceanDeliveryPrice $deliveryPrice
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function addOceanDeliveryPriceItem(OceanDeliveryPriceItemAddRequest $request, OceanDeliveryPrice $deliveryPrice):JsonResponse
+    {
+        return response()->json(["status" => $deliveryPrice->addOrUpdateItem($request)]);
     }
 
     /**

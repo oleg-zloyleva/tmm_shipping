@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Email\AirShippingOrderRequest;
 use App\Http\Requests\Email\ContactUsRequest;
-use App\Http\Requests\Email\QuickQuoteRequest;
+use App\Http\Requests\Email\OceanDeliveryPriceItemAddRequest;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -66,10 +66,10 @@ class EmailNotification extends Controller
     }
 
     /**
-     * @param \App\Http\Requests\Email\QuickQuoteRequest $request
+     * @param \App\Http\Requests\Email\OceanDeliveryPriceItemAddRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function quickQuote(QuickQuoteRequest $request){
+    public function quickQuote(OceanDeliveryPriceItemAddRequest $request){
         $this->pdf->loadView('pdf.quick_quote', $request->all());
 
         Mail::to($this->to)

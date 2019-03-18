@@ -27,6 +27,7 @@
 
             <add-ocean-delivery-price-component
                 :destinationPorts="destinationPorts"
+                :itemId="item.id"
             ></add-ocean-delivery-price-component>
 
         </div>
