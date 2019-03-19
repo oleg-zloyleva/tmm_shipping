@@ -11351,6 +11351,84 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/OceanDeliveryPriceList/OceanDeliveryPortsFormComponent.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/OceanDeliveryPriceList/OceanDeliveryPortsFormComponent.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "OceanDeliveryPortsFormComponent",
+  props: {
+    exitPorts: {
+      type: Array,
+      required: true
+    },
+    destinationPorts: {
+      type: Array,
+      required: true
+    }
+  },
+  data: function data() {
+    return {
+      exitPort: "",
+      destinationPort: ""
+    };
+  },
+  methods: {
+    submitAddExitPortItem: function submitAddExitPortItem() {
+      console.log("submitAddExitPortItem");
+    },
+    submitAddDestinationPortItem: function submitAddDestinationPortItem() {
+      console.log("submitAddDestinationPortItem");
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/OceanDeliveryPriceList/OceanDeliveryPriceItemComponent.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/OceanDeliveryPriceList/OceanDeliveryPriceItemComponent.vue?vue&type=script&lang=js& ***!
@@ -49039,6 +49117,174 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/OceanDeliveryPriceList/OceanDeliveryPortsFormComponent.vue?vue&type=template&id=aab02794&scoped=true&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/OceanDeliveryPriceList/OceanDeliveryPortsFormComponent.vue?vue&type=template&id=aab02794&scoped=true& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [
+    _c(
+      "div",
+      { staticClass: "col-6 d-flex align-items-center flex-column my-2" },
+      [
+        _c("h2", [_vm._v("Create new Exit port")]),
+        _vm._v(" "),
+        _c(
+          "form",
+          {
+            staticClass: "form-inline",
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.submitAddExitPortItem($event)
+              }
+            }
+          },
+          [
+            _c("div", { staticClass: "form-group mx-2" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.exitPort,
+                    expression: "exitPort"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  placeholder: "Enter port name",
+                  required: ""
+                },
+                domProps: { value: _vm.exitPort },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.exitPort = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c(
+                "button",
+                { staticClass: "btn btn-outline-success" },
+                [_c("font-awesome-icon", { attrs: { icon: "plus" } })],
+                1
+              )
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "ports-list" }, [
+          _c("h4", [_vm._v("Current ports:")]),
+          _vm._v(" "),
+          _c(
+            "ul",
+            { staticClass: "list-unstyled" },
+            _vm._l(_vm.exitPorts, function(exitPort) {
+              return _c("li", [_vm._v(_vm._s(exitPort.name))])
+            }),
+            0
+          )
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "col-6 d-flex align-items-center flex-column my-2" },
+      [
+        _c("h2", [_vm._v("Create new Destination port")]),
+        _vm._v(" "),
+        _c(
+          "form",
+          {
+            staticClass: "form-inline",
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.submitAddDestinationPortItem($event)
+              }
+            }
+          },
+          [
+            _c("div", { staticClass: "form-group mx-2" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.destinationPort,
+                    expression: "destinationPort"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  placeholder: "Enter port name",
+                  required: ""
+                },
+                domProps: { value: _vm.destinationPort },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.destinationPort = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c(
+                "button",
+                { staticClass: "btn btn-outline-success" },
+                [_c("font-awesome-icon", { attrs: { icon: "plus" } })],
+                1
+              )
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "ports-list" }, [
+          _c("h4", [_vm._v("Current ports:")]),
+          _vm._v(" "),
+          _c(
+            "ul",
+            { staticClass: "list-unstyled" },
+            _vm._l(_vm.destinationPorts, function(destinationPort) {
+              return _c("li", [_vm._v(_vm._s(destinationPort.name))])
+            }),
+            0
+          )
+        ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/OceanDeliveryPriceList/OceanDeliveryPriceItemComponent.vue?vue&type=template&id=0d29f1f0&scoped=true&":
 /*!****************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/OceanDeliveryPriceList/OceanDeliveryPriceItemComponent.vue?vue&type=template&id=0d29f1f0&scoped=true& ***!
@@ -60959,6 +61205,7 @@ console.log("app was loaded...."); // Vue.component('example', require('./compon
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('rate-calc-component', __webpack_require__(/*! ./components/RateCalculatorComponent/RateCalculatorComponent */ "./resources/assets/js/components/RateCalculatorComponent/RateCalculatorComponent.vue").default);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('ocean-delivery-component', __webpack_require__(/*! ./components/OceanDeliveryPriceList/OceanDeliveryPriceListComponent */ "./resources/assets/js/components/OceanDeliveryPriceList/OceanDeliveryPriceListComponent.vue").default);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('ocean-delivery-form-component', __webpack_require__(/*! ./components/OceanDeliveryPriceList/OceanDeliveryPortsFormComponent */ "./resources/assets/js/components/OceanDeliveryPriceList/OceanDeliveryPortsFormComponent.vue").default);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('admin-menu-component', __webpack_require__(/*! ./components/AdminLayoutComponent/AdminMenuComponent */ "./resources/assets/js/components/AdminLayoutComponent/AdminMenuComponent.vue").default);
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app'
@@ -61370,6 +61617,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OceanDeliveryDestinationPortComponent_vue_vue_type_template_id_c95edc46_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OceanDeliveryDestinationPortComponent_vue_vue_type_template_id_c95edc46_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/OceanDeliveryPriceList/OceanDeliveryPortsFormComponent.vue":
+/*!***************************************************************************************************!*\
+  !*** ./resources/assets/js/components/OceanDeliveryPriceList/OceanDeliveryPortsFormComponent.vue ***!
+  \***************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _OceanDeliveryPortsFormComponent_vue_vue_type_template_id_aab02794_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./OceanDeliveryPortsFormComponent.vue?vue&type=template&id=aab02794&scoped=true& */ "./resources/assets/js/components/OceanDeliveryPriceList/OceanDeliveryPortsFormComponent.vue?vue&type=template&id=aab02794&scoped=true&");
+/* harmony import */ var _OceanDeliveryPortsFormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./OceanDeliveryPortsFormComponent.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/OceanDeliveryPriceList/OceanDeliveryPortsFormComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _OceanDeliveryPortsFormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _OceanDeliveryPortsFormComponent_vue_vue_type_template_id_aab02794_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _OceanDeliveryPortsFormComponent_vue_vue_type_template_id_aab02794_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "aab02794",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/assets/js/components/OceanDeliveryPriceList/OceanDeliveryPortsFormComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/OceanDeliveryPriceList/OceanDeliveryPortsFormComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************!*\
+  !*** ./resources/assets/js/components/OceanDeliveryPriceList/OceanDeliveryPortsFormComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_OceanDeliveryPortsFormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./OceanDeliveryPortsFormComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/OceanDeliveryPriceList/OceanDeliveryPortsFormComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_OceanDeliveryPortsFormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/OceanDeliveryPriceList/OceanDeliveryPortsFormComponent.vue?vue&type=template&id=aab02794&scoped=true&":
+/*!**********************************************************************************************************************************************!*\
+  !*** ./resources/assets/js/components/OceanDeliveryPriceList/OceanDeliveryPortsFormComponent.vue?vue&type=template&id=aab02794&scoped=true& ***!
+  \**********************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OceanDeliveryPortsFormComponent_vue_vue_type_template_id_aab02794_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./OceanDeliveryPortsFormComponent.vue?vue&type=template&id=aab02794&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/OceanDeliveryPriceList/OceanDeliveryPortsFormComponent.vue?vue&type=template&id=aab02794&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OceanDeliveryPortsFormComponent_vue_vue_type_template_id_aab02794_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OceanDeliveryPortsFormComponent_vue_vue_type_template_id_aab02794_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

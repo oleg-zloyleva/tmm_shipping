@@ -34,6 +34,7 @@ console.log("app was loaded....");
 // Vue.component('example', require('./components/Example.vue'));
 Vue.component('rate-calc-component', require('./components/RateCalculatorComponent/RateCalculatorComponent').default);
 Vue.component('ocean-delivery-component', require('./components/OceanDeliveryPriceList/OceanDeliveryPriceListComponent').default);
+Vue.component('ocean-delivery-form-component', require('./components/OceanDeliveryPriceList/OceanDeliveryPortsFormComponent').default);
 Vue.component('admin-menu-component', require('./components/AdminLayoutComponent/AdminMenuComponent').default);
 
 const app = new Vue({

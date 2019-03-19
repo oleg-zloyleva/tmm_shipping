@@ -30,8 +30,10 @@ class AdminPageController extends Controller
         return view('pages.admin');
     }
 
-    public function showFormsAddOceanPorts(){
+    public function showFormsAddOceanPorts(OceanExitPort $exitPort, OceanDestinationPort $destinationPort){
         return view('admin.addNewOceanPorts',[
+            "exitPorts" => $exitPort->all(),
+            "destinationPorts" => $destinationPort->all(),
             "routes" => $this->routes,
         ]);
     }
