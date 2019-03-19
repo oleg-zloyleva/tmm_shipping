@@ -15,7 +15,7 @@ class CreateOceanDestinationPortsTable extends Migration
     {
         Schema::create('ocean_destination_ports', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->timestamps();
         });
     }
