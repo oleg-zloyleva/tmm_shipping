@@ -18,7 +18,7 @@ class CreateGroundDeliveryPricesTable extends Migration
             $table->integer('auction_id');
             $table->integer('ground_location_id');
             $table->integer('ground_exit_port_id');
-            $table->float('price', 12, 2);
+            $table->string('price', 10);
             $table->timestamps();
         });
     }
