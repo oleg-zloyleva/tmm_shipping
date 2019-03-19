@@ -12,7 +12,7 @@
     <div class="container-fluid" id="app">
 
         <admin-menu-component
-            :routes="{{ $routes }}"
+            :routes="{{ collect($routes) }}"
         ></admin-menu-component>
 
         <div class="row">

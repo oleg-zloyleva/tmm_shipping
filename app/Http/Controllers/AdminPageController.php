@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddOceanPorts\AddOceanPortsRequest;
 use App\Http\Requests\OceanDeliveryPrice\OceanDeliveryPriceItemAddRequest;
 use App\Models\OceanDeliveryPrice;
 use App\Models\OceanDestinationPort;
@@ -16,10 +17,16 @@ class AdminPageController extends Controller
     public function __construct()
     {
         //$this->middleware('auth');
-        $this->routes = collect([
-            "showFormsAddOceanPorts" => ["name"=>"Create new ocean port", "link"=>route('showFormsAddOceanPorts')],
-            "oceanDeliveryPriceList" => ["name"=>"Ocean Delivery Price List", "link"=>route('oceanDeliveryPriceList')],
-        ]);
+        $this->routes = [
+            "menuRoutes" => [
+                ["name"=>"Create new ocean port", "link"=>route('showFormsAddOceanPorts')],
+                ["name"=>"Ocean Delivery Price List", "link"=>route('oceanDeliveryPriceList')]
+            ],
+            "callRoutes" => [
+                "addOceanExitPort"=>route('addOceanExitPort'),
+                "addOceanDestinationPort"=>route('addOceanDestinationPort'),
+            ],
+        ];
     }
 
     /**
@@ -37,6 +44,20 @@ class AdminPageController extends Controller
             "routes" => $this->routes,
         ]);
     }
+
+
+    public function addOceanExitPort(AddOceanPortsRequest $request,OceanExitPort $exitPort){
+        return response()->json([
+            "status" => $exitPort->updateOrCreate(["name" => $request->name])
+        ]);
+    }
+
+    public function addOceanDestinationPort(AddOceanPortsRequest $request,OceanDestinationPort $destinationPort){
+        return response()->json([
+            "status" => $destinationPort->updateOrCreate(["name" => $request->name])
+        ]);
+    }
+
 
     /**
      * @param \App\Models\OceanExitPort $exitPort

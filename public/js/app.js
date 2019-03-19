@@ -11409,6 +11409,10 @@ __webpack_require__.r(__webpack_exports__);
     destinationPorts: {
       type: Array,
       required: true
+    },
+    routes: {
+      type: Object,
+      required: true
     }
   },
   data: function data() {
@@ -11420,9 +11424,27 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     submitAddExitPortItem: function submitAddExitPortItem() {
       console.log("submitAddExitPortItem");
+      axios.post(this.routes.addOceanExitPort, {
+        name: this.exitPort
+      }).then(function (res) {
+        console.log(res);
+
+        if (res.data.status) {
+          document.location.reload(true);
+        }
+      });
     },
     submitAddDestinationPortItem: function submitAddDestinationPortItem() {
       console.log("submitAddDestinationPortItem");
+      axios.post(this.routes.addOceanDestinationPort, {
+        name: this.destinationPort
+      }).then(function (res) {
+        console.log(res);
+
+        if (res.data.status) {
+          document.location.reload(true);
+        }
+      });
     }
   }
 });
@@ -48898,7 +48920,7 @@ var render = function() {
             _c(
               "ul",
               { staticClass: "navbar-nav" },
-              _vm._l(_vm.routes, function(route, i) {
+              _vm._l(_vm.routes.menuRoutes, function(route, i) {
                 return _c("li", { key: i, staticClass: "nav-item" }, [
                   _c(
                     "a",

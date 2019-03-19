@@ -41,6 +41,8 @@ Route::group(['prefix' => 'admin','middleware'=>'auth'], function() {
     Route::get('/oceanDeliveryPriceList', "AdminPageController@oceanDeliveryPriceList")->name('oceanDeliveryPriceList');
     Route::get('/oceanPortsForm', "AdminPageController@showFormsAddOceanPorts")->name('showFormsAddOceanPorts');
 
+    Route::post('/addOceanExitPort', "AdminPageController@addOceanExitPort")->name('addOceanExitPort');
+    Route::post('/addOceanDestinationPort', "AdminPageController@addOceanDestinationPort")->name('addOceanDestinationPort');
 
     Route::post('/oceanDeliveryPriceList', "AdminPageController@addOceanDeliveryPriceItem")->name('addOceanDeliveryPriceItem');
     Route::delete('/deleteOceanDeliveryPriceItem/{item_id}', "AdminPageController@deleteOceanDeliveryPriceItem")->name('deleteOceanDeliveryPriceItem')->where('item_id', '[0-9]+');

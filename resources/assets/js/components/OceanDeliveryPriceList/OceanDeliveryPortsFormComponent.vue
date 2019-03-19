@@ -49,6 +49,10 @@
                 type: Array,
                 required: true
             },
+            routes:{
+                type: Object,
+                required: true
+            },
         },
         data(){
             return{
@@ -60,10 +64,28 @@
             submitAddExitPortItem(){
                 console.log("submitAddExitPortItem");
 
+                axios.post(this.routes.addOceanExitPort,{
+                    name: this.exitPort
+                })
+                    .then(res => {
+                        console.log(res);
+                        if(res.data.status){
+                            document.location.reload(true);
+                        }
+                    })
             },
             submitAddDestinationPortItem(){
                 console.log("submitAddDestinationPortItem");
 
+                axios.post(this.routes.addOceanDestinationPort,{
+                    name: this.destinationPort
+                })
+                    .then(res => {
+                        console.log(res);
+                        if(res.data.status){
+                            document.location.reload(true);
+                        }
+                    })
             },
         }
     }

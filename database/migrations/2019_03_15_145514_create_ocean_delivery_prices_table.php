@@ -17,7 +17,7 @@ class CreateOceanDeliveryPricesTable extends Migration
             $table->increments('id');
             $table->integer('ocean_exit_port_id');
             $table->integer('ocean_destination_port_id');
-            $table->float('price', 8, 2);
+            $table->float('price', 12, 2);
             $table->timestamps();
         });
     }

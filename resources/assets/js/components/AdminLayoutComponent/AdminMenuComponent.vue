@@ -8,7 +8,7 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav">
-                    <li class="nav-item" v-for="(route, i) in routes" :key="i">
+                    <li class="nav-item" v-for="(route, i) in routes.menuRoutes" :key="i">
                         <a class="nav-link" :href="route.link">{{ route.name }}</a>
                     </li>
                 </ul>
