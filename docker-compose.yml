@@ -78,6 +78,7 @@ services:
     volumes:
       - dbdata:/var/lib/mysql/
       - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
+      - ./docker/mysql/dumps:/dumps
     networks:
       - app-network
 
