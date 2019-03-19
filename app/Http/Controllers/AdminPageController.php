@@ -12,9 +12,14 @@ use Illuminate\View\View;
 
 class AdminPageController extends Controller
 {
+    private $routes;
     public function __construct()
     {
         //$this->middleware('auth');
+        $this->routes = collect([
+            "showFormsAddOceanPorts" => ["name"=>"Create new ocean port", "link"=>route('showFormsAddOceanPorts')],
+            "oceanDeliveryPriceList" => ["name"=>"Ocean Delivery Price List", "link"=>route('oceanDeliveryPriceList')],
+        ]);
     }
 
     /**
@@ -23,6 +28,12 @@ class AdminPageController extends Controller
     public function index():View
     {
         return view('pages.admin');
+    }
+
+    public function showFormsAddOceanPorts(){
+        return view('admin.addNewOceanPorts',[
+            "routes" => $this->routes,
+        ]);
     }
 
     /**
@@ -34,7 +45,8 @@ class AdminPageController extends Controller
     {
         return view('admin.ocean_delivery_price',[
             "data" => $exitPort->getAllWithRelations(),
-            "destinationPorts" => $destinationPort->getAll()
+            "destinationPorts" => $destinationPort->getAll(),
+            "routes" => $this->routes,
         ]);
     }
 
