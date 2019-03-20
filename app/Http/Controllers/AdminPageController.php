@@ -24,7 +24,8 @@ class AdminPageController extends Controller
         $this->routes = [
             "menuRoutes" => [
                 ["name"=>"Create new ocean port", "link"=>route('showFormsAddOceanPorts')],
-                ["name"=>"Ocean Delivery Price List", "link"=>route('oceanDeliveryPriceList')]
+                ["name"=>"Ocean Delivery Price List", "link"=>route('oceanDeliveryPriceList')],
+                ["name"=>"Ground Delivery Price List", "link"=>route('groundDeliveryPriceList')],
             ],
             "callRoutes" => collect([
                 "addOceanExitPort"=>route('addOceanExitPort'),

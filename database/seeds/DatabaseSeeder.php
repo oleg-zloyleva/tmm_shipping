@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
          $this->call(UsersTableSeeder::class);
          //$this->call(OceanExitPortsTableSeeder::class);
          //$this->call(OceanDestinationPortsTableSeeder::class);
-         //$this->call(OceanDeliveryPriceTableSeeder::class);
+         $this->call(OceanDeliveryPriceTableSeeder::class);
          $this->call(GroundDeliveryPriceTableSeeder::class);
     }
 }
