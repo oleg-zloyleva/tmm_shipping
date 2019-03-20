@@ -46,4 +46,7 @@ Route::group(['prefix' => 'admin','middleware'=>'auth'], function() {
 
     Route::post('/oceanDeliveryPriceList', "AdminPageController@addOceanDeliveryPriceItem")->name('addOceanDeliveryPriceItem');
     Route::delete('/deleteOceanDeliveryPriceItem/{item_id}', "AdminPageController@deleteOceanDeliveryPriceItem")->name('deleteOceanDeliveryPriceItem')->where('item_id', '[0-9]+');
+
+
+    Route::get('/groundDeliveryPriceList', "AdminPageController@groundDeliveryPriceList")->name('groundDeliveryPriceList');
 });
