@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AddOceanPorts\AddOceanPortsRequest;
 use App\Http\Requests\OceanDeliveryPrice\OceanDeliveryPriceItemAddRequest;
+use App\Models\Auction;
+use App\Models\GroundDeliveryPrice;
+use App\Models\GroundExitPort;
+use App\Models\GroundLocation;
 use App\Models\OceanDeliveryPrice;
 use App\Models\OceanDestinationPort;
 use App\Models\OceanExitPort;
@@ -22,10 +26,12 @@ class AdminPageController extends Controller
                 ["name"=>"Create new ocean port", "link"=>route('showFormsAddOceanPorts')],
                 ["name"=>"Ocean Delivery Price List", "link"=>route('oceanDeliveryPriceList')]
             ],
-            "callRoutes" => [
+            "callRoutes" => collect([
                 "addOceanExitPort"=>route('addOceanExitPort'),
                 "addOceanDestinationPort"=>route('addOceanDestinationPort'),
-            ],
+                "addGroundDeliveryPriceItem"=>route('addGroundDeliveryPriceItem'),
+                "deleteGroundDeliveryPriceItem"=>route('deleteGroundDeliveryPriceItem'),
+            ]),
         ];
     }
 
@@ -92,6 +98,48 @@ class AdminPageController extends Controller
     {
         return response()->json([
             "status" => (bool) $deliveryPrice->destroy($item_id)
+        ]);
+    }
+
+    /**
+     * @param \App\Models\Auction $auction
+     * @param \App\Models\GroundLocation $location
+     * @param \App\Models\GroundExitPort $exitPort
+     * @return \Illuminate\View\View
+     */
+    public function groundDeliveryPriceList(Auction $auction, GroundLocation $location, GroundExitPort $exitPort):View
+    {
+        return view('admin.ground_delivery_price', [
+            "data" => $auction->getAllWithPriceAndRelations(),
+            "routes" => $this->routes,
+            "auctions" => $auction->all(),
+            "locations" => $location->all(),
+            "exitPorts" => $exitPort->all(),
+        ]);
+    }
+
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\GroundDeliveryPrice $deliveryPrice
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function addGroundDeliveryPriceItem(Request $request, GroundDeliveryPrice $deliveryPrice):JsonResponse
+    {
+        //return response()->json($request->all());
+        return response()->json([
+            "status" => $deliveryPrice->addOrUpdateItem($request->only(['auction_id','ground_location_id','ground_exit_port_id','price']))
+        ]);
+    }
+
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\GroundDeliveryPrice $deliveryPrice
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function deleteGroundDeliveryPriceItem(Request $request, GroundDeliveryPrice $deliveryPrice):JsonResponse
+    {
+        return response()->json([
+            "status" => $deliveryPrice->deleteItem($request->only(['auction_id','ground_location_id','ground_exit_port_id']))
         ]);
     }
 }

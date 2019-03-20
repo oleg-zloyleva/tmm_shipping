@@ -40,6 +40,19 @@ class GroundDeliveryPrice extends Model
 
         return collect($result);
     }
+
+    public function deleteItem(array $data):bool
+    {
+        return (bool) $this->where($data)->delete();
+    }
+
+    public function addOrUpdateItem($data):bool
+    {
+        return (bool) $this->updateOrCreate(
+            ['auction_id' => $data['auction_id'], 'ground_location_id' => $data['ground_location_id'], 'ground_exit_port_id' => $data['ground_exit_port_id']],
+            ['price' => $data['price']]
+        );
+    }
 }
 
 //App\Models\GroundDeliveryPrice {#3507

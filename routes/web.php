@@ -49,4 +49,6 @@ Route::group(['prefix' => 'admin','middleware'=>'auth'], function() {
 
 
     Route::get('/groundDeliveryPriceList', "AdminPageController@groundDeliveryPriceList")->name('groundDeliveryPriceList');
+    Route::post('/addGroundDeliveryPriceItem', "AdminPageController@addGroundDeliveryPriceItem")->name('addGroundDeliveryPriceItem');
+    Route::post('/deleteGroundDeliveryPriceItem', "AdminPageController@deleteGroundDeliveryPriceItem")->name('deleteGroundDeliveryPriceItem');
 });

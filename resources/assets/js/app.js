@@ -37,6 +37,8 @@ Vue.component('ocean-delivery-component', require('./components/OceanDeliveryPri
 Vue.component('ocean-delivery-form-component', require('./components/OceanDeliveryPriceList/OceanDeliveryPortsFormComponent').default);
 Vue.component('admin-menu-component', require('./components/AdminLayoutComponent/AdminMenuComponent').default);
 
+Vue.component('ground-delivery-component', require('./components/GroundDeliveryPriceList/GroundDeliveryPriceListComponent').default);
+
 const app = new Vue({
     el: '#app'
 });

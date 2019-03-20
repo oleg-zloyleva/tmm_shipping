@@ -32,10 +32,26 @@ class Auction extends Model
             ->get();
 
         foreach ($data as $item){
-            $result[$item->auction_id][$item->ground_location_id][$item->ground_exit_port_id] = [
-                'data' => $item,
+            //$result[$item->auction_id][$item->ground_location_id][$item->ground_exit_port_id] = [
+            //    'data' => $item,
+            //];
+            $result[$item->auction_id]["auction"] = [
+                "id" => $item->auction_id,
+                "name" => $item->auction_name,
+            ];
+
+            $result[$item->auction_id]['ground_location'][$item->ground_location_id]['item'] = [
+                "id" => $item->ground_location_id,
+                "name" => $item->ground_location_name,
+            ];
+
+            $result[$item->auction_id]['ground_location'][$item->ground_location_id]['ground_exit_port'][$item->ground_exit_port_id] = [
+                "id" => $item->ground_exit_port_id,
+                "name" => $item->ground_exit_port_name,
+                "price" => $item->price,
+                "data" => $item
             ];
         }
-        return $result;
+        return collect($result);
     }
 }
