@@ -32,9 +32,9 @@ class GroundDeliveryPrice extends Model
         foreach ($data as $item){
             $result[$item->auctions->name][$item->groundLocations->name][$item->groundExitPorts->name] = [
                 'price' => $item->price,
-                'auctions_id' => $item->auctions->id,
-                'groundLocations_id' => $item->groundLocations->id,
-                'groundExitPorts_id' => $item->groundExitPorts->id,
+                'auctions_name' => $item->auctions->name,
+                'groundLocations_name' => $item->groundLocations->name,
+                'groundExitPorts_name' => $item->groundExitPorts->name,
             ];
         }
 

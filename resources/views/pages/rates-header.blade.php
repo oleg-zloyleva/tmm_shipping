@@ -1,4 +1,5 @@
 
 <rate-calc-component
-    :data="{{ $data }}"
+    :data-ocean="{{ $dataOcean }}"
+    :data-ground="{{ $dataGround}}"
 ></rate-calc-component>

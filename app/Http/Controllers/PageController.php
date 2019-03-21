@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GroundDeliveryPrice;
 use App\Models\OceanExitPort;
 use Illuminate\Http\Request;
 
@@ -47,11 +48,12 @@ class PageController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function rates(OceanExitPort $exitPort){
+    public function rates(OceanExitPort $exitPort, GroundDeliveryPrice $deliveryPrice){
         $this->page["rates"] = "active";
         return view('pages.rates', [
             "page" => $this->page,
-            "data" => $exitPort->getAllWithRelations(),
+            "dataOcean" => $exitPort->getAllWithRelations(),
+            "dataGround" => $deliveryPrice->getPriceWithRelationsToSite(),
         ]);
     }
 

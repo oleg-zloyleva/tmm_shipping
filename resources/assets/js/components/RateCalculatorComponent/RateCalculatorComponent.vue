@@ -16,25 +16,28 @@
                             <h5>Ground Transportation</h5>
                             <div class="ground-row">
                                 <label for="auction">Auction:</label>
-                                <select class="select-calculate" name="auction" id="auction">
-                                    <option value="0" selected>Choose auction</option>
+                                <select class="select-calculate" id="auction" v-model="locations">
+                                    <option value="null" selected disabled>Choose auction</option>
+                                    <option :value="auction_locations" v-for="(auction_locations,key) in dataGround" :key="key">{{ key }}</option>
                                 </select>
                             </div>
                             <div class="ground-row">
                                 <label for="location">Location:</label>
-                                <select class="select-calculate" name="location" id="location">
+                                <select class="select-calculate" id="location" :disabled="isCanSelectLocation" v-model="exitPortGrounds">
                                     <option value="0" selected>Choose location</option>
+                                    <option :value="location_port" v-for="(location_port, location) in locations">{{ location }}</option>
                                 </select>
                             </div>
                             <div class="ground-row">
                                 <label for="ground-port">Exit port:</label>
-                                <select class="select-calculate" name="ground-port" id="ground-port">
+                                <select class="select-calculate" id="ground-port" :disabled="isCanSelectExitPort" v-model="groundPriceData" @change="selectGroundPriceHandler">
                                     <option value="0" selected>Choose exit port</option>
+                                    <option :value="data" v-for="(data, exitPortGround) in exitPortGrounds">{{ exitPortGround }}</option>
                                 </select>
                             </div>
                             <div class="ground-row">
                                 <label class="ground-trans" for="ground-trans">Ground Transport:</label>
-                                <input class="only-number" id="ground-trans" value="0.00" disabled>
+                                <input class="only-number" id="ground-trans" value="0.00" disabled v-model="groundPrice">
                                 <div class="dollar">$</div>
                             </div>
                             <div class="ground-row">
@@ -49,15 +52,15 @@
                             <div class="ocean-row">
                                 <label for="ocean-port">Exit port:</label>
                                 <!--<select class="select-calculate" name="ocean-port" id="ocean-port" v-model="exitPort">-->
-                                <select id="ocean-port" v-model="exitPort" @change="selectExitPortHandler">
+                                <select id="ocean-port" v-model="prices">
                                     <option value="null" selected disabled>Choose destination</option>
-                                    <option :value="item" v-for="item in data" :key="item.id">{{ item.name }}</option>
+                                    <option :value="item" v-for="item in dataOcean" :key="item.id">{{ item.name }}</option>
                                 </select>
                             </div>
                             <div class="ocean-row">
                                 <label for="destination">Destination:</label>
                                 <select class="select-calculate" name="destination" id="destination" :disabled="isCanSelectDestinationPort" v-model="selectedDestinationPort">
-                                    <option :value="port" v-for="port in destinationPorts">{{ port.destination_ports.name }}</option>
+                                    <option :value="port" v-for="port in prices.prices">{{ port.destination_ports.name }}</option>
                                 </select>
                             </div>
                             <div class="ocean-row">
@@ -89,18 +92,27 @@
     export default {
         name: "RateCalculatorComponent",
         props:{
-            data:{
+            dataOcean:{
                 type: Array,
+                require: true
+            },
+            dataGround:{
+                type: Object,
                 require: true
             },
         },
         data(){
             return {
-                exitPort: null,
+                prices: {},
                 destinationPorts: [],
                 selectedDestinationPort:{
                     price:0
                 },
+                auction:null,
+                locations:{},
+                exitPortGrounds:{},
+                groundPriceData:null,
+                groundPrice:null,
             }
         },
         methods:{
@@ -110,17 +122,31 @@
                 this.selectedDestinationPort = {
                     price:0
                 };
+            },
+            selectGroundPriceHandler(){
+                console.log();
+                if(!!Number(this.groundPriceData.price)){
+                    this.groundPrice = this.groundPriceData.price;
+                }else {
+                    this.groundPrice = "call";
+                }
             }
         },
         computed:{
             isCanSelectDestinationPort(){
-                return ! this.exitPort;
+                return !Object.keys(this.prices).length;
             },
             oceanPrice(){
                 if(this.selectedDestinationPort && "price" in this.selectedDestinationPort){
                     return this.selectedDestinationPort.price
                 }
                 return 0;
+            },
+            isCanSelectLocation(){
+                return !Object.keys(this.locations).length;
+            },
+            isCanSelectExitPort(){
+                return !Object.keys(this.exitPortGrounds).length;
             }
         }
     }

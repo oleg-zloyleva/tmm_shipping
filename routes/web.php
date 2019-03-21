@@ -51,4 +51,9 @@ Route::group(['prefix' => 'admin','middleware'=>'auth'], function() {
     Route::get('/groundDeliveryPriceList', "AdminPageController@groundDeliveryPriceList")->name('groundDeliveryPriceList');
     Route::post('/addGroundDeliveryPriceItem', "AdminPageController@addGroundDeliveryPriceItem")->name('addGroundDeliveryPriceItem');
     Route::post('/deleteGroundDeliveryPriceItem', "AdminPageController@deleteGroundDeliveryPriceItem")->name('deleteGroundDeliveryPriceItem');
+
+    Route::get('/groundDeliveryPriceForm', "AdminPageController@groundDeliveryPriceForm")->name('groundDeliveryPriceForm');
+    Route::post('/addGroundAuction', "AdminPageController@addGroundAuction")->name('addGroundAuction');
+    Route::post('/addGroundLocation', "AdminPageController@addGroundLocation")->name('addGroundLocation');
+    Route::post('/addGroundExitPort', "AdminPageController@addGroundExitPort")->name('addGroundExitPort');
 });

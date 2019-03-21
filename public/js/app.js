@@ -11248,6 +11248,137 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/GroundDeliveryPriceList/AddGroundDeliveryItemFormComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/GroundDeliveryPriceList/AddGroundDeliveryItemFormComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "AddGroundDeliveryItemFormComponent",
+  props: {
+    routes: {
+      type: Object,
+      require: true
+    },
+    auctions: {
+      type: Array,
+      require: true
+    },
+    locations: {
+      type: Array,
+      require: true
+    },
+    exitPorts: {
+      type: Array,
+      require: true
+    }
+  },
+  data: function data() {
+    return {
+      auction: null,
+      exitPort: null,
+      location: null
+    };
+  },
+  methods: {
+    submitAddAuctionItem: function submitAddAuctionItem() {
+      axios.post(this.routes.addGroundAuction, {
+        name: this.auction
+      }).then(function (res) {
+        console.log(res);
+
+        if (res.data.status) {
+          document.location.reload(true);
+        }
+      });
+    },
+    submitAddExitPortItem: function submitAddExitPortItem() {
+      axios.post(this.routes.addGroundExitPort, {
+        name: this.exitPort
+      }).then(function (res) {
+        console.log(res);
+
+        if (res.data.status) {
+          document.location.reload(true);
+        }
+      });
+    },
+    submitAddLocationItem: function submitAddLocationItem() {
+      axios.post(this.routes.addGroundLocation, {
+        name: this.location
+      }).then(function (res) {
+        console.log(res);
+
+        if (res.data.status) {
+          document.location.reload(true);
+        }
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/GroundDeliveryPriceList/GroundDeliveryPriceListComponent.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/GroundDeliveryPriceList/GroundDeliveryPriceListComponent.vue?vue&type=script&lang=js& ***!
@@ -11795,21 +11926,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RateCalculatorComponent",
   props: {
-    data: {
+    dataOcean: {
       type: Array,
+      require: true
+    },
+    dataGround: {
+      type: Object,
       require: true
     }
   },
   data: function data() {
     return {
-      exitPort: null,
+      prices: {},
       destinationPorts: [],
       selectedDestinationPort: {
         price: 0
-      }
+      },
+      auction: null,
+      locations: {},
+      exitPortGrounds: {},
+      groundPriceData: null,
+      groundPrice: null
     };
   },
   methods: {
@@ -11819,11 +11962,20 @@ __webpack_require__.r(__webpack_exports__);
       this.selectedDestinationPort = {
         price: 0
       };
+    },
+    selectGroundPriceHandler: function selectGroundPriceHandler() {
+      console.log();
+
+      if (!!Number(this.groundPriceData.price)) {
+        this.groundPrice = this.groundPriceData.price;
+      } else {
+        this.groundPrice = "call";
+      }
     }
   },
   computed: {
     isCanSelectDestinationPort: function isCanSelectDestinationPort() {
-      return !this.exitPort;
+      return !Object.keys(this.prices).length;
     },
     oceanPrice: function oceanPrice() {
       if (this.selectedDestinationPort && "price" in this.selectedDestinationPort) {
@@ -11831,6 +11983,12 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       return 0;
+    },
+    isCanSelectLocation: function isCanSelectLocation() {
+      return !Object.keys(this.locations).length;
+    },
+    isCanSelectExitPort: function isCanSelectExitPort() {
+      return !Object.keys(this.exitPortGrounds).length;
     }
   }
 });
@@ -49118,6 +49276,246 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/GroundDeliveryPriceList/AddGroundDeliveryItemFormComponent.vue?vue&type=template&id=8b540a38&scoped=true&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/GroundDeliveryPriceList/AddGroundDeliveryItemFormComponent.vue?vue&type=template&id=8b540a38&scoped=true& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [
+    _c(
+      "div",
+      { staticClass: "col-6 d-flex align-items-center flex-column my-2" },
+      [
+        _c("h2", [_vm._v("Create new Auction")]),
+        _vm._v(" "),
+        _c(
+          "form",
+          {
+            staticClass: "form-inline",
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.submitAddAuctionItem($event)
+              }
+            }
+          },
+          [
+            _c("div", { staticClass: "form-group mx-2" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.auction,
+                    expression: "auction"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  placeholder: "Enter auction name",
+                  required: ""
+                },
+                domProps: { value: _vm.auction },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.auction = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c(
+                "button",
+                { staticClass: "btn btn-outline-success" },
+                [_c("font-awesome-icon", { attrs: { icon: "plus" } })],
+                1
+              )
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "ports-list" }, [
+          _c("h4", [_vm._v("Current Auctions:")]),
+          _vm._v(" "),
+          _c(
+            "ul",
+            { staticClass: "list-unstyled" },
+            _vm._l(_vm.auctions, function(auction) {
+              return _c("li", [_vm._v(_vm._s(auction.name))])
+            }),
+            0
+          )
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "col-6 d-flex align-items-center flex-column my-2" },
+      [
+        _c("h2", [_vm._v("Create new Exit port")]),
+        _vm._v(" "),
+        _c(
+          "form",
+          {
+            staticClass: "form-inline",
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.submitAddExitPortItem($event)
+              }
+            }
+          },
+          [
+            _c("div", { staticClass: "form-group mx-2" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.exitPort,
+                    expression: "exitPort"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  placeholder: "Enter port name",
+                  required: ""
+                },
+                domProps: { value: _vm.exitPort },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.exitPort = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c(
+                "button",
+                { staticClass: "btn btn-outline-success" },
+                [_c("font-awesome-icon", { attrs: { icon: "plus" } })],
+                1
+              )
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "ports-list" }, [
+          _c("h4", [_vm._v("Current ports:")]),
+          _vm._v(" "),
+          _c(
+            "ul",
+            { staticClass: "list-unstyled" },
+            _vm._l(_vm.exitPorts, function(exitPort) {
+              return _c("li", [_vm._v(_vm._s(exitPort.name))])
+            }),
+            0
+          )
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "col-6 d-flex align-items-center flex-column my-2" },
+      [
+        _c("h2", [_vm._v("Create new Location")]),
+        _vm._v(" "),
+        _c(
+          "form",
+          {
+            staticClass: "form-inline",
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.submitAddLocationItem($event)
+              }
+            }
+          },
+          [
+            _c("div", { staticClass: "form-group mx-2" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.location,
+                    expression: "location"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  placeholder: "Enter location name",
+                  required: ""
+                },
+                domProps: { value: _vm.location },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.location = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c(
+                "button",
+                { staticClass: "btn btn-outline-success" },
+                [_c("font-awesome-icon", { attrs: { icon: "plus" } })],
+                1
+              )
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "ports-list" }, [
+          _c("h4", [_vm._v("Current locations:")]),
+          _vm._v(" "),
+          _c(
+            "ul",
+            { staticClass: "list-unstyled" },
+            _vm._l(_vm.locations, function(location) {
+              return _c("li", [_vm._v(_vm._s(location.name))])
+            }),
+            0
+          )
+        ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/GroundDeliveryPriceList/GroundDeliveryPriceListComponent.vue?vue&type=template&id=cc0791ea&scoped=true&":
 /*!******************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/GroundDeliveryPriceList/GroundDeliveryPriceListComponent.vue?vue&type=template&id=cc0791ea&scoped=true& ***!
@@ -49990,7 +50388,226 @@ var render = function() {
               _c("h4", [_vm._v("Calculate")]),
               _vm._v(" "),
               _c("div", { staticClass: "calculate-block__row" }, [
-                _vm._m(1),
+                _c("div", { staticClass: "calculate-block__ground" }, [
+                  _c("h5", [_vm._v("Ground Transportation")]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "ground-row" }, [
+                    _c("label", { attrs: { for: "auction" } }, [
+                      _vm._v("Auction:")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.locations,
+                            expression: "locations"
+                          }
+                        ],
+                        staticClass: "select-calculate",
+                        attrs: { id: "auction" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.locations = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          {
+                            attrs: { value: "null", selected: "", disabled: "" }
+                          },
+                          [_vm._v("Choose auction")]
+                        ),
+                        _vm._v(" "),
+                        _vm._l(_vm.dataGround, function(
+                          auction_locations,
+                          key
+                        ) {
+                          return _c(
+                            "option",
+                            {
+                              key: key,
+                              domProps: { value: auction_locations }
+                            },
+                            [_vm._v(_vm._s(key))]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "ground-row" }, [
+                    _c("label", { attrs: { for: "location" } }, [
+                      _vm._v("Location:")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.exitPortGrounds,
+                            expression: "exitPortGrounds"
+                          }
+                        ],
+                        staticClass: "select-calculate",
+                        attrs: {
+                          id: "location",
+                          disabled: _vm.isCanSelectLocation
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.exitPortGrounds = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "0", selected: "" } }, [
+                          _vm._v("Choose location")
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.locations, function(
+                          location_port,
+                          location
+                        ) {
+                          return _c(
+                            "option",
+                            { domProps: { value: location_port } },
+                            [_vm._v(_vm._s(location))]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "ground-row" }, [
+                    _c("label", { attrs: { for: "ground-port" } }, [
+                      _vm._v("Exit port:")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.groundPriceData,
+                            expression: "groundPriceData"
+                          }
+                        ],
+                        staticClass: "select-calculate",
+                        attrs: {
+                          id: "ground-port",
+                          disabled: _vm.isCanSelectExitPort
+                        },
+                        on: {
+                          change: [
+                            function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.groundPriceData = $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            },
+                            _vm.selectGroundPriceHandler
+                          ]
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "0", selected: "" } }, [
+                          _vm._v("Choose exit port")
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(_vm.exitPortGrounds, function(
+                          data,
+                          exitPortGround
+                        ) {
+                          return _c("option", { domProps: { value: data } }, [
+                            _vm._v(_vm._s(exitPortGround))
+                          ])
+                        })
+                      ],
+                      2
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "ground-row" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "ground-trans",
+                        attrs: { for: "ground-trans" }
+                      },
+                      [_vm._v("Ground Transport:")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.groundPrice,
+                          expression: "groundPrice"
+                        }
+                      ],
+                      staticClass: "only-number",
+                      attrs: {
+                        id: "ground-trans",
+                        value: "0.00",
+                        disabled: ""
+                      },
+                      domProps: { value: _vm.groundPrice },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.groundPrice = $event.target.value
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "dollar" }, [_vm._v("$")])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(1)
+                ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "calculate-block__ocean" }, [
                   _c("h5", [_vm._v("Ocean Transportation")]),
@@ -50009,28 +50626,25 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.exitPort,
-                            expression: "exitPort"
+                            value: _vm.prices,
+                            expression: "prices"
                           }
                         ],
                         attrs: { id: "ocean-port" },
                         on: {
-                          change: [
-                            function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.exitPort = $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            },
-                            _vm.selectExitPortHandler
-                          ]
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.prices = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
                         }
                       },
                       [
@@ -50042,7 +50656,7 @@ var render = function() {
                           [_vm._v("Choose destination")]
                         ),
                         _vm._v(" "),
-                        _vm._l(_vm.data, function(item) {
+                        _vm._l(_vm.dataOcean, function(item) {
                           return _c(
                             "option",
                             { key: item.id, domProps: { value: item } },
@@ -50092,7 +50706,7 @@ var render = function() {
                           }
                         }
                       },
-                      _vm._l(_vm.destinationPorts, function(port) {
+                      _vm._l(_vm.prices.prices, function(port) {
                         return _c("option", { domProps: { value: port } }, [
                           _vm._v(_vm._s(port.destination_ports.name))
                         ])
@@ -50173,86 +50787,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "calculate-block__ground" }, [
-      _c("h5", [_vm._v("Ground Transportation")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "ground-row" }, [
-        _c("label", { attrs: { for: "auction" } }, [_vm._v("Auction:")]),
-        _vm._v(" "),
-        _c(
-          "select",
-          {
-            staticClass: "select-calculate",
-            attrs: { name: "auction", id: "auction" }
-          },
-          [
-            _c("option", { attrs: { value: "0", selected: "" } }, [
-              _vm._v("Choose auction")
-            ])
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "ground-row" }, [
-        _c("label", { attrs: { for: "location" } }, [_vm._v("Location:")]),
-        _vm._v(" "),
-        _c(
-          "select",
-          {
-            staticClass: "select-calculate",
-            attrs: { name: "location", id: "location" }
-          },
-          [
-            _c("option", { attrs: { value: "0", selected: "" } }, [
-              _vm._v("Choose location")
-            ])
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "ground-row" }, [
-        _c("label", { attrs: { for: "ground-port" } }, [_vm._v("Exit port:")]),
-        _vm._v(" "),
-        _c(
-          "select",
-          {
-            staticClass: "select-calculate",
-            attrs: { name: "ground-port", id: "ground-port" }
-          },
-          [
-            _c("option", { attrs: { value: "0", selected: "" } }, [
-              _vm._v("Choose exit port")
-            ])
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "ground-row" }, [
-        _c(
-          "label",
-          { staticClass: "ground-trans", attrs: { for: "ground-trans" } },
-          [_vm._v("Ground Transport:")]
-        ),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "only-number",
-          attrs: { id: "ground-trans", value: "0.00", disabled: "" }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "dollar" }, [_vm._v("$")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "ground-row" }, [
-        _c(
-          "div",
-          { staticClass: "call-message", attrs: { id: "call-message-ground" } },
-          [
-            _vm._v(
-              "\n                                There are no prices in this direction. Сontact us for more information.\n                            "
-            )
-          ]
-        )
-      ])
+    return _c("div", { staticClass: "ground-row" }, [
+      _c(
+        "div",
+        { staticClass: "call-message", attrs: { id: "call-message-ground" } },
+        [
+          _vm._v(
+            "\n                                There are no prices in this direction. Сontact us for more information.\n                            "
+          )
+        ]
+      )
     ])
   },
   function() {
@@ -61756,6 +62300,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('ocean-delivery-component',
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('ocean-delivery-form-component', __webpack_require__(/*! ./components/OceanDeliveryPriceList/OceanDeliveryPortsFormComponent */ "./resources/assets/js/components/OceanDeliveryPriceList/OceanDeliveryPortsFormComponent.vue").default);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('admin-menu-component', __webpack_require__(/*! ./components/AdminLayoutComponent/AdminMenuComponent */ "./resources/assets/js/components/AdminLayoutComponent/AdminMenuComponent.vue").default);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('ground-delivery-component', __webpack_require__(/*! ./components/GroundDeliveryPriceList/GroundDeliveryPriceListComponent */ "./resources/assets/js/components/GroundDeliveryPriceList/GroundDeliveryPriceListComponent.vue").default);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('ground-delivery-form-component', __webpack_require__(/*! ./components/GroundDeliveryPriceList/AddGroundDeliveryItemFormComponent */ "./resources/assets/js/components/GroundDeliveryPriceList/AddGroundDeliveryItemFormComponent.vue").default);
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app'
 });
@@ -62028,6 +62573,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminMenuComponent_vue_vue_type_template_id_442b58d3_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdminMenuComponent_vue_vue_type_template_id_442b58d3_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/GroundDeliveryPriceList/AddGroundDeliveryItemFormComponent.vue":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/assets/js/components/GroundDeliveryPriceList/AddGroundDeliveryItemFormComponent.vue ***!
+  \*******************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AddGroundDeliveryItemFormComponent_vue_vue_type_template_id_8b540a38_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddGroundDeliveryItemFormComponent.vue?vue&type=template&id=8b540a38&scoped=true& */ "./resources/assets/js/components/GroundDeliveryPriceList/AddGroundDeliveryItemFormComponent.vue?vue&type=template&id=8b540a38&scoped=true&");
+/* harmony import */ var _AddGroundDeliveryItemFormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddGroundDeliveryItemFormComponent.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/GroundDeliveryPriceList/AddGroundDeliveryItemFormComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _AddGroundDeliveryItemFormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AddGroundDeliveryItemFormComponent_vue_vue_type_template_id_8b540a38_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AddGroundDeliveryItemFormComponent_vue_vue_type_template_id_8b540a38_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "8b540a38",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/assets/js/components/GroundDeliveryPriceList/AddGroundDeliveryItemFormComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/GroundDeliveryPriceList/AddGroundDeliveryItemFormComponent.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************!*\
+  !*** ./resources/assets/js/components/GroundDeliveryPriceList/AddGroundDeliveryItemFormComponent.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddGroundDeliveryItemFormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./AddGroundDeliveryItemFormComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/GroundDeliveryPriceList/AddGroundDeliveryItemFormComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddGroundDeliveryItemFormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/GroundDeliveryPriceList/AddGroundDeliveryItemFormComponent.vue?vue&type=template&id=8b540a38&scoped=true&":
+/*!**************************************************************************************************************************************************!*\
+  !*** ./resources/assets/js/components/GroundDeliveryPriceList/AddGroundDeliveryItemFormComponent.vue?vue&type=template&id=8b540a38&scoped=true& ***!
+  \**************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddGroundDeliveryItemFormComponent_vue_vue_type_template_id_8b540a38_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./AddGroundDeliveryItemFormComponent.vue?vue&type=template&id=8b540a38&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/GroundDeliveryPriceList/AddGroundDeliveryItemFormComponent.vue?vue&type=template&id=8b540a38&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddGroundDeliveryItemFormComponent_vue_vue_type_template_id_8b540a38_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddGroundDeliveryItemFormComponent_vue_vue_type_template_id_8b540a38_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

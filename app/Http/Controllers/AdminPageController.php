@@ -25,6 +25,7 @@ class AdminPageController extends Controller
             "menuRoutes" => [
                 ["name"=>"Create new ocean port", "link"=>route('showFormsAddOceanPorts')],
                 ["name"=>"Ocean Delivery Price List", "link"=>route('oceanDeliveryPriceList')],
+                ["name"=>"Add new Ground Delivery Price Item", "link"=>route('groundDeliveryPriceForm')],
                 ["name"=>"Ground Delivery Price List", "link"=>route('groundDeliveryPriceList')],
             ],
             "callRoutes" => collect([
@@ -32,6 +33,9 @@ class AdminPageController extends Controller
                 "addOceanDestinationPort"=>route('addOceanDestinationPort'),
                 "addGroundDeliveryPriceItem"=>route('addGroundDeliveryPriceItem'),
                 "deleteGroundDeliveryPriceItem"=>route('deleteGroundDeliveryPriceItem'),
+                "addGroundAuction"=>route('addGroundAuction'),
+                "addGroundLocation"=>route('addGroundLocation'),
+                "addGroundExitPort"=>route('addGroundExitPort'),
             ]),
         ];
     }
@@ -44,7 +48,13 @@ class AdminPageController extends Controller
         return view('pages.admin');
     }
 
-    public function showFormsAddOceanPorts(OceanExitPort $exitPort, OceanDestinationPort $destinationPort){
+    /**
+     * @param \App\Models\OceanExitPort $exitPort
+     * @param \App\Models\OceanDestinationPort $destinationPort
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function showFormsAddOceanPorts(OceanExitPort $exitPort, OceanDestinationPort $destinationPort):JsonResponse
+    {
         return view('admin.addNewOceanPorts',[
             "exitPorts" => $exitPort->all(),
             "destinationPorts" => $destinationPort->all(),
@@ -52,14 +62,25 @@ class AdminPageController extends Controller
         ]);
     }
 
-
-    public function addOceanExitPort(AddOceanPortsRequest $request,OceanExitPort $exitPort){
+    /**
+     * @param \App\Http\Requests\AddOceanPorts\AddOceanPortsRequest $request
+     * @param \App\Models\OceanExitPort $exitPort
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function addOceanExitPort(AddOceanPortsRequest $request,OceanExitPort $exitPort):JsonResponse
+    {
         return response()->json([
             "status" => $exitPort->updateOrCreate(["name" => $request->name])
         ]);
     }
 
-    public function addOceanDestinationPort(AddOceanPortsRequest $request,OceanDestinationPort $destinationPort){
+    /**
+     * @param \App\Http\Requests\AddOceanPorts\AddOceanPortsRequest $request
+     * @param \App\Models\OceanDestinationPort $destinationPort
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function addOceanDestinationPort(AddOceanPortsRequest $request,OceanDestinationPort $destinationPort):JsonResponse
+    {
         return response()->json([
             "status" => $destinationPort->updateOrCreate(["name" => $request->name])
         ]);
@@ -126,7 +147,6 @@ class AdminPageController extends Controller
      */
     public function addGroundDeliveryPriceItem(Request $request, GroundDeliveryPrice $deliveryPrice):JsonResponse
     {
-        //return response()->json($request->all());
         return response()->json([
             "status" => $deliveryPrice->addOrUpdateItem($request->only(['auction_id','ground_location_id','ground_exit_port_id','price']))
         ]);
@@ -142,5 +162,51 @@ class AdminPageController extends Controller
         return response()->json([
             "status" => $deliveryPrice->deleteItem($request->only(['auction_id','ground_location_id','ground_exit_port_id']))
         ]);
+    }
+
+    /**
+     * @param \App\Models\Auction $auction
+     * @param \App\Models\GroundLocation $location
+     * @param \App\Models\GroundExitPort $exitPort
+     * @return \Illuminate\View\View
+     */
+    public function groundDeliveryPriceForm(Auction $auction, GroundLocation $location, GroundExitPort $exitPort):View
+    {
+        return view('admin.addNewGroundsDeliveryItems',[
+            "routes" => $this->routes,
+            "auctions" => $auction->all(),
+            "locations" => $location->all(),
+            "exitPorts" => $exitPort->all(),
+        ]);
+    }
+
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Auction $auction
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function addGroundAuction(Request $request, Auction $auction):JsonResponse
+    {
+        return response()->json(["status" => (bool) $auction->create($request->only('name'))]);
+    }
+
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\GroundLocation $location
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function addGroundLocation(Request $request, GroundLocation $location):JsonResponse
+    {
+        return response()->json(["status" => (bool) $location->create($request->only('name'))]);
+    }
+
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\GroundExitPort $exitPort
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function addGroundExitPort(Request $request, GroundExitPort $exitPort):JsonResponse
+    {
+        return response()->json(["status" => (bool) $exitPort->create($request->only('name'))]);
     }
 }
