@@ -21,7 +21,7 @@
                     </select>
                 </div>
                 <div class="form-group mx-2">
-                    <input type="text" class="form-control" placeholder="Enter price" required v-model="newPriceItem.price">
+                    <input type="number" class="form-control" placeholder="Enter price" required v-model="newPriceItem.price">
                 </div>
                 <div class="form-group mx-2">
                     <button class="btn btn-outline-success"><font-awesome-icon icon="plus" /></button>

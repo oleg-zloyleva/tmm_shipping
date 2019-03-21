@@ -49699,7 +49699,7 @@ var render = function() {
                 ],
                 staticClass: "form-control",
                 attrs: {
-                  type: "text",
+                  type: "number",
                   placeholder: "Enter price",
                   required: ""
                 },
