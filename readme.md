@@ -51,7 +51,7 @@
     ```
     Dump DB
     ```bash
-    mysqldump -u root -p laravel > /etc/mysql/laravel
+    mysqldump -u root -p laravel > /dumps/laravel.sql
     ```
     
      [See more https://github.com/francescomalatesta/laravel-api-boilerplate-jwt](https://github.com/francescomalatesta/laravel-api-boilerplate-jwt).

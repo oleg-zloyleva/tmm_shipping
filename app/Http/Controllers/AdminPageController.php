@@ -51,9 +51,9 @@ class AdminPageController extends Controller
     /**
      * @param \App\Models\OceanExitPort $exitPort
      * @param \App\Models\OceanDestinationPort $destinationPort
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\View\View
      */
-    public function showFormsAddOceanPorts(OceanExitPort $exitPort, OceanDestinationPort $destinationPort):JsonResponse
+    public function showFormsAddOceanPorts(OceanExitPort $exitPort, OceanDestinationPort $destinationPort):View
     {
         return view('admin.addNewOceanPorts',[
             "exitPorts" => $exitPort->all(),

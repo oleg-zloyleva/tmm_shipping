@@ -18,3 +18,5 @@ yarn-error.log
 
 .env
 .env_prod
+
+docker/mysql/dumps/
