@@ -30,7 +30,7 @@
                 dots: true,
                 arrows: false,
                 autoplay: true,
-                autoplaySpeed: 5000,
+                autoplaySpeed: 3000,
                 infinite: false,
                 responsive: [{
                     breakpoint: 992,
@@ -54,21 +54,21 @@
 
     @case($page["services"] == "active")
         <script>
-            $('.slider').slick({
+            /*$('.slider').slick({
                 slidesToShow: 1,
                 slidesToScroll: 1,
                 dots: true,
                 arrows: false,
                 dotsClass: 'dots-services',
                 autoplay: true,
-                autoplaySpeed: 5000
-            });
+                autoplaySpeed: 3000
+            });*/
         </script>
     @break
 
     @case($page["order"] == "active")
         <script>
-            $('.slider-order').slick({
+            /*$('.slider-order').slick({
                 slidesToShow: 1,
                 slidesToScroll: 1,
                 prevArrow: '<button class="slider-order__arrow-prev" id="arrow-prev">Back</button>',
@@ -77,12 +77,11 @@
                 arrows: true,
                 infinite: false,
                 draggable: false,
-                // initialSlide: 5, // убрать (для разработки)
                 customPaging: function (slider, i) {
                     let $dots = ['Shipper', 'Consignee', 'Title', 'Notify', 'Description', 'Comments'];
                     return $dots[i];
                 }
-            });
+            });*/
         </script>
     @break
 
@@ -91,7 +90,6 @@
 @endswitch
 
 
-<script src="{{ asset('js/libs/select2/select2.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

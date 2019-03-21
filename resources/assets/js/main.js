@@ -172,17 +172,4 @@ $(document).ready(function () {
     });
 
 
-    // === SELECT 2 === //
-    $('.select-freight').select2({
-        dropdownCssClass: 'quote-select-dropdown'
-    });
-
-    $('.select-calculate').select2({
-        dropdownCssClass: 'calculate-select-dropdown'
-    });
-
-    $('.select-order').select2({
-        dropdownCssClass: 'calculate-order-dropdown'
-    });
-
 });

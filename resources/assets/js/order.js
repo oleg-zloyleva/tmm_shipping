@@ -32,7 +32,7 @@ $.getJSON("./js/air_order.json", function (data) {
 
 
 // ===== ORDER ===== //
-$('.buttons-control__btn').on('click', function () {
+$('body').on('click', '.buttons-control__btn', function () {
     let $this = $(this);
 
     if (!$this.hasClass('active')) {
@@ -58,7 +58,7 @@ $('.buttons-control__btn').on('click', function () {
 
 
 // === AGREE === //
-$('#agree-checked').on('click', function () {
+$('body').on('click', '#agree-checked', function () {
 
     if ($(this).prop('checked')) {
         $('#btn-continue').removeClass('btn-disabled').prop('disabled', false);
@@ -70,7 +70,7 @@ $('#agree-checked').on('click', function () {
 
 
 // === FORM SUBMIT === //
-$('#btn-continue').on('click', function () {
+$('body').on('click', '#btn-continue', function () {
 
     let $buttonActive = $('.buttons-control__btn.active').attr('data-order');
 

@@ -17,7 +17,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 library.add(faTrashAlt,faPlus);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
-require('./calculate');
+// require('./calculate');
 require('./order');
 require('./main');
 require('./admin');
@@ -39,6 +39,9 @@ Vue.component('admin-menu-component', require('./components/AdminLayoutComponent
 
 Vue.component('ground-delivery-component', require('./components/GroundDeliveryPriceList/GroundDeliveryPriceListComponent').default);
 Vue.component('ground-delivery-form-component', require('./components/GroundDeliveryPriceList/AddGroundDeliveryItemFormComponent').default);
+
+Vue.component('order-page', require('./components/OrderPageComponent/OrderPageComponent').default);
+Vue.component('services-page', require('./components/ServicesPageComponent/ServicesPageComponent').default);
 
 const app = new Vue({
     el: '#app'

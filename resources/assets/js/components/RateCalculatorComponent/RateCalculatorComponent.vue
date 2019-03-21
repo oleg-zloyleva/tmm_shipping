@@ -4,7 +4,7 @@
         <h2>Rate Calculator</h2>
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <p>You can calculate a cost of trasportation of your car from auction to destination</p>
+                <p>You can calculate a cost of transportation of your car from auction to destination</p>
             </div>
         </div>
         <div class="row">
@@ -17,27 +17,36 @@
                             <div class="ground-row">
                                 <label for="auction">Auction:</label>
                                 <select class="select-calculate" id="auction" v-model="locations">
-                                    <option value="null" selected disabled>Choose auction</option>
-                                    <option :value="auction_locations" v-for="(auction_locations,key) in dataGround" :key="key">{{ key }}</option>
+                                    <!--<option value="null" selected disabled>Choose auction</option>-->
+                                    <option :value="auction_locations" v-for="(auction_locations,key) in dataGround"
+                                            :key="key">{{ key }}
+                                    </option>
                                 </select>
                             </div>
                             <div class="ground-row">
                                 <label for="location">Location:</label>
-                                <select class="select-calculate" id="location" :disabled="isCanSelectLocation" v-model="exitPortGrounds">
-                                    <option value="0" selected>Choose location</option>
-                                    <option :value="location_port" v-for="(location_port, location) in locations">{{ location }}</option>
+                                <select class="select-calculate" id="location" :disabled="isCanSelectLocation"
+                                        v-model="exitPortGrounds">
+                                    <!--<option value="0" selected>Choose location</option>-->
+                                    <option :value="location_port" v-for="(location_port, location) in locations">{{
+                                        location }}
+                                    </option>
                                 </select>
                             </div>
                             <div class="ground-row">
                                 <label for="ground-port">Exit port:</label>
-                                <select class="select-calculate" id="ground-port" :disabled="isCanSelectExitPort" v-model="groundPriceData" @change="selectGroundPriceHandler">
-                                    <option value="0" selected>Choose exit port</option>
-                                    <option :value="data" v-for="(data, exitPortGround) in exitPortGrounds">{{ exitPortGround }}</option>
+                                <select class="select-calculate" id="ground-port" :disabled="isCanSelectExitPort"
+                                        v-model="groundPriceData" @change="selectGroundPriceHandler">
+                                    <!--<option value="0" selected>Choose exit port</option>-->
+                                    <option :value="data" v-for="(data, exitPortGround) in exitPortGrounds">{{
+                                        exitPortGround }}
+                                    </option>
                                 </select>
                             </div>
                             <div class="ground-row">
                                 <label class="ground-trans" for="ground-trans">Ground Transport:</label>
-                                <input class="only-number" id="ground-trans" value="0.00" disabled v-model="groundPrice">
+                                <input class="only-number" id="ground-trans" value="0.00" disabled
+                                       v-model="groundPrice">
                                 <div class="dollar">$</div>
                             </div>
                             <div class="ground-row">
@@ -52,15 +61,20 @@
                             <div class="ocean-row">
                                 <label for="ocean-port">Exit port:</label>
                                 <!--<select class="select-calculate" name="ocean-port" id="ocean-port" v-model="exitPort">-->
-                                <select id="ocean-port" v-model="prices">
-                                    <option value="null" selected disabled>Choose destination</option>
-                                    <option :value="item" v-for="item in dataOcean" :key="item.id">{{ item.name }}</option>
+                                <select class="select-calculate" id="ocean-port" v-model="prices">
+                                    <!--<option value="null" selected disabled>Choose destination</option>-->
+                                    <option :value="item" v-for="item in dataOcean" :key="item.id">{{ item.name }}
+                                    </option>
                                 </select>
                             </div>
                             <div class="ocean-row">
                                 <label for="destination">Destination:</label>
-                                <select class="select-calculate" name="destination" id="destination" :disabled="isCanSelectDestinationPort" v-model="selectedDestinationPort">
-                                    <option :value="port" v-for="port in prices.prices">{{ port.destination_ports.name }}</option>
+                                <select class="select-calculate" name="destination" id="destination"
+                                        :disabled="isCanSelectDestinationPort" v-model="selectedDestinationPort"
+                                        @change="totalBill">
+                                    <option :value="port" v-for="port in prices.prices">{{ port.destination_ports.name
+                                        }}
+                                    </option>
                                 </select>
                             </div>
                             <div class="ocean-row">
@@ -91,61 +105,72 @@
 <script>
     export default {
         name: "RateCalculatorComponent",
-        props:{
-            dataOcean:{
+        props: {
+            dataOcean: {
                 type: Array,
                 require: true
             },
-            dataGround:{
+            dataGround: {
                 type: Object,
                 require: true
             },
         },
-        data(){
+        data() {
             return {
                 prices: {},
                 destinationPorts: [],
-                selectedDestinationPort:{
-                    price:0
+                selectedDestinationPort: {
+                    price: 0
                 },
-                auction:null,
-                locations:{},
-                exitPortGrounds:{},
-                groundPriceData:null,
-                groundPrice:null,
+                auction: null,
+                locations: {},
+                exitPortGrounds: {},
+                groundPriceData: null,
+                groundPrice: 0,
             }
         },
-        methods:{
-            selectExitPortHandler(){
+        methods: {
+            selectExitPortHandler() {
                 console.log("selectExitPortHandler");
                 this.destinationPorts = this.exitPort.prices;
                 this.selectedDestinationPort = {
-                    price:0
+                    price: 0
                 };
             },
-            selectGroundPriceHandler(){
+            selectGroundPriceHandler() {
                 console.log();
-                if(!!Number(this.groundPriceData.price)){
+                if (!!Number(this.groundPriceData.price)) {
                     this.groundPrice = this.groundPriceData.price;
-                }else {
+                } else {
                     this.groundPrice = "call";
                 }
+                this.totalBill();
+            },
+            totalBill() {
+                let $groundTrans = this.groundPrice;
+                let $oceanTrans = this.oceanPrice;
+
+                $groundTrans = (!isNaN(parseFloat($groundTrans))) ? parseFloat($groundTrans) : 0;
+                $oceanTrans = (!isNaN(parseFloat($oceanTrans))) ? parseFloat($oceanTrans) : 0;
+
+                let $result = $groundTrans + $oceanTrans;
+                $('#total').val($result.toFixed(2));
             }
         },
-        computed:{
-            isCanSelectDestinationPort(){
+        computed: {
+            isCanSelectDestinationPort() {
                 return !Object.keys(this.prices).length;
             },
-            oceanPrice(){
-                if(this.selectedDestinationPort && "price" in this.selectedDestinationPort){
+            oceanPrice() {
+                if (this.selectedDestinationPort && "price" in this.selectedDestinationPort) {
                     return this.selectedDestinationPort.price
                 }
                 return 0;
             },
-            isCanSelectLocation(){
+            isCanSelectLocation() {
                 return !Object.keys(this.locations).length;
             },
-            isCanSelectExitPort(){
+            isCanSelectExitPort() {
                 return !Object.keys(this.exitPortGrounds).length;
             }
         }
