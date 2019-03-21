@@ -29,7 +29,7 @@ class GroundDeliveryPriceTableSeeder extends Seeder
                                 'auction_id' => $auction->id,
                                 'ground_location_id' => $groundLocation->id,
                                 'ground_exit_port_id' => $exitPortEntity->id,
-                                'price' => $price,
+                                'price' => (int) $price,
                             ]);
                         });
                     }
