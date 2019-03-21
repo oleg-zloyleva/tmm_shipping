@@ -172,12 +172,6 @@ $(document).ready(function () {
     });
 
 
-    // === MAKE ORDER === //
-    $('#make-order').on('click', function () {
-        console.log('Make order!');
-    });
-
-
     // === SELECT 2 === //
     $('.select-freight').select2({
         dropdownCssClass: 'quote-select-dropdown'
