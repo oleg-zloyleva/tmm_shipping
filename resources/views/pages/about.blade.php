@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-lg-6 col-xl-6">
-                <img src="img/about-1.png" alt="" class="img-about-1">
+                <img src="img/about-1.jpg" alt="" class="img-about-1">
             </div>
             <div class="col-md-6 col-lg-4 offset-lg-1 col-xl-4 offset-xl-1">
                 <h2>About</h2>
@@ -43,7 +43,7 @@
                 </p>
             </div>
             <div class="col-md-6 col-lg-5 offset-lg-1 col-xl-5 offset-xl-1">
-                <img src="img/about-2.png" alt="" class="img-about-2">
+                <img src="img/about-2.jpg" alt="" class="img-about-2">
             </div>
         </div>
         <div class="row">
@@ -92,7 +92,7 @@
                 </p>
             </div>
             <div class="col-md-6 col-lg-5 offset-lg-1">
-                <img src="img/about-3.png" alt="" class="img-about-3">
+                <img src="img/about-3.jpg" alt="" class="img-about-3">
             </div>
         </div>
     </div>

@@ -11,6 +11,19 @@ $(document).ready(function () {
     });
 
 
+    // === HEADER MENU TOGGLE === //
+    $('.btn-toggle').on('click', function () {
+       // console.log('test');
+       if ($('.nav-list').hasClass('active-menu')) {
+           $(this).removeClass('btn-toggle__close');
+           $('.nav-list').removeClass('active-menu');
+       } else {
+           $(this).addClass('btn-toggle__close');
+           $('.nav-list').addClass('active-menu');
+       }
+    });
+
+
     // === SERVICES MORE === //
     $('.slider__more').on('click', function () {
 

@@ -53408,7 +53408,7 @@ var render = function() {
           _c("div", { staticClass: "slider__slide" }, [
             _c("img", {
               staticClass: "slider__img",
-              attrs: { src: "img/slide-1.png", alt: "" }
+              attrs: { src: "img/slide-1.jpg", alt: "" }
             }),
             _vm._v(" "),
             _c("div", { staticClass: "slider__desc" }, [
@@ -53443,7 +53443,7 @@ var render = function() {
           _c("div", { staticClass: "slider__slide" }, [
             _c("img", {
               staticClass: "slider__img",
-              attrs: { src: "img/slide-2.png", alt: "" }
+              attrs: { src: "img/slide-2.jpg", alt: "" }
             }),
             _vm._v(" "),
             _c("div", { staticClass: "slider__desc" }, [
@@ -53478,7 +53478,7 @@ var render = function() {
           _c("div", { staticClass: "slider__slide" }, [
             _c("img", {
               staticClass: "slider__img",
-              attrs: { src: "img/slide-3.png", alt: "" }
+              attrs: { src: "img/slide-3.jpg", alt: "" }
             }),
             _vm._v(" "),
             _c("div", { staticClass: "slider__desc" }, [
@@ -53513,7 +53513,7 @@ var render = function() {
           _c("div", { staticClass: "slider__slide" }, [
             _c("img", {
               staticClass: "slider__img",
-              attrs: { src: "img/slide-4.png", alt: "" }
+              attrs: { src: "img/slide-4.jpg", alt: "" }
             }),
             _vm._v(" "),
             _c("div", { staticClass: "slider__desc" }, [
@@ -69067,6 +69067,17 @@ $(document).ready(function () {
   $('#btn-search').on('click', function () {
     console.log($('#inp-search').val());
     $('#inp-search').val('');
+  }); // === HEADER MENU TOGGLE === //
+
+  $('.btn-toggle').on('click', function () {
+    // console.log('test');
+    if ($('.nav-list').hasClass('active-menu')) {
+      $(this).removeClass('btn-toggle__close');
+      $('.nav-list').removeClass('active-menu');
+    } else {
+      $(this).addClass('btn-toggle__close');
+      $('.nav-list').addClass('active-menu');
+    }
   }); // === SERVICES MORE === //
 
   $('.slider__more').on('click', function () {

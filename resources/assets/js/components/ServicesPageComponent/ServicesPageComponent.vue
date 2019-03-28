@@ -4,7 +4,7 @@
         <div class="slider">
             <slick ref="slick" :options="slickOptions">
                 <div class="slider__slide">
-                    <img class="slider__img" src="img/slide-1.png" alt="">
+                    <img class="slider__img" src="img/slide-1.jpg" alt="">
                     <div class="slider__desc">
                         <h3>Ocean Freight</h3>
                         <p>
@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="slider__slide">
-                    <img class="slider__img" src="img/slide-2.png" alt="">
+                    <img class="slider__img" src="img/slide-2.jpg" alt="">
                     <div class="slider__desc">
                         <h3>Air Freight</h3>
                         <p>
@@ -60,7 +60,7 @@
                     </div>
                 </div>
                 <div class="slider__slide">
-                    <img class="slider__img" src="img/slide-3.png" alt="">
+                    <img class="slider__img" src="img/slide-3.jpg" alt="">
                     <div class="slider__desc">
                         <h3>Ground Transportation</h3>
                         <p>
@@ -88,7 +88,7 @@
                     </div>
                 </div>
                 <div class="slider__slide">
-                    <img class="slider__img" src="img/slide-4.png" alt="">
+                    <img class="slider__img" src="img/slide-4.jpg" alt="">
                     <div class="slider__desc">
                         <h3>Automobile Shipping</h3>
                         <p>
