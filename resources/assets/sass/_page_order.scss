@@ -76,6 +76,7 @@
 
       &__label {
         margin-right: 30px;
+        cursor: pointer;
       }
     }
 
@@ -307,8 +308,6 @@
   }
 
   .usspi-block {
-    display: none;
-
     &__title {
       text-align: center;
       font-size: 16px;
@@ -319,23 +318,6 @@
 
     &__content {
       line-height: 1.5;
-    }
-
-    &__btn {
-      display: block;
-      border: none;
-      border-radius: 4px;
-      color: #fff;
-      background-color: $colorLightRed;
-      cursor: pointer;
-      padding: 5px 15px;
-      font-size: 16px;
-      margin: 30px auto 0;
-      transition: .2s linear;
-
-      &:hover {
-        box-shadow: 0 2px 8px $colorGrey;
-      }
     }
 
     .inp-content {
@@ -533,8 +515,6 @@
     .buttons-control {
       &__btn {
         width: 220px;
-        padding: 0 15px;
-        font-size: 12px;
 
         &.active {
           color: $colorDarkGrey;

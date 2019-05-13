@@ -4009,6 +4009,7 @@ input:disabled {
 
 #order .slider-order .checked-block__label {
   margin-right: 30px;
+  cursor: pointer;
 }
 
 #order .slider-order .body-left,
@@ -4235,10 +4236,6 @@ input:disabled {
   display: none;
 }
 
-#order .usspi-block {
-  display: none;
-}
-
 #order .usspi-block__title {
   text-align: center;
   font-size: 16px;
@@ -4249,23 +4246,6 @@ input:disabled {
 
 #order .usspi-block__content {
   line-height: 1.5;
-}
-
-#order .usspi-block__btn {
-  display: block;
-  border: none;
-  border-radius: 4px;
-  color: #fff;
-  background-color: #bc515c;
-  cursor: pointer;
-  padding: 5px 15px;
-  font-size: 16px;
-  margin: 30px auto 0;
-  transition: 0.2s linear;
-}
-
-#order .usspi-block__btn:hover {
-  box-shadow: 0 2px 8px #666666;
 }
 
 #order .usspi-block .inp-content {
@@ -4408,8 +4388,6 @@ input:disabled {
 @media screen and (max-width: 1199px) {
   #order .buttons-control__btn {
     width: 220px;
-    padding: 0 15px;
-    font-size: 12px;
   }
 
   #order .buttons-control__btn.active {
