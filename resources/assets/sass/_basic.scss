@@ -85,6 +85,10 @@ select {
   color: $colorGrey;
 }
 
+select {
+  cursor: pointer;
+}
+
 
 input:disabled {
   background-color: #fff;

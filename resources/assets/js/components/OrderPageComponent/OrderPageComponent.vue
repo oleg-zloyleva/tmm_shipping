@@ -122,9 +122,8 @@
                                                     </label>
                                                 </div>
                                             </div>
-                                            <div class="body-bottom">
+                                            <div class="body-bottom" v-if="foreignCheck">
                                                 <div class="body-bottom__upload">Please, upload you ID photo</div>
-
                                                 <div class="upload-file-container">
                                                     <div class="upload-file-container__text">
                                                         <span class="upload-file-container__btn">Choose file</span>
@@ -132,10 +131,9 @@
                                                                @change="uploadFile">
                                                     </div>
                                                     <div class="upload-file-container__image-demo">
-                                                        <img id="image-demo" src="#" alt="">
+                                                        <img class="image-demo" src="#" alt="">
                                                     </div>
                                                 </div>
-
                                             </div>
                                         </div>
                                     </form>
@@ -329,17 +327,17 @@
                                 </div>
                                 <!-- DESCRIPTION -->
                                 <div class="slider-order__slide">
-                                    <div v-if="vehicleCheck">
+                                    <div v-if="!vehicleCheck">
                                         <div class="slider-order__title">DESCRIPTION OF GOODS</div>
                                         <div>
                                             Type of goods:
                                             <div class="checked-block">
-                                                <input name="delivery" id="vehicle" class="inp-checkbox" type="radio"
-                                                       value="vehicle" v-model="description">
-                                                <label for="vehicle" class="checked-block__label">Vehicle</label>
-                                                <input name="delivery" id="other" class="inp-checkbox" type="radio"
+                                                <input name="description" id="other" class="inp-checkbox" type="radio"
                                                        value="other" v-model="description">
                                                 <label for="other" class="checked-block__label">Other</label>
+                                                <input name="description" id="vehicle" class="inp-checkbox" type="radio"
+                                                       value="vehicle" v-model="description">
+                                                <label for="vehicle" class="checked-block__label">Vehicle</label>
                                             </div>
                                         </div>
                                         <form id="form-description-of-goods">
@@ -436,17 +434,18 @@
                                             </div>
                                         </form>
                                     </div>
-                                    <div v-if="!vehicleCheck">
+                                    <div v-if="vehicleCheck">
                                         <div class="slider-order__title">VEHICLE</div>
                                         <div>
                                             Type of goods:
                                             <div class="checked-block">
-                                                <input name="delivery" id="vehicle2" class="inp-checkbox" type="radio"
-                                                       value="vehicle" v-model="description">
-                                                <label for="vehicle2" class="checked-block__label">Vehicle</label>
-                                                <input name="delivery" id="other2" class="inp-checkbox" type="radio"
+                                                <input name="description" id="other2" class="inp-checkbox" type="radio"
                                                        value="other" v-model="description">
                                                 <label for="other2" class="checked-block__label">Other</label>
+                                                <input name="description" id="vehicle2" class="inp-checkbox"
+                                                       type="radio"
+                                                       value="vehicle" v-model="description">
+                                                <label for="vehicle2" class="checked-block__label">Vehicle</label>
                                             </div>
                                         </div>
                                         <form id="form-vehicle">
@@ -601,12 +600,26 @@
                                                     </label>
                                                 </div>
                                             </div>
+                                            <div class="body-bottom"
+                                                 v-if="!foreignCheck || (foreignCheck && vehicleCheck)">
+                                                <div class="body-bottom__upload">Please, upload you ID photo</div>
+                                                <div class="upload-file-container">
+                                                    <div class="upload-file-container__text">
+                                                        <span class="upload-file-container__btn">Choose file</span>
+                                                        <input type="file" class="upload-file-container__photo"
+                                                               @change="uploadFile">
+                                                    </div>
+                                                    <div class="upload-file-container__image-demo">
+                                                        <img class="image-demo" src="#" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>
                                 <!-- USPPI -->
                                 <div class="slider-order__slide">
-                                    <div class="usspi-block" id="usspi-block">
+                                    <div class="usspi-block" v-if="!foreignCheck">
                                         <div class="usspi-block__title">
                                             WRITTEN AUTHORIZATION TO PREPARE OR <br>TRANSMIT SHIPPER’S EXPORT
                                             INFORMATION
@@ -615,8 +628,8 @@
                                             <div class="usspi-block__content">
                                                 <div class="content-authorize">
                                                     I,
-                                                    <input class="inp-content" name="firstExporterName">
-                                                    <input class="inp-content" name="secondExporterName">, authorize
+                                                    <input class="inp-content" name="firstExporterName" v-model="sendOrderForm.usppi.firstExporterName">
+                                                    <input class="inp-content" name="secondExporterName" v-model="sendOrderForm.usppi.secondExporterName">, authorize
                                                 </div>
                                                 TMM international, to act as forwarding agent for export control and
                                                 customs
@@ -644,40 +657,41 @@
                                                 <div class="content-signature">
                                                     <label class="label-content">
                                                         Signature:
-                                                        <input class="inp-content inp-signature" name="signatureFirst">*<input
-                                                            class="inp-content" name="signatureSecond">
+                                                        <input class="inp-content inp-signature" name="signatureFirst" v-model="sendOrderForm.usppi.signatureFirst">*<input
+                                                            class="inp-content" name="signatureSecond" v-model="sendOrderForm.usppi.signatureSecond">
                                                     </label>
                                                 </div>
                                                 <div class="content-print">
                                                     <label class="label-content">
                                                         Print Name:
-                                                        <input class="inp-content inp-print" name="printName">
+                                                        <input class="inp-content inp-print" name="printName" v-model="sendOrderForm.usppi.printName">
                                                     </label>
                                                 </div>
                                                 <div class="content-ein">
                                                     <label class="label-content">
                                                         E.I.N. (TAX ID):
-                                                        <input class="inp-content inp-ein" name="einTaxId">
+                                                        <input class="inp-content inp-ein" name="einTaxId" v-model="sendOrderForm.usppi.einTaxId">
                                                     </label>
                                                 </div>
                                                 <div class="content-title">
                                                     <label class="label-content">
                                                         Title:
-                                                        <input class="inp-content inp-title" name="titleFirst">*<input
-                                                            class="inp-content" name="titleSecond">
+                                                        <input class="inp-content inp-title" name="titleFirst" v-model="sendOrderForm.usppi.titleFirst">*<input
+                                                            class="inp-content" name="titleSecond" v-model="sendOrderForm.usppi.titleSecond">
                                                     </label>
                                                 </div>
                                                 <div class="content-date">
                                                     <label class="label-content">
                                                         Date:
-                                                        <input class="inp-content inp-date" name="dateFirst">*<input
-                                                            class="inp-content" name="dateSecond">
+                                                        <input class="inp-content inp-date" name="dateFirst" v-model="sendOrderForm.usppi.dateFirst">*<input
+                                                            class="inp-content" name="dateSecond" v-model="sendOrderForm.usppi.dateSecond">
                                                     </label>
                                                 </div>
                                             </div>
                                         </form>
                                     </div>
-                                    <div class="fppi-block" id="fppi-block">
+
+                                    <div class="fppi-block" v-if="foreignCheck">
                                         <div class="fppi-block__title">
                                             EXPORT WRITTEN AUTHORIZATION FOR F.P.P.I.<br>
                                             (Foreign Principal Party in Interest)
@@ -686,60 +700,100 @@
                                             WRITTEN AUTHORIZATION<br>
                                             TO PREPARE OR TRANSMIT ELECTRONIC EXPORT INFORMATION (EEI)
                                         </div>
-
                                         <form id="fppi-form">
-                                            <!--<div class="usspi-block__content">
-                                                <div class="content-authorize">
-                                                    I,
-                                                    <input class="inp-content" name="firstExporterName">
-                                                    <input class="inp-content" name="secondExporterName">, authorize
-                                                </div>
-                                                TMM international, to act as forwarding agent for export control and customs
-                                                purposes and to sign any Shipper’s Export Declaration (SED), or transmit such export
-                                                information electronically, which may be required by law or regulation in connection
-                                                with the exportation or transportation of any merchandise on behalf of said U.S.
-                                                Principal Party in Interest. The U.S. Principal Party in Interest certifies that
-                                                necessary and proper documentation to accurately complete the SED or transmit the
-                                                information electronically is and will be provided to the said forwarding Agent. The
-                                                U.S. Principal Party in Interest further understands that civil and criminal
-                                                penalties may be imposed for making false or fraudulent statements or for the
-                                                violation of any United State laws or regulations on exportation and agrees to be
-                                                bound by all statements of said agent based upon information or documentation
-                                                provided by exporter to said agent.
-                                                <div class="content-signature">
-                                                    <label class="label-content">
-                                                        Signature:
-                                                        <input class="inp-content inp-signature" name="signatureFirst">*<input
-                                                            class="inp-content" name="signatureSecond">
-                                                    </label>
-                                                </div>
-                                                <div class="content-print">
-                                                    <label class="label-content">
-                                                        Print Name:
-                                                        <input class="inp-content inp-print" name="printName">
-                                                    </label>
-                                                </div>
-                                                <div class="content-ein">
-                                                    <label class="label-content">
-                                                        E.I.N. (TAX ID):
-                                                        <input class="inp-content inp-ein" name="einTaxId">
-                                                    </label>
-                                                </div>
-                                                <div class="content-title">
-                                                    <label class="label-content">
-                                                        Title:
-                                                        <input class="inp-content inp-title" name="titleFirst">*<input
-                                                            class="inp-content" name="titleSecond">
-                                                    </label>
-                                                </div>
-                                                <div class="content-date">
-                                                    <label class="label-content">
-                                                        Date:
-                                                        <input class="inp-content inp-date" name="dateFirst">*<input
-                                                            class="inp-content" name="dateSecond">
-                                                    </label>
-                                                </div>
-                                            </div>-->
+                                            <div class="fppi-block__content">
+                                                <p>
+                                                    Know all men by these presents, that
+                                                    <span class="content-name">
+                                                        <input class="inp-fppi" type="text" v-model="sendOrderForm.fppi.name">
+                                                    </span>
+                                                    the F.P.P.I,
+                                                </p>
+                                                <p>
+                                                    Organized and doing business under the laws of (International
+                                                    Country)
+                                                    <span class="content-country">
+                                                        <input class="inp-fppi" type="text" v-model="sendOrderForm.fppi.country">
+                                                    </span><br>
+                                                    And having an office and place of business located
+                                                    <span class="content-address">
+                                                        <input class="inp-fppi" type="text" v-model="sendOrderForm.fppi.address">
+                                                    </span>
+                                                </p>
+                                                <p>
+                                                    Hereby
+                                                    authorizes ATMLMPINUTESRANATINIOCNA.Land on its behalf as a true and
+                                                    lawful agent of the Foreign Principal Party in Interest (FPPI) for,
+                                                    and
+                                                    in the name, place and stead of the FPPI, from this date, either in
+                                                    writing, electronically, or by other authorized means to:
+                                                </p>
+                                                <p>
+                                                    Act as
+                                                    Forwarding Agent for Export Control, U.S. Census Bureau (Census
+                                                    Bureau)
+                                                    reporting, and U.S. Customs and Border Protection (CBP) purposes.
+                                                    Also,
+                                                    to prepare and transmit any Electronic Export Information (EEI) or
+                                                    other
+                                                    documents or records required to be filed by the Census Bureau, CBP,
+                                                    the
+                                                    Bureau of Industry and Security, or any other U.S. Government
+                                                    agency,
+                                                    and perform any other act that may be required by law or regulation
+                                                    in
+                                                    connection with the exportation or transportation of any goods
+                                                    shipped
+                                                    or consigned by or the USPPI, and to receive or ship any goods on
+                                                    behalf
+                                                    of the F.P.P.I.
+                                                </p>
+                                                <p>
+                                                    The FPPI hereby certifies that all statements and
+                                                    information contained in the documentation provided to the
+                                                    authorized
+                                                    agent and relating to exportation will be true and correct.
+                                                    Furthermore,
+                                                    the FPPI (Foreign Principal Party in Interest) understands that
+                                                    civil
+                                                    and criminal penalties may be imposed for making false or fraudulent
+                                                    statements or for the violation of any United States laws or
+                                                    regulations
+                                                    on exportation.
+                                                </p>
+                                                <p>
+                                                    This power of attorney is to remain in full forces and
+                                                    effect until revocation in writing is duly given by the Foreign
+                                                    Principal Party in Interest and received by the Authorized Agent.
+                                                </p>
+                                                <label class="content-lbl">
+                                                    In Witness Whereof,
+                                                    <input class="inp-fppi" type="text" v-model="sendOrderForm.fppi.witnessWhereof">
+                                                </label>
+                                                <label class="content-lbl">
+                                                    Witness:
+                                                    <input type="text" class="inp-fppi" v-model="sendOrderForm.fppi.witness">
+                                                </label>
+                                                <label class="content-lbl">
+                                                    Signature:
+                                                    <input type="text" class="inp-fppi" v-model="sendOrderForm.fppi.signature">
+                                                </label>
+                                                <label class="content-lbl">
+                                                    Title:
+                                                    <input type="text" class="inp-fppi" v-model="sendOrderForm.fppi.title">
+                                                </label>
+                                                <label class="content-lbl">
+                                                    Date:
+                                                    <input type="text" class="inp-fppi" v-model="sendOrderForm.fppi.date">
+                                                </label>
+                                                <label class="content-lbl">
+                                                    Foreign Principal in Part in Interest (FPPI) V.A.T.#
+                                                    <input type="text" class="inp-fppi" v-model="sendOrderForm.fppi.foreign">
+                                                </label>
+
+                                                <p>Export shipments are subject to inspection by U.S. Customs Service,
+                                                    ALPI USA INC., and/or Office of Export Enforcement.</p>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>
@@ -792,10 +846,9 @@
             return {
                 delivery: 'citizen',
                 description: 'other',
-                vehicleCheck: true,
-                businessCheck: true,
-                citizenCheck: true,
-                foreignCheck: true,
+                vehicleCheck: false,
+                businessCheck: false,
+                foreignCheck: false,
 
                 sendOrderForm: {
                     shipper: {
@@ -876,8 +929,29 @@
                         country: '',
                         zip: ''
                     },
-                    usppi: {},
-                    fppi: {},
+                    usppi: {
+                        firstExporterName: '',
+                        secondExporterName: '',
+                        signatureFirst: '',
+                        signatureSecond: '',
+                        printName: '',
+                        einTaxId: '',
+                        titleFirst: '',
+                        titleSecond: '',
+                        dateFirst: '',
+                        dateSecond: ''
+                    },
+                    fppi: {
+                        name: '',
+                        country: '',
+                        address: '',
+                        witnessWhereof: '',
+                        witness: '',
+                        signature: '',
+                        title: '',
+                        date: '',
+                        foreign: ''
+                    },
                     comments: {
                         comment: ''
                     }
@@ -892,6 +966,8 @@
                     arrows: true,
                     infinite: false,
                     draggable: false,
+                    adaptiveHeight: true,
+                    // initialSlide: 5,
                     customPaging: function (slider, i) {
                         let $dots = ['Shipper', 'Consignee', 'Notify', 'Description', 'Title', 'USPPI', 'Comments'];
                         return $dots[i];
@@ -907,22 +983,19 @@
                 console.log('formOrderSend', this.sendOrderForm);
             },
             uploadFile(el) {
-
-                // console.log(el.target);
-                // $("#imgInput").change(function () {
                 this.readURL(el.target);
-                // });
             },
             readURL(input) {
 
-                console.log(input.files);
-                console.log(input.files[0]);
+                // console.log(input);
+                // console.log(input.files);
+                // console.log(input.files[0]);
 
                 if (input.files && input.files[0]) {
                     var reader = new FileReader();
 
                     reader.onload = function (e) {
-                        $('#image-demo').attr('src', e.target.result);
+                        $(input).closest('.upload-file-container').find('.image-demo').attr('src', e.target.result);
                     };
 
                     reader.readAsDataURL(input.files[0]);
@@ -944,11 +1017,30 @@
         watch: {
             delivery(value) {
                 console.log(value);
+                switch (value) {
+                    case 'citizen':
+                        this.businessCheck = false;
+                        this.foreignCheck = false;
+                        break;
+                    case 'business':
+                        this.businessCheck = true;
+                        this.foreignCheck = false;
+                        break;
+                    case 'foreign':
+                        this.businessCheck = false;
+                        this.foreignCheck = true;
+                        break;
+                    default:
+                        break;
+                }
+                // console.log('foreignCheck', this.foreignCheck);
             },
             description(value) {
                 console.log(value);
                 this.vehicleCheck = !this.vehicleCheck;
                 this.description = value;
+                // console.log('vehicleCheck', this.vehicleCheck);
+                // console.log('foreignCheck', this.foreignCheck);
             }
         }
     }
