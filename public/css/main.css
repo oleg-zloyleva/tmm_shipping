@@ -2576,6 +2576,10 @@ select {
   color: #666666;
 }
 
+select {
+  cursor: pointer;
+}
+
 input:disabled {
   background-color: #fff;
 }
@@ -4022,12 +4026,23 @@ input:disabled {
 
 #order .slider-order {
   position: relative;
-  min-height: 470px;
   margin: 0;
 }
 
 #order .slider-order__slide {
   outline: none;
+}
+
+#order .slider-order__slide.slide-1 {
+  min-height: 650px;
+}
+
+#order .slider-order__slide.slide-4 {
+  min-height: 470px;
+}
+
+#order .slider-order__slide.slide-7 {
+  min-height: 500px;
 }
 
 #order .slider-order__title {
@@ -4043,7 +4058,6 @@ input:disabled {
   align-items: flex-start;
   justify-content: space-around;
   flex-wrap: wrap;
-  margin-bottom: 30px;
 }
 
 #order .slider-order__body-left {
@@ -4078,8 +4092,9 @@ input:disabled {
 }
 
 #order .slider-order .body-bottom {
+  display: block;
   width: 100%;
-  margin-top: 50px;
+  margin-top: 10px;
 }
 
 #order .slider-order__label {
@@ -4267,7 +4282,7 @@ input:disabled {
 #order .slider-order__arrow-prev,
 #order .slider-order__arrow-next {
   position: absolute;
-  bottom: -4px;
+  bottom: 0;
   display: inline-block;
   border: none;
   border-radius: 4px;
@@ -4317,7 +4332,7 @@ input:disabled {
   width: 200px;
   border: none;
   border-bottom: 1px solid #ccc;
-  padding: 0px 5px;
+  padding: 0 5px;
   margin: 0 5px;
   font-size: 14px;
   line-height: 16px;
@@ -4376,13 +4391,115 @@ input:disabled {
   font-size: 11px;
 }
 
+#order .fppi-block__title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+#order .fppi-block__subtitle {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+#order .fppi-block__content {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+#order .fppi-block__content p {
+  margin-bottom: 1.2rem;
+}
+
+#order .fppi-block__content .inp-fppi {
+  display: inline-block;
+  width: 270px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 0 5px;
+  margin: 0 5px;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+#order .fppi-block__content .content-name {
+  display: inline-block;
+  position: relative;
+  margin-bottom: 15px;
+}
+
+#order .fppi-block__content .content-name:after {
+  content: "(Name of F.P.P.I. Foreign Principal Party in Interest.)";
+  display: block;
+  width: 270px;
+  height: 14px;
+  position: absolute;
+  bottom: -14px;
+  left: 10px;
+  font-size: 11px;
+}
+
+#order .fppi-block__content .content-country .inp-fppi {
+  width: 134px;
+}
+
+#order .fppi-block__content .content-address {
+  display: inline-block;
+  position: relative;
+  margin-bottom: 15px;
+}
+
+#order .fppi-block__content .content-address:after {
+  content: "(Address of F.P.P.I.)";
+  display: block;
+  width: 200px;
+  height: 14px;
+  position: absolute;
+  bottom: -14px;
+  left: 20px;
+  font-size: 11px;
+}
+
+#order .fppi-block__content .content-lbl {
+  display: block;
+  font-weight: 600;
+}
+
+#order .fppi-block__content .content-lbl .inp-fppi {
+  width: 170px;
+}
+
+#order .fppi-block .inp-content {
+  display: inline-block;
+  width: 200px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 0 5px;
+  margin: 0 5px;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+#order .fppi-block .inp-signature,
+#order .fppi-block .inp-title,
+#order .fppi-block .inp-date {
+  width: 40px;
+}
+
+#order .fppi-block .label-content {
+  font-weight: 600;
+}
+
 #order .slick-slider {
   margin-bottom: 0;
+  padding-bottom: 50px;
 }
 
 #order .slick-dots {
   position: absolute;
-  bottom: 0;
+  bottom: 5px;
   left: 0;
   display: inline-block;
   width: auto;
@@ -4473,8 +4590,20 @@ input:disabled {
 }
 
 @media screen and (max-width: 767px) {
-  #order .slider-order {
-    padding-bottom: 75px;
+  #order .slick-slider {
+    padding-bottom: 80px;
+  }
+
+  #order .slider-order__slide.slide-1 {
+    min-height: 880px;
+  }
+
+  #order .slider-order__slide.slide-4 {
+    min-height: 600px;
+  }
+
+  #order .slider-order__inp-usd {
+    margin-left: 10px;
   }
 
   #order .slider-order__body {
@@ -4515,15 +4644,21 @@ input:disabled {
   #order .slick-dots {
     display: block;
     width: 100%;
+    bottom: -20px;
   }
 }
 
 @media screen and (max-width: 575px) {
+  #order .slider-order__inp {
+    width: 170px;
+  }
+
   #order .slider-order__inp-desc {
     width: 170px;
   }
 
   #order .slider-order__inp-usd {
+    width: 80px;
     margin-left: 10px;
   }
 

@@ -12623,6 +12623,79 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "OrderPageComponent",
@@ -12633,10 +12706,9 @@ __webpack_require__.r(__webpack_exports__);
     return {
       delivery: 'citizen',
       description: 'other',
-      vehicleCheck: true,
-      businessCheck: true,
-      citizenCheck: true,
-      foreignCheck: true,
+      vehicleCheck: false,
+      businessCheck: false,
+      foreignCheck: false,
       sendOrderForm: {
         shipper: {
           tid: '',
@@ -12716,8 +12788,29 @@ __webpack_require__.r(__webpack_exports__);
           country: '',
           zip: ''
         },
-        usppi: {},
-        fppi: {},
+        usppi: {
+          firstExporterName: '',
+          secondExporterName: '',
+          signatureFirst: '',
+          signatureSecond: '',
+          printName: '',
+          einTaxId: '',
+          titleFirst: '',
+          titleSecond: '',
+          dateFirst: '',
+          dateSecond: ''
+        },
+        fppi: {
+          name: '',
+          country: '',
+          address: '',
+          witnessWhereof: '',
+          witness: '',
+          signature: '',
+          title: '',
+          date: '',
+          foreign: ''
+        },
         comments: {
           comment: ''
         }
@@ -12731,6 +12824,8 @@ __webpack_require__.r(__webpack_exports__);
         arrows: true,
         infinite: false,
         draggable: false,
+        adaptiveHeight: true,
+        // initialSlide: 5,
         customPaging: function customPaging(slider, i) {
           var $dots = ['Shipper', 'Consignee', 'Notify', 'Description', 'Title', 'USPPI', 'Comments'];
           return $dots[i];
@@ -12743,21 +12838,37 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     sendForms: function sendForms() {
       console.log('formOrderSend', this.sendOrderForm);
+      axios({
+        method: 'post',
+        url: '/api/email/air_shipping_order',
+        data: $.param(this.sendOrderForm)
+      }).then(function (res) {
+        console.log(res);
+        $('#message-success').addClass('fadeIn');
+        $('#form-quick-quote').trigger("reset");
+        setTimeout(function () {
+          $('#message-success').removeClass('fadeIn');
+        }, 4000);
+      }).catch(function (err) {
+        console.log('Error', err);
+        $('#message-server-error').addClass('fadeIn');
+        setTimeout(function () {
+          $('#message-server-error').removeClass('fadeIn');
+        }, 4000);
+      });
     },
     uploadFile: function uploadFile(el) {
-      // console.log(el.target);
-      // $("#imgInput").change(function () {
-      this.readURL(el.target); // });
+      this.readURL(el.target);
     },
     readURL: function readURL(input) {
-      console.log(input.files);
-      console.log(input.files[0]);
-
+      // console.log(input);
+      // console.log(input.files);
+      // console.log(input.files[0]);
       if (input.files && input.files[0]) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
-          $('#image-demo').attr('src', e.target.result);
+          $(input).closest('.upload-file-container').find('.image-demo').attr('src', e.target.result);
         };
 
         reader.readAsDataURL(input.files[0]);
@@ -12780,11 +12891,33 @@ __webpack_require__.r(__webpack_exports__);
   watch: {
     delivery: function delivery(value) {
       console.log(value);
+
+      switch (value) {
+        case 'citizen':
+          this.businessCheck = false;
+          this.foreignCheck = false;
+          break;
+
+        case 'business':
+          this.businessCheck = true;
+          this.foreignCheck = false;
+          break;
+
+        case 'foreign':
+          this.businessCheck = false;
+          this.foreignCheck = true;
+          break;
+
+        default:
+          break;
+      } // console.log('foreignCheck', this.foreignCheck);
+
     },
     description: function description(value) {
       console.log(value);
       this.vehicleCheck = !this.vehicleCheck;
-      this.description = value;
+      this.description = value; // console.log('vehicleCheck', this.vehicleCheck);
+      // console.log('foreignCheck', this.foreignCheck);
     }
   }
 });
@@ -51531,7 +51664,7 @@ var render = function() {
                   "slick",
                   { ref: "slick", attrs: { options: _vm.slickOptions } },
                   [
-                    _c("div", { staticClass: "slider-order__slide" }, [
+                    _c("div", { staticClass: "slider-order__slide slide-1" }, [
                       _c("div", { staticClass: "slider-order__title" }, [
                         _vm._v("SHIPPER")
                       ]),
@@ -52193,63 +52326,65 @@ var render = function() {
                             ])
                           ]),
                           _vm._v(" "),
-                          _c("div", { staticClass: "body-bottom" }, [
-                            _c("div", { staticClass: "body-bottom__upload" }, [
-                              _vm._v("Please, upload you ID photo")
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "upload-file-container" },
-                              [
+                          _vm.foreignCheck
+                            ? _c("div", { staticClass: "body-bottom" }, [
                                 _c(
                                   "div",
-                                  {
-                                    staticClass: "upload-file-container__text"
-                                  },
-                                  [
-                                    _c(
-                                      "span",
-                                      {
-                                        staticClass:
-                                          "upload-file-container__btn"
-                                      },
-                                      [_vm._v("Choose file")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("input", {
-                                      staticClass:
-                                        "upload-file-container__photo",
-                                      attrs: { type: "file" },
-                                      on: { change: _vm.uploadFile }
-                                    })
-                                  ]
+                                  { staticClass: "body-bottom__upload" },
+                                  [_vm._v("Please, upload you ID photo")]
                                 ),
                                 _vm._v(" "),
                                 _c(
                                   "div",
-                                  {
-                                    staticClass:
-                                      "upload-file-container__image-demo"
-                                  },
+                                  { staticClass: "upload-file-container" },
                                   [
-                                    _c("img", {
-                                      attrs: {
-                                        id: "image-demo",
-                                        src: "#",
-                                        alt: ""
-                                      }
-                                    })
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "upload-file-container__text"
+                                      },
+                                      [
+                                        _c(
+                                          "span",
+                                          {
+                                            staticClass:
+                                              "upload-file-container__btn"
+                                          },
+                                          [_vm._v("Choose file")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("input", {
+                                          staticClass:
+                                            "upload-file-container__photo",
+                                          attrs: { type: "file" },
+                                          on: { change: _vm.uploadFile }
+                                        })
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "upload-file-container__image-demo"
+                                      },
+                                      [
+                                        _c("img", {
+                                          staticClass: "image-demo",
+                                          attrs: { src: "#", alt: "" }
+                                        })
+                                      ]
+                                    )
                                   ]
                                 )
-                              ]
-                            )
-                          ])
+                              ])
+                            : _vm._e()
                         ])
                       ])
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "slider-order__slide" }, [
+                    _c("div", { staticClass: "slider-order__slide slide-2" }, [
                       _c("div", { staticClass: "slider-order__title" }, [
                         _vm._v("CONSIGNEE")
                       ]),
@@ -52773,7 +52908,7 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "slider-order__slide" }, [
+                    _c("div", { staticClass: "slider-order__slide slide-3" }, [
                       _c("div", { staticClass: "slider-order__title" }, [
                         _vm._v("NOTIFY PARTY")
                       ]),
@@ -53242,8 +53377,8 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "slider-order__slide" }, [
-                      _vm.vehicleCheck
+                    _c("div", { staticClass: "slider-order__slide slide-4" }, [
+                      !_vm.vehicleCheck
                         ? _c("div", [
                             _c("div", { staticClass: "slider-order__title" }, [
                               _vm._v("DESCRIPTION OF GOODS")
@@ -53265,42 +53400,7 @@ var render = function() {
                                   ],
                                   staticClass: "inp-checkbox",
                                   attrs: {
-                                    name: "delivery",
-                                    id: "vehicle",
-                                    type: "radio",
-                                    value: "vehicle"
-                                  },
-                                  domProps: {
-                                    checked: _vm._q(_vm.description, "vehicle")
-                                  },
-                                  on: {
-                                    change: function($event) {
-                                      _vm.description = "vehicle"
-                                    }
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass: "checked-block__label",
-                                    attrs: { for: "vehicle" }
-                                  },
-                                  [_vm._v("Vehicle")]
-                                ),
-                                _vm._v(" "),
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.description,
-                                      expression: "description"
-                                    }
-                                  ],
-                                  staticClass: "inp-checkbox",
-                                  attrs: {
-                                    name: "delivery",
+                                    name: "description",
                                     id: "other",
                                     type: "radio",
                                     value: "other"
@@ -53322,6 +53422,41 @@ var render = function() {
                                     attrs: { for: "other" }
                                   },
                                   [_vm._v("Other")]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.description,
+                                      expression: "description"
+                                    }
+                                  ],
+                                  staticClass: "inp-checkbox",
+                                  attrs: {
+                                    name: "description",
+                                    id: "vehicle",
+                                    type: "radio",
+                                    value: "vehicle"
+                                  },
+                                  domProps: {
+                                    checked: _vm._q(_vm.description, "vehicle")
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      _vm.description = "vehicle"
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: "checked-block__label",
+                                    attrs: { for: "vehicle" }
+                                  },
+                                  [_vm._v("Vehicle")]
                                 )
                               ])
                             ]),
@@ -54199,7 +54334,7 @@ var render = function() {
                           ])
                         : _vm._e(),
                       _vm._v(" "),
-                      !_vm.vehicleCheck
+                      _vm.vehicleCheck
                         ? _c("div", [
                             _c("div", { staticClass: "slider-order__title" }, [
                               _vm._v("VEHICLE")
@@ -54221,42 +54356,7 @@ var render = function() {
                                   ],
                                   staticClass: "inp-checkbox",
                                   attrs: {
-                                    name: "delivery",
-                                    id: "vehicle2",
-                                    type: "radio",
-                                    value: "vehicle"
-                                  },
-                                  domProps: {
-                                    checked: _vm._q(_vm.description, "vehicle")
-                                  },
-                                  on: {
-                                    change: function($event) {
-                                      _vm.description = "vehicle"
-                                    }
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass: "checked-block__label",
-                                    attrs: { for: "vehicle2" }
-                                  },
-                                  [_vm._v("Vehicle")]
-                                ),
-                                _vm._v(" "),
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.description,
-                                      expression: "description"
-                                    }
-                                  ],
-                                  staticClass: "inp-checkbox",
-                                  attrs: {
-                                    name: "delivery",
+                                    name: "description",
                                     id: "other2",
                                     type: "radio",
                                     value: "other"
@@ -54278,6 +54378,41 @@ var render = function() {
                                     attrs: { for: "other2" }
                                   },
                                   [_vm._v("Other")]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.description,
+                                      expression: "description"
+                                    }
+                                  ],
+                                  staticClass: "inp-checkbox",
+                                  attrs: {
+                                    name: "description",
+                                    id: "vehicle2",
+                                    type: "radio",
+                                    value: "vehicle"
+                                  },
+                                  domProps: {
+                                    checked: _vm._q(_vm.description, "vehicle")
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      _vm.description = "vehicle"
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: "checked-block__label",
+                                    attrs: { for: "vehicle2" }
+                                  },
+                                  [_vm._v("Vehicle")]
                                 )
                               ])
                             ]),
@@ -54736,7 +54871,7 @@ var render = function() {
                         : _vm._e()
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "slider-order__slide" }, [
+                    _c("div", { staticClass: "slider-order__slide slide-5" }, [
                       _c("form", { attrs: { id: "form-send-documents-to" } }, [
                         _c("div", { staticClass: "slider-order__title" }, [
                           _vm._v("SEND DOCUMENTS TO:")
@@ -55205,163 +55340,885 @@ var render = function() {
                                 ]
                               )
                             ])
-                          ])
+                          ]),
+                          _vm._v(" "),
+                          !_vm.foreignCheck ||
+                          (_vm.foreignCheck && _vm.vehicleCheck)
+                            ? _c("div", { staticClass: "body-bottom" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "body-bottom__upload" },
+                                  [_vm._v("Please, upload you ID photo")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "upload-file-container" },
+                                  [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "upload-file-container__text"
+                                      },
+                                      [
+                                        _c(
+                                          "span",
+                                          {
+                                            staticClass:
+                                              "upload-file-container__btn"
+                                          },
+                                          [_vm._v("Choose file")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("input", {
+                                          staticClass:
+                                            "upload-file-container__photo",
+                                          attrs: { type: "file" },
+                                          on: { change: _vm.uploadFile }
+                                        })
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "upload-file-container__image-demo"
+                                      },
+                                      [
+                                        _c("img", {
+                                          staticClass: "image-demo",
+                                          attrs: { src: "#", alt: "" }
+                                        })
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ])
+                            : _vm._e()
                         ])
                       ])
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "slider-order__slide" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "usspi-block",
-                          attrs: { id: "usspi-block" }
-                        },
-                        [
-                          _c("div", { staticClass: "usspi-block__title" }, [
-                            _vm._v(
-                              "\n                                        WRITTEN AUTHORIZATION TO PREPARE OR "
-                            ),
-                            _c("br"),
-                            _vm._v(
-                              "TRANSMIT SHIPPER’S EXPORT\n                                        INFORMATION\n                                    "
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("form", { attrs: { id: "usspi-form" } }, [
-                            _c("div", { staticClass: "usspi-block__content" }, [
-                              _c("div", { staticClass: "content-authorize" }, [
-                                _vm._v(
-                                  "\n                                                I,\n                                                "
-                                ),
-                                _c("input", {
-                                  staticClass: "inp-content",
-                                  attrs: { name: "firstExporterName" }
-                                }),
-                                _vm._v(" "),
-                                _c("input", {
-                                  staticClass: "inp-content",
-                                  attrs: { name: "secondExporterName" }
-                                }),
-                                _vm._v(
-                                  ", authorize\n                                            "
-                                )
-                              ]),
+                    _c("div", { staticClass: "slider-order__slide slide-6" }, [
+                      !_vm.foreignCheck
+                        ? _c("div", { staticClass: "usspi-block" }, [
+                            _c("div", { staticClass: "usspi-block__title" }, [
                               _vm._v(
-                                "\n                                            TMM international, to act as forwarding agent for export control and\n                                            customs\n                                            purposes and to sign any Shipper’s Export Declaration (SED), or transmit\n                                            such export\n                                            information electronically, which may be required by law or regulation\n                                            in connection\n                                            with the exportation or transportation of any merchandise on behalf of\n                                            said U.S.\n                                            Principal Party in Interest. The U.S. Principal Party in Interest\n                                            certifies that\n                                            necessary and proper documentation to accurately complete the SED or\n                                            transmit the\n                                            information electronically is and will be provided to the said\n                                            forwarding Agent. The\n                                            U.S. Principal Party in Interest further understands that civil and\n                                            criminal\n                                            penalties may be imposed for making false or fraudulent statements or\n                                            for the\n                                            violation of any United State laws or regulations on exportation and\n                                            agrees to be\n                                            bound by all statements of said agent based upon information or\n                                            documentation\n                                            provided by exporter to said agent.\n                                            "
+                                "\n                                        WRITTEN AUTHORIZATION TO PREPARE OR "
                               ),
-                              _c("div", { staticClass: "content-signature" }, [
-                                _c("label", { staticClass: "label-content" }, [
-                                  _vm._v(
-                                    "\n                                                    Signature:\n                                                    "
+                              _c("br"),
+                              _vm._v(
+                                "TRANSMIT SHIPPER’S EXPORT\n                                        INFORMATION\n                                    "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("form", { attrs: { id: "usspi-form" } }, [
+                              _c(
+                                "div",
+                                { staticClass: "usspi-block__content" },
+                                [
+                                  _c(
+                                    "div",
+                                    { staticClass: "content-authorize" },
+                                    [
+                                      _vm._v(
+                                        "\n                                                I,\n                                                "
+                                      ),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value:
+                                              _vm.sendOrderForm.usppi
+                                                .firstExporterName,
+                                            expression:
+                                              "sendOrderForm.usppi.firstExporterName"
+                                          }
+                                        ],
+                                        staticClass: "inp-content",
+                                        attrs: { name: "firstExporterName" },
+                                        domProps: {
+                                          value:
+                                            _vm.sendOrderForm.usppi
+                                              .firstExporterName
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.sendOrderForm.usppi,
+                                              "firstExporterName",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value:
+                                              _vm.sendOrderForm.usppi
+                                                .secondExporterName,
+                                            expression:
+                                              "sendOrderForm.usppi.secondExporterName"
+                                          }
+                                        ],
+                                        staticClass: "inp-content",
+                                        attrs: { name: "secondExporterName" },
+                                        domProps: {
+                                          value:
+                                            _vm.sendOrderForm.usppi
+                                              .secondExporterName
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.sendOrderForm.usppi,
+                                              "secondExporterName",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      }),
+                                      _vm._v(
+                                        ", authorize\n                                            "
+                                      )
+                                    ]
                                   ),
-                                  _c("input", {
-                                    staticClass: "inp-content inp-signature",
-                                    attrs: { name: "signatureFirst" }
-                                  }),
-                                  _vm._v("*"),
-                                  _c("input", {
-                                    staticClass: "inp-content",
-                                    attrs: { name: "signatureSecond" }
-                                  })
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "content-print" }, [
-                                _c("label", { staticClass: "label-content" }, [
                                   _vm._v(
-                                    "\n                                                    Print Name:\n                                                    "
+                                    "\n                                            TMM international, to act as forwarding agent for export control and\n                                            customs\n                                            purposes and to sign any Shipper’s Export Declaration (SED), or transmit\n                                            such export\n                                            information electronically, which may be required by law or regulation\n                                            in connection\n                                            with the exportation or transportation of any merchandise on behalf of\n                                            said U.S.\n                                            Principal Party in Interest. The U.S. Principal Party in Interest\n                                            certifies that\n                                            necessary and proper documentation to accurately complete the SED or\n                                            transmit the\n                                            information electronically is and will be provided to the said\n                                            forwarding Agent. The\n                                            U.S. Principal Party in Interest further understands that civil and\n                                            criminal\n                                            penalties may be imposed for making false or fraudulent statements or\n                                            for the\n                                            violation of any United State laws or regulations on exportation and\n                                            agrees to be\n                                            bound by all statements of said agent based upon information or\n                                            documentation\n                                            provided by exporter to said agent.\n                                            "
                                   ),
-                                  _c("input", {
-                                    staticClass: "inp-content inp-print",
-                                    attrs: { name: "printName" }
-                                  })
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "content-ein" }, [
-                                _c("label", { staticClass: "label-content" }, [
-                                  _vm._v(
-                                    "\n                                                    E.I.N. (TAX ID):\n                                                    "
+                                  _c(
+                                    "div",
+                                    { staticClass: "content-signature" },
+                                    [
+                                      _c(
+                                        "label",
+                                        { staticClass: "label-content" },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    Signature:\n                                                    "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm.usppi
+                                                    .signatureFirst,
+                                                expression:
+                                                  "sendOrderForm.usppi.signatureFirst"
+                                              }
+                                            ],
+                                            staticClass:
+                                              "inp-content inp-signature",
+                                            attrs: { name: "signatureFirst" },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.usppi
+                                                  .signatureFirst
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm.usppi,
+                                                  "signatureFirst",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          }),
+                                          _vm._v("*"),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm.usppi
+                                                    .signatureSecond,
+                                                expression:
+                                                  "sendOrderForm.usppi.signatureSecond"
+                                              }
+                                            ],
+                                            staticClass: "inp-content",
+                                            attrs: { name: "signatureSecond" },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.usppi
+                                                  .signatureSecond
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm.usppi,
+                                                  "signatureSecond",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
                                   ),
-                                  _c("input", {
-                                    staticClass: "inp-content inp-ein",
-                                    attrs: { name: "einTaxId" }
-                                  })
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "content-title" }, [
-                                _c("label", { staticClass: "label-content" }, [
-                                  _vm._v(
-                                    "\n                                                    Title:\n                                                    "
-                                  ),
-                                  _c("input", {
-                                    staticClass: "inp-content inp-title",
-                                    attrs: { name: "titleFirst" }
-                                  }),
-                                  _vm._v("*"),
-                                  _c("input", {
-                                    staticClass: "inp-content",
-                                    attrs: { name: "titleSecond" }
-                                  })
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "content-date" }, [
-                                _c("label", { staticClass: "label-content" }, [
-                                  _vm._v(
-                                    "\n                                                    Date:\n                                                    "
-                                  ),
-                                  _c("input", {
-                                    staticClass: "inp-content inp-date",
-                                    attrs: { name: "dateFirst" }
-                                  }),
-                                  _vm._v("*"),
-                                  _c("input", {
-                                    staticClass: "inp-content",
-                                    attrs: { name: "dateSecond" }
-                                  })
-                                ])
-                              ])
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "content-print" }, [
+                                    _c(
+                                      "label",
+                                      { staticClass: "label-content" },
+                                      [
+                                        _vm._v(
+                                          "\n                                                    Print Name:\n                                                    "
+                                        ),
+                                        _c("input", {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value:
+                                                _vm.sendOrderForm.usppi
+                                                  .printName,
+                                              expression:
+                                                "sendOrderForm.usppi.printName"
+                                            }
+                                          ],
+                                          staticClass: "inp-content inp-print",
+                                          attrs: { name: "printName" },
+                                          domProps: {
+                                            value:
+                                              _vm.sendOrderForm.usppi.printName
+                                          },
+                                          on: {
+                                            input: function($event) {
+                                              if ($event.target.composing) {
+                                                return
+                                              }
+                                              _vm.$set(
+                                                _vm.sendOrderForm.usppi,
+                                                "printName",
+                                                $event.target.value
+                                              )
+                                            }
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "content-ein" }, [
+                                    _c(
+                                      "label",
+                                      { staticClass: "label-content" },
+                                      [
+                                        _vm._v(
+                                          "\n                                                    E.I.N. (TAX ID):\n                                                    "
+                                        ),
+                                        _c("input", {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value:
+                                                _vm.sendOrderForm.usppi
+                                                  .einTaxId,
+                                              expression:
+                                                "sendOrderForm.usppi.einTaxId"
+                                            }
+                                          ],
+                                          staticClass: "inp-content inp-ein",
+                                          attrs: { name: "einTaxId" },
+                                          domProps: {
+                                            value:
+                                              _vm.sendOrderForm.usppi.einTaxId
+                                          },
+                                          on: {
+                                            input: function($event) {
+                                              if ($event.target.composing) {
+                                                return
+                                              }
+                                              _vm.$set(
+                                                _vm.sendOrderForm.usppi,
+                                                "einTaxId",
+                                                $event.target.value
+                                              )
+                                            }
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "content-title" }, [
+                                    _c(
+                                      "label",
+                                      { staticClass: "label-content" },
+                                      [
+                                        _vm._v(
+                                          "\n                                                    Title:\n                                                    "
+                                        ),
+                                        _c("input", {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value:
+                                                _vm.sendOrderForm.usppi
+                                                  .titleFirst,
+                                              expression:
+                                                "sendOrderForm.usppi.titleFirst"
+                                            }
+                                          ],
+                                          staticClass: "inp-content inp-title",
+                                          attrs: { name: "titleFirst" },
+                                          domProps: {
+                                            value:
+                                              _vm.sendOrderForm.usppi.titleFirst
+                                          },
+                                          on: {
+                                            input: function($event) {
+                                              if ($event.target.composing) {
+                                                return
+                                              }
+                                              _vm.$set(
+                                                _vm.sendOrderForm.usppi,
+                                                "titleFirst",
+                                                $event.target.value
+                                              )
+                                            }
+                                          }
+                                        }),
+                                        _vm._v("*"),
+                                        _c("input", {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value:
+                                                _vm.sendOrderForm.usppi
+                                                  .titleSecond,
+                                              expression:
+                                                "sendOrderForm.usppi.titleSecond"
+                                            }
+                                          ],
+                                          staticClass: "inp-content",
+                                          attrs: { name: "titleSecond" },
+                                          domProps: {
+                                            value:
+                                              _vm.sendOrderForm.usppi
+                                                .titleSecond
+                                          },
+                                          on: {
+                                            input: function($event) {
+                                              if ($event.target.composing) {
+                                                return
+                                              }
+                                              _vm.$set(
+                                                _vm.sendOrderForm.usppi,
+                                                "titleSecond",
+                                                $event.target.value
+                                              )
+                                            }
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "content-date" }, [
+                                    _c(
+                                      "label",
+                                      { staticClass: "label-content" },
+                                      [
+                                        _vm._v(
+                                          "\n                                                    Date:\n                                                    "
+                                        ),
+                                        _c("input", {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value:
+                                                _vm.sendOrderForm.usppi
+                                                  .dateFirst,
+                                              expression:
+                                                "sendOrderForm.usppi.dateFirst"
+                                            }
+                                          ],
+                                          staticClass: "inp-content inp-date",
+                                          attrs: { name: "dateFirst" },
+                                          domProps: {
+                                            value:
+                                              _vm.sendOrderForm.usppi.dateFirst
+                                          },
+                                          on: {
+                                            input: function($event) {
+                                              if ($event.target.composing) {
+                                                return
+                                              }
+                                              _vm.$set(
+                                                _vm.sendOrderForm.usppi,
+                                                "dateFirst",
+                                                $event.target.value
+                                              )
+                                            }
+                                          }
+                                        }),
+                                        _vm._v("*"),
+                                        _c("input", {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value:
+                                                _vm.sendOrderForm.usppi
+                                                  .dateSecond,
+                                              expression:
+                                                "sendOrderForm.usppi.dateSecond"
+                                            }
+                                          ],
+                                          staticClass: "inp-content",
+                                          attrs: { name: "dateSecond" },
+                                          domProps: {
+                                            value:
+                                              _vm.sendOrderForm.usppi.dateSecond
+                                          },
+                                          on: {
+                                            input: function($event) {
+                                              if ($event.target.composing) {
+                                                return
+                                              }
+                                              _vm.$set(
+                                                _vm.sendOrderForm.usppi,
+                                                "dateSecond",
+                                                $event.target.value
+                                              )
+                                            }
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  ])
+                                ]
+                              )
                             ])
                           ])
-                        ]
-                      ),
+                        : _vm._e(),
                       _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: "fppi-block",
-                          attrs: { id: "fppi-block" }
-                        },
-                        [
-                          _c("div", { staticClass: "fppi-block__title" }, [
-                            _vm._v(
-                              "\n                                        EXPORT WRITTEN AUTHORIZATION FOR F.P.P.I."
-                            ),
-                            _c("br"),
-                            _vm._v(
-                              "\n                                        (Foreign Principal Party in Interest)\n                                    "
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "fppi-block__subtitle" }, [
-                            _vm._v(
-                              "\n                                        WRITTEN AUTHORIZATION"
-                            ),
-                            _c("br"),
-                            _vm._v(
-                              "\n                                        TO PREPARE OR TRANSMIT ELECTRONIC EXPORT INFORMATION (EEI)\n                                    "
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("form", { attrs: { id: "fppi-form" } })
-                        ]
-                      )
+                      _vm.foreignCheck
+                        ? _c("div", { staticClass: "fppi-block" }, [
+                            _c("div", { staticClass: "fppi-block__title" }, [
+                              _vm._v(
+                                "\n                                        EXPORT WRITTEN AUTHORIZATION FOR F.P.P.I."
+                              ),
+                              _c("br"),
+                              _vm._v(
+                                "\n                                        (Foreign Principal Party in Interest)\n                                    "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "fppi-block__subtitle" }, [
+                              _vm._v(
+                                "\n                                        WRITTEN AUTHORIZATION"
+                              ),
+                              _c("br"),
+                              _vm._v(
+                                "\n                                        TO PREPARE OR TRANSMIT ELECTRONIC EXPORT INFORMATION (EEI)\n                                    "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("form", { attrs: { id: "fppi-form" } }, [
+                              _c(
+                                "div",
+                                { staticClass: "fppi-block__content" },
+                                [
+                                  _c("p", [
+                                    _vm._v(
+                                      "\n                                                Know all men by these presents, that\n                                                "
+                                    ),
+                                    _c(
+                                      "span",
+                                      { staticClass: "content-name" },
+                                      [
+                                        _c("input", {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value:
+                                                _vm.sendOrderForm.fppi.name,
+                                              expression:
+                                                "sendOrderForm.fppi.name"
+                                            }
+                                          ],
+                                          staticClass: "inp-fppi",
+                                          attrs: { type: "text" },
+                                          domProps: {
+                                            value: _vm.sendOrderForm.fppi.name
+                                          },
+                                          on: {
+                                            input: function($event) {
+                                              if ($event.target.composing) {
+                                                return
+                                              }
+                                              _vm.$set(
+                                                _vm.sendOrderForm.fppi,
+                                                "name",
+                                                $event.target.value
+                                              )
+                                            }
+                                          }
+                                        })
+                                      ]
+                                    ),
+                                    _vm._v(
+                                      "\n                                                the F.P.P.I,\n                                            "
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("p", [
+                                    _vm._v(
+                                      "\n                                                Organized and doing business under the laws of (International\n                                                Country)\n                                                "
+                                    ),
+                                    _c(
+                                      "span",
+                                      { staticClass: "content-country" },
+                                      [
+                                        _c("input", {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value:
+                                                _vm.sendOrderForm.fppi.country,
+                                              expression:
+                                                "sendOrderForm.fppi.country"
+                                            }
+                                          ],
+                                          staticClass: "inp-fppi",
+                                          attrs: { type: "text" },
+                                          domProps: {
+                                            value:
+                                              _vm.sendOrderForm.fppi.country
+                                          },
+                                          on: {
+                                            input: function($event) {
+                                              if ($event.target.composing) {
+                                                return
+                                              }
+                                              _vm.$set(
+                                                _vm.sendOrderForm.fppi,
+                                                "country",
+                                                $event.target.value
+                                              )
+                                            }
+                                          }
+                                        })
+                                      ]
+                                    ),
+                                    _c("br"),
+                                    _vm._v(
+                                      "\n                                                And having an office and place of business located\n                                                "
+                                    ),
+                                    _c(
+                                      "span",
+                                      { staticClass: "content-address" },
+                                      [
+                                        _c("input", {
+                                          directives: [
+                                            {
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value:
+                                                _vm.sendOrderForm.fppi.address,
+                                              expression:
+                                                "sendOrderForm.fppi.address"
+                                            }
+                                          ],
+                                          staticClass: "inp-fppi",
+                                          attrs: { type: "text" },
+                                          domProps: {
+                                            value:
+                                              _vm.sendOrderForm.fppi.address
+                                          },
+                                          on: {
+                                            input: function($event) {
+                                              if ($event.target.composing) {
+                                                return
+                                              }
+                                              _vm.$set(
+                                                _vm.sendOrderForm.fppi,
+                                                "address",
+                                                $event.target.value
+                                              )
+                                            }
+                                          }
+                                        })
+                                      ]
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("p", [
+                                    _vm._v(
+                                      "\n                                                Hereby\n                                                authorizes ATMLMPINUTESRANATINIOCNA.Land on its behalf as a true and\n                                                lawful agent of the Foreign Principal Party in Interest (FPPI) for,\n                                                and\n                                                in the name, place and stead of the FPPI, from this date, either in\n                                                writing, electronically, or by other authorized means to:\n                                            "
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("p", [
+                                    _vm._v(
+                                      "\n                                                Act as\n                                                Forwarding Agent for Export Control, U.S. Census Bureau (Census\n                                                Bureau)\n                                                reporting, and U.S. Customs and Border Protection (CBP) purposes.\n                                                Also,\n                                                to prepare and transmit any Electronic Export Information (EEI) or\n                                                other\n                                                documents or records required to be filed by the Census Bureau, CBP,\n                                                the\n                                                Bureau of Industry and Security, or any other U.S. Government\n                                                agency,\n                                                and perform any other act that may be required by law or regulation\n                                                in\n                                                connection with the exportation or transportation of any goods\n                                                shipped\n                                                or consigned by or the USPPI, and to receive or ship any goods on\n                                                behalf\n                                                of the F.P.P.I.\n                                            "
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("p", [
+                                    _vm._v(
+                                      "\n                                                The FPPI hereby certifies that all statements and\n                                                information contained in the documentation provided to the\n                                                authorized\n                                                agent and relating to exportation will be true and correct.\n                                                Furthermore,\n                                                the FPPI (Foreign Principal Party in Interest) understands that\n                                                civil\n                                                and criminal penalties may be imposed for making false or fraudulent\n                                                statements or for the violation of any United States laws or\n                                                regulations\n                                                on exportation.\n                                            "
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("p", [
+                                    _vm._v(
+                                      "\n                                                This power of attorney is to remain in full forces and\n                                                effect until revocation in writing is duly given by the Foreign\n                                                Principal Party in Interest and received by the Authorized Agent.\n                                            "
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("label", { staticClass: "content-lbl" }, [
+                                    _vm._v(
+                                      "\n                                                In Witness Whereof,\n                                                "
+                                    ),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.sendOrderForm.fppi
+                                              .witnessWhereof,
+                                          expression:
+                                            "sendOrderForm.fppi.witnessWhereof"
+                                        }
+                                      ],
+                                      staticClass: "inp-fppi",
+                                      attrs: { type: "text" },
+                                      domProps: {
+                                        value:
+                                          _vm.sendOrderForm.fppi.witnessWhereof
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.sendOrderForm.fppi,
+                                            "witnessWhereof",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    })
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("label", { staticClass: "content-lbl" }, [
+                                    _vm._v(
+                                      "\n                                                Witness:\n                                                "
+                                    ),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.sendOrderForm.fppi.witness,
+                                          expression:
+                                            "sendOrderForm.fppi.witness"
+                                        }
+                                      ],
+                                      staticClass: "inp-fppi",
+                                      attrs: { type: "text" },
+                                      domProps: {
+                                        value: _vm.sendOrderForm.fppi.witness
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.sendOrderForm.fppi,
+                                            "witness",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    })
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("label", { staticClass: "content-lbl" }, [
+                                    _vm._v(
+                                      "\n                                                Signature:\n                                                "
+                                    ),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value:
+                                            _vm.sendOrderForm.fppi.signature,
+                                          expression:
+                                            "sendOrderForm.fppi.signature"
+                                        }
+                                      ],
+                                      staticClass: "inp-fppi",
+                                      attrs: { type: "text" },
+                                      domProps: {
+                                        value: _vm.sendOrderForm.fppi.signature
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.sendOrderForm.fppi,
+                                            "signature",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    })
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("label", { staticClass: "content-lbl" }, [
+                                    _vm._v(
+                                      "\n                                                Title:\n                                                "
+                                    ),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.sendOrderForm.fppi.title,
+                                          expression: "sendOrderForm.fppi.title"
+                                        }
+                                      ],
+                                      staticClass: "inp-fppi",
+                                      attrs: { type: "text" },
+                                      domProps: {
+                                        value: _vm.sendOrderForm.fppi.title
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.sendOrderForm.fppi,
+                                            "title",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    })
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("label", { staticClass: "content-lbl" }, [
+                                    _vm._v(
+                                      "\n                                                Date:\n                                                "
+                                    ),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.sendOrderForm.fppi.date,
+                                          expression: "sendOrderForm.fppi.date"
+                                        }
+                                      ],
+                                      staticClass: "inp-fppi",
+                                      attrs: { type: "text" },
+                                      domProps: {
+                                        value: _vm.sendOrderForm.fppi.date
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.sendOrderForm.fppi,
+                                            "date",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    })
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("label", { staticClass: "content-lbl" }, [
+                                    _vm._v(
+                                      "\n                                                Foreign Principal in Part in Interest (FPPI) V.A.T.#\n                                                "
+                                    ),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.sendOrderForm.fppi.foreign,
+                                          expression:
+                                            "sendOrderForm.fppi.foreign"
+                                        }
+                                      ],
+                                      staticClass: "inp-fppi",
+                                      attrs: { type: "text" },
+                                      domProps: {
+                                        value: _vm.sendOrderForm.fppi.foreign
+                                      },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.sendOrderForm.fppi,
+                                            "foreign",
+                                            $event.target.value
+                                          )
+                                        }
+                                      }
+                                    })
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("p", [
+                                    _vm._v(
+                                      "Export shipments are subject to inspection by U.S. Customs Service,\n                                                ALPI USA INC., and/or Office of Export Enforcement."
+                                    )
+                                  ])
+                                ]
+                              )
+                            ])
+                          ])
+                        : _vm._e()
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "slider-order__slide" }, [
+                    _c("div", { staticClass: "slider-order__slide slide-7" }, [
                       _c("div", { staticClass: "slider-order__title" }, [
                         _vm._v("DESCRIPTION OF GOODS")
                       ]),
@@ -71890,22 +72747,21 @@ $('body').on('click', '.buttons-control__btn', function () {
   if (!$this.hasClass('active')) {
     $('.buttons-control__btn').removeClass('active');
     $this.addClass('active');
-  }
+  } // if ($this.attr('data-order') === 'ocean') {
+  //     $('#slider-order').css('display', 'block');
+  //     $('#air-block').css('display', 'none');
+  //     $('#ocean-block').css('display', 'block');
+  //     $('#usspi-block').css('display', 'none');
+  // } else if ($this.attr('data-order') === 'air') {
+  //     $('#slider-order').css('display', 'block');
+  //     $('#air-block').css('display', 'block');
+  //     $('#ocean-block').css('display', 'none');
+  //     $('#usspi-block').css('display', 'none');
+  // } else {
+  //     $('#usspi-block').css('display', 'block');
+  //     $('#slider-order').css('display', 'none');
+  // }
 
-  if ($this.attr('data-order') === 'ocean') {
-    $('#slider-order').css('display', 'block');
-    $('#air-block').css('display', 'none');
-    $('#ocean-block').css('display', 'block');
-    $('#usspi-block').css('display', 'none');
-  } else if ($this.attr('data-order') === 'air') {
-    $('#slider-order').css('display', 'block');
-    $('#air-block').css('display', 'block');
-    $('#ocean-block').css('display', 'none');
-    $('#usspi-block').css('display', 'none');
-  } else {
-    $('#usspi-block').css('display', 'block');
-    $('#slider-order').css('display', 'none');
-  }
 }); // === AGREE === //
 
 $('body').on('click', '#agree-checked', function () {
@@ -72169,93 +73025,91 @@ function validEmail(_this) {
 
 
 function validFormSuccess() {
-  sendFormShipper();
-  alert('Success!'); // === RESET === //
-
+  // sendFormShipper();
+  // alert('Success!');
+  // === RESET === //
   $('form').trigger('reset');
   $('#btn-continue').addClass('btn-disabled').prop('disabled', true);
   $('#agree-checked').prop('checked', false);
 } // === FORM SHIPPER === //
 
 
-function sendFormShipper() {
-  var $arrFormShipper = $('#form-shipper').serializeArray(); // name value
-
-  var $arrFormConsignee = $('#form-consignee').serializeArray();
-  var $arrFormSendDocumentTo = $('#form-send-documents-to').serializeArray();
-  var $arrFormNotifyParty = $('#form-notify-party').serializeArray();
-  var $arrFormDescriptionOfGoods = $('#form-description-of-goods').serializeArray();
-  var $arrFormVehicle = $('#form-vehicle').serializeArray();
-  var $arrFormComment = $('#form-comment').serializeArray(); // console.log($arrFormShipper);
+function sendFormShipper() {// let $arrFormShipper = $('#form-shipper').serializeArray(); // name value
+  // let $arrFormConsignee = $('#form-consignee').serializeArray();
+  // let $arrFormSendDocumentTo = $('#form-send-documents-to').serializeArray();
+  // let $arrFormNotifyParty = $('#form-notify-party').serializeArray();
+  // let $arrFormDescriptionOfGoods = $('#form-description-of-goods').serializeArray();
+  // let $arrFormVehicle = $('#form-vehicle').serializeArray();
+  // let $arrFormComment = $('#form-comment').serializeArray();
+  // console.log($arrFormShipper);
   // console.log($arrFormConsignee);
   // console.log($arrFormSendDocumentTo);
   // console.log($arrFormNotifyParty);
   // console.log($arrFormDescriptionOfGoods);
   // console.log($arrFormVehicle);
   // console.log($arrFormComment);
-
-  var $sendForms = {
-    shipper: {},
-    consignee: {},
-    sendDocumentTo: {},
-    notifyParty: {},
-    descriptionOfGoods: {},
-    vehicle: {},
-    comment: {}
-  };
-
-  for (var i = 0; i < $arrFormShipper.length; i++) {
-    $sendForms.shipper[$arrFormShipper[i].name] = $arrFormShipper[i].value === 'on' ? true : $arrFormShipper[i].value;
-  }
-
-  for (var _i4 = 0; _i4 < $arrFormConsignee.length; _i4++) {
-    $sendForms.consignee[$arrFormConsignee[_i4].name] = $arrFormConsignee[_i4].value;
-  }
-
-  for (var _i5 = 0; _i5 < $arrFormSendDocumentTo.length; _i5++) {
-    $sendForms.sendDocumentTo[$arrFormSendDocumentTo[_i5].name] = $arrFormSendDocumentTo[_i5].value;
-  }
-
-  for (var _i6 = 0; _i6 < $arrFormNotifyParty.length; _i6++) {
-    $sendForms.notifyParty[$arrFormNotifyParty[_i6].name] = $arrFormNotifyParty[_i6].value;
-  }
-
-  for (var _i7 = 0; _i7 < $arrFormDescriptionOfGoods.length; _i7++) {
-    $sendForms.descriptionOfGoods[$arrFormDescriptionOfGoods[_i7].name] = $arrFormDescriptionOfGoods[_i7].value === 'on' ? true : $arrFormDescriptionOfGoods[_i7].value;
-  }
-
-  for (var _i8 = 0; _i8 < $arrFormVehicle.length; _i8++) {
-    $sendForms.vehicle[$arrFormVehicle[_i8].name] = $arrFormVehicle[_i8].value === 'on' ? true : $arrFormVehicle[_i8].value;
-  }
-
-  for (var _i9 = 0; _i9 < $arrFormComment.length; _i9++) {
-    $sendForms.comment[$arrFormComment[_i9].name] = $arrFormComment[_i9].value;
-  }
-
-  console.log('%c send form', 'color: green; font-size: 16px; font-weight: 600;', $sendForms);
-  sendFormHandler($sendForms);
+  // let $sendForms = {
+  //     shipper: {},
+  //     consignee: {},
+  //     sendDocumentTo: {},
+  //     notifyParty: {},
+  //     descriptionOfGoods: {},
+  //     vehicle: {},
+  //     comment: {}
+  // };
+  //
+  // for (let i = 0; i < $arrFormShipper.length; i++) {
+  //     $sendForms.shipper[$arrFormShipper[i].name] = ($arrFormShipper[i].value === 'on') ? true : $arrFormShipper[i].value;
+  // }
+  //
+  // for (let i = 0; i < $arrFormConsignee.length; i++) {
+  //     $sendForms.consignee[$arrFormConsignee[i].name] = $arrFormConsignee[i].value;
+  // }
+  //
+  // for (let i = 0; i < $arrFormSendDocumentTo.length; i++) {
+  //     $sendForms.sendDocumentTo[$arrFormSendDocumentTo[i].name] = $arrFormSendDocumentTo[i].value;
+  // }
+  //
+  // for (let i = 0; i < $arrFormNotifyParty.length; i++) {
+  //     $sendForms.notifyParty[$arrFormNotifyParty[i].name] = $arrFormNotifyParty[i].value;
+  // }
+  //
+  // for (let i = 0; i < $arrFormDescriptionOfGoods.length; i++) {
+  //     $sendForms.descriptionOfGoods[$arrFormDescriptionOfGoods[i].name] = ($arrFormDescriptionOfGoods[i].value === 'on') ? true : $arrFormDescriptionOfGoods[i].value;
+  // }
+  //
+  // for (let i = 0; i < $arrFormVehicle.length; i++) {
+  //     $sendForms.vehicle[$arrFormVehicle[i].name] = ($arrFormVehicle[i].value === 'on') ? true : $arrFormVehicle[i].value;
+  // }
+  //
+  // for (let i = 0; i < $arrFormComment.length; i++) {
+  //     $sendForms.comment[$arrFormComment[i].name] = $arrFormComment[i].value;
+  // }
+  //
+  // console.log('%c send form', 'color: green; font-size: 16px; font-weight: 600;', $sendForms);
+  //
+  // sendFormHandler($sendForms);
 }
 
-function sendFormHandler(data) {
-  $.ajax({
-    type: "POST",
-    url: "/api/email/air_shipping_order",
-    data: $.param(data),
-    success: function success() {
-      $('#message-success').addClass('fadeIn');
-      $('#form-quick-quote').trigger("reset");
-      setTimeout(function () {
-        $('#message-success').removeClass('fadeIn');
-      }, 4000);
-    },
-    error: function error(_error) {
-      console.log('Error', _error);
-      $('#message-server-error').addClass('fadeIn');
-      setTimeout(function () {
-        $('#message-server-error').removeClass('fadeIn');
-      }, 4000);
-    }
-  });
+function sendFormHandler(data) {// $.ajax({
+  //     type: "POST",
+  //     url: "/api/email/air_shipping_order",
+  //     data: $.param(data),
+  //     success: function () {
+  //         $('#message-success').addClass('fadeIn');
+  //         $('#form-quick-quote').trigger("reset");
+  //         setTimeout(function () {
+  //             $('#message-success').removeClass('fadeIn');
+  //         }, 4000);
+  //     },
+  //     error: function (error) {
+  //         console.log('Error', error);
+  //         $('#message-server-error').addClass('fadeIn');
+  //         setTimeout(function () {
+  //             $('#message-server-error').removeClass('fadeIn');
+  //         }, 4000);
+  //     }
+  // });
 }
 
 /***/ }),
