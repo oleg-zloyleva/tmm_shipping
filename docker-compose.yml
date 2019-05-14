@@ -3,7 +3,6 @@ services:
 
   mailhog:
     image: mailhog/mailhog:latest
-    container_name: "${DOCKER_PREFIX}-mailhog"
     ports:
       - "8025:8025"
     networks:
@@ -13,7 +12,6 @@ services:
     build:
       context: .
       dockerfile: ./docker/nodejs/Dockerfile
-    container_name: "${DOCKER_PREFIX}-nodejs"
     depends_on:
       - app
     ports:
@@ -29,7 +27,6 @@ services:
       context: .
       dockerfile: ./docker/php-fpm/Dockerfile
     image: digitalocean.com/php
-    container_name: "${DOCKER_PREFIX}-app"
     restart: unless-stopped
     tty: true
     depends_on:
@@ -48,7 +45,6 @@ services:
   #Nginx Service
   webserver:
     image: nginx:alpine
-    container_name: "${DOCKER_PREFIX}-webserver"
     restart: unless-stopped
     tty: true
     depends_on:
@@ -65,7 +61,6 @@ services:
   #MySQL Service
   db:
     image: mysql:5.7.22
-    container_name: "${DOCKER_PREFIX}-db"
     restart: unless-stopped
     tty: true
     ports:
