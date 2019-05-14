@@ -33,14 +33,17 @@
 
   .slider-order {
     position: relative;
-    min-height: 470px;
     margin: 0;
 
     &__slide {
       outline: none;
 
-      &:nth-child(1) {
+      &.slide-1 {
         min-height: 650px;
+      }
+
+      &.slide-4 {
+        min-height: 470px;
       }
     }
 
@@ -664,8 +667,25 @@
 
 @media screen and (max-width: 767px) {
   #order {
+    .slick-slider {
+      padding-bottom: 80px;
+    }
+
     .slider-order {
-      padding-bottom: 75px;
+
+      &__slide {
+        &.slide-1 {
+          min-height: 880px;
+        }
+
+        &.slide-4 {
+          min-height: 600px;
+        }
+      }
+
+      &__inp-usd {
+        margin-left: 10px;
+      }
 
       &__body {
         align-items: center;
@@ -707,6 +727,7 @@
     .slick-dots {
       display: block;
       width: 100%;
+      bottom: -20px;
     }
   }
 }

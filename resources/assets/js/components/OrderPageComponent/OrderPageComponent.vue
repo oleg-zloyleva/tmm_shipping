@@ -15,7 +15,7 @@
                         <div class="slider-order" id="slider-order">
                             <slick ref="slick" :options="slickOptions">
                                 <!-- SHIPPER -->
-                                <div class="slider-order__slide">
+                                <div class="slider-order__slide slide-1">
                                     <div class="slider-order__title">SHIPPER</div>
                                     <div class="checked-block">
                                         <input name="delivery" id="citizen" class="inp-checkbox" type="radio"
@@ -139,7 +139,7 @@
                                     </form>
                                 </div>
                                 <!-- CONSIGNEE -->
-                                <div class="slider-order__slide">
+                                <div class="slider-order__slide slide-2">
                                     <div class="slider-order__title">CONSIGNEE</div>
                                     <form id="form-consignee">
                                         <div class="slider-order__body">
@@ -238,7 +238,7 @@
                                     </form>
                                 </div>
                                 <!-- NOTIFY PARTY -->
-                                <div class="slider-order__slide">
+                                <div class="slider-order__slide slide-3">
                                     <div class="slider-order__title">NOTIFY PARTY</div>
                                     <form id="form-notify-party">
                                         <div class="slider-order__body-left">
@@ -326,7 +326,7 @@
                                     </form>
                                 </div>
                                 <!-- DESCRIPTION -->
-                                <div class="slider-order__slide">
+                                <div class="slider-order__slide slide-4">
                                     <div v-if="!vehicleCheck">
                                         <div class="slider-order__title">DESCRIPTION OF GOODS</div>
                                         <div>
@@ -517,7 +517,7 @@
                                     </div>
                                 </div>
                                 <!-- SEND DOCUMENTS TO -->
-                                <div class="slider-order__slide">
+                                <div class="slider-order__slide slide-5">
                                     <form id="form-send-documents-to">
                                         <div class="slider-order__title">SEND DOCUMENTS TO:</div>
                                         <div class="slider-order__body-left">
@@ -618,7 +618,7 @@
                                     </form>
                                 </div>
                                 <!-- USPPI -->
-                                <div class="slider-order__slide">
+                                <div class="slider-order__slide slide-6">
                                     <div class="usspi-block" v-if="!foreignCheck">
                                         <div class="usspi-block__title">
                                             WRITTEN AUTHORIZATION TO PREPARE OR <br>TRANSMIT SHIPPER’S EXPORT
@@ -817,7 +817,7 @@
                                     </div>
                                 </div>
                                 <!-- COMMENTS -->
-                                <div class="slider-order__slide">
+                                <div class="slider-order__slide slide-7">
                                     <div class="slider-order__title">DESCRIPTION OF GOODS</div>
                                     <form id="form-comment">
                                         <div class="slider-order__comment">

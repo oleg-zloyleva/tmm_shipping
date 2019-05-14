@@ -51664,7 +51664,7 @@ var render = function() {
                   "slick",
                   { ref: "slick", attrs: { options: _vm.slickOptions } },
                   [
-                    _c("div", { staticClass: "slider-order__slide" }, [
+                    _c("div", { staticClass: "slider-order__slide slide-1" }, [
                       _c("div", { staticClass: "slider-order__title" }, [
                         _vm._v("SHIPPER")
                       ]),
@@ -52384,7 +52384,7 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "slider-order__slide" }, [
+                    _c("div", { staticClass: "slider-order__slide slide-2" }, [
                       _c("div", { staticClass: "slider-order__title" }, [
                         _vm._v("CONSIGNEE")
                       ]),
@@ -52908,7 +52908,7 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "slider-order__slide" }, [
+                    _c("div", { staticClass: "slider-order__slide slide-3" }, [
                       _c("div", { staticClass: "slider-order__title" }, [
                         _vm._v("NOTIFY PARTY")
                       ]),
@@ -53377,7 +53377,7 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "slider-order__slide" }, [
+                    _c("div", { staticClass: "slider-order__slide slide-4" }, [
                       !_vm.vehicleCheck
                         ? _c("div", [
                             _c("div", { staticClass: "slider-order__title" }, [
@@ -54871,7 +54871,7 @@ var render = function() {
                         : _vm._e()
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "slider-order__slide" }, [
+                    _c("div", { staticClass: "slider-order__slide slide-5" }, [
                       _c("form", { attrs: { id: "form-send-documents-to" } }, [
                         _c("div", { staticClass: "slider-order__title" }, [
                           _vm._v("SEND DOCUMENTS TO:")
@@ -55401,7 +55401,7 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "slider-order__slide" }, [
+                    _c("div", { staticClass: "slider-order__slide slide-6" }, [
                       !_vm.foreignCheck
                         ? _c("div", { staticClass: "usspi-block" }, [
                             _c("div", { staticClass: "usspi-block__title" }, [
@@ -56218,7 +56218,7 @@ var render = function() {
                         : _vm._e()
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "slider-order__slide" }, [
+                    _c("div", { staticClass: "slider-order__slide slide-7" }, [
                       _c("div", { staticClass: "slider-order__title" }, [
                         _vm._v("DESCRIPTION OF GOODS")
                       ]),
