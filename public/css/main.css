@@ -4041,6 +4041,10 @@ input:disabled {
   min-height: 470px;
 }
 
+#order .slider-order__slide.slide-7 {
+  min-height: 500px;
+}
+
 #order .slider-order__title {
   text-align: center;
   font-size: 24px;
@@ -4645,11 +4649,16 @@ input:disabled {
 }
 
 @media screen and (max-width: 575px) {
+  #order .slider-order__inp {
+    width: 170px;
+  }
+
   #order .slider-order__inp-desc {
     width: 170px;
   }
 
   #order .slider-order__inp-usd {
+    width: 80px;
     margin-left: 10px;
   }
 

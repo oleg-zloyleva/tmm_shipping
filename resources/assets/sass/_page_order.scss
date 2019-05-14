@@ -45,6 +45,10 @@
       &.slide-4 {
         min-height: 470px;
       }
+
+      &.slide-7 {
+        min-height: 500px;
+      }
     }
 
     &__title {
@@ -60,7 +64,6 @@
       align-items: flex-start;
       justify-content: space-around;
       flex-wrap: wrap;
-      //margin-bottom: 30px;
 
       &-left {
         display: flex;
@@ -736,11 +739,14 @@
   #order {
     .slider-order {
       &__inp {
+        width: 170px;
+
         &-desc {
           width: 170px;
         }
 
         &-usd {
+          width: 80px;
           margin-left: 10px;
         }
       }
