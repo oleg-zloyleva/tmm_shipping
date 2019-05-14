@@ -14,3 +14,8 @@
 //        $api->post('usspi_form', ['uses' => "App\\Api\\V1\\Controllers\\EmailNotification@usspiForm"]);
 //    });
 //});
+
+
+Route::post('/email/quick_quote', 'Api\EmailNotification@quickQuote')->name('email.quick_quote');
+Route::post('/email/contact_us', 'Api\EmailNotification@contactUs')->name('email.contact_us');
+
