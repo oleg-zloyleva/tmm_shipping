@@ -4034,6 +4034,10 @@ input:disabled {
   outline: none;
 }
 
+#order .slider-order__slide:nth-child(1) {
+  min-height: 650px;
+}
+
 #order .slider-order__title {
   text-align: center;
   font-size: 24px;

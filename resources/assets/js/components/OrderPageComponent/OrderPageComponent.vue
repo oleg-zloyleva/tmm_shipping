@@ -628,8 +628,10 @@
                                             <div class="usspi-block__content">
                                                 <div class="content-authorize">
                                                     I,
-                                                    <input class="inp-content" name="firstExporterName" v-model="sendOrderForm.usppi.firstExporterName">
-                                                    <input class="inp-content" name="secondExporterName" v-model="sendOrderForm.usppi.secondExporterName">, authorize
+                                                    <input class="inp-content" name="firstExporterName"
+                                                           v-model="sendOrderForm.usppi.firstExporterName">
+                                                    <input class="inp-content" name="secondExporterName"
+                                                           v-model="sendOrderForm.usppi.secondExporterName">, authorize
                                                 </div>
                                                 TMM international, to act as forwarding agent for export control and
                                                 customs
@@ -657,34 +659,42 @@
                                                 <div class="content-signature">
                                                     <label class="label-content">
                                                         Signature:
-                                                        <input class="inp-content inp-signature" name="signatureFirst" v-model="sendOrderForm.usppi.signatureFirst">*<input
-                                                            class="inp-content" name="signatureSecond" v-model="sendOrderForm.usppi.signatureSecond">
+                                                        <input class="inp-content inp-signature" name="signatureFirst"
+                                                               v-model="sendOrderForm.usppi.signatureFirst">*<input
+                                                            class="inp-content" name="signatureSecond"
+                                                            v-model="sendOrderForm.usppi.signatureSecond">
                                                     </label>
                                                 </div>
                                                 <div class="content-print">
                                                     <label class="label-content">
                                                         Print Name:
-                                                        <input class="inp-content inp-print" name="printName" v-model="sendOrderForm.usppi.printName">
+                                                        <input class="inp-content inp-print" name="printName"
+                                                               v-model="sendOrderForm.usppi.printName">
                                                     </label>
                                                 </div>
                                                 <div class="content-ein">
                                                     <label class="label-content">
                                                         E.I.N. (TAX ID):
-                                                        <input class="inp-content inp-ein" name="einTaxId" v-model="sendOrderForm.usppi.einTaxId">
+                                                        <input class="inp-content inp-ein" name="einTaxId"
+                                                               v-model="sendOrderForm.usppi.einTaxId">
                                                     </label>
                                                 </div>
                                                 <div class="content-title">
                                                     <label class="label-content">
                                                         Title:
-                                                        <input class="inp-content inp-title" name="titleFirst" v-model="sendOrderForm.usppi.titleFirst">*<input
-                                                            class="inp-content" name="titleSecond" v-model="sendOrderForm.usppi.titleSecond">
+                                                        <input class="inp-content inp-title" name="titleFirst"
+                                                               v-model="sendOrderForm.usppi.titleFirst">*<input
+                                                            class="inp-content" name="titleSecond"
+                                                            v-model="sendOrderForm.usppi.titleSecond">
                                                     </label>
                                                 </div>
                                                 <div class="content-date">
                                                     <label class="label-content">
                                                         Date:
-                                                        <input class="inp-content inp-date" name="dateFirst" v-model="sendOrderForm.usppi.dateFirst">*<input
-                                                            class="inp-content" name="dateSecond" v-model="sendOrderForm.usppi.dateSecond">
+                                                        <input class="inp-content inp-date" name="dateFirst"
+                                                               v-model="sendOrderForm.usppi.dateFirst">*<input
+                                                            class="inp-content" name="dateSecond"
+                                                            v-model="sendOrderForm.usppi.dateSecond">
                                                     </label>
                                                 </div>
                                             </div>
@@ -705,7 +715,8 @@
                                                 <p>
                                                     Know all men by these presents, that
                                                     <span class="content-name">
-                                                        <input class="inp-fppi" type="text" v-model="sendOrderForm.fppi.name">
+                                                        <input class="inp-fppi" type="text"
+                                                               v-model="sendOrderForm.fppi.name">
                                                     </span>
                                                     the F.P.P.I,
                                                 </p>
@@ -713,11 +724,13 @@
                                                     Organized and doing business under the laws of (International
                                                     Country)
                                                     <span class="content-country">
-                                                        <input class="inp-fppi" type="text" v-model="sendOrderForm.fppi.country">
+                                                        <input class="inp-fppi" type="text"
+                                                               v-model="sendOrderForm.fppi.country">
                                                     </span><br>
                                                     And having an office and place of business located
                                                     <span class="content-address">
-                                                        <input class="inp-fppi" type="text" v-model="sendOrderForm.fppi.address">
+                                                        <input class="inp-fppi" type="text"
+                                                               v-model="sendOrderForm.fppi.address">
                                                     </span>
                                                 </p>
                                                 <p>
@@ -768,27 +781,33 @@
                                                 </p>
                                                 <label class="content-lbl">
                                                     In Witness Whereof,
-                                                    <input class="inp-fppi" type="text" v-model="sendOrderForm.fppi.witnessWhereof">
+                                                    <input class="inp-fppi" type="text"
+                                                           v-model="sendOrderForm.fppi.witnessWhereof">
                                                 </label>
                                                 <label class="content-lbl">
                                                     Witness:
-                                                    <input type="text" class="inp-fppi" v-model="sendOrderForm.fppi.witness">
+                                                    <input type="text" class="inp-fppi"
+                                                           v-model="sendOrderForm.fppi.witness">
                                                 </label>
                                                 <label class="content-lbl">
                                                     Signature:
-                                                    <input type="text" class="inp-fppi" v-model="sendOrderForm.fppi.signature">
+                                                    <input type="text" class="inp-fppi"
+                                                           v-model="sendOrderForm.fppi.signature">
                                                 </label>
                                                 <label class="content-lbl">
                                                     Title:
-                                                    <input type="text" class="inp-fppi" v-model="sendOrderForm.fppi.title">
+                                                    <input type="text" class="inp-fppi"
+                                                           v-model="sendOrderForm.fppi.title">
                                                 </label>
                                                 <label class="content-lbl">
                                                     Date:
-                                                    <input type="text" class="inp-fppi" v-model="sendOrderForm.fppi.date">
+                                                    <input type="text" class="inp-fppi"
+                                                           v-model="sendOrderForm.fppi.date">
                                                 </label>
                                                 <label class="content-lbl">
                                                     Foreign Principal in Part in Interest (FPPI) V.A.T.#
-                                                    <input type="text" class="inp-fppi" v-model="sendOrderForm.fppi.foreign">
+                                                    <input type="text" class="inp-fppi"
+                                                           v-model="sendOrderForm.fppi.foreign">
                                                 </label>
 
                                                 <p>Export shipments are subject to inspection by U.S. Customs Service,
@@ -981,6 +1000,27 @@
         methods: {
             sendForms() {
                 console.log('formOrderSend', this.sendOrderForm);
+
+                axios({
+                    method: 'post',
+                    url: '/api/email/air_shipping_order',
+                    data: $.param(this.sendOrderForm)
+                })
+                    .then(res => {
+                        console.log(res);
+                        $('#message-success').addClass('fadeIn');
+                        $('#form-quick-quote').trigger("reset");
+                        setTimeout(function () {
+                            $('#message-success').removeClass('fadeIn');
+                        }, 4000);
+                    })
+                    .catch(err => {
+                        console.log('Error', err);
+                        $('#message-server-error').addClass('fadeIn');
+                        setTimeout(function () {
+                            $('#message-server-error').removeClass('fadeIn');
+                        }, 4000);
+                    });
             },
             uploadFile(el) {
                 this.readURL(el.target);

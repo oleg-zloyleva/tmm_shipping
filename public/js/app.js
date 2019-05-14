@@ -12677,6 +12677,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "OrderPageComponent",
@@ -12819,6 +12838,24 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     sendForms: function sendForms() {
       console.log('formOrderSend', this.sendOrderForm);
+      axios({
+        method: 'post',
+        url: '/api/email/air_shipping_order',
+        data: $.param(this.sendOrderForm)
+      }).then(function (res) {
+        console.log(res);
+        $('#message-success').addClass('fadeIn');
+        $('#form-quick-quote').trigger("reset");
+        setTimeout(function () {
+          $('#message-success').removeClass('fadeIn');
+        }, 4000);
+      }).catch(function (err) {
+        console.log('Error', err);
+        $('#message-server-error').addClass('fadeIn');
+        setTimeout(function () {
+          $('#message-server-error').removeClass('fadeIn');
+        }, 4000);
+      });
     },
     uploadFile: function uploadFile(el) {
       this.readURL(el.target);
@@ -72710,22 +72747,21 @@ $('body').on('click', '.buttons-control__btn', function () {
   if (!$this.hasClass('active')) {
     $('.buttons-control__btn').removeClass('active');
     $this.addClass('active');
-  }
+  } // if ($this.attr('data-order') === 'ocean') {
+  //     $('#slider-order').css('display', 'block');
+  //     $('#air-block').css('display', 'none');
+  //     $('#ocean-block').css('display', 'block');
+  //     $('#usspi-block').css('display', 'none');
+  // } else if ($this.attr('data-order') === 'air') {
+  //     $('#slider-order').css('display', 'block');
+  //     $('#air-block').css('display', 'block');
+  //     $('#ocean-block').css('display', 'none');
+  //     $('#usspi-block').css('display', 'none');
+  // } else {
+  //     $('#usspi-block').css('display', 'block');
+  //     $('#slider-order').css('display', 'none');
+  // }
 
-  if ($this.attr('data-order') === 'ocean') {
-    $('#slider-order').css('display', 'block');
-    $('#air-block').css('display', 'none');
-    $('#ocean-block').css('display', 'block');
-    $('#usspi-block').css('display', 'none');
-  } else if ($this.attr('data-order') === 'air') {
-    $('#slider-order').css('display', 'block');
-    $('#air-block').css('display', 'block');
-    $('#ocean-block').css('display', 'none');
-    $('#usspi-block').css('display', 'none');
-  } else {
-    $('#usspi-block').css('display', 'block');
-    $('#slider-order').css('display', 'none');
-  }
 }); // === AGREE === //
 
 $('body').on('click', '#agree-checked', function () {
@@ -72989,93 +73025,91 @@ function validEmail(_this) {
 
 
 function validFormSuccess() {
-  sendFormShipper();
-  alert('Success!'); // === RESET === //
-
+  // sendFormShipper();
+  // alert('Success!');
+  // === RESET === //
   $('form').trigger('reset');
   $('#btn-continue').addClass('btn-disabled').prop('disabled', true);
   $('#agree-checked').prop('checked', false);
 } // === FORM SHIPPER === //
 
 
-function sendFormShipper() {
-  var $arrFormShipper = $('#form-shipper').serializeArray(); // name value
-
-  var $arrFormConsignee = $('#form-consignee').serializeArray();
-  var $arrFormSendDocumentTo = $('#form-send-documents-to').serializeArray();
-  var $arrFormNotifyParty = $('#form-notify-party').serializeArray();
-  var $arrFormDescriptionOfGoods = $('#form-description-of-goods').serializeArray();
-  var $arrFormVehicle = $('#form-vehicle').serializeArray();
-  var $arrFormComment = $('#form-comment').serializeArray(); // console.log($arrFormShipper);
+function sendFormShipper() {// let $arrFormShipper = $('#form-shipper').serializeArray(); // name value
+  // let $arrFormConsignee = $('#form-consignee').serializeArray();
+  // let $arrFormSendDocumentTo = $('#form-send-documents-to').serializeArray();
+  // let $arrFormNotifyParty = $('#form-notify-party').serializeArray();
+  // let $arrFormDescriptionOfGoods = $('#form-description-of-goods').serializeArray();
+  // let $arrFormVehicle = $('#form-vehicle').serializeArray();
+  // let $arrFormComment = $('#form-comment').serializeArray();
+  // console.log($arrFormShipper);
   // console.log($arrFormConsignee);
   // console.log($arrFormSendDocumentTo);
   // console.log($arrFormNotifyParty);
   // console.log($arrFormDescriptionOfGoods);
   // console.log($arrFormVehicle);
   // console.log($arrFormComment);
-
-  var $sendForms = {
-    shipper: {},
-    consignee: {},
-    sendDocumentTo: {},
-    notifyParty: {},
-    descriptionOfGoods: {},
-    vehicle: {},
-    comment: {}
-  };
-
-  for (var i = 0; i < $arrFormShipper.length; i++) {
-    $sendForms.shipper[$arrFormShipper[i].name] = $arrFormShipper[i].value === 'on' ? true : $arrFormShipper[i].value;
-  }
-
-  for (var _i4 = 0; _i4 < $arrFormConsignee.length; _i4++) {
-    $sendForms.consignee[$arrFormConsignee[_i4].name] = $arrFormConsignee[_i4].value;
-  }
-
-  for (var _i5 = 0; _i5 < $arrFormSendDocumentTo.length; _i5++) {
-    $sendForms.sendDocumentTo[$arrFormSendDocumentTo[_i5].name] = $arrFormSendDocumentTo[_i5].value;
-  }
-
-  for (var _i6 = 0; _i6 < $arrFormNotifyParty.length; _i6++) {
-    $sendForms.notifyParty[$arrFormNotifyParty[_i6].name] = $arrFormNotifyParty[_i6].value;
-  }
-
-  for (var _i7 = 0; _i7 < $arrFormDescriptionOfGoods.length; _i7++) {
-    $sendForms.descriptionOfGoods[$arrFormDescriptionOfGoods[_i7].name] = $arrFormDescriptionOfGoods[_i7].value === 'on' ? true : $arrFormDescriptionOfGoods[_i7].value;
-  }
-
-  for (var _i8 = 0; _i8 < $arrFormVehicle.length; _i8++) {
-    $sendForms.vehicle[$arrFormVehicle[_i8].name] = $arrFormVehicle[_i8].value === 'on' ? true : $arrFormVehicle[_i8].value;
-  }
-
-  for (var _i9 = 0; _i9 < $arrFormComment.length; _i9++) {
-    $sendForms.comment[$arrFormComment[_i9].name] = $arrFormComment[_i9].value;
-  }
-
-  console.log('%c send form', 'color: green; font-size: 16px; font-weight: 600;', $sendForms);
-  sendFormHandler($sendForms);
+  // let $sendForms = {
+  //     shipper: {},
+  //     consignee: {},
+  //     sendDocumentTo: {},
+  //     notifyParty: {},
+  //     descriptionOfGoods: {},
+  //     vehicle: {},
+  //     comment: {}
+  // };
+  //
+  // for (let i = 0; i < $arrFormShipper.length; i++) {
+  //     $sendForms.shipper[$arrFormShipper[i].name] = ($arrFormShipper[i].value === 'on') ? true : $arrFormShipper[i].value;
+  // }
+  //
+  // for (let i = 0; i < $arrFormConsignee.length; i++) {
+  //     $sendForms.consignee[$arrFormConsignee[i].name] = $arrFormConsignee[i].value;
+  // }
+  //
+  // for (let i = 0; i < $arrFormSendDocumentTo.length; i++) {
+  //     $sendForms.sendDocumentTo[$arrFormSendDocumentTo[i].name] = $arrFormSendDocumentTo[i].value;
+  // }
+  //
+  // for (let i = 0; i < $arrFormNotifyParty.length; i++) {
+  //     $sendForms.notifyParty[$arrFormNotifyParty[i].name] = $arrFormNotifyParty[i].value;
+  // }
+  //
+  // for (let i = 0; i < $arrFormDescriptionOfGoods.length; i++) {
+  //     $sendForms.descriptionOfGoods[$arrFormDescriptionOfGoods[i].name] = ($arrFormDescriptionOfGoods[i].value === 'on') ? true : $arrFormDescriptionOfGoods[i].value;
+  // }
+  //
+  // for (let i = 0; i < $arrFormVehicle.length; i++) {
+  //     $sendForms.vehicle[$arrFormVehicle[i].name] = ($arrFormVehicle[i].value === 'on') ? true : $arrFormVehicle[i].value;
+  // }
+  //
+  // for (let i = 0; i < $arrFormComment.length; i++) {
+  //     $sendForms.comment[$arrFormComment[i].name] = $arrFormComment[i].value;
+  // }
+  //
+  // console.log('%c send form', 'color: green; font-size: 16px; font-weight: 600;', $sendForms);
+  //
+  // sendFormHandler($sendForms);
 }
 
-function sendFormHandler(data) {
-  $.ajax({
-    type: "POST",
-    url: "/api/email/air_shipping_order",
-    data: $.param(data),
-    success: function success() {
-      $('#message-success').addClass('fadeIn');
-      $('#form-quick-quote').trigger("reset");
-      setTimeout(function () {
-        $('#message-success').removeClass('fadeIn');
-      }, 4000);
-    },
-    error: function error(_error) {
-      console.log('Error', _error);
-      $('#message-server-error').addClass('fadeIn');
-      setTimeout(function () {
-        $('#message-server-error').removeClass('fadeIn');
-      }, 4000);
-    }
-  });
+function sendFormHandler(data) {// $.ajax({
+  //     type: "POST",
+  //     url: "/api/email/air_shipping_order",
+  //     data: $.param(data),
+  //     success: function () {
+  //         $('#message-success').addClass('fadeIn');
+  //         $('#form-quick-quote').trigger("reset");
+  //         setTimeout(function () {
+  //             $('#message-success').removeClass('fadeIn');
+  //         }, 4000);
+  //     },
+  //     error: function (error) {
+  //         console.log('Error', error);
+  //         $('#message-server-error').addClass('fadeIn');
+  //         setTimeout(function () {
+  //             $('#message-server-error').removeClass('fadeIn');
+  //         }, 4000);
+  //     }
+  // });
 }
 
 /***/ }),
