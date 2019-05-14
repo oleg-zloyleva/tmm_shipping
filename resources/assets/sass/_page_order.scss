@@ -52,6 +52,7 @@
       display: flex;
       align-items: flex-start;
       justify-content: space-around;
+      flex-wrap: wrap;
       margin-bottom: 30px;
 
       &-left {
@@ -69,7 +70,7 @@
     }
 
     .checked-block {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       margin-bottom: 50px;
       margin-left: 30px;
@@ -84,6 +85,11 @@
     .body-right {
       display: inline-block;
       text-align: right;
+    }
+
+    .body-bottom {
+      width: 100%;
+      margin-top: 50px;
     }
 
     &__label {
