@@ -686,10 +686,10 @@
                                                                   @click="usppiSignatureClear">
                                                                 Clear
                                                             </span>
-                                                            <span class="canvas__btn-clear"
+                                                            <!--<span class="canvas__btn-clear"
                                                                   @click="usppiSignatureClear">
                                                                 Clear
-                                                            </span>
+                                                            </span>-->
                                                             <!--<span class="canvas__btn-clear" @click="save">
                                                                 save
                                                             </span>-->
