@@ -4,9 +4,21 @@
             <div class="row">
                 <div class="col-md-12 col-lg-3">
                     <div class="buttons-control" id="buttons-control">
-                        <button class="buttons-control__btn active" data-order="air">AIR SHIPPING FORM</button>
-                        <button class="buttons-control__btn" data-order="ocean">OCEAN SHIPPING FORM</button>
-                        <button class="buttons-control__btn" data-order="usspi">GROUND SHIPPING FORM</button>
+                        <label for="air" class="buttons-control__btn active">
+                            <input type="radio" name="transport" value="air"
+                                   id="air" v-model="transport">
+                            AIR SHIPPING FORM
+                        </label>
+                        <label for="ocean" class="buttons-control__btn">
+                            <input type="radio" name="transport" value="ocean" id="ocean"
+                                   v-model="transport">
+                            OCEAN SHIPPING FORM
+                        </label>
+                        <label for="ground" class="buttons-control__btn">
+                            <input type="radio" name="transport" value="ground" id="ground"
+                                   v-model="transport">
+                            GROUND SHIPPING FORM
+                        </label>
                     </div>
                 </div>
                 <div class="col-md-12 col-lg-9 col-xl-8">
@@ -126,7 +138,8 @@
                                                 <div class="upload-file-container">
                                                     <div class="upload-file-container__text">
                                                         <span class="upload-file-container__btn">Choose file</span>
-                                                        <input type="file" class="upload-file-container__photo"
+                                                        <input type="file" name="shipperUploadFile"
+                                                               class="upload-file-container__photo"
                                                                @change="uploadFile">
                                                     </div>
                                                     <div class="upload-file-container__image-demo">
@@ -669,9 +682,17 @@
                                                                     ref="usppiSignaturePad"
                                                                     class="signature-pad"
                                                             />
-                                                            <span class="canvas__btn-clear" @click="usppiSignatureClear">
+                                                            <span class="canvas__btn-clear"
+                                                                  @click="usppiSignatureClear">
                                                                 Clear
                                                             </span>
+                                                            <span class="canvas__btn-clear"
+                                                                  @click="usppiSignatureClear">
+                                                                Clear
+                                                            </span>
+                                                            <!--<span class="canvas__btn-clear" @click="save">
+                                                                save
+                                                            </span>-->
                                                         </span>
                                                     </label>
                                                 </div>
@@ -886,6 +907,7 @@
         components: {Slick, VueSignaturePad},
         data() {
             return {
+                transport: 'air',
                 delivery: 'citizen',
                 description: 'other',
                 vehicleCheck: false,
@@ -893,6 +915,7 @@
                 foreignCheck: false,
 
                 sendOrderForm: {
+                    typeTransport: 'air',
                     shipper: {
                         tid: '',
                         firstName: '',
@@ -905,7 +928,8 @@
                         state: '',
                         province: '',
                         country: '',
-                        zip: ''
+                        zip: '',
+                        shipperFile: ''
                     },
                     consignee: {
                         firstName: '',
@@ -1009,7 +1033,7 @@
                     infinite: false,
                     draggable: false,
                     adaptiveHeight: true,
-                    initialSlide: 5,
+                    // initialSlide: 5,
 
                     customPaging: function (slider, i) {
                         let $dots = ['Shipper', 'Consignee', 'Notify', 'Description', 'Title', 'USPPI', 'Comments'];
@@ -1022,10 +1046,11 @@
             sendForms() {
                 console.log('formOrderSend', this.sendOrderForm);
 
-                axios({
+                /*axios({
                     method: 'post',
                     url: '/api/email/air_shipping_order',
-                    data: $.param(this.sendOrderForm)
+                    // headers: { 'content-type': 'multipart/form-data' },
+                    data: this.sendOrderForm // $.param(this.sendOrderForm)
                 })
                     .then(res => {
                         console.log(res);
@@ -1041,12 +1066,16 @@
                         setTimeout(function () {
                             $('#message-server-error').removeClass('fadeIn');
                         }, 4000);
-                    });
+                    });*/
             },
             uploadFile(el) {
                 this.readURL(el.target);
             },
             readURL(input) {
+
+                console.log(input);
+                console.log(input.files[0]);
+
                 if (input.files && input.files[0]) {
                     var reader = new FileReader();
 
@@ -1063,6 +1092,7 @@
             fppiSignatureClear() {
                 this.$refs.fppiSignaturePad.clearSignature();
             },
+
             next() {
                 this.$refs.slick.next();
             },
@@ -1102,6 +1132,10 @@
                 this.description = value;
                 // console.log('vehicleCheck', this.vehicleCheck);
                 // console.log('foreignCheck', this.foreignCheck);
+            },
+            transport(value) {
+                console.log(value);
+                this.sendOrderForm.typeTransport = value;
             }
         }
     }

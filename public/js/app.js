@@ -12718,6 +12718,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -12728,12 +12749,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      transport: 'air',
       delivery: 'citizen',
       description: 'other',
       vehicleCheck: false,
       businessCheck: false,
       foreignCheck: false,
       sendOrderForm: {
+        typeTransport: 'air',
         shipper: {
           tid: '',
           firstName: '',
@@ -12746,7 +12769,8 @@ __webpack_require__.r(__webpack_exports__);
           state: '',
           province: '',
           country: '',
-          zip: ''
+          zip: '',
+          shipperFile: ''
         },
         consignee: {
           firstName: '',
@@ -12849,7 +12873,7 @@ __webpack_require__.r(__webpack_exports__);
         infinite: false,
         draggable: false,
         adaptiveHeight: true,
-        initialSlide: 5,
+        // initialSlide: 5,
         customPaging: function customPaging(slider, i) {
           var $dots = ['Shipper', 'Consignee', 'Notify', 'Description', 'Title', 'USPPI', 'Comments'];
           return $dots[i];
@@ -12860,29 +12884,35 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     sendForms: function sendForms() {
       console.log('formOrderSend', this.sendOrderForm);
-      axios({
-        method: 'post',
-        url: '/api/email/air_shipping_order',
-        data: $.param(this.sendOrderForm)
-      }).then(function (res) {
-        console.log(res);
-        $('#message-success').addClass('fadeIn');
-        $('#form-quick-quote').trigger("reset");
-        setTimeout(function () {
-          $('#message-success').removeClass('fadeIn');
-        }, 4000);
-      }).catch(function (err) {
-        console.log('Error', err);
-        $('#message-server-error').addClass('fadeIn');
-        setTimeout(function () {
-          $('#message-server-error').removeClass('fadeIn');
-        }, 4000);
-      });
+      /*axios({
+          method: 'post',
+          url: '/api/email/air_shipping_order',
+          // headers: { 'content-type': 'multipart/form-data' },
+          data: this.sendOrderForm // $.param(this.sendOrderForm)
+      })
+          .then(res => {
+              console.log(res);
+              $('#message-success').addClass('fadeIn');
+              $('#form-quick-quote').trigger("reset");
+              setTimeout(function () {
+                  $('#message-success').removeClass('fadeIn');
+              }, 4000);
+          })
+          .catch(err => {
+              console.log('Error', err);
+              $('#message-server-error').addClass('fadeIn');
+              setTimeout(function () {
+                  $('#message-server-error').removeClass('fadeIn');
+              }, 4000);
+          });*/
     },
     uploadFile: function uploadFile(el) {
       this.readURL(el.target);
     },
     readURL: function readURL(input) {
+      console.log(input);
+      console.log(input.files[0]);
+
       if (input.files && input.files[0]) {
         var reader = new FileReader();
 
@@ -12943,6 +12973,10 @@ __webpack_require__.r(__webpack_exports__);
       this.vehicleCheck = !this.vehicleCheck;
       this.description = value; // console.log('vehicleCheck', this.vehicleCheck);
       // console.log('foreignCheck', this.foreignCheck);
+    },
+    transport: function transport(value) {
+      console.log(value);
+      this.sendOrderForm.typeTransport = value;
     }
   }
 });
@@ -12958,11 +12992,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
 //
 //
 //
@@ -52383,7 +52412,121 @@ var render = function() {
   return _c("div", { attrs: { id: "order" } }, [
     _c("div", { staticClass: "container container-order" }, [
       _c("div", { staticClass: "row" }, [
-        _vm._m(0),
+        _c("div", { staticClass: "col-md-12 col-lg-3" }, [
+          _c(
+            "div",
+            {
+              staticClass: "buttons-control",
+              attrs: { id: "buttons-control" }
+            },
+            [
+              _c(
+                "label",
+                {
+                  staticClass: "buttons-control__btn active",
+                  attrs: { for: "air" }
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.transport,
+                        expression: "transport"
+                      }
+                    ],
+                    attrs: {
+                      type: "radio",
+                      name: "transport",
+                      value: "air",
+                      id: "air"
+                    },
+                    domProps: { checked: _vm._q(_vm.transport, "air") },
+                    on: {
+                      change: function($event) {
+                        _vm.transport = "air"
+                      }
+                    }
+                  }),
+                  _vm._v(
+                    "\n                        AIR SHIPPING FORM\n                    "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "buttons-control__btn",
+                  attrs: { for: "ocean" }
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.transport,
+                        expression: "transport"
+                      }
+                    ],
+                    attrs: {
+                      type: "radio",
+                      name: "transport",
+                      value: "ocean",
+                      id: "ocean"
+                    },
+                    domProps: { checked: _vm._q(_vm.transport, "ocean") },
+                    on: {
+                      change: function($event) {
+                        _vm.transport = "ocean"
+                      }
+                    }
+                  }),
+                  _vm._v(
+                    "\n                        OCEAN SHIPPING FORM\n                    "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass: "buttons-control__btn",
+                  attrs: { for: "ground" }
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.transport,
+                        expression: "transport"
+                      }
+                    ],
+                    attrs: {
+                      type: "radio",
+                      name: "transport",
+                      value: "ground",
+                      id: "ground"
+                    },
+                    domProps: { checked: _vm._q(_vm.transport, "ground") },
+                    on: {
+                      change: function($event) {
+                        _vm.transport = "ground"
+                      }
+                    }
+                  }),
+                  _vm._v(
+                    "\n                        GROUND SHIPPING FORM\n                    "
+                  )
+                ]
+              )
+            ]
+          )
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-md-12 col-lg-9 col-xl-8" }, [
           _c("div", { staticClass: "order-block" }, [
@@ -53088,7 +53231,10 @@ var render = function() {
                                         _c("input", {
                                           staticClass:
                                             "upload-file-container__photo",
-                                          attrs: { type: "file" },
+                                          attrs: {
+                                            type: "file",
+                                            name: "shipperUploadFile"
+                                          },
                                           on: { change: _vm.uploadFile }
                                         })
                                       ]
@@ -56270,6 +56416,23 @@ var render = function() {
                                                     "\n                                                            Clear\n                                                        "
                                                   )
                                                 ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "span",
+                                                {
+                                                  staticClass:
+                                                    "canvas__btn-clear",
+                                                  on: {
+                                                    click:
+                                                      _vm.usppiSignatureClear
+                                                  }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                                                            Clear\n                                                        "
+                                                  )
+                                                ]
                                               )
                                             ],
                                             1
@@ -57036,47 +57199,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-12 col-lg-3" }, [
-      _c(
-        "div",
-        { staticClass: "buttons-control", attrs: { id: "buttons-control" } },
-        [
-          _c(
-            "button",
-            {
-              staticClass: "buttons-control__btn active",
-              attrs: { "data-order": "air" }
-            },
-            [_vm._v("AIR SHIPPING FORM")]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "buttons-control__btn",
-              attrs: { "data-order": "ocean" }
-            },
-            [_vm._v("OCEAN SHIPPING FORM")]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "buttons-control__btn",
-              attrs: { "data-order": "usspi" }
-            },
-            [_vm._v("GROUND SHIPPING FORM")]
-          )
-        ]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -57216,7 +57339,8 @@ var render = function() {
                           { domProps: { value: location_port } },
                           [
                             _vm._v(
-                              _vm._s(location) +
+                              "\n                                    " +
+                                _vm._s(location) +
                                 "\n                                "
                             )
                           ]
@@ -57272,7 +57396,8 @@ var render = function() {
                       ) {
                         return _c("option", { domProps: { value: data } }, [
                           _vm._v(
-                            _vm._s(exitPortGround) +
+                            "\n                                    " +
+                              _vm._s(exitPortGround) +
                               "\n                                "
                           )
                         ])
@@ -57423,7 +57548,8 @@ var render = function() {
                       _vm._l(_vm.prices.prices, function(port) {
                         return _c("option", { domProps: { value: port } }, [
                           _vm._v(
-                            _vm._s(port.destination_ports.name) +
+                            "\n                                    " +
+                              _vm._s(port.destination_ports.name) +
                               "\n                                "
                           )
                         ])
@@ -73659,151 +73785,7 @@ $(document).ready(function () {
     if ($(this).val().match(/[^0-9]/g)) {
       $(this).val($(this).val().replace(/[^0-9]/g, ''));
     }
-  }); // === canvas === //
-
-  /*var canvas = document.getElementById("drawCanv"),
-      context = canvas.getContext("2d"),
-      w = canvas.width,
-      h = canvas.height;
-    var mouse = {x: 0, y: 0};
-  var draw = false;
-    canvas.addEventListener("mousedown", function (e) {
-        mouse.x = e.pageX - this.offsetLeft;
-      mouse.y = e.pageY - this.offsetTop;
-      draw = true;
-      context.beginPath();
-      context.moveTo(mouse.x, mouse.y);
   });
-  canvas.addEventListener("mousemove", function (e) {
-        if (draw == true) {
-            mouse.x = e.pageX - this.offsetLeft;
-          mouse.y = e.pageY - this.offsetTop;
-          context.lineTo(mouse.x, mouse.y);
-          context.stroke();
-      }
-  });
-  canvas.addEventListener("mouseup", function (e) {
-        mouse.x = e.pageX - this.offsetLeft;
-      mouse.y = e.pageY - this.offsetTop;
-      context.lineTo(mouse.x, mouse.y);
-      context.stroke();
-      context.closePath();
-      draw = false;
-  });*/
-  // function getElemID(elemID) {
-  //     return document.querySelector('.' + elemID);
-  // }
-  //
-  // function Stroke(lineColour, lineWidth, lineCap, lineJoin, linePath, targetCanv) {
-  //     this.lColour = lineColour;
-  //     this.lWidth = lineWidth;
-  //     this.lCap = lineCap;
-  //     this.lJoin = lineJoin;
-  //     this.lPath = linePath;
-  //     this.tCtx = targetCanv.getContext('2d');
-  //
-  //     this.tCtx.lineWidth = this.lWidth;
-  //     this.tCtx.lineCap = this.lCap;
-  //     this.tCtx.lineJoin = this.lJoin;
-  //     this.tCtx.strokeStyle = this.lColour;
-  //
-  //     this.tCtx.beginPath();
-  //     for (var pathArr in this.lPath) {
-  //         this.tCtx.lineTo(this.lPath[pathArr][0], this.lPath[pathArr][1]);
-  //     }
-  //     this.tCtx.stroke();
-  // }
-  //
-  // function updateCanv(sColour, sSize, sPath, canvElem) {
-  //     var thisStroke = new Stroke(
-  //         sColour,
-  //         sSize, 'round', 'round',
-  //         sPath,
-  //         canvElem
-  //     );
-  //     return thisStroke;
-  // }
-  //
-  // var dCanv = getElemID('usppi-signature');
-  // var dCtx = dCanv.getContext('2d');
-  // var strokeArr = [];
-  // var drawObj = {
-  //     isDrawing: false,
-  //     currColour: '#000000',
-  //     currPath: []
-  // };
-  //
-  // var cColour = getElemID('fColor');
-  // var cSize = getElemID('lSize');
-  // var cClear = getElemID('cClear');
-  // var saveImg = getElemID('saveImg');
-  //
-  // var mLDown = false;
-  // var mRDown = false;
-  // var inCanv = false;
-  //
-  //
-  // window.onmousedown = function (ev) {
-  //     if (inCanv) {
-  //         ev.preventDefault();
-  //         drawObj.isdrawing = true;
-  //         drawObj.cColour = cColour.value;
-  //     }
-  //     dCtx.fillStyle = cColour.value;
-  //     dCtx.lineWidth = cSize.value;
-  //     mLDown = true;
-  // };
-  //
-  // window.onmouseup = function (ev) {
-  //     if (drawObj.isDrawing) {
-  //         drawObj.isDrawing = false;
-  //         strokeArr.push(updateCanv(drawObj.cColour, cSize.value, drawObj.currPath, dCanv));
-  //         drawObj.currPath = [];
-  //
-  //         dCtx.clearRect(0, 0, dCanv.width, dCanv.height);
-  //         for (var stroke in strokeArr) {
-  //             var cStroke = strokeArr[stroke];
-  //             updateCanv(cStroke.lColour, cStroke.lWidth, cStroke.lPath, dCanv);
-  //         }
-  //     }
-  //     mLDown = false;
-  // };
-  //
-  // dCanv.onmouseenter = function (ev) {
-  //     ev.preventDefault();
-  //     inCanv = true;
-  // };
-  // dCanv.onmouseleave = function (ev) {
-  //     ev.preventDefault();
-  //     inCanv = false;
-  // };
-  //
-  // dCanv.onmousemove = function (ev) {
-  //     if (mLDown && inCanv) {
-  //         drawObj.isDrawing = true;
-  //         drawObj.currPath.push(
-  //             [ev.offsetX, ev.offsetY]
-  //         );
-  //         for (var seg in drawObj.currPath) {
-  //             var cSeg = drawObj.currPath[seg];
-  //             dCtx.beginPath((cSeg[0], cSeg[1]));
-  //             dCtx.lineTo(cSeg[0], cSeg[1]);
-  //             dCtx.stroke();
-  //         }
-  //     }
-  // };
-  //
-  // cClear.onclick = function (ev) {
-  //     ev.preventDefault();
-  //     dCanv.getContext('2d').clearRect(0, 0, dCanv.width, dCanv.height);
-  //     strokeArr = [];
-  // };
-  // Save image functions
-  // saveImg.onclick = function () {
-  //     var img_url = dCanv.toDataURL("image/png").replace("image/png", "image/octet-stream");
-  //     console.log(img_url);
-  //     // window.location.href = img_url; // it will save locally
-  // };
 });
 
 /***/ }),
@@ -73853,21 +73835,7 @@ $('body').on('click', '.buttons-control__btn', function () {
   if (!$this.hasClass('active')) {
     $('.buttons-control__btn').removeClass('active');
     $this.addClass('active');
-  } // if ($this.attr('data-order') === 'ocean') {
-  //     $('#slider-order').css('display', 'block');
-  //     $('#air-block').css('display', 'none');
-  //     $('#ocean-block').css('display', 'block');
-  //     $('#usspi-block').css('display', 'none');
-  // } else if ($this.attr('data-order') === 'air') {
-  //     $('#slider-order').css('display', 'block');
-  //     $('#air-block').css('display', 'block');
-  //     $('#ocean-block').css('display', 'none');
-  //     $('#usspi-block').css('display', 'none');
-  // } else {
-  //     $('#usspi-block').css('display', 'block');
-  //     $('#slider-order').css('display', 'none');
-  // }
-
+  }
 }); // === AGREE === //
 
 $('body').on('click', '#agree-checked', function () {
