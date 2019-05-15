@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Requests\Email\ContactUsRequest;
 use App\Http\Requests\Email\QuickQuoteRequest;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RateOrderRequest;
+use App\Http\Requests\Email\RateOrderRequest;
+use App\Http\Requests\Email\ShipperOrderRequest;
 use App\Mail\PdfFileToEmail;
 use App\Models\Auction;
 use App\Models\GroundDeliveryPrice;
@@ -111,11 +112,15 @@ class EmailNotification extends Controller
 
         return response()->json([
             "status" => "ok",
-            "ground_auction" => $request->ground_auction_id,
-            "ground_location_id" => $request->ground_location_id,
-            "ground_exit_port_id" => $request->ground_exit_port_id,
-            "ocean_exit_port_id" => $request->ocean_exit_port_id,
-            "ocean_destination_port_id" => $request->ocean_destination_port_id,
+            "GroundAuctionId" => $request->GroundAuctionId,
+            "GroundLocationId" => $request->GroundLocationId,
+            "GroundExitPortId" => $request->GroundExitPortId,
+            "OceanExitPortId" => $request->OceanExitPortId,
+            "OceanDestinationPortId" => $request->OceanDestinationPortId,
         ]);
+    }
+
+    public function shipperOrder(ShipperOrderRequest $request)
+    {
     }
 }

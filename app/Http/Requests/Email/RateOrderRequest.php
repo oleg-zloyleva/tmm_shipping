@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Email;
+
+use App\Http\Requests\Request;
 
 class RateOrderRequest extends Request
 {

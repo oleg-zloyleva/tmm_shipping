@@ -19,4 +19,4 @@
 Route::post('/email/quick_quote', 'Api\EmailNotification@quickQuote')->name('email.quick_quote');
 Route::post('/email/contact_us', 'Api\EmailNotification@contactUs')->name('email.contact_us');
 Route::post('/email/rate_order', 'Api\EmailNotification@rateOrder')->name('email.rate_order');
-
+Route::post('/email/shipper_order', 'Api\EmailNotification@shipperOrder')->name('email.shipper_order');
