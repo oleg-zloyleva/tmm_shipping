@@ -122,5 +122,18 @@ class EmailNotification extends Controller
 
     public function shipperOrder(ShipperOrderRequest $request)
     {
+        Mail::to($this->to)->queue(
+            new PdfFileToEmail(
+                "mails.shipper_order",
+                'pdf.shipper_order',
+                "shipper_order.pdf",
+                "Shipper Order letter",
+                $request->input()
+            )
+        );
+
+        return response()->json([
+            "status" => "ok",
+        ]);
     }
 }
