@@ -56416,23 +56416,6 @@ var render = function() {
                                                     "\n                                                            Clear\n                                                        "
                                                   )
                                                 ]
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "span",
-                                                {
-                                                  staticClass:
-                                                    "canvas__btn-clear",
-                                                  on: {
-                                                    click:
-                                                      _vm.usppiSignatureClear
-                                                  }
-                                                },
-                                                [
-                                                  _vm._v(
-                                                    "\n                                                            Clear\n                                                        "
-                                                  )
-                                                ]
                                               )
                                             ],
                                             1
