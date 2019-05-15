@@ -73,29 +73,29 @@ class EmailNotification extends Controller
     public function rateOrder(RateOrderRequest $request)
     {
         $data = [
-            'name' => $request->name,
-            'phone' => $request->phone,
+            'name' => $request->Name,
+            'phone' => $request->Phone,
         ];
 
-        if ($request->ground_auction_id) {
-            $data['groundAuction'] = Auction::findOrFail($request->ground_auction_id)->name;
-            $data['groundLocation'] = GroundLocation::findOrFail($request->ground_location_id)->name;
-            $data['groundExitPort'] = GroundExitPort::findOrFail($request->ground_exit_port_id)->name;
+        if ($request->GroundAuctionId) {
+            $data['groundAuction'] = Auction::findOrFail($request->GroundAuctionId)->name;
+            $data['groundLocation'] = GroundLocation::findOrFail($request->GroundLocationId)->name;
+            $data['groundExitPort'] = GroundExitPort::findOrFail($request->GroundExitPortId)->name;
 
             $data['groundPrice'] = GroundDeliveryPrice::query()->where([
-                'auction_id' => $request->ground_auction_id,
-                'ground_location_id' => $request->ground_location_id,
-                'ground_exit_port_id' => $request->ground_exit_port_id,
+                'auction_id' => $request->GroundAuctionId,
+                'ground_location_id' => $request->GroundLocationId,
+                'ground_exit_port_id' => $request->GroundExitPortId,
             ])->firstOrFail()->price;
         }
 
-        if ($request->ocean_exit_port_id) {
-            $data['oceanExitPort'] = OceanExitPort::findOrFail($request->ocean_exit_port_id)->name;
-            $data['oceanDestinationPort'] = OceanDestinationPort::findOrFail($request->ocean_destination_port_id)->name;
+        if ($request->OceanExitPortId) {
+            $data['oceanExitPort'] = OceanExitPort::findOrFail($request->OceanExitPortId)->name;
+            $data['oceanDestinationPort'] = OceanDestinationPort::findOrFail($request->OceanDestinationPortId)->name;
 
             $data['oceanPrice'] = OceanDeliveryPrice::query()->where([
-                'ocean_exit_port_id' => $request->ocean_exit_port_id,
-                'ocean_destination_port_id' => $request->ocean_destination_port_id,
+                'ocean_exit_port_id' => $request->OceanExitPortId,
+                'ocean_destination_port_id' => $request->OceanDestinationPortId,
             ])->firstOrFail()->price;
         }
 

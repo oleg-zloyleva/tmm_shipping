@@ -12,13 +12,13 @@ class RateOrderRequest extends Request
     public function rules()
     {
         return [
-            'ground_auction_id' => 'integer|min:1',
-            'ground_location_id' => 'required_with:ground_auction_id|integer|min:1',
-            'ground_exit_port_id' => 'required_with:ground_location_id|integer|min:1',
-            'ocean_exit_port_id' => 'required_without:ground_auction_id|integer|min:1',
-            'ocean_destination_port_id' => 'required_with:ocean_exit_port_id|integer|min:1',
-            'phone' => 'required|string',
-            'name' => 'required|string',
+            'GroundAuctionId' => 'integer|min:1',
+            'GroundLocationId' => 'required_with:GroundAuctionId|integer|min:1',
+            'GroundExitPortId' => 'required_with:GroundLocationId|integer|min:1',
+            'OceanExitPortId' => 'required_without:GroundAuctionId|integer|min:1',
+            'OceanDestinationPortId' => 'required_with:OceanExitPortId|integer|min:1',
+            'Phone' => 'required|string',
+            'Name' => 'required|string',
         ];
     }
 }
