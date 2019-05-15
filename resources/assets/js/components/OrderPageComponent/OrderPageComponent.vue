@@ -10,7 +10,6 @@
                     </div>
                 </div>
                 <div class="col-md-12 col-lg-9 col-xl-8">
-
                     <div class="order-block">
                         <div class="slider-order" id="slider-order">
                             <slick ref="slick" :options="slickOptions">
@@ -659,10 +658,21 @@
                                                 <div class="content-signature">
                                                     <label class="label-content">
                                                         Signature:
-                                                        <input class="inp-content inp-signature" name="signatureFirst"
+                                                        <!--<input class="inp-content inp-signature" name="signatureFirst"
                                                                v-model="sendOrderForm.usppi.signatureFirst">*<input
                                                             class="inp-content" name="signatureSecond"
-                                                            v-model="sendOrderForm.usppi.signatureSecond">
+                                                            v-model="sendOrderForm.usppi.signatureSecond">-->
+                                                        <span class="canvas">
+                                                            <VueSignaturePad
+                                                                    width="300px"
+                                                                    height="200px"
+                                                                    ref="usppiSignaturePad"
+                                                                    class="signature-pad"
+                                                            />
+                                                            <span class="canvas__btn-clear" @click="usppiSignatureClear">
+                                                                Clear
+                                                            </span>
+                                                        </span>
                                                     </label>
                                                 </div>
                                                 <div class="content-print">
@@ -791,8 +801,19 @@
                                                 </label>
                                                 <label class="content-lbl">
                                                     Signature:
-                                                    <input type="text" class="inp-fppi"
-                                                           v-model="sendOrderForm.fppi.signature">
+                                                    <!--<input type="text" class="inp-fppi"
+                                                           v-model="sendOrderForm.fppi.signature">-->
+                                                    <span class="canvas">
+                                                        <VueSignaturePad
+                                                                width="300px"
+                                                                height="200px"
+                                                                ref="fppiSignaturePad"
+                                                                class="signature-pad"
+                                                        />
+                                                        <span class="canvas__btn-clear" @click="fppiSignatureClear">
+                                                            Clear
+                                                        </span>
+                                                    </span>
                                                 </label>
                                                 <label class="content-lbl">
                                                     Title:
@@ -856,11 +877,13 @@
 
 <script>
 
+    import VueSignaturePad from 'vue-signature-pad';
+
     import Slick from 'vue-slick';
 
     export default {
         name: "OrderPageComponent",
-        components: {Slick},
+        components: {Slick, VueSignaturePad},
         data() {
             return {
                 delivery: 'citizen',
@@ -986,16 +1009,14 @@
                     infinite: false,
                     draggable: false,
                     adaptiveHeight: true,
-                    // initialSlide: 5,
+                    initialSlide: 5,
+
                     customPaging: function (slider, i) {
                         let $dots = ['Shipper', 'Consignee', 'Notify', 'Description', 'Title', 'USPPI', 'Comments'];
                         return $dots[i];
                     }
                 }
             };
-        },
-        mounted() {
-            // console.log(this.delivery);
         },
         methods: {
             sendForms() {
@@ -1026,11 +1047,6 @@
                 this.readURL(el.target);
             },
             readURL(input) {
-
-                // console.log(input);
-                // console.log(input.files);
-                // console.log(input.files[0]);
-
                 if (input.files && input.files[0]) {
                     var reader = new FileReader();
 
@@ -1041,7 +1057,12 @@
                     reader.readAsDataURL(input.files[0]);
                 }
             },
-
+            usppiSignatureClear() {
+                this.$refs.usppiSignaturePad.clearSignature();
+            },
+            fppiSignatureClear() {
+                this.$refs.fppiSignaturePad.clearSignature();
+            },
             next() {
                 this.$refs.slick.next();
             },
@@ -1085,3 +1106,7 @@
         }
     }
 </script>
+
+<style>
+
+</style>
