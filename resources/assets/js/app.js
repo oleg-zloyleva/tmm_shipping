@@ -14,8 +14,11 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faTrashAlt, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+// import VueSignaturePad from 'vue-signature-pad';
 library.add(faTrashAlt,faPlus);
+
 Vue.component('font-awesome-icon', FontAwesomeIcon);
+// Vue.use(VueSignaturePad);
 
 // require('./calculate');
 require('./order');

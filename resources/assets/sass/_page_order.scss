@@ -32,7 +32,7 @@
   }
 
   .slider-order {
-    position: relative;
+    //position: relative;
     margin: 0;
 
     &__slide {
@@ -365,7 +365,7 @@
     .content-date,
     .content-authorize {
       position: relative;
-      margin: 5px 0 20px;
+      margin: 5px 0 25px;
     }
 
     .content-authorize:after {
@@ -386,7 +386,7 @@
       height: 14px;
       position: absolute;
       bottom: -14px;
-      left: 145px;
+      left: 0;
       font-size: 11px;
     }
 
