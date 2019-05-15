@@ -17,7 +17,6 @@
                             <div class="ground-row">
                                 <label for="auction">Auction:</label>
                                 <select class="select-calculate" id="auction" v-model="locations">
-                                    <!--<option value="null" selected disabled>Choose auction</option>-->
                                     <option :value="auction_locations" v-for="(auction_locations,key) in dataGround"
                                             :key="key">{{ key }}
                                     </option>
@@ -27,9 +26,8 @@
                                 <label for="location">Location:</label>
                                 <select class="select-calculate" id="location" :disabled="isCanSelectLocation"
                                         v-model="exitPortGrounds">
-                                    <!--<option value="0" selected>Choose location</option>-->
-                                    <option :value="location_port" v-for="(location_port, location) in locations">{{
-                                        location }}
+                                    <option :value="location_port" v-for="(location_port, location) in locations">
+                                        {{ location }}
                                     </option>
                                 </select>
                             </div>
@@ -37,9 +35,8 @@
                                 <label for="ground-port">Exit port:</label>
                                 <select class="select-calculate" id="ground-port" :disabled="isCanSelectExitPort"
                                         v-model="groundPriceData" @change="selectGroundPriceHandler">
-                                    <!--<option value="0" selected>Choose exit port</option>-->
-                                    <option :value="data" v-for="(data, exitPortGround) in exitPortGrounds">{{
-                                        exitPortGround }}
+                                    <option :value="data" v-for="(data, exitPortGround) in exitPortGrounds">
+                                        {{ exitPortGround }}
                                     </option>
                                 </select>
                             </div>
@@ -60,9 +57,7 @@
                             <div class="ocean-row ocean-none"></div>
                             <div class="ocean-row">
                                 <label for="ocean-port">Exit port:</label>
-                                <!--<select class="select-calculate" name="ocean-port" id="ocean-port" v-model="exitPort">-->
                                 <select class="select-calculate" id="ocean-port" v-model="prices">
-                                    <!--<option value="null" selected disabled>Choose destination</option>-->
                                     <option :value="item" v-for="item in dataOcean" :key="item.id">{{ item.name }}
                                     </option>
                                 </select>
@@ -72,8 +67,8 @@
                                 <select class="select-calculate" name="destination" id="destination"
                                         :disabled="isCanSelectDestinationPort" v-model="selectedDestinationPort"
                                         @change="totalBill">
-                                    <option :value="port" v-for="port in prices.prices">{{ port.destination_ports.name
-                                        }}
+                                    <option :value="port" v-for="port in prices.prices">
+                                        {{ port.destination_ports.name }}
                                     </option>
                                 </select>
                             </div>

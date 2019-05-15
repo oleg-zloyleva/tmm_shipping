@@ -2,19 +2,24 @@
   padding: 60px 0;
 
   .buttons-control {
+
+    input[type="radio"] {
+      display: none;
+    }
+
     &__btn {
       display: block;
       width: 250px;
       height: 40px;
       text-transform: uppercase;
       background: #fff;
-      color: #A1A1A1;
+      color: #999;
       border: none;
       border-radius: 4px;
       margin-bottom: 15px;
       text-align: left;
       font-size: 14px;
-      padding: 0 15px;
+      padding: 10px;
       cursor: pointer;
 
       &.active {
