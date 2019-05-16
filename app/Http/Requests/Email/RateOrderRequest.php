@@ -18,12 +18,12 @@ class RateOrderRequest extends Request
                 'ground.auction' => 'string',
                 'ground.location' => 'string',
                 'ground.exitPort' => 'string',
-                'ground.price' => 'string',
+                'ground.price' => 'numeric',
 
             'ocean' => 'required|array',
                 'ocean.exitPort' => 'string',
                 'ocean.destination' => 'string',
-                'ocean.price' => 'string',
+                'ocean.price' => 'numeric',
 
             'totalPrice' => 'required|string',
             'name' => 'required|string',
