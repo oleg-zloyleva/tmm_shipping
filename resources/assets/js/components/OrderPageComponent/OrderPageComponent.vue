@@ -85,7 +85,7 @@
                                                         E-mail:
                                                         <input name="email"
                                                                class="slider-order__inp"
-                                                               v-validate="'required'"
+                                                               v-validate="'required|email'"
                                                                :class="{'required': errors.has('email')}"
                                                                v-model="sendOrderForm.shipper.email">
                                                     </label>
@@ -213,7 +213,7 @@
                                                         E-mail:
                                                         <input name="emailCon"
                                                                class="slider-order__inp"
-                                                               v-validate="'required'"
+                                                               v-validate="'required|email'"
                                                                :class="{'required': errors.has('emailCon')}"
                                                                v-model="sendOrderForm.consignee.email">
                                                     </label>
@@ -1125,8 +1125,14 @@
                         return;
                     }
 
-                    this.isValidateForms = false;
                     console.log('%c Correct them errors!', 'color: red; font-weight: 600;');
+
+                    this.isValidateForms = false;
+
+                    $('#required-fields').fadeIn();
+                    setTimeout(function () {
+                        $('#required-fields').fadeOut();
+                    }, 5000);
                 });
             },
             submitForms() {

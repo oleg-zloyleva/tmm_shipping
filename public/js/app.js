@@ -12967,8 +12967,12 @@ __webpack_require__.r(__webpack_exports__);
           return;
         }
 
-        _this.isValidateForms = false;
         console.log('%c Correct them errors!', 'color: red; font-weight: 600;');
+        _this.isValidateForms = false;
+        $('#required-fields').fadeIn();
+        setTimeout(function () {
+          $('#required-fields').fadeOut();
+        }, 5000);
       });
     },
     submitForms: function submitForms() {
@@ -13233,6 +13237,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RateCalculatorComponent",
   props: {
@@ -13304,9 +13317,19 @@ __webpack_require__.r(__webpack_exports__);
       var $result = $groundTrans + $oceanTrans;
       this.makeOrderForms.totalPrice = $result.toFixed(2); // this.makeOrderForms.totalPrice =
     },
-    makeOrder: function makeOrder() {
-      console.log(Object.keys(this.prices).length);
-      console.log(this.makeOrderForms);
+    submitMakeOrder: function submitMakeOrder() {
+      var _this = this;
+
+      this.$validator.validateAll().then(function (result) {
+        if (result) {
+          console.log('%c Form Submitted!', 'color: green; font-weight: 600;'); // function axios
+
+          return;
+        }
+
+        _this.isValidateForms = false;
+        console.log('%c Correct them errors!', 'color: red; font-weight: 600;');
+      });
     }
   },
   computed: {
@@ -13326,6 +13349,11 @@ __webpack_require__.r(__webpack_exports__);
     },
     isCanSelectExitPort: function isCanSelectExitPort() {
       return !Object.keys(this.exitPortGrounds).length;
+    }
+  },
+  watch: {
+    locations: function locations(value) {
+      console.log(value);
     }
   }
 });
@@ -64093,8 +64121,8 @@ var render = function() {
                                         {
                                           name: "validate",
                                           rawName: "v-validate",
-                                          value: "required",
-                                          expression: "'required'"
+                                          value: "required|email",
+                                          expression: "'required|email'"
                                         },
                                         {
                                           name: "model",
@@ -64747,8 +64775,8 @@ var render = function() {
                                         {
                                           name: "validate",
                                           rawName: "v-validate",
-                                          value: "required",
-                                          expression: "'required'"
+                                          value: "required|email",
+                                          expression: "'required|email'"
                                         },
                                         {
                                           name: "model",
@@ -68863,10 +68891,16 @@ var render = function() {
         },
         [
           _c(
-            "div",
+            "form",
             {
               staticClass: "calculate-block",
-              attrs: { id: "calculate-block" }
+              attrs: { id: "calculate-block" },
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.submitMakeOrder($event)
+                }
+              }
             },
             [
               _c("h4", [_vm._v("Calculate")]),
@@ -69071,9 +69105,7 @@ var render = function() {
                     }),
                     _vm._v(" "),
                     _c("div", { staticClass: "dollar" }, [_vm._v("$")])
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(1)
+                  ])
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "calculate-block__ocean" }, [
@@ -69220,73 +69252,7 @@ var render = function() {
                     }),
                     _vm._v(" "),
                     _c("div", { staticClass: "dollar" }, [_vm._v("$")])
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(2)
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "contact-block" }, [
-                _c("label", [
-                  _vm._v(
-                    "\n                        Name:\n                        "
-                  ),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.makeOrderForms.name,
-                        expression: "makeOrderForms.name"
-                      }
-                    ],
-                    staticClass: "contact-block__inp",
-                    attrs: { type: "text" },
-                    domProps: { value: _vm.makeOrderForms.name },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.makeOrderForms,
-                          "name",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("label", [
-                  _vm._v(
-                    "\n                        Phone:\n                        "
-                  ),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.makeOrderForms.phone,
-                        expression: "makeOrderForms.phone"
-                      }
-                    ],
-                    staticClass: "contact-block__inp",
-                    attrs: { type: "text" },
-                    domProps: { value: _vm.makeOrderForms.phone },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.makeOrderForms,
-                          "phone",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
+                  ])
                 ])
               ]),
               _vm._v(" "),
@@ -69329,13 +69295,87 @@ var render = function() {
                 _c("div", { staticClass: "dollar" }, [_vm._v("$")])
               ]),
               _vm._v(" "),
+              _c("div", { staticClass: "contact-block" }, [
+                _c("label", { staticClass: "contact-block__lbl" }, [
+                  _vm._v(
+                    "\n                        Name:\n                        "
+                  ),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required",
+                        expression: "'required'"
+                      },
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.makeOrderForms.name,
+                        expression: "makeOrderForms.name"
+                      }
+                    ],
+                    staticClass: "contact-block__inp",
+                    class: { required: _vm.errors.has("name") },
+                    attrs: { name: "name" },
+                    domProps: { value: _vm.makeOrderForms.name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.makeOrderForms,
+                          "name",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("label", { staticClass: "contact-block__lbl" }, [
+                  _vm._v(
+                    "\n                        Phone:\n                        "
+                  ),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "validate",
+                        rawName: "v-validate",
+                        value: "required",
+                        expression: "'required'"
+                      },
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.makeOrderForms.phone,
+                        expression: "makeOrderForms.phone"
+                      }
+                    ],
+                    staticClass: "contact-block__inp",
+                    class: { required: _vm.errors.has("phone") },
+                    attrs: { name: "phone" },
+                    domProps: { value: _vm.makeOrderForms.phone },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.makeOrderForms,
+                          "phone",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
               _c(
                 "button",
-                {
-                  staticClass: "btn-make-order",
-                  attrs: { id: "make-order" },
-                  on: { click: _vm.makeOrder }
-                },
+                { staticClass: "btn-make-order", attrs: { id: "make-order" } },
                 [_vm._v("Make Order")]
               )
             ]
@@ -69358,38 +69398,6 @@ var staticRenderFns = [
           )
         ])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "ground-row" }, [
-      _c(
-        "div",
-        { staticClass: "call-message", attrs: { id: "call-message-ground" } },
-        [
-          _vm._v(
-            "\n                                There are no prices in this direction. Сontact us for more information.\n                            "
-          )
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "ocean-row" }, [
-      _c(
-        "div",
-        { staticClass: "call-message", attrs: { id: "call-message-ocean" } },
-        [
-          _vm._v(
-            "\n                                There are no prices in this direction. Сontact us for more information.\n                            "
-          )
-        ]
-      )
     ])
   }
 ]
