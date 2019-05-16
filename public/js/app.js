@@ -86055,8 +86055,8 @@ form.validate({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /var/www/resources/assets/js/app.js */"./resources/assets/js/app.js");
-module.exports = __webpack_require__(/*! /var/www/resources/assets/sass/main.scss */"./resources/assets/sass/main.scss");
+__webpack_require__(/*! C:\OSPanel\domains\TMM\resources\assets\js\app.js */"./resources/assets/js/app.js");
+module.exports = __webpack_require__(/*! C:\OSPanel\domains\TMM\resources\assets\sass\main.scss */"./resources/assets/sass/main.scss");
 
 
 /***/ })
