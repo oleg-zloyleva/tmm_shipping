@@ -58,7 +58,8 @@
                             <div class="ocean-row">
                                 <label for="ocean-port">Exit port:</label>
                                 <select class="select-calculate" id="ocean-port" v-model="prices">
-                                    <option :value="item" v-for="item in dataOcean" :key="item.id">{{ item.name }}
+                                    <option :value="item" v-for="item in dataOcean" :key="item.id">
+                                        {{ item.name }}
                                     </option>
                                 </select>
                             </div>
@@ -84,12 +85,22 @@
                             </div>
                         </div>
                     </div>
+                    <div class="contact-block">
+                        <label>
+                            Name:
+                            <input type="text" class="contact-block__inp" v-model="makeOrderForms.name">
+                        </label>
+                        <label>
+                            Phone:
+                            <input type="text" class="contact-block__inp" v-model="makeOrderForms.phone">
+                        </label>
+                    </div>
                     <div class="total-block">
                         <label class="total-block__label" for="total">Total bill:</label>
-                        <input class="total-block__inp only-number" id="total" value="0.00" disabled>
+                        <input class="total-block__inp only-number" id="total" value="0.00" disabled v-model="makeOrderForms.totalPrice">
                         <div class="dollar">$</div>
                     </div>
-                    <button class="btn-make-order" id="make-order">Make Order</button>
+                    <button class="btn-make-order" id="make-order" @click="makeOrder">Make Order</button>
                 </div>
             </div>
         </div>
@@ -122,6 +133,22 @@
                 exitPortGrounds: {},
                 groundPriceData: null,
                 groundPrice: 0,
+                makeOrderForms: {
+                    ground: {
+                        auction: '',
+                        location: '',
+                        exitPort: '',
+                        price: ''
+                    },
+                    ocean: {
+                        exitPort: '',
+                        destination: '',
+                        price: ''
+                    },
+                    totalPrice: '',
+                    name: '',
+                    phone: ''
+                }
             }
         },
         methods: {
@@ -136,8 +163,10 @@
                 console.log();
                 if (!!Number(this.groundPriceData.price)) {
                     this.groundPrice = this.groundPriceData.price;
+                    this.makeOrderForms.ground.price = this.groundPriceData.price;
                 } else {
                     this.groundPrice = "call";
+                    this.makeOrderForms.ground.price = "call";
                 }
                 this.totalBill();
             },
@@ -149,7 +178,14 @@
                 $oceanTrans = (!isNaN(parseFloat($oceanTrans))) ? parseFloat($oceanTrans) : 0;
 
                 let $result = $groundTrans + $oceanTrans;
-                $('#total').val($result.toFixed(2));
+                this.makeOrderForms.totalPrice =  $result.toFixed(2);
+                // this.makeOrderForms.totalPrice =
+            },
+            makeOrder() {
+
+                console.log(Object.keys(this.prices).length);
+
+                console.log(this.makeOrderForms);
             }
         },
         computed: {
@@ -158,6 +194,7 @@
             },
             oceanPrice() {
                 if (this.selectedDestinationPort && "price" in this.selectedDestinationPort) {
+                    this.makeOrderForms.ocean.price = this.selectedDestinationPort.price;
                     return this.selectedDestinationPort.price
                 }
                 return 0;

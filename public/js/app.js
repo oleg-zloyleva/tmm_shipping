@@ -12998,13 +12998,13 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     btnSendForms: function btnSendForms() {
-      this.isValidForms();
-
       if (this.delivery === 'foreign') {
         this.fppiSaveImg();
       } else {
         this.usppiSaveImg();
       }
+
+      this.isValidForms();
     },
     uploadFileShipper: function uploadFileShipper(el) {
       this.readURLShipper(el.target);
@@ -13223,6 +13223,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RateCalculatorComponent",
   props: {
@@ -13246,7 +13257,23 @@ __webpack_require__.r(__webpack_exports__);
       locations: {},
       exitPortGrounds: {},
       groundPriceData: null,
-      groundPrice: 0
+      groundPrice: 0,
+      makeOrderForms: {
+        ground: {
+          auction: '',
+          location: '',
+          exitPort: '',
+          price: ''
+        },
+        ocean: {
+          exitPort: '',
+          destination: '',
+          price: ''
+        },
+        totalPrice: '',
+        name: '',
+        phone: ''
+      }
     };
   },
   methods: {
@@ -13262,8 +13289,10 @@ __webpack_require__.r(__webpack_exports__);
 
       if (!!Number(this.groundPriceData.price)) {
         this.groundPrice = this.groundPriceData.price;
+        this.makeOrderForms.ground.price = this.groundPriceData.price;
       } else {
         this.groundPrice = "call";
+        this.makeOrderForms.ground.price = "call";
       }
 
       this.totalBill();
@@ -13274,7 +13303,11 @@ __webpack_require__.r(__webpack_exports__);
       $groundTrans = !isNaN(parseFloat($groundTrans)) ? parseFloat($groundTrans) : 0;
       $oceanTrans = !isNaN(parseFloat($oceanTrans)) ? parseFloat($oceanTrans) : 0;
       var $result = $groundTrans + $oceanTrans;
-      $('#total').val($result.toFixed(2));
+      this.makeOrderForms.totalPrice = $result.toFixed(2); // this.makeOrderForms.totalPrice =
+    },
+    makeOrder: function makeOrder() {
+      console.log(Object.keys(this.prices).length);
+      console.log(this.makeOrderForms);
     }
   },
   computed: {
@@ -13283,6 +13316,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     oceanPrice: function oceanPrice() {
       if (this.selectedDestinationPort && "price" in this.selectedDestinationPort) {
+        this.makeOrderForms.ocean.price = this.selectedDestinationPort.price;
         return this.selectedDestinationPort.price;
       }
 
@@ -69088,7 +69122,8 @@ var render = function() {
                           { key: item.id, domProps: { value: item } },
                           [
                             _vm._v(
-                              _vm._s(item.name) +
+                              "\n                                    " +
+                                _vm._s(item.name) +
                                 "\n                                "
                             )
                           ]
@@ -69192,11 +69227,116 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(3),
+              _c("div", { staticClass: "contact-block" }, [
+                _c("label", [
+                  _vm._v(
+                    "\n                        Name:\n                        "
+                  ),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.makeOrderForms.name,
+                        expression: "makeOrderForms.name"
+                      }
+                    ],
+                    staticClass: "contact-block__inp",
+                    attrs: { type: "text" },
+                    domProps: { value: _vm.makeOrderForms.name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.makeOrderForms,
+                          "name",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("label", [
+                  _vm._v(
+                    "\n                        Phone:\n                        "
+                  ),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.makeOrderForms.phone,
+                        expression: "makeOrderForms.phone"
+                      }
+                    ],
+                    staticClass: "contact-block__inp",
+                    attrs: { type: "text" },
+                    domProps: { value: _vm.makeOrderForms.phone },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.makeOrderForms,
+                          "phone",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "total-block" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "total-block__label",
+                    attrs: { for: "total" }
+                  },
+                  [_vm._v("Total bill:")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.makeOrderForms.totalPrice,
+                      expression: "makeOrderForms.totalPrice"
+                    }
+                  ],
+                  staticClass: "total-block__inp only-number",
+                  attrs: { id: "total", value: "0.00", disabled: "" },
+                  domProps: { value: _vm.makeOrderForms.totalPrice },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.makeOrderForms,
+                        "totalPrice",
+                        $event.target.value
+                      )
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "dollar" }, [_vm._v("$")])
+              ]),
               _vm._v(" "),
               _c(
                 "button",
-                { staticClass: "btn-make-order", attrs: { id: "make-order" } },
+                {
+                  staticClass: "btn-make-order",
+                  attrs: { id: "make-order" },
+                  on: { click: _vm.makeOrder }
+                },
                 [_vm._v("Make Order")]
               )
             ]
@@ -69251,25 +69391,6 @@ var staticRenderFns = [
           )
         ]
       )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "total-block" }, [
-      _c(
-        "label",
-        { staticClass: "total-block__label", attrs: { for: "total" } },
-        [_vm._v("Total bill:")]
-      ),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "total-block__inp only-number",
-        attrs: { id: "total", value: "0.00", disabled: "" }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "dollar" }, [_vm._v("$")])
     ])
   }
 ]
