@@ -2584,7 +2584,8 @@ input:disabled {
   background-color: #fff;
 }
 
-.required-input {
+input.required,
+select.required {
   border-color: #d0021b !important;
   color: #d0021b !important;
   transition: all 0.3s linear;

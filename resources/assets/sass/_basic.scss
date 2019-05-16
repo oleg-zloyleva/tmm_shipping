@@ -96,7 +96,8 @@ input:disabled {
 
 
 // === REQUIRED INPUT === //
-.required-input {
+input.required,
+select.required {
   border-color: $colorRed !important;
   color: $colorRed !important;
   transition: all .3s linear;
