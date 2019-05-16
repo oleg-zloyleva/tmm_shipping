@@ -3630,7 +3630,7 @@ select.required {
 
 #rates .calculate-block .contact-block {
   text-align: right;
-  margin-right: 50px;
+  margin-right: 43px;
 }
 
 #rates .calculate-block .contact-block__lbl {
@@ -3643,7 +3643,7 @@ select.required {
 
 #rates .calculate-block .contact-block__inp {
   display: inline-block;
-  width: 220px;
+  width: 160px;
   margin-left: 10px;
   border: none;
   border-bottom: 1px solid #d8d8d8;
@@ -3655,7 +3655,7 @@ select.required {
 
 #rates .calculate-block .total-block {
   position: relative;
-  margin-right: 50px;
+  margin-right: 43px;
   text-align: right;
 }
 
@@ -3692,7 +3692,7 @@ select.required {
   display: block;
   text-transform: uppercase;
   color: #fff;
-  background-color: #d0021b;
+  background-color: #bc515c;
   margin: 50px auto 0;
   padding: 5px 20px;
   border: none;
@@ -3747,6 +3747,20 @@ select.required {
   }
 }*/
 
+@media screen and (max-width: 1199px) {
+  #rates .calculate-block .total-block,
+  #rates .calculate-block .contact-block {
+    margin-right: 52px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  #rates .calculate-block .total-block,
+  #rates .calculate-block .contact-block {
+    margin-right: 33px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   #rates .calculate-block__row {
     align-items: center;
@@ -3761,9 +3775,10 @@ select.required {
     display: none;
   }
 
-  #rates .calculate-block .total-block {
+  #rates .calculate-block .total-block,
+  #rates .calculate-block .contact-block {
     display: block;
-    width: 200px;
+    width: 230px;
     margin: 20px auto 0;
   }
 }

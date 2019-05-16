@@ -12812,6 +12812,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "OrderPageComponent",
@@ -12981,9 +12982,7 @@ __webpack_require__.r(__webpack_exports__);
         axios({
           method: 'post',
           url: '/email/air_shipping_order',
-          // headers: { 'content-type': 'multipart/form-data' },
-          data: this.sendOrderForm // $.param(this.sendOrderForm)
-
+          data: this.sendOrderForm
         }).then(function (res) {
           console.log(res);
           $('#message-success').addClass('fadeIn');
@@ -13290,14 +13289,16 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     selectExitPortHandler: function selectExitPortHandler() {
-      console.log("selectExitPortHandler");
       this.destinationPorts = this.exitPort.prices;
       this.selectedDestinationPort = {
         price: 0
       };
     },
     selectGroundPriceHandler: function selectGroundPriceHandler() {
-      console.log();
+      console.log(this.groundPriceData);
+      this.makeOrderForms.ground.auction = this.groundPriceData.auctions_name;
+      this.makeOrderForms.ground.location = this.groundPriceData.groundLocations_name;
+      this.makeOrderForms.ground.exitPort = this.groundPriceData.groundExitPorts_name;
 
       if (!!Number(this.groundPriceData.price)) {
         this.groundPrice = this.groundPriceData.price;
@@ -13310,25 +13311,49 @@ __webpack_require__.r(__webpack_exports__);
       this.totalBill();
     },
     totalBill: function totalBill() {
+      this.makeOrderForms.ocean.exitPort = this.prices.name;
+      this.makeOrderForms.ocean.destination = this.selectedDestinationPort.destination_ports.name;
       var $groundTrans = this.groundPrice;
       var $oceanTrans = this.oceanPrice;
       $groundTrans = !isNaN(parseFloat($groundTrans)) ? parseFloat($groundTrans) : 0;
       $oceanTrans = !isNaN(parseFloat($oceanTrans)) ? parseFloat($oceanTrans) : 0;
       var $result = $groundTrans + $oceanTrans;
-      this.makeOrderForms.totalPrice = $result.toFixed(2); // this.makeOrderForms.totalPrice =
+      this.makeOrderForms.totalPrice = $result.toFixed(2);
     },
     submitMakeOrder: function submitMakeOrder() {
       var _this = this;
 
       this.$validator.validateAll().then(function (result) {
         if (result) {
-          console.log('%c Form Submitted!', 'color: green; font-weight: 600;'); // function axios
+          console.log('%c Form Submitted!', 'color: green; font-weight: 600;');
+
+          _this.sendForms();
 
           return;
         }
 
         _this.isValidateForms = false;
         console.log('%c Correct them errors!', 'color: red; font-weight: 600;');
+      });
+    },
+    sendForms: function sendForms() {
+      axios({
+        method: 'post',
+        url: '/email/rate_order',
+        data: this.makeOrderForms
+      }).then(function (res) {
+        console.log(res);
+        $('#message-success').addClass('fadeIn');
+        $('#calculate-block').trigger("reset");
+        setTimeout(function () {
+          $('#message-success').removeClass('fadeIn');
+        }, 4000);
+      }).catch(function (err) {
+        console.log('Error', err);
+        $('#message-server-error').addClass('fadeIn');
+        setTimeout(function () {
+          $('#message-server-error').removeClass('fadeIn');
+        }, 4000);
       });
     }
   },
@@ -13349,11 +13374,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     isCanSelectExitPort: function isCanSelectExitPort() {
       return !Object.keys(this.exitPortGrounds).length;
-    }
-  },
-  watch: {
-    locations: function locations(value) {
-      console.log(value);
     }
   }
 });
@@ -69353,7 +69373,7 @@ var render = function() {
                         expression: "makeOrderForms.phone"
                       }
                     ],
-                    staticClass: "contact-block__inp",
+                    staticClass: "contact-block__inp only-number",
                     class: { required: _vm.errors.has("phone") },
                     attrs: { name: "phone" },
                     domProps: { value: _vm.makeOrderForms.phone },

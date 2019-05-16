@@ -103,7 +103,7 @@
                         <label class="contact-block__lbl">
                             Phone:
                             <input name="phone"
-                                   class="contact-block__inp"
+                                   class="contact-block__inp only-number"
                                    v-validate="'required'"
                                    :class="{'required': errors.has('phone')}"
                                    v-model="makeOrderForms.phone">
@@ -162,14 +162,19 @@
         },
         methods: {
             selectExitPortHandler() {
-                console.log("selectExitPortHandler");
                 this.destinationPorts = this.exitPort.prices;
                 this.selectedDestinationPort = {
                     price: 0
                 };
             },
             selectGroundPriceHandler() {
-                console.log();
+
+                console.log(this.groundPriceData);
+
+                this.makeOrderForms.ground.auction = this.groundPriceData.auctions_name;
+                this.makeOrderForms.ground.location = this.groundPriceData.groundLocations_name;
+                this.makeOrderForms.ground.exitPort = this.groundPriceData.groundExitPorts_name;
+
                 if (!!Number(this.groundPriceData.price)) {
                     this.groundPrice = this.groundPriceData.price;
                     this.makeOrderForms.ground.price = this.groundPriceData.price;
@@ -180,6 +185,10 @@
                 this.totalBill();
             },
             totalBill() {
+
+                this.makeOrderForms.ocean.exitPort = this.prices.name;
+                this.makeOrderForms.ocean.destination = this.selectedDestinationPort.destination_ports.name;
+
                 let $groundTrans = this.groundPrice;
                 let $oceanTrans = this.oceanPrice;
 
@@ -188,14 +197,13 @@
 
                 let $result = $groundTrans + $oceanTrans;
                 this.makeOrderForms.totalPrice = $result.toFixed(2);
-                // this.makeOrderForms.totalPrice =
             },
             submitMakeOrder() {
 
                 this.$validator.validateAll().then((result) => {
                     if (result) {
                         console.log('%c Form Submitted!', 'color: green; font-weight: 600;');
-                        // function axios
+                        this.sendForms();
                         return;
                     }
 
@@ -203,6 +211,28 @@
                     console.log('%c Correct them errors!', 'color: red; font-weight: 600;');
                 });
 
+            },
+            sendForms() {
+                axios({
+                    method: 'post',
+                    url: '/email/rate_order',
+                    data: this.makeOrderForms
+                })
+                    .then(res => {
+                        console.log(res);
+                        $('#message-success').addClass('fadeIn');
+                        $('#calculate-block').trigger("reset");
+                        setTimeout(function () {
+                            $('#message-success').removeClass('fadeIn');
+                        }, 4000);
+                    })
+                    .catch(err => {
+                        console.log('Error', err);
+                        $('#message-server-error').addClass('fadeIn');
+                        setTimeout(function () {
+                            $('#message-server-error').removeClass('fadeIn');
+                        }, 4000);
+                    });
             }
         },
         computed: {
@@ -221,11 +251,6 @@
             },
             isCanSelectExitPort() {
                 return !Object.keys(this.exitPortGrounds).length;
-            }
-        },
-        watch: {
-            locations(value) {
-                console.log(value);
             }
         }
     }

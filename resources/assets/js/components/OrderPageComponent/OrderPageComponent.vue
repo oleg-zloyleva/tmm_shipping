@@ -953,7 +953,8 @@
                                         <span class="additional"></span>
                                     </div>
                                     <div class="slider-order__row">
-                                        <button class="btn-continue btn-disabled" id="btn-continue" @click="btnSendForms"
+                                        <button class="btn-continue btn-disabled" id="btn-continue"
+                                                @click="btnSendForms"
                                                 disabled>
                                             Continue
                                         </button>
@@ -1141,26 +1142,25 @@
                     console.log('======> ok!!!!!');
 
                     axios({
-                    method: 'post',
-                    url: '/email/air_shipping_order',
-                    // headers: { 'content-type': 'multipart/form-data' },
-                    data: this.sendOrderForm // $.param(this.sendOrderForm)
-                })
-                    .then(res => {
-                        console.log(res);
-                        $('#message-success').addClass('fadeIn');
-                        $('#form-quick-quote').trigger("reset");
-                        setTimeout(function () {
-                            $('#message-success').removeClass('fadeIn');
-                        }, 4000);
+                        method: 'post',
+                        url: '/email/air_shipping_order',
+                        data: this.sendOrderForm
                     })
-                    .catch(err => {
-                        console.log('Error', err);
-                        $('#message-server-error').addClass('fadeIn');
-                        setTimeout(function () {
-                            $('#message-server-error').removeClass('fadeIn');
-                        }, 4000);
-                    });
+                        .then(res => {
+                            console.log(res);
+                            $('#message-success').addClass('fadeIn');
+                            $('#form-quick-quote').trigger("reset");
+                            setTimeout(function () {
+                                $('#message-success').removeClass('fadeIn');
+                            }, 4000);
+                        })
+                        .catch(err => {
+                            console.log('Error', err);
+                            $('#message-server-error').addClass('fadeIn');
+                            setTimeout(function () {
+                                $('#message-server-error').removeClass('fadeIn');
+                            }, 4000);
+                        });
 
                 }
 
@@ -1171,7 +1171,7 @@
                 } else {
                     this.usppiSaveImg();
                 }
-                
+
                 this.isValidForms();
             },
             uploadFileShipper(el) {

@@ -128,7 +128,7 @@
 
     .contact-block {
       text-align: right;
-      margin-right: 50px;
+      margin-right: 43px;
 
       &__lbl {
         display: block;
@@ -140,7 +140,7 @@
 
       &__inp {
         display: inline-block;
-        width: 220px;
+        width: 160px;
         margin-left: 10px;
         border: none;
         border-bottom: 1px solid $colorLightGrey;
@@ -153,7 +153,7 @@
 
     .total-block {
       position: relative;
-      margin-right: 50px;
+      margin-right: 43px;
       text-align: right;
 
       &__label {
@@ -190,7 +190,7 @@
       display: block;
       text-transform: uppercase;
       color: #fff;
-      background-color: $colorRed;
+      background-color: $colorLightRed;
       margin: 50px auto 0;
       padding: 5px 20px;
       border: none;
@@ -291,6 +291,28 @@
 
 
 // ===== MEDIA QUERIES ===== //
+@media screen and (max-width: 1199px) {
+  #rates {
+    .calculate-block {
+     .total-block,
+     .contact-block {
+       margin-right: 52px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 991px) {
+  #rates {
+    .calculate-block {
+      .total-block,
+      .contact-block {
+        margin-right: 33px;
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 768px) {
 
   #rates {
@@ -308,9 +330,10 @@
         display: none;
       }
 
-      .total-block {
+      .total-block,
+      .contact-block {
         display: block;
-        width: 200px;
+        width: 230px;
         margin: 20px auto 0;
       }
     }
