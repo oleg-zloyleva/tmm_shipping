@@ -1160,15 +1160,13 @@
 
             },
             btnSendForms() {
-
-                this.isValidForms();
-
-
                 if (this.delivery === 'foreign') {
                     this.fppiSaveImg();
                 } else {
                     this.usppiSaveImg();
                 }
+                
+                this.isValidForms();
             },
             uploadFileShipper(el) {
                 this.readURLShipper(el.target);
