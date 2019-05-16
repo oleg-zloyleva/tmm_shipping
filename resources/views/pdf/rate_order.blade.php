@@ -15,22 +15,16 @@
         <div><b>Name:</b> <i>{{ $name }}</i></div>
         <div><b>Phone:</b> <i>{{ $phone }}</i></div>
 
-        @if( isset($groundAuction) )
+        <div><b>Ground Auction:</b> <i>{{ $ground['auction']??'' }}</i></div>
+        <div><b>Ground Location:</b> <i>{{ $ground['location']??'' }}</i></div>
+        <div><b>Ground Exit Port:</b> <i>{{ $ground['exitPort']??'' }}</i></div>
+        <div><b>Ground Price:</b> <i>{{ $ground['price']??'' }}</i></div>
 
-        <div><b>Ground Auction:</b> <i>{{ $groundAuction }}</i></div>
-        <div><b>Ground Location:</b> <i>{{ $groundLocation }}</i></div>
-        <div><b>Ground Exit Port:</b> <i>{{ $groundExitPort }}</i></div>
-        <div><b>Ground Price:</b> <i>{{ $groundPrice }}</i></div>
+        <div><b>Ocean Exit Port:</b> <i>{{ $ocean['exitPort']??'' }}</i></div>
+        <div><b>Ocean Destination Port:</b> <i>{{ $ocean['destination']??'' }}</i></div>
+        <div><b>Ocean Price:</b> <i>{{ $ocean['price']??'' }}</i></div>
 
-        @endif
-
-        @if( isset($oceanExitPort) )
-
-        <div><b>Ocean Exit Port:</b> <i>{{ $oceanExitPort }}</i></div>
-        <div><b>Ocean Destination Port:</b> <i>{{ $oceanDestinationPort }}</i></div>
-        <div><b>Ocean Price:</b> <i>{{ $oceanPrice }}</i></div>
-
-        @endif
+        <div><b>Total Price:</b> <i>{{ $totalPrice }}</i></div>
     </div>
 </body>
 </html>
