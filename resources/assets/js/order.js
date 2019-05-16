@@ -16,6 +16,9 @@ $.getJSON("./js/air_order.json", function (data) {
     for (let i = 0; i < $country.length; i++) {
         let $option = '<option value="' + $country[i] + '">' + $country[i] + '</option>';
         $('[name="country"]').append($option);
+        $('[name="countryCon"]').append($option);
+        $('[name="countryNot"]').append($option);
+        $('[name="countryDoc"]').append($option);
     }
 
     for (let i = 0; i < $airWaybill.length; i++) {
@@ -55,7 +58,7 @@ $('body').on('click', '#agree-checked', function () {
 
 
 // === FORM SUBMIT === //
-$('body').on('click', '#btn-continue', function () {
+/*$('body').on('click', '#btn-continue', function () {
 
     let $buttonActive = $('.buttons-control__btn.active').attr('data-order');
 
@@ -97,7 +100,7 @@ $('body').on('click', '#btn-continue', function () {
         }, 5000);
     }
 
-});
+});*/
 
 
 // === FORMS VALIDATION === //

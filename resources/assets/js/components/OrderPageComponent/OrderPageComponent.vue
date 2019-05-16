@@ -39,55 +39,72 @@
                                                value="foreign" v-model="delivery">
                                         <label for="foreign" class="checked-block__label">Foreign</label>
                                     </div>
-                                    <form id="form-shipper">
+                                    <form id="form-shipper" @submit.prevent="isValidForms">
                                         <div class="slider-order__body">
                                             <div class="body-left">
                                                 <div class="slider-order__row">
                                                     <label class="slider-order__label slider-order__label-required">
                                                         TID/SS#:
-                                                        <input name="tid" class="slider-order__inp"
+                                                        <input name="tid"
+                                                               class="slider-order__inp"
+                                                               v-validate="'required'"
+                                                               :class="{'required': errors.has('tid')}"
                                                                v-model="sendOrderForm.shipper.tid">
                                                     </label>
                                                 </div>
                                                 <div class="slider-order__row">
                                                     <label class="slider-order__label slider-order__label-required">
                                                         First name:
-                                                        <input name="firstName" class="slider-order__inp"
+                                                        <input name="firstName"
+                                                               class="slider-order__inp"
+                                                               v-validate="'required'"
+                                                               :class="{'required': errors.has('firstName')}"
                                                                v-model="sendOrderForm.shipper.firstName">
                                                     </label>
                                                 </div>
                                                 <div class="slider-order__row">
                                                     <label class="slider-order__label slider-order__label-required">
                                                         Second name:
-                                                        <input name="secondName" class="slider-order__inp"
+                                                        <input name="secondName"
+                                                               class="slider-order__inp"
+                                                               v-validate="'required'"
+                                                               :class="{'required': errors.has('secondName')}"
                                                                v-model="sendOrderForm.shipper.secondName">
                                                     </label>
                                                 </div>
                                                 <div class="slider-order__row">
                                                     <label class="slider-order__label">
                                                         Address:
-                                                        <input name="address" class="slider-order__inp"
+                                                        <input name="address"
+                                                               class="slider-order__inp"
                                                                v-model="sendOrderForm.shipper.address">
                                                     </label>
                                                 </div>
                                                 <div class="slider-order__row">
                                                     <label class="slider-order__label slider-order__label-required">
                                                         E-mail:
-                                                        <input name="email" class="slider-order__inp"
+                                                        <input name="email"
+                                                               class="slider-order__inp"
+                                                               v-validate="'required'"
+                                                               :class="{'required': errors.has('email')}"
                                                                v-model="sendOrderForm.shipper.email">
                                                     </label>
                                                 </div>
                                                 <div class="slider-order__row">
                                                     <label class="slider-order__label slider-order__label-required">
                                                         Phone:
-                                                        <input name="phone" class="slider-order__inp only-number"
+                                                        <input name="phone"
+                                                               class="slider-order__inp only-number"
+                                                               v-validate="'required'"
+                                                               :class="{'required': errors.has('phone')}"
                                                                v-model="sendOrderForm.shipper.phone">
                                                     </label>
                                                 </div>
                                                 <div class="slider-order__row">
                                                     <label class="slider-order__label">
                                                         Fax:
-                                                        <input name="fax" class="slider-order__inp"
+                                                        <input name="fax"
+                                                               class="slider-order__inp"
                                                                v-model="sendOrderForm.shipper.fax">
                                                     </label>
                                                 </div>
@@ -96,14 +113,18 @@
                                                 <div class="slider-order__row">
                                                     <label class="slider-order__label slider-order__label-required">
                                                         City:
-                                                        <input name="city" class="slider-order__inp"
+                                                        <input name="city"
+                                                               class="slider-order__inp"
+                                                               v-validate="'required'"
+                                                               :class="{'required': errors.has('city')}"
                                                                v-model="sendOrderForm.shipper.city">
                                                     </label>
                                                 </div>
                                                 <div class="slider-order__row">
                                                     <label class="slider-order__label">
                                                         State (US only):
-                                                        <select name="state" class="slider-order__select select-order"
+                                                        <select name="state"
+                                                                class="slider-order__select select-order"
                                                                 v-model="sendOrderForm.shipper.state">
                                                             <option value="">Choose country</option>
                                                         </select>
@@ -119,7 +140,10 @@
                                                 <div class="slider-order__row">
                                                     <label class="slider-order__label slider-order__label-required">
                                                         Country:
-                                                        <select name="country" class="slider-order__select select-order"
+                                                        <select name="country"
+                                                                class="slider-order__select select-order"
+                                                                v-validate="'required'"
+                                                                :class="{'required': errors.has('country')}"
                                                                 v-model="sendOrderForm.shipper.country">
                                                             <option value="">Choose country</option>
                                                         </select>
@@ -140,7 +164,7 @@
                                                         <span class="upload-file-container__btn">Choose file</span>
                                                         <input type="file" name="shipperUploadFile"
                                                                class="upload-file-container__photo"
-                                                               @change="uploadFile">
+                                                               @change="uploadFileShipper">
                                                     </div>
                                                     <div class="upload-file-container__image-demo">
                                                         <img class="image-demo" src="#" alt="">
@@ -153,54 +177,62 @@
                                 <!-- CONSIGNEE -->
                                 <div class="slider-order__slide slide-2">
                                     <div class="slider-order__title">CONSIGNEE</div>
-                                    <form id="form-consignee">
+                                    <form id="form-consignee" @submit.prevent="isValidForms">
                                         <div class="slider-order__body">
                                             <div class="body-left">
-                                                <!--<div class="slider-order__row">
-                                                    <label class="slider-order__label slider-order__label-required">
-                                                        TID/SS#:
-                                                        <input name="tid" class="slider-order__inp">
-                                                    </label>
-                                                </div>-->
                                                 <div class="slider-order__row">
                                                     <label class="slider-order__label slider-order__label-required">
                                                         First name:
-                                                        <input name="firstName" class="slider-order__inp"
+                                                        <input name="firstNameCon"
+                                                               class="slider-order__inp"
+                                                               v-validate="'required'"
+                                                               :class="{'required': errors.has('firstNameCon')}"
                                                                v-model="sendOrderForm.consignee.firstName">
                                                     </label>
                                                 </div>
                                                 <div class="slider-order__row">
                                                     <label class="slider-order__label slider-order__label-required">
                                                         Second name:
-                                                        <input name="secondName" class="slider-order__inp"
+                                                        <input name="secondNameCon"
+                                                               class="slider-order__inp"
+                                                               v-validate="'required'"
+                                                               :class="{'required': errors.has('secondNameCon')}"
                                                                v-model="sendOrderForm.consignee.secondName">
                                                     </label>
                                                 </div>
                                                 <div class="slider-order__row">
                                                     <label class="slider-order__label">
                                                         Address:
-                                                        <input name="address" class="slider-order__inp"
+                                                        <input name="addressCon"
+                                                               class="slider-order__inp"
                                                                v-model="sendOrderForm.consignee.address">
                                                     </label>
                                                 </div>
                                                 <div class="slider-order__row">
                                                     <label class="slider-order__label slider-order__label-required">
                                                         E-mail:
-                                                        <input name="email" class="slider-order__inp"
+                                                        <input name="emailCon"
+                                                               class="slider-order__inp"
+                                                               v-validate="'required'"
+                                                               :class="{'required': errors.has('emailCon')}"
                                                                v-model="sendOrderForm.consignee.email">
                                                     </label>
                                                 </div>
                                                 <div class="slider-order__row">
                                                     <label class="slider-order__label slider-order__label-required">
                                                         Phone:
-                                                        <input name="phone" class="slider-order__inp only-number"
+                                                        <input name="phoneCon"
+                                                               class="slider-order__inp only-number"
+                                                               v-validate="'required'"
+                                                               :class="{'required': errors.has('phoneCon')}"
                                                                v-model="sendOrderForm.consignee.phone">
                                                     </label>
                                                 </div>
                                                 <div class="slider-order__row">
                                                     <label class="slider-order__label">
                                                         Fax:
-                                                        <input name="fax" class="slider-order__inp"
+                                                        <input name="fax"
+                                                               class="slider-order__inp"
                                                                v-model="sendOrderForm.consignee.fax">
                                                     </label>
                                                 </div>
@@ -209,7 +241,10 @@
                                                 <div class="slider-order__row">
                                                     <label class="slider-order__label slider-order__label-required">
                                                         City:
-                                                        <input name="city" class="slider-order__inp"
+                                                        <input name="cityCon"
+                                                               class="slider-order__inp"
+                                                               v-validate="'required'"
+                                                               :class="{'required': errors.has('cityCon')}"
                                                                v-model="sendOrderForm.consignee.city">
                                                     </label>
                                                 </div>
@@ -232,7 +267,10 @@
                                                 <div class="slider-order__row">
                                                     <label class="slider-order__label slider-order__label-required">
                                                         Country:
-                                                        <select name="country" class="slider-order__select select-order"
+                                                        <select name="countryCon"
+                                                                class="slider-order__select select-order"
+                                                                v-validate="'required'"
+                                                                :class="{'required': errors.has('countryCon')}"
                                                                 v-model="sendOrderForm.consignee.country">
                                                             <option value="">Choose country</option>
                                                         </select>
@@ -252,7 +290,7 @@
                                 <!-- NOTIFY PARTY -->
                                 <div class="slider-order__slide slide-3">
                                     <div class="slider-order__title">NOTIFY PARTY</div>
-                                    <form id="form-notify-party">
+                                    <form id="form-notify-party" @submit.prevent="isValidForms">
                                         <div class="slider-order__body-left">
                                             <div class="body-left">
                                                 <div class="slider-order__row">
@@ -272,14 +310,20 @@
                                                 <div class="slider-order__row">
                                                     <label class="slider-order__label slider-order__label-required">
                                                         First name:
-                                                        <input name="firstName" class="slider-order__inp"
+                                                        <input name="firstNameNot"
+                                                               class="slider-order__inp"
+                                                               v-validate="'required'"
+                                                               :class="{'required': errors.has('firstNameNot')}"
                                                                v-model="sendOrderForm.notifyParty.firstName">
                                                     </label>
                                                 </div>
                                                 <div class="slider-order__row">
                                                     <label class="slider-order__label slider-order__label-required">
                                                         Second name:
-                                                        <input name="secondName" class="slider-order__inp"
+                                                        <input name="secondNameNot"
+                                                               class="slider-order__inp"
+                                                               v-validate="'required'"
+                                                               :class="{'required': errors.has('secondNameNot')}"
                                                                v-model="sendOrderForm.notifyParty.secondName">
                                                     </label>
                                                 </div>
@@ -295,14 +339,18 @@
                                                 <div class="slider-order__row">
                                                     <label class="slider-order__label slider-order__label-required">
                                                         City:
-                                                        <input name="city" class="slider-order__inp"
+                                                        <input name="cityNot"
+                                                               class="slider-order__inp"
+                                                               v-validate="'required'"
+                                                               :class="{'required': errors.has('cityNot')}"
                                                                v-model="sendOrderForm.notifyParty.city">
                                                     </label>
                                                 </div>
                                                 <div class="slider-order__row">
                                                     <label class="slider-order__label">
                                                         State (US only):
-                                                        <select name="state" class="slider-order__select select-order"
+                                                        <select name="state"
+                                                                class="slider-order__select select-order"
                                                                 v-model="sendOrderForm.notifyParty.state">
                                                             <option value="">Choose country</option>
                                                         </select>
@@ -318,8 +366,10 @@
                                                 <div class="slider-order__row">
                                                     <label class="slider-order__label slider-order__label-required">
                                                         Country:
-                                                        <select name="country"
+                                                        <select name="countryNot"
                                                                 class="slider-order__select select-order"
+                                                                v-validate="'required'"
+                                                                :class="{'required': errors.has('countryNot')}"
                                                                 v-model="sendOrderForm.notifyParty.country">
                                                             <option value="">Choose country</option>
                                                         </select>
@@ -352,7 +402,7 @@
                                                 <label for="vehicle" class="checked-block__label">Vehicle</label>
                                             </div>
                                         </div>
-                                        <form id="form-description-of-goods">
+                                        <form id="form-description-of-goods" @submit.prevent="isValidForms">
                                             <div class="slider-order__body-center">
                                                 <div class="body-center">
                                                     <div class="slider-order__row">
@@ -427,12 +477,16 @@
                                                 <span class="itinerary">ITINERARY</span>
                                                 <label class="slider-order__label slider-order__label-required slider-order__label-from">
                                                     From:
-                                                    <input name="from" class="slider-order__inp"
+                                                    <input name="itineraryFrom"
+                                                           class="slider-order__inp"
+                                                           v-validate="'required'"
+                                                           :class="{'required': errors.has('itineraryFrom')}"
                                                            v-model="sendOrderForm.descriptionOfGoods.from">
                                                 </label>
                                                 <label class="slider-order__label slider-order__label-required slider-order__label-to">
                                                     To:
-                                                    <input name="to" class="slider-order__inp"
+                                                    <input name="itineraryTo"
+                                                           class="slider-order__inp"
                                                            v-model="sendOrderForm.descriptionOfGoods.to">
                                                 </label>
                                             </div>
@@ -460,27 +514,36 @@
                                                 <label for="vehicle2" class="checked-block__label">Vehicle</label>
                                             </div>
                                         </div>
-                                        <form id="form-vehicle">
+                                        <form id="form-vehicle" @submit.prevent="isValidForms">
                                             <div class="slider-order__body">
                                                 <div class="body-left body-vehicle">
                                                     <div class="slider-order__row">
                                                         <label class="slider-order__label slider-order__label-required">
                                                             Year:
-                                                            <input name="year" class="slider-order__inp only-number"
+                                                            <input name="year"
+                                                                   class="slider-order__inp only-number"
+                                                                   v-validate="'required'"
+                                                                   :class="{'required': errors.has('year')}"
                                                                    v-model="sendOrderForm.vehicle.year">
                                                         </label>
                                                     </div>
                                                     <div class="slider-order__row">
                                                         <label class="slider-order__label slider-order__label-required">
                                                             Make:
-                                                            <input name="make" class="slider-order__inp"
+                                                            <input name="make"
+                                                                   class="slider-order__inp"
+                                                                   v-validate="'required'"
+                                                                   :class="{'required': errors.has('make')}"
                                                                    v-model="sendOrderForm.vehicle.make">
                                                         </label>
                                                     </div>
                                                     <div class="slider-order__row">
                                                         <label class="slider-order__label slider-order__label-required">
                                                             Model:
-                                                            <input name="model" class="slider-order__inp"
+                                                            <input name="model"
+                                                                   class="slider-order__inp"
+                                                                   v-validate="'required'"
+                                                                   :class="{'required': errors.has('model')}"
                                                                    v-model="sendOrderForm.vehicle.model">
                                                         </label>
                                                     </div>
@@ -489,21 +552,30 @@
                                                     <div class="slider-order__row">
                                                         <label class="slider-order__label slider-order__label-required">
                                                             Body:
-                                                            <input name="body" class="slider-order__inp"
+                                                            <input name="body"
+                                                                   class="slider-order__inp"
+                                                                   v-validate="'required'"
+                                                                   :class="{'required': errors.has('body')}"
                                                                    v-model="sendOrderForm.vehicle.body">
                                                         </label>
                                                     </div>
                                                     <div class="slider-order__row">
                                                         <label class="slider-order__label slider-order__label-required">
                                                             Colour:
-                                                            <input name="colour" class="slider-order__inp"
+                                                            <input name="colour"
+                                                                   class="slider-order__inp"
+                                                                   v-validate="'required'"
+                                                                   :class="{'required': errors.has('colour')}"
                                                                    v-model="sendOrderForm.vehicle.colour">
                                                         </label>
                                                     </div>
                                                     <div class="slider-order__row">
                                                         <label class="slider-order__label slider-order__label-required">
                                                             6 Last VIN#:
-                                                            <input name="vin" class="slider-order__inp"
+                                                            <input name="vin"
+                                                                   class="slider-order__inp"
+                                                                   v-validate="'required'"
+                                                                   :class="{'required': errors.has('vin')}"
                                                                    v-model="sendOrderForm.vehicle.vin">
                                                         </label>
                                                     </div>
@@ -512,8 +584,10 @@
                                             <div class="slider-order__row slider-order__row-center">
                                                 <label class="slider-order__label slider-order__label-required slider-order__label-vehicle">
                                                     Value of vehicle:
-                                                    <input name="valueOfVehicle"
+                                                    <input name="valueVehicle"
                                                            class="slider-order__inp slider-order__inp-vehicle only-number"
+                                                           v-validate="'required'"
+                                                           :class="{'required': errors.has('valueVehicle')}"
                                                            v-model="sendOrderForm.vehicle.valueVehicle">
                                                     <span class="dollar">&dollar;</span>
                                                 </label>
@@ -530,7 +604,7 @@
                                 </div>
                                 <!-- SEND DOCUMENTS TO -->
                                 <div class="slider-order__slide slide-5">
-                                    <form id="form-send-documents-to">
+                                    <form id="form-send-documents-to" @submit.prevent="isValidForms">
                                         <div class="slider-order__title">SEND DOCUMENTS TO:</div>
                                         <div class="slider-order__body-left">
                                             <div class="body-left">
@@ -551,14 +625,20 @@
                                                 <div class="slider-order__row">
                                                     <label class="slider-order__label slider-order__label-required">
                                                         First name:
-                                                        <input name="firstName" class="slider-order__inp"
+                                                        <input name="firstNameDoc"
+                                                               class="slider-order__inp"
+                                                               v-validate="'required'"
+                                                               :class="{'required': errors.has('firstNameDoc')}"
                                                                v-model="sendOrderForm.sendDocuments.firstName">
                                                     </label>
                                                 </div>
                                                 <div class="slider-order__row">
                                                     <label class="slider-order__label slider-order__label-required">
                                                         Second name:
-                                                        <input name="secondName" class="slider-order__inp"
+                                                        <input name="secondNameDoc"
+                                                               class="slider-order__inp"
+                                                               v-validate="'required'"
+                                                               :class="{'required': errors.has('secondNameDoc')}"
                                                                v-model="sendOrderForm.sendDocuments.secondName">
                                                     </label>
                                                 </div>
@@ -574,7 +654,10 @@
                                                 <div class="slider-order__row">
                                                     <label class="slider-order__label slider-order__label-required">
                                                         City:
-                                                        <input name="city" class="slider-order__inp"
+                                                        <input name="cityDoc"
+                                                               class="slider-order__inp"
+                                                               v-validate="'required'"
+                                                               :class="{'required': errors.has('cityDoc')}"
                                                                v-model="sendOrderForm.sendDocuments.city">
                                                     </label>
                                                 </div>
@@ -597,8 +680,10 @@
                                                 <div class="slider-order__row">
                                                     <label class="slider-order__label slider-order__label-required">
                                                         Country:
-                                                        <select name="country"
+                                                        <select name="countryDoc"
                                                                 class="slider-order__select select-order"
+                                                                v-validate="'required'"
+                                                                :class="{'required': errors.has('countryDoc')}"
                                                                 v-model="sendOrderForm.sendDocuments.country">
                                                             <option value="">Choose country</option>
                                                         </select>
@@ -618,8 +703,10 @@
                                                 <div class="upload-file-container">
                                                     <div class="upload-file-container__text">
                                                         <span class="upload-file-container__btn">Choose file</span>
-                                                        <input type="file" class="upload-file-container__photo"
-                                                               @change="uploadFile">
+                                                        <input type="file"
+                                                               name="sendDocumentsUploadFile"
+                                                               class="upload-file-container__photo"
+                                                               @change="uploadFileDocuments">
                                                     </div>
                                                     <div class="upload-file-container__image-demo">
                                                         <img class="image-demo" src="#" alt="">
@@ -671,10 +758,6 @@
                                                 <div class="content-signature">
                                                     <label class="label-content">
                                                         Signature:
-                                                        <!--<input class="inp-content inp-signature" name="signatureFirst"
-                                                               v-model="sendOrderForm.usppi.signatureFirst">*<input
-                                                            class="inp-content" name="signatureSecond"
-                                                            v-model="sendOrderForm.usppi.signatureSecond">-->
                                                         <span class="canvas">
                                                             <VueSignaturePad
                                                                     width="300px"
@@ -686,13 +769,6 @@
                                                                   @click="usppiSignatureClear">
                                                                 Clear
                                                             </span>
-                                                            <!--<span class="canvas__btn-clear"
-                                                                  @click="usppiSignatureClear">
-                                                                Clear
-                                                            </span>-->
-                                                            <!--<span class="canvas__btn-clear" @click="save">
-                                                                save
-                                                            </span>-->
                                                         </span>
                                                     </label>
                                                 </div>
@@ -822,8 +898,6 @@
                                                 </label>
                                                 <label class="content-lbl">
                                                     Signature:
-                                                    <!--<input type="text" class="inp-fppi"
-                                                           v-model="sendOrderForm.fppi.signature">-->
                                                     <span class="canvas">
                                                         <VueSignaturePad
                                                                 width="300px"
@@ -879,7 +953,7 @@
                                         <span class="additional"></span>
                                     </div>
                                     <div class="slider-order__row">
-                                        <button class="btn-continue btn-disabled" id="btn-continue" @click="sendForms"
+                                        <button class="btn-continue btn-disabled" id="btn-continue" @click="btnSendForms"
                                                 disabled>
                                             Continue
                                         </button>
@@ -898,13 +972,11 @@
 
 <script>
 
-    import VueSignaturePad from 'vue-signature-pad';
-
     import Slick from 'vue-slick';
 
     export default {
         name: "OrderPageComponent",
-        components: {Slick, VueSignaturePad},
+        components: {Slick},
         data() {
             return {
                 transport: 'air',
@@ -913,6 +985,7 @@
                 vehicleCheck: false,
                 businessCheck: false,
                 foreignCheck: false,
+                isValidateForms: false,
 
                 sendOrderForm: {
                     typeTransport: 'air',
@@ -929,7 +1002,7 @@
                         province: '',
                         country: '',
                         zip: '',
-                        shipperFile: ''
+                        uploadFile: ''
                     },
                     consignee: {
                         firstName: '',
@@ -993,13 +1066,13 @@
                         state: '',
                         province: '',
                         country: '',
-                        zip: ''
+                        zip: '',
+                        uploadFile: ''
                     },
                     usppi: {
                         firstExporterName: '',
                         secondExporterName: '',
-                        signatureFirst: '',
-                        signatureSecond: '',
+                        signature: '',
                         printName: '',
                         einTaxId: '',
                         titleFirst: '',
@@ -1043,10 +1116,25 @@
             };
         },
         methods: {
-            sendForms() {
-                console.log('formOrderSend', this.sendOrderForm);
+            isValidForms() {
+                this.$validator.validateAll().then((result) => {
+                    if (result) {
+                        console.log('%c Form Submitted!', 'color: green; font-weight: 600;');
+                        this.isValidateForms = true;
+                        this.submitForms();
+                        return;
+                    }
 
-                /*axios({
+                    this.isValidateForms = false;
+                    console.log('%c Correct them errors!', 'color: red; font-weight: 600;');
+                });
+            },
+            submitForms() {
+
+                if (this.isValidateForms) {
+                    console.log('======> ok!!!!!');
+
+                    /*axios({
                     method: 'post',
                     url: '/api/email/air_shipping_order',
                     // headers: { 'content-type': 'multipart/form-data' },
@@ -1067,20 +1155,52 @@
                             $('#message-server-error').removeClass('fadeIn');
                         }, 4000);
                     });*/
-            },
-            uploadFile(el) {
-                this.readURL(el.target);
-            },
-            readURL(input) {
 
-                console.log(input);
-                console.log(input.files[0]);
+                }
+
+            },
+            btnSendForms() {
+
+                this.isValidForms();
+
+
+                if (this.delivery === 'foreign') {
+                    this.fppiSaveImg();
+                } else {
+                    this.usppiSaveImg();
+                }
+            },
+            uploadFileShipper(el) {
+                this.readURLShipper(el.target);
+            },
+            readURLShipper(input) {
+
+                // console.log(input);
 
                 if (input.files && input.files[0]) {
                     var reader = new FileReader();
 
-                    reader.onload = function (e) {
+                    reader.onload = (e) => {
                         $(input).closest('.upload-file-container').find('.image-demo').attr('src', e.target.result);
+                        this.sendOrderForm.shipper.uploadFile = e.target.result;
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            },
+            uploadFileDocuments(el) {
+                this.readURLDocuments(el.target);
+            },
+            readURLDocuments(input) {
+
+                // console.log(input);
+
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = (e) => {
+                        $(input).closest('.upload-file-container').find('.image-demo').attr('src', e.target.result);
+                        this.sendOrderForm.sendDocuments.uploadFile = e.target.result;
                     };
 
                     reader.readAsDataURL(input.files[0]);
@@ -1091,6 +1211,16 @@
             },
             fppiSignatureClear() {
                 this.$refs.fppiSignaturePad.clearSignature();
+            },
+            usppiSaveImg() {
+                const {isEmpty, data} = this.$refs.usppiSignaturePad.saveSignature();
+                // console.log(data);
+                this.sendOrderForm.usppi.signature = data;
+            },
+            fppiSaveImg() {
+                const {isEmpty, data} = this.$refs.fppiSignaturePad.saveSignature();
+                // console.log(data);
+                this.sendOrderForm.fppi.signature = data;
             },
 
             next() {
@@ -1107,7 +1237,7 @@
         },
         watch: {
             delivery(value) {
-                console.log(value);
+                // console.log(value);
                 switch (value) {
                     case 'citizen':
                         this.businessCheck = false;
@@ -1124,17 +1254,14 @@
                     default:
                         break;
                 }
-                // console.log('foreignCheck', this.foreignCheck);
             },
             description(value) {
-                console.log(value);
+                // console.log(value);
                 this.vehicleCheck = !this.vehicleCheck;
                 this.description = value;
-                // console.log('vehicleCheck', this.vehicleCheck);
-                // console.log('foreignCheck', this.foreignCheck);
             },
             transport(value) {
-                console.log(value);
+                // console.log(value);
                 this.sendOrderForm.typeTransport = value;
             }
         }
