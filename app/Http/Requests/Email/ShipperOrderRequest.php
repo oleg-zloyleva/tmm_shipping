@@ -14,6 +14,7 @@ class ShipperOrderRequest extends Request
     public function rules()
     {
         return [
+            "typeTransport" => "required|string",
             "shipper" => "required|array",
 //              Shipper Flags
 //                "shipper.business" => "string",
@@ -32,6 +33,7 @@ class ShipperOrderRequest extends Request
                 "shipper.province" => "string",
                 "shipper.country" => "required|string",
                 "shipper.zip" => "string",
+                "shipper.uploadFile" => "string", // image
 
             "consignee" => "required|array",
                 "consignee.firstName" => "required|string",
@@ -45,8 +47,6 @@ class ShipperOrderRequest extends Request
                 "consignee.province" => "string",
                 "consignee.country" => "required|string",
                 "consignee.zip" => "string",
-
-//                "consignee.tid" => "required|string",
 
             "notifyParty" => "required|array",
                 "notifyParty.notifyParty" => "string",
@@ -76,7 +76,7 @@ class ShipperOrderRequest extends Request
                 "descriptionOfGoods.descriptionValue_7" => "string",
                 "descriptionOfGoods.from" => "required|string",
                 "descriptionOfGoods.to" => "required|string",
-                "descriptionOfGoods.insurance" => "string",
+                "descriptionOfGoods.insurance" => "boolean",
 
             "vehicle" => "required|array",
                 "vehicle.year" => "string",
@@ -86,7 +86,7 @@ class ShipperOrderRequest extends Request
                 "vehicle.colour" => "string",
                 "vehicle.vin" => "string",
                 "vehicle.valueVehicle" => "string",
-                "vehicle.insurance" => "string",
+                "vehicle.insurance" => "boolean",
 
             "sendDocuments" => "required|array",
                 "sendDocuments.waybill" => "string",
@@ -98,7 +98,18 @@ class ShipperOrderRequest extends Request
                 "sendDocuments.province" => "string",
                 "sendDocuments.country" => "required|string",
                 "sendDocuments.zip" => "string",
-//                "sendDocuments.photoId" => "image", // photo id
+                "sendDocuments.uploadFile" => "string", // image
+
+            "usppi" => "required|array",
+                "usppi.firstExporterName" => "string",
+                "usppi.secondExporterName" => "string",
+                "usppi.signature" => "string", // image
+                "usppi.printName" => "string",
+                "usppi.einTaxId" => "string",
+                "usppi.titleFirst" => "string",
+                "usppi.titleSecond" => "string",
+                "usppi.dateFirst" => "string",
+                "usppi.dateSecond" => "string",
 
             "fppi" => "required|array",
                 "fppi.name" => "string",
@@ -106,7 +117,7 @@ class ShipperOrderRequest extends Request
                 "fppi.address" => "string",
                 "fppi.witnessWhereof" => "string",
                 "fppi.witness" => "string",
-                "fppi.signature" => "string",
+                "fppi.signature" => "string", // image
                 "fppi.title" => "string",
                 "fppi.date" => "string",
                 "fppi.foreign" => "string",

@@ -1134,9 +1134,9 @@
                 if (this.isValidateForms) {
                     console.log('======> ok!!!!!');
 
-                    /*axios({
+                    axios({
                     method: 'post',
-                    url: '/api/email/air_shipping_order',
+                    url: '/email/air_shipping_order',
                     // headers: { 'content-type': 'multipart/form-data' },
                     data: this.sendOrderForm // $.param(this.sendOrderForm)
                 })
@@ -1154,7 +1154,7 @@
                         setTimeout(function () {
                             $('#message-server-error').removeClass('fadeIn');
                         }, 4000);
-                    });*/
+                    });
 
                 }
 

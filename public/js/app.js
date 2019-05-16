@@ -12974,27 +12974,26 @@ __webpack_require__.r(__webpack_exports__);
     submitForms: function submitForms() {
       if (this.isValidateForms) {
         console.log('======> ok!!!!!');
-        /*axios({
-        method: 'post',
-        url: '/api/email/air_shipping_order',
-        // headers: { 'content-type': 'multipart/form-data' },
-        data: this.sendOrderForm // $.param(this.sendOrderForm)
-        })
-        .then(res => {
-            console.log(res);
-            $('#message-success').addClass('fadeIn');
-            $('#form-quick-quote').trigger("reset");
-            setTimeout(function () {
-                $('#message-success').removeClass('fadeIn');
-            }, 4000);
-        })
-        .catch(err => {
-            console.log('Error', err);
-            $('#message-server-error').addClass('fadeIn');
-            setTimeout(function () {
-                $('#message-server-error').removeClass('fadeIn');
-            }, 4000);
-        });*/
+        axios({
+          method: 'post',
+          url: '/email/air_shipping_order',
+          // headers: { 'content-type': 'multipart/form-data' },
+          data: this.sendOrderForm // $.param(this.sendOrderForm)
+
+        }).then(function (res) {
+          console.log(res);
+          $('#message-success').addClass('fadeIn');
+          $('#form-quick-quote').trigger("reset");
+          setTimeout(function () {
+            $('#message-success').removeClass('fadeIn');
+          }, 4000);
+        }).catch(function (err) {
+          console.log('Error', err);
+          $('#message-server-error').addClass('fadeIn');
+          setTimeout(function () {
+            $('#message-server-error').removeClass('fadeIn');
+          }, 4000);
+        });
       }
     },
     btnSendForms: function btnSendForms() {
@@ -85935,8 +85934,8 @@ form.validate({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\OSPanel\domains\TMM\resources\assets\js\app.js */"./resources/assets/js/app.js");
-module.exports = __webpack_require__(/*! C:\OSPanel\domains\TMM\resources\assets\sass\main.scss */"./resources/assets/sass/main.scss");
+__webpack_require__(/*! /var/www/resources/assets/js/app.js */"./resources/assets/js/app.js");
+module.exports = __webpack_require__(/*! /var/www/resources/assets/sass/main.scss */"./resources/assets/sass/main.scss");
 
 
 /***/ })
