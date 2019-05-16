@@ -9,7 +9,7 @@
         </div>
         <div class="row">
             <div class="col-md-12 offset-md-0 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2">
-                <div class="calculate-block" id="calculate-block">
+                <form class="calculate-block" id="calculate-block" @submit.prevent="submitMakeOrder">
                     <h4>Calculate</h4>
                     <div class="calculate-block__row">
                         <div class="calculate-block__ground">
@@ -46,11 +46,11 @@
                                        v-model="groundPrice">
                                 <div class="dollar">$</div>
                             </div>
-                            <div class="ground-row">
+                            <!--<div class="ground-row">
                                 <div class="call-message" id="call-message-ground">
                                     There are no prices in this direction. Сontact us for more information.
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
                         <div class="calculate-block__ocean">
                             <h5>Ocean Transportation</h5>
@@ -78,30 +78,39 @@
                                 <input class="only-number" id="ocean-trans" value="0.00" disabled v-model="oceanPrice">
                                 <div class="dollar">$</div>
                             </div>
-                            <div class="ocean-row">
+                            <!--<div class="ocean-row">
                                 <div class="call-message" id="call-message-ocean">
                                     There are no prices in this direction. Сontact us for more information.
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
-                    </div>
-                    <div class="contact-block">
-                        <label>
-                            Name:
-                            <input type="text" class="contact-block__inp" v-model="makeOrderForms.name">
-                        </label>
-                        <label>
-                            Phone:
-                            <input type="text" class="contact-block__inp" v-model="makeOrderForms.phone">
-                        </label>
                     </div>
                     <div class="total-block">
                         <label class="total-block__label" for="total">Total bill:</label>
-                        <input class="total-block__inp only-number" id="total" value="0.00" disabled v-model="makeOrderForms.totalPrice">
+                        <input class="total-block__inp only-number" id="total" value="0.00" disabled
+                               v-model="makeOrderForms.totalPrice">
                         <div class="dollar">$</div>
                     </div>
-                    <button class="btn-make-order" id="make-order" @click="makeOrder">Make Order</button>
-                </div>
+                    <div class="contact-block">
+                        <label class="contact-block__lbl">
+                            Name:
+                            <input name="name"
+                                   class="contact-block__inp"
+                                   v-validate="'required'"
+                                   :class="{'required': errors.has('name')}"
+                                   v-model="makeOrderForms.name">
+                        </label>
+                        <label class="contact-block__lbl">
+                            Phone:
+                            <input name="phone"
+                                   class="contact-block__inp only-number"
+                                   v-validate="'required'"
+                                   :class="{'required': errors.has('phone')}"
+                                   v-model="makeOrderForms.phone">
+                        </label>
+                    </div>
+                    <button class="btn-make-order" id="make-order">Make Order</button>
+                </form>
             </div>
         </div>
     </div>
@@ -153,14 +162,19 @@
         },
         methods: {
             selectExitPortHandler() {
-                console.log("selectExitPortHandler");
                 this.destinationPorts = this.exitPort.prices;
                 this.selectedDestinationPort = {
                     price: 0
                 };
             },
             selectGroundPriceHandler() {
-                console.log();
+
+                console.log(this.groundPriceData);
+
+                this.makeOrderForms.ground.auction = this.groundPriceData.auctions_name;
+                this.makeOrderForms.ground.location = this.groundPriceData.groundLocations_name;
+                this.makeOrderForms.ground.exitPort = this.groundPriceData.groundExitPorts_name;
+
                 if (!!Number(this.groundPriceData.price)) {
                     this.groundPrice = this.groundPriceData.price;
                     this.makeOrderForms.ground.price = this.groundPriceData.price;
@@ -171,6 +185,10 @@
                 this.totalBill();
             },
             totalBill() {
+
+                this.makeOrderForms.ocean.exitPort = this.prices.name;
+                this.makeOrderForms.ocean.destination = this.selectedDestinationPort.destination_ports.name;
+
                 let $groundTrans = this.groundPrice;
                 let $oceanTrans = this.oceanPrice;
 
@@ -178,14 +196,43 @@
                 $oceanTrans = (!isNaN(parseFloat($oceanTrans))) ? parseFloat($oceanTrans) : 0;
 
                 let $result = $groundTrans + $oceanTrans;
-                this.makeOrderForms.totalPrice =  $result.toFixed(2);
-                // this.makeOrderForms.totalPrice =
+                this.makeOrderForms.totalPrice = $result.toFixed(2);
             },
-            makeOrder() {
+            submitMakeOrder() {
 
-                console.log(Object.keys(this.prices).length);
+                this.$validator.validateAll().then((result) => {
+                    if (result) {
+                        console.log('%c Form Submitted!', 'color: green; font-weight: 600;');
+                        this.sendForms();
+                        return;
+                    }
 
-                console.log(this.makeOrderForms);
+                    this.isValidateForms = false;
+                    console.log('%c Correct them errors!', 'color: red; font-weight: 600;');
+                });
+
+            },
+            sendForms() {
+                axios({
+                    method: 'post',
+                    url: '/email/rate_order',
+                    data: this.makeOrderForms
+                })
+                    .then(res => {
+                        console.log(res);
+                        $('#message-success').addClass('fadeIn');
+                        $('#calculate-block').trigger("reset");
+                        setTimeout(function () {
+                            $('#message-success').removeClass('fadeIn');
+                        }, 4000);
+                    })
+                    .catch(err => {
+                        console.log('Error', err);
+                        $('#message-server-error').addClass('fadeIn');
+                        setTimeout(function () {
+                            $('#message-server-error').removeClass('fadeIn');
+                        }, 4000);
+                    });
             }
         },
         computed: {

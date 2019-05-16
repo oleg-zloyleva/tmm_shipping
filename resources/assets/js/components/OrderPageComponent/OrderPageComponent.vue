@@ -85,7 +85,7 @@
                                                         E-mail:
                                                         <input name="email"
                                                                class="slider-order__inp"
-                                                               v-validate="'required'"
+                                                               v-validate="'required|email'"
                                                                :class="{'required': errors.has('email')}"
                                                                v-model="sendOrderForm.shipper.email">
                                                     </label>
@@ -213,7 +213,7 @@
                                                         E-mail:
                                                         <input name="emailCon"
                                                                class="slider-order__inp"
-                                                               v-validate="'required'"
+                                                               v-validate="'required|email'"
                                                                :class="{'required': errors.has('emailCon')}"
                                                                v-model="sendOrderForm.consignee.email">
                                                     </label>
@@ -953,7 +953,8 @@
                                         <span class="additional"></span>
                                     </div>
                                     <div class="slider-order__row">
-                                        <button class="btn-continue btn-disabled" id="btn-continue" @click="btnSendForms"
+                                        <button class="btn-continue btn-disabled" id="btn-continue"
+                                                @click="btnSendForms"
                                                 disabled>
                                             Continue
                                         </button>
@@ -1125,8 +1126,14 @@
                         return;
                     }
 
-                    this.isValidateForms = false;
                     console.log('%c Correct them errors!', 'color: red; font-weight: 600;');
+
+                    this.isValidateForms = false;
+
+                    $('#required-fields').fadeIn();
+                    setTimeout(function () {
+                        $('#required-fields').fadeOut();
+                    }, 5000);
                 });
             },
             submitForms() {
@@ -1135,26 +1142,25 @@
                     console.log('======> ok!!!!!');
 
                     axios({
-                    method: 'post',
-                    url: '/email/air_shipping_order',
-                    // headers: { 'content-type': 'multipart/form-data' },
-                    data: this.sendOrderForm // $.param(this.sendOrderForm)
-                })
-                    .then(res => {
-                        console.log(res);
-                        $('#message-success').addClass('fadeIn');
-                        $('#form-quick-quote').trigger("reset");
-                        setTimeout(function () {
-                            $('#message-success').removeClass('fadeIn');
-                        }, 4000);
+                        method: 'post',
+                        url: '/email/air_shipping_order',
+                        data: this.sendOrderForm
                     })
-                    .catch(err => {
-                        console.log('Error', err);
-                        $('#message-server-error').addClass('fadeIn');
-                        setTimeout(function () {
-                            $('#message-server-error').removeClass('fadeIn');
-                        }, 4000);
-                    });
+                        .then(res => {
+                            console.log(res);
+                            $('#message-success').addClass('fadeIn');
+                            $('#form-quick-quote').trigger("reset");
+                            setTimeout(function () {
+                                $('#message-success').removeClass('fadeIn');
+                            }, 4000);
+                        })
+                        .catch(err => {
+                            console.log('Error', err);
+                            $('#message-server-error').addClass('fadeIn');
+                            setTimeout(function () {
+                                $('#message-server-error').removeClass('fadeIn');
+                            }, 4000);
+                        });
 
                 }
 
@@ -1165,7 +1171,7 @@
                 } else {
                     this.usppiSaveImg();
                 }
-                
+
                 this.isValidForms();
             },
             uploadFileShipper(el) {
