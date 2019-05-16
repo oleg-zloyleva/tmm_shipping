@@ -16,10 +16,6 @@ class ShipperOrderRequest extends Request
         return [
             "typeTransport" => "required|string",
             "shipper" => "required|array",
-//              Shipper Flags
-//                "shipper.business" => "string",
-//                "shipper.citizen" => "string",
-//                "shipper.foreign" => "image", // photo id
 
                 "shipper.tid" => "required|string",
                 "shipper.firstName" => "required|string",
@@ -74,8 +70,8 @@ class ShipperOrderRequest extends Request
                 "descriptionOfGoods.descriptionValue_6" => "string",
                 "descriptionOfGoods.description_7" => "string",
                 "descriptionOfGoods.descriptionValue_7" => "string",
-                "descriptionOfGoods.from" => "required|string",
-                "descriptionOfGoods.to" => "required|string",
+                "descriptionOfGoods.from" => "string",
+                "descriptionOfGoods.to" => "string",
                 "descriptionOfGoods.insurance" => "boolean",
 
             "vehicle" => "required|array",

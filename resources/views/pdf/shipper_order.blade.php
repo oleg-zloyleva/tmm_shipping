@@ -114,8 +114,8 @@
         <div><b>Exporter First Name:</b> <i>{{ $usppi["firstExporterName"]??'' }}</i></div>
         <div><b>Exporter Second Name:</b> <i>{{ $usppi["secondExporterName"]??'' }}</i></div>
         <div><b>Signature:</b></div>
-        @if (isset($fppi["signature"]))
-        <div><img src="{{ $fppi["signature"] }}" alt=""></div>
+        @if (isset($usppi["signature"]))
+        <div><img src="{{ $usppi["signature"] }}" alt=""></div>
         @endif
         <div><b>Print Name:</b> <i>{{ $usppi["printName"]??'' }}</i></div>
         <div><b>E.I.N. (TAX ID):</b> <i>{{ $usppi["einTaxId"]??'' }}</i></div>
