@@ -942,15 +942,14 @@
                                                       id="comment" v-model="sendOrderForm.comments.comment"></textarea>
                                         </div>
                                     </form>
-                                    <div class="slider-order__row slider-order__row-center">
+                                    <div class="slider-order__row slider-order__row-center rules-block">
                                         <input id="agree-checked" class="inp-checkbox" type="checkbox">
-                                        <label for="agree-checked" class="checked-block__label">
+                                        <label for="agree-checked" class="checked-block__label checked-block__label-rules">
                                             I have read and agree with
-                                            <a class="slider-order__href" href="#">
-                                                rules &amp; regulations
-                                            </a>
                                         </label>
-                                        <span class="additional"></span>
+                                        <span class="slider-order__rules" @click="togglePopup">
+                                            rules &amp; regulations
+                                        </span>
                                     </div>
                                     <div class="slider-order__row">
                                         <button class="btn-continue btn-disabled" id="btn-continue"
@@ -968,10 +967,18 @@
                 </div>
             </div>
         </div>
+
+        <popup-rules-regulations
+                :openRules="openRules"
+                @closeRules="closeRules"
+        ></popup-rules-regulations>
+
     </div>
 </template>
 
 <script>
+
+    Vue.component('popup-rules-regulations', require('../PopupRulesRegulations/PopupRulesRegulations').default);
 
     import Slick from 'vue-slick';
 
@@ -987,7 +994,6 @@
                 businessCheck: false,
                 foreignCheck: false,
                 isValidateForms: false,
-
                 sendOrderForm: {
                     typeTransport: 'air',
                     shipper: {
@@ -1096,7 +1102,6 @@
                         comment: ''
                     }
                 },
-
                 slickOptions: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
@@ -1107,13 +1112,14 @@
                     infinite: false,
                     draggable: false,
                     adaptiveHeight: true,
-                    // initialSlide: 5,
+                    initialSlide: 6,
 
                     customPaging: function (slider, i) {
                         let $dots = ['Shipper', 'Consignee', 'Notify', 'Description', 'Title', 'USPPI', 'Comments'];
                         return $dots[i];
                     }
-                }
+                },
+                openRules: false
             };
         },
         methods: {
@@ -1225,6 +1231,12 @@
                 const {isEmpty, data} = this.$refs.fppiSignaturePad.saveSignature();
                 // console.log(data);
                 this.sendOrderForm.fppi.signature = data;
+            },
+            togglePopup() {
+                this.openRules = true;
+            },
+            closeRules() {
+                this.openRules = false;
             },
 
             next() {

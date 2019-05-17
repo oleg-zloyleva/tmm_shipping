@@ -12813,6 +12813,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+Vue.component('popup-rules-regulations', __webpack_require__(/*! ../PopupRulesRegulations/PopupRulesRegulations */ "./resources/assets/js/components/PopupRulesRegulations/PopupRulesRegulations.vue").default);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "OrderPageComponent",
@@ -12946,12 +12952,13 @@ __webpack_require__.r(__webpack_exports__);
         infinite: false,
         draggable: false,
         adaptiveHeight: true,
-        // initialSlide: 5,
+        initialSlide: 6,
         customPaging: function customPaging(slider, i) {
           var $dots = ['Shipper', 'Consignee', 'Notify', 'Description', 'Title', 'USPPI', 'Comments'];
           return $dots[i];
         }
-      }
+      },
+      openRules: false
     };
   },
   methods: {
@@ -13066,6 +13073,12 @@ __webpack_require__.r(__webpack_exports__);
 
       this.sendOrderForm.fppi.signature = data;
     },
+    togglePopup: function togglePopup() {
+      this.openRules = true;
+    },
+    closeRules: function closeRules() {
+      this.openRules = false;
+    },
     next: function next() {
       this.$refs.slick.next();
     },
@@ -13111,6 +13124,46 @@ __webpack_require__.r(__webpack_exports__);
     transport: function transport(value) {
       // console.log(value);
       this.sendOrderForm.typeTransport = value;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/PopupRulesRegulations/PopupRulesRegulations.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/PopupRulesRegulations/PopupRulesRegulations.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "PopupRulesRegulations",
+  props: ['openRules'],
+  data: function data() {
+    return {};
+  },
+  methods: {
+    closeRules: function closeRules(e) {
+      if (e.target.hasAttribute("data-close")) {
+        this.$emit("closeRules");
+      }
     }
   }
 });
@@ -63668,3266 +63721,2479 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "order" } }, [
-    _c("div", { staticClass: "container container-order" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-12 col-lg-3" }, [
-          _c(
-            "div",
-            {
-              staticClass: "buttons-control",
-              attrs: { id: "buttons-control" }
-            },
-            [
-              _c(
-                "label",
-                {
-                  staticClass: "buttons-control__btn active",
-                  attrs: { for: "air" }
-                },
-                [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.transport,
-                        expression: "transport"
-                      }
-                    ],
-                    attrs: {
-                      type: "radio",
-                      name: "transport",
-                      value: "air",
-                      id: "air"
-                    },
-                    domProps: { checked: _vm._q(_vm.transport, "air") },
-                    on: {
-                      change: function($event) {
-                        _vm.transport = "air"
-                      }
-                    }
-                  }),
-                  _vm._v(
-                    "\n                        AIR SHIPPING FORM\n                    "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "buttons-control__btn",
-                  attrs: { for: "ocean" }
-                },
-                [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.transport,
-                        expression: "transport"
-                      }
-                    ],
-                    attrs: {
-                      type: "radio",
-                      name: "transport",
-                      value: "ocean",
-                      id: "ocean"
-                    },
-                    domProps: { checked: _vm._q(_vm.transport, "ocean") },
-                    on: {
-                      change: function($event) {
-                        _vm.transport = "ocean"
-                      }
-                    }
-                  }),
-                  _vm._v(
-                    "\n                        OCEAN SHIPPING FORM\n                    "
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "buttons-control__btn",
-                  attrs: { for: "ground" }
-                },
-                [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.transport,
-                        expression: "transport"
-                      }
-                    ],
-                    attrs: {
-                      type: "radio",
-                      name: "transport",
-                      value: "ground",
-                      id: "ground"
-                    },
-                    domProps: { checked: _vm._q(_vm.transport, "ground") },
-                    on: {
-                      change: function($event) {
-                        _vm.transport = "ground"
-                      }
-                    }
-                  }),
-                  _vm._v(
-                    "\n                        GROUND SHIPPING FORM\n                    "
-                  )
-                ]
-              )
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-12 col-lg-9 col-xl-8" }, [
-          _c("div", { staticClass: "order-block" }, [
+  return _c(
+    "div",
+    { attrs: { id: "order" } },
+    [
+      _c("div", { staticClass: "container container-order" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-12 col-lg-3" }, [
             _c(
               "div",
-              { staticClass: "slider-order", attrs: { id: "slider-order" } },
+              {
+                staticClass: "buttons-control",
+                attrs: { id: "buttons-control" }
+              },
               [
                 _c(
-                  "slick",
-                  { ref: "slick", attrs: { options: _vm.slickOptions } },
+                  "label",
+                  {
+                    staticClass: "buttons-control__btn active",
+                    attrs: { for: "air" }
+                  },
                   [
-                    _c("div", { staticClass: "slider-order__slide slide-1" }, [
-                      _c("div", { staticClass: "slider-order__title" }, [
-                        _vm._v("SHIPPER")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "checked-block" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.delivery,
-                              expression: "delivery"
-                            }
-                          ],
-                          staticClass: "inp-checkbox",
-                          attrs: {
-                            name: "delivery",
-                            id: "citizen",
-                            type: "radio",
-                            value: "citizen"
-                          },
-                          domProps: {
-                            checked: _vm._q(_vm.delivery, "citizen")
-                          },
-                          on: {
-                            change: function($event) {
-                              _vm.delivery = "citizen"
-                            }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "checked-block__label",
-                            attrs: { for: "citizen" }
-                          },
-                          [_vm._v("US citizen")]
-                        ),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.delivery,
-                              expression: "delivery"
-                            }
-                          ],
-                          staticClass: "inp-checkbox",
-                          attrs: {
-                            name: "delivery",
-                            id: "business",
-                            type: "radio",
-                            value: "business"
-                          },
-                          domProps: {
-                            checked: _vm._q(_vm.delivery, "business")
-                          },
-                          on: {
-                            change: function($event) {
-                              _vm.delivery = "business"
-                            }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "checked-block__label",
-                            attrs: { for: "business" }
-                          },
-                          [_vm._v("Business")]
-                        ),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.delivery,
-                              expression: "delivery"
-                            }
-                          ],
-                          staticClass: "inp-checkbox",
-                          attrs: {
-                            name: "delivery",
-                            id: "foreign",
-                            type: "radio",
-                            value: "foreign"
-                          },
-                          domProps: {
-                            checked: _vm._q(_vm.delivery, "foreign")
-                          },
-                          on: {
-                            change: function($event) {
-                              _vm.delivery = "foreign"
-                            }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "label",
-                          {
-                            staticClass: "checked-block__label",
-                            attrs: { for: "foreign" }
-                          },
-                          [_vm._v("Foreign")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "form",
+                    _c("input", {
+                      directives: [
                         {
-                          attrs: { id: "form-shipper" },
-                          on: {
-                            submit: function($event) {
-                              $event.preventDefault()
-                              return _vm.isValidForms($event)
-                            }
-                          }
-                        },
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.transport,
+                          expression: "transport"
+                        }
+                      ],
+                      attrs: {
+                        type: "radio",
+                        name: "transport",
+                        value: "air",
+                        id: "air"
+                      },
+                      domProps: { checked: _vm._q(_vm.transport, "air") },
+                      on: {
+                        change: function($event) {
+                          _vm.transport = "air"
+                        }
+                      }
+                    }),
+                    _vm._v(
+                      "\n                        AIR SHIPPING FORM\n                    "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "buttons-control__btn",
+                    attrs: { for: "ocean" }
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.transport,
+                          expression: "transport"
+                        }
+                      ],
+                      attrs: {
+                        type: "radio",
+                        name: "transport",
+                        value: "ocean",
+                        id: "ocean"
+                      },
+                      domProps: { checked: _vm._q(_vm.transport, "ocean") },
+                      on: {
+                        change: function($event) {
+                          _vm.transport = "ocean"
+                        }
+                      }
+                    }),
+                    _vm._v(
+                      "\n                        OCEAN SHIPPING FORM\n                    "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "buttons-control__btn",
+                    attrs: { for: "ground" }
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.transport,
+                          expression: "transport"
+                        }
+                      ],
+                      attrs: {
+                        type: "radio",
+                        name: "transport",
+                        value: "ground",
+                        id: "ground"
+                      },
+                      domProps: { checked: _vm._q(_vm.transport, "ground") },
+                      on: {
+                        change: function($event) {
+                          _vm.transport = "ground"
+                        }
+                      }
+                    }),
+                    _vm._v(
+                      "\n                        GROUND SHIPPING FORM\n                    "
+                    )
+                  ]
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-12 col-lg-9 col-xl-8" }, [
+            _c("div", { staticClass: "order-block" }, [
+              _c(
+                "div",
+                { staticClass: "slider-order", attrs: { id: "slider-order" } },
+                [
+                  _c(
+                    "slick",
+                    { ref: "slick", attrs: { options: _vm.slickOptions } },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "slider-order__slide slide-1" },
                         [
-                          _c("div", { staticClass: "slider-order__body" }, [
-                            _c("div", { staticClass: "body-left" }, [
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass:
-                                      "slider-order__label slider-order__label-required"
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    TID/SS#:\n                                                    "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "validate",
-                                          rawName: "v-validate",
-                                          value: "required",
-                                          expression: "'required'"
-                                        },
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value: _vm.sendOrderForm.shipper.tid,
-                                          expression:
-                                            "sendOrderForm.shipper.tid"
-                                        }
-                                      ],
-                                      staticClass: "slider-order__inp",
-                                      class: {
-                                        required: _vm.errors.has("tid")
-                                      },
-                                      attrs: { name: "tid" },
-                                      domProps: {
-                                        value: _vm.sendOrderForm.shipper.tid
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.shipper,
-                                            "tid",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass:
-                                      "slider-order__label slider-order__label-required"
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    First name:\n                                                    "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "validate",
-                                          rawName: "v-validate",
-                                          value: "required",
-                                          expression: "'required'"
-                                        },
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value:
-                                            _vm.sendOrderForm.shipper.firstName,
-                                          expression:
-                                            "sendOrderForm.shipper.firstName"
-                                        }
-                                      ],
-                                      staticClass: "slider-order__inp",
-                                      class: {
-                                        required: _vm.errors.has("firstName")
-                                      },
-                                      attrs: { name: "firstName" },
-                                      domProps: {
-                                        value:
-                                          _vm.sendOrderForm.shipper.firstName
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.shipper,
-                                            "firstName",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass:
-                                      "slider-order__label slider-order__label-required"
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    Second name:\n                                                    "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "validate",
-                                          rawName: "v-validate",
-                                          value: "required",
-                                          expression: "'required'"
-                                        },
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value:
-                                            _vm.sendOrderForm.shipper
-                                              .secondName,
-                                          expression:
-                                            "sendOrderForm.shipper.secondName"
-                                        }
-                                      ],
-                                      staticClass: "slider-order__inp",
-                                      class: {
-                                        required: _vm.errors.has("secondName")
-                                      },
-                                      attrs: { name: "secondName" },
-                                      domProps: {
-                                        value:
-                                          _vm.sendOrderForm.shipper.secondName
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.shipper,
-                                            "secondName",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  { staticClass: "slider-order__label" },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    Address:\n                                                    "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value:
-                                            _vm.sendOrderForm.shipper.address,
-                                          expression:
-                                            "sendOrderForm.shipper.address"
-                                        }
-                                      ],
-                                      staticClass: "slider-order__inp",
-                                      attrs: { name: "address" },
-                                      domProps: {
-                                        value: _vm.sendOrderForm.shipper.address
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.shipper,
-                                            "address",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass:
-                                      "slider-order__label slider-order__label-required"
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    E-mail:\n                                                    "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "validate",
-                                          rawName: "v-validate",
-                                          value: "required|email",
-                                          expression: "'required|email'"
-                                        },
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value:
-                                            _vm.sendOrderForm.shipper.email,
-                                          expression:
-                                            "sendOrderForm.shipper.email"
-                                        }
-                                      ],
-                                      staticClass: "slider-order__inp",
-                                      class: {
-                                        required: _vm.errors.has("email")
-                                      },
-                                      attrs: { name: "email" },
-                                      domProps: {
-                                        value: _vm.sendOrderForm.shipper.email
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.shipper,
-                                            "email",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass:
-                                      "slider-order__label slider-order__label-required"
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    Phone:\n                                                    "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "validate",
-                                          rawName: "v-validate",
-                                          value: "required",
-                                          expression: "'required'"
-                                        },
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value:
-                                            _vm.sendOrderForm.shipper.phone,
-                                          expression:
-                                            "sendOrderForm.shipper.phone"
-                                        }
-                                      ],
-                                      staticClass:
-                                        "slider-order__inp only-number",
-                                      class: {
-                                        required: _vm.errors.has("phone")
-                                      },
-                                      attrs: { name: "phone" },
-                                      domProps: {
-                                        value: _vm.sendOrderForm.shipper.phone
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.shipper,
-                                            "phone",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  { staticClass: "slider-order__label" },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    Fax:\n                                                    "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value: _vm.sendOrderForm.shipper.fax,
-                                          expression:
-                                            "sendOrderForm.shipper.fax"
-                                        }
-                                      ],
-                                      staticClass: "slider-order__inp",
-                                      attrs: { name: "fax" },
-                                      domProps: {
-                                        value: _vm.sendOrderForm.shipper.fax
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.shipper,
-                                            "fax",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]
-                                )
-                              ])
-                            ]),
+                          _c("div", { staticClass: "slider-order__title" }, [
+                            _vm._v("SHIPPER")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "checked-block" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.delivery,
+                                  expression: "delivery"
+                                }
+                              ],
+                              staticClass: "inp-checkbox",
+                              attrs: {
+                                name: "delivery",
+                                id: "citizen",
+                                type: "radio",
+                                value: "citizen"
+                              },
+                              domProps: {
+                                checked: _vm._q(_vm.delivery, "citizen")
+                              },
+                              on: {
+                                change: function($event) {
+                                  _vm.delivery = "citizen"
+                                }
+                              }
+                            }),
                             _vm._v(" "),
-                            _c("div", { staticClass: "body-right" }, [
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass:
-                                      "slider-order__label slider-order__label-required"
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    City:\n                                                    "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "validate",
-                                          rawName: "v-validate",
-                                          value: "required",
-                                          expression: "'required'"
-                                        },
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value: _vm.sendOrderForm.shipper.city,
-                                          expression:
-                                            "sendOrderForm.shipper.city"
-                                        }
-                                      ],
-                                      staticClass: "slider-order__inp",
-                                      class: {
-                                        required: _vm.errors.has("city")
-                                      },
-                                      attrs: { name: "city" },
-                                      domProps: {
-                                        value: _vm.sendOrderForm.shipper.city
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.shipper,
-                                            "city",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  { staticClass: "slider-order__label" },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    State (US only):\n                                                    "
-                                    ),
-                                    _c(
-                                      "select",
-                                      {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value:
-                                              _vm.sendOrderForm.shipper.state,
-                                            expression:
-                                              "sendOrderForm.shipper.state"
-                                          }
-                                        ],
-                                        staticClass:
-                                          "slider-order__select select-order",
-                                        attrs: { name: "state" },
-                                        on: {
-                                          change: function($event) {
-                                            var $$selectedVal = Array.prototype.filter
-                                              .call(
-                                                $event.target.options,
-                                                function(o) {
-                                                  return o.selected
-                                                }
-                                              )
-                                              .map(function(o) {
-                                                var val =
-                                                  "_value" in o
-                                                    ? o._value
-                                                    : o.value
-                                                return val
-                                              })
-                                            _vm.$set(
-                                              _vm.sendOrderForm.shipper,
-                                              "state",
-                                              $event.target.multiple
-                                                ? $$selectedVal
-                                                : $$selectedVal[0]
-                                            )
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _c("option", { attrs: { value: "" } }, [
-                                          _vm._v("Choose country")
-                                        ])
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  { staticClass: "slider-order__label" },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    Province:\n                                                    "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value:
-                                            _vm.sendOrderForm.shipper.province,
-                                          expression:
-                                            "sendOrderForm.shipper.province"
-                                        }
-                                      ],
-                                      staticClass: "slider-order__inp",
-                                      attrs: { name: "province" },
-                                      domProps: {
-                                        value:
-                                          _vm.sendOrderForm.shipper.province
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.shipper,
-                                            "province",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass:
-                                      "slider-order__label slider-order__label-required"
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    Country:\n                                                    "
-                                    ),
-                                    _c(
-                                      "select",
-                                      {
-                                        directives: [
-                                          {
-                                            name: "validate",
-                                            rawName: "v-validate",
-                                            value: "required",
-                                            expression: "'required'"
-                                          },
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value:
-                                              _vm.sendOrderForm.shipper.country,
-                                            expression:
-                                              "sendOrderForm.shipper.country"
-                                          }
-                                        ],
-                                        staticClass:
-                                          "slider-order__select select-order",
-                                        class: {
-                                          required: _vm.errors.has("country")
-                                        },
-                                        attrs: { name: "country" },
-                                        on: {
-                                          change: function($event) {
-                                            var $$selectedVal = Array.prototype.filter
-                                              .call(
-                                                $event.target.options,
-                                                function(o) {
-                                                  return o.selected
-                                                }
-                                              )
-                                              .map(function(o) {
-                                                var val =
-                                                  "_value" in o
-                                                    ? o._value
-                                                    : o.value
-                                                return val
-                                              })
-                                            _vm.$set(
-                                              _vm.sendOrderForm.shipper,
-                                              "country",
-                                              $event.target.multiple
-                                                ? $$selectedVal
-                                                : $$selectedVal[0]
-                                            )
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _c("option", { attrs: { value: "" } }, [
-                                          _vm._v("Choose country")
-                                        ])
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  { staticClass: "slider-order__label" },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    ZIP:\n                                                    "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value: _vm.sendOrderForm.shipper.zip,
-                                          expression:
-                                            "sendOrderForm.shipper.zip"
-                                        }
-                                      ],
-                                      staticClass:
-                                        "slider-order__inp only-number",
-                                      attrs: { name: "zip", maxlength: "10" },
-                                      domProps: {
-                                        value: _vm.sendOrderForm.shipper.zip
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.shipper,
-                                            "zip",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]
-                                )
-                              ])
-                            ]),
+                            _c(
+                              "label",
+                              {
+                                staticClass: "checked-block__label",
+                                attrs: { for: "citizen" }
+                              },
+                              [_vm._v("US citizen")]
+                            ),
                             _vm._v(" "),
-                            _vm.foreignCheck
-                              ? _c("div", { staticClass: "body-bottom" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.delivery,
+                                  expression: "delivery"
+                                }
+                              ],
+                              staticClass: "inp-checkbox",
+                              attrs: {
+                                name: "delivery",
+                                id: "business",
+                                type: "radio",
+                                value: "business"
+                              },
+                              domProps: {
+                                checked: _vm._q(_vm.delivery, "business")
+                              },
+                              on: {
+                                change: function($event) {
+                                  _vm.delivery = "business"
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "label",
+                              {
+                                staticClass: "checked-block__label",
+                                attrs: { for: "business" }
+                              },
+                              [_vm._v("Business")]
+                            ),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.delivery,
+                                  expression: "delivery"
+                                }
+                              ],
+                              staticClass: "inp-checkbox",
+                              attrs: {
+                                name: "delivery",
+                                id: "foreign",
+                                type: "radio",
+                                value: "foreign"
+                              },
+                              domProps: {
+                                checked: _vm._q(_vm.delivery, "foreign")
+                              },
+                              on: {
+                                change: function($event) {
+                                  _vm.delivery = "foreign"
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "label",
+                              {
+                                staticClass: "checked-block__label",
+                                attrs: { for: "foreign" }
+                              },
+                              [_vm._v("Foreign")]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "form",
+                            {
+                              attrs: { id: "form-shipper" },
+                              on: {
+                                submit: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.isValidForms($event)
+                                }
+                              }
+                            },
+                            [
+                              _c("div", { staticClass: "slider-order__body" }, [
+                                _c("div", { staticClass: "body-left" }, [
                                   _c(
                                     "div",
-                                    { staticClass: "body-bottom__upload" },
-                                    [_vm._v("Please, upload you ID photo")]
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass:
+                                            "slider-order__label slider-order__label-required"
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    TID/SS#:\n                                                    "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "validate",
+                                                rawName: "v-validate",
+                                                value: "required",
+                                                expression: "'required'"
+                                              },
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm.shipper.tid,
+                                                expression:
+                                                  "sendOrderForm.shipper.tid"
+                                              }
+                                            ],
+                                            staticClass: "slider-order__inp",
+                                            class: {
+                                              required: _vm.errors.has("tid")
+                                            },
+                                            attrs: { name: "tid" },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.shipper.tid
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm.shipper,
+                                                  "tid",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
                                   ),
                                   _vm._v(" "),
                                   _c(
                                     "div",
-                                    { staticClass: "upload-file-container" },
+                                    { staticClass: "slider-order__row" },
                                     [
                                       _c(
-                                        "div",
+                                        "label",
                                         {
                                           staticClass:
-                                            "upload-file-container__text"
+                                            "slider-order__label slider-order__label-required"
                                         },
                                         [
-                                          _c(
-                                            "span",
-                                            {
-                                              staticClass:
-                                                "upload-file-container__btn"
-                                            },
-                                            [_vm._v("Choose file")]
+                                          _vm._v(
+                                            "\n                                                    First name:\n                                                    "
                                           ),
-                                          _vm._v(" "),
                                           _c("input", {
-                                            staticClass:
-                                              "upload-file-container__photo",
-                                            attrs: {
-                                              type: "file",
-                                              name: "shipperUploadFile"
+                                            directives: [
+                                              {
+                                                name: "validate",
+                                                rawName: "v-validate",
+                                                value: "required",
+                                                expression: "'required'"
+                                              },
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm.shipper
+                                                    .firstName,
+                                                expression:
+                                                  "sendOrderForm.shipper.firstName"
+                                              }
+                                            ],
+                                            staticClass: "slider-order__inp",
+                                            class: {
+                                              required: _vm.errors.has(
+                                                "firstName"
+                                              )
+                                            },
+                                            attrs: { name: "firstName" },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.shipper
+                                                  .firstName
                                             },
                                             on: {
-                                              change: _vm.uploadFileShipper
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm.shipper,
+                                                  "firstName",
+                                                  $event.target.value
+                                                )
+                                              }
                                             }
                                           })
                                         ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass:
+                                            "slider-order__label slider-order__label-required"
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    Second name:\n                                                    "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "validate",
+                                                rawName: "v-validate",
+                                                value: "required",
+                                                expression: "'required'"
+                                              },
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm.shipper
+                                                    .secondName,
+                                                expression:
+                                                  "sendOrderForm.shipper.secondName"
+                                              }
+                                            ],
+                                            staticClass: "slider-order__inp",
+                                            class: {
+                                              required: _vm.errors.has(
+                                                "secondName"
+                                              )
+                                            },
+                                            attrs: { name: "secondName" },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.shipper
+                                                  .secondName
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm.shipper,
+                                                  "secondName",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        { staticClass: "slider-order__label" },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    Address:\n                                                    "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm.shipper
+                                                    .address,
+                                                expression:
+                                                  "sendOrderForm.shipper.address"
+                                              }
+                                            ],
+                                            staticClass: "slider-order__inp",
+                                            attrs: { name: "address" },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.shipper
+                                                  .address
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm.shipper,
+                                                  "address",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass:
+                                            "slider-order__label slider-order__label-required"
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    E-mail:\n                                                    "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "validate",
+                                                rawName: "v-validate",
+                                                value: "required|email",
+                                                expression: "'required|email'"
+                                              },
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm.shipper
+                                                    .email,
+                                                expression:
+                                                  "sendOrderForm.shipper.email"
+                                              }
+                                            ],
+                                            staticClass: "slider-order__inp",
+                                            class: {
+                                              required: _vm.errors.has("email")
+                                            },
+                                            attrs: { name: "email" },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.shipper.email
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm.shipper,
+                                                  "email",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass:
+                                            "slider-order__label slider-order__label-required"
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    Phone:\n                                                    "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "validate",
+                                                rawName: "v-validate",
+                                                value: "required",
+                                                expression: "'required'"
+                                              },
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm.shipper
+                                                    .phone,
+                                                expression:
+                                                  "sendOrderForm.shipper.phone"
+                                              }
+                                            ],
+                                            staticClass:
+                                              "slider-order__inp only-number",
+                                            class: {
+                                              required: _vm.errors.has("phone")
+                                            },
+                                            attrs: { name: "phone" },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.shipper.phone
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm.shipper,
+                                                  "phone",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        { staticClass: "slider-order__label" },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    Fax:\n                                                    "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm.shipper.fax,
+                                                expression:
+                                                  "sendOrderForm.shipper.fax"
+                                              }
+                                            ],
+                                            staticClass: "slider-order__inp",
+                                            attrs: { name: "fax" },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.shipper.fax
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm.shipper,
+                                                  "fax",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "body-right" }, [
+                                  _c(
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass:
+                                            "slider-order__label slider-order__label-required"
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    City:\n                                                    "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "validate",
+                                                rawName: "v-validate",
+                                                value: "required",
+                                                expression: "'required'"
+                                              },
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm.shipper
+                                                    .city,
+                                                expression:
+                                                  "sendOrderForm.shipper.city"
+                                              }
+                                            ],
+                                            staticClass: "slider-order__inp",
+                                            class: {
+                                              required: _vm.errors.has("city")
+                                            },
+                                            attrs: { name: "city" },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.shipper.city
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm.shipper,
+                                                  "city",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        { staticClass: "slider-order__label" },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    State (US only):\n                                                    "
+                                          ),
+                                          _c(
+                                            "select",
+                                            {
+                                              directives: [
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value:
+                                                    _vm.sendOrderForm.shipper
+                                                      .state,
+                                                  expression:
+                                                    "sendOrderForm.shipper.state"
+                                                }
+                                              ],
+                                              staticClass:
+                                                "slider-order__select select-order",
+                                              attrs: { name: "state" },
+                                              on: {
+                                                change: function($event) {
+                                                  var $$selectedVal = Array.prototype.filter
+                                                    .call(
+                                                      $event.target.options,
+                                                      function(o) {
+                                                        return o.selected
+                                                      }
+                                                    )
+                                                    .map(function(o) {
+                                                      var val =
+                                                        "_value" in o
+                                                          ? o._value
+                                                          : o.value
+                                                      return val
+                                                    })
+                                                  _vm.$set(
+                                                    _vm.sendOrderForm.shipper,
+                                                    "state",
+                                                    $event.target.multiple
+                                                      ? $$selectedVal
+                                                      : $$selectedVal[0]
+                                                  )
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _c(
+                                                "option",
+                                                { attrs: { value: "" } },
+                                                [_vm._v("Choose country")]
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        { staticClass: "slider-order__label" },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    Province:\n                                                    "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm.shipper
+                                                    .province,
+                                                expression:
+                                                  "sendOrderForm.shipper.province"
+                                              }
+                                            ],
+                                            staticClass: "slider-order__inp",
+                                            attrs: { name: "province" },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.shipper
+                                                  .province
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm.shipper,
+                                                  "province",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass:
+                                            "slider-order__label slider-order__label-required"
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    Country:\n                                                    "
+                                          ),
+                                          _c(
+                                            "select",
+                                            {
+                                              directives: [
+                                                {
+                                                  name: "validate",
+                                                  rawName: "v-validate",
+                                                  value: "required",
+                                                  expression: "'required'"
+                                                },
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value:
+                                                    _vm.sendOrderForm.shipper
+                                                      .country,
+                                                  expression:
+                                                    "sendOrderForm.shipper.country"
+                                                }
+                                              ],
+                                              staticClass:
+                                                "slider-order__select select-order",
+                                              class: {
+                                                required: _vm.errors.has(
+                                                  "country"
+                                                )
+                                              },
+                                              attrs: { name: "country" },
+                                              on: {
+                                                change: function($event) {
+                                                  var $$selectedVal = Array.prototype.filter
+                                                    .call(
+                                                      $event.target.options,
+                                                      function(o) {
+                                                        return o.selected
+                                                      }
+                                                    )
+                                                    .map(function(o) {
+                                                      var val =
+                                                        "_value" in o
+                                                          ? o._value
+                                                          : o.value
+                                                      return val
+                                                    })
+                                                  _vm.$set(
+                                                    _vm.sendOrderForm.shipper,
+                                                    "country",
+                                                    $event.target.multiple
+                                                      ? $$selectedVal
+                                                      : $$selectedVal[0]
+                                                  )
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _c(
+                                                "option",
+                                                { attrs: { value: "" } },
+                                                [_vm._v("Choose country")]
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        { staticClass: "slider-order__label" },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    ZIP:\n                                                    "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm.shipper.zip,
+                                                expression:
+                                                  "sendOrderForm.shipper.zip"
+                                              }
+                                            ],
+                                            staticClass:
+                                              "slider-order__inp only-number",
+                                            attrs: {
+                                              name: "zip",
+                                              maxlength: "10"
+                                            },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.shipper.zip
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm.shipper,
+                                                  "zip",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _vm.foreignCheck
+                                  ? _c("div", { staticClass: "body-bottom" }, [
+                                      _c(
+                                        "div",
+                                        { staticClass: "body-bottom__upload" },
+                                        [_vm._v("Please, upload you ID photo")]
                                       ),
                                       _vm._v(" "),
                                       _c(
                                         "div",
                                         {
-                                          staticClass:
-                                            "upload-file-container__image-demo"
+                                          staticClass: "upload-file-container"
                                         },
                                         [
-                                          _c("img", {
-                                            staticClass: "image-demo",
-                                            attrs: { src: "#", alt: "" }
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass:
+                                                "upload-file-container__text"
+                                            },
+                                            [
+                                              _c(
+                                                "span",
+                                                {
+                                                  staticClass:
+                                                    "upload-file-container__btn"
+                                                },
+                                                [_vm._v("Choose file")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c("input", {
+                                                staticClass:
+                                                  "upload-file-container__photo",
+                                                attrs: {
+                                                  type: "file",
+                                                  name: "shipperUploadFile"
+                                                },
+                                                on: {
+                                                  change: _vm.uploadFileShipper
+                                                }
+                                              })
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass:
+                                                "upload-file-container__image-demo"
+                                            },
+                                            [
+                                              _c("img", {
+                                                staticClass: "image-demo",
+                                                attrs: { src: "#", alt: "" }
+                                              })
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    ])
+                                  : _vm._e()
+                              ])
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "slider-order__slide slide-2" },
+                        [
+                          _c("div", { staticClass: "slider-order__title" }, [
+                            _vm._v("CONSIGNEE")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "form",
+                            {
+                              attrs: { id: "form-consignee" },
+                              on: {
+                                submit: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.isValidForms($event)
+                                }
+                              }
+                            },
+                            [
+                              _c("div", { staticClass: "slider-order__body" }, [
+                                _c("div", { staticClass: "body-left" }, [
+                                  _c(
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass:
+                                            "slider-order__label slider-order__label-required"
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    First name:\n                                                    "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "validate",
+                                                rawName: "v-validate",
+                                                value: "required",
+                                                expression: "'required'"
+                                              },
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm.consignee
+                                                    .firstName,
+                                                expression:
+                                                  "sendOrderForm.consignee.firstName"
+                                              }
+                                            ],
+                                            staticClass: "slider-order__inp",
+                                            class: {
+                                              required: _vm.errors.has(
+                                                "firstNameCon"
+                                              )
+                                            },
+                                            attrs: { name: "firstNameCon" },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.consignee
+                                                  .firstName
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm.consignee,
+                                                  "firstName",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass:
+                                            "slider-order__label slider-order__label-required"
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    Second name:\n                                                    "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "validate",
+                                                rawName: "v-validate",
+                                                value: "required",
+                                                expression: "'required'"
+                                              },
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm.consignee
+                                                    .secondName,
+                                                expression:
+                                                  "sendOrderForm.consignee.secondName"
+                                              }
+                                            ],
+                                            staticClass: "slider-order__inp",
+                                            class: {
+                                              required: _vm.errors.has(
+                                                "secondNameCon"
+                                              )
+                                            },
+                                            attrs: { name: "secondNameCon" },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.consignee
+                                                  .secondName
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm.consignee,
+                                                  "secondName",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        { staticClass: "slider-order__label" },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    Address:\n                                                    "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm.consignee
+                                                    .address,
+                                                expression:
+                                                  "sendOrderForm.consignee.address"
+                                              }
+                                            ],
+                                            staticClass: "slider-order__inp",
+                                            attrs: { name: "addressCon" },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.consignee
+                                                  .address
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm.consignee,
+                                                  "address",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass:
+                                            "slider-order__label slider-order__label-required"
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    E-mail:\n                                                    "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "validate",
+                                                rawName: "v-validate",
+                                                value: "required|email",
+                                                expression: "'required|email'"
+                                              },
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm.consignee
+                                                    .email,
+                                                expression:
+                                                  "sendOrderForm.consignee.email"
+                                              }
+                                            ],
+                                            staticClass: "slider-order__inp",
+                                            class: {
+                                              required: _vm.errors.has(
+                                                "emailCon"
+                                              )
+                                            },
+                                            attrs: { name: "emailCon" },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.consignee
+                                                  .email
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm.consignee,
+                                                  "email",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass:
+                                            "slider-order__label slider-order__label-required"
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    Phone:\n                                                    "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "validate",
+                                                rawName: "v-validate",
+                                                value: "required",
+                                                expression: "'required'"
+                                              },
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm.consignee
+                                                    .phone,
+                                                expression:
+                                                  "sendOrderForm.consignee.phone"
+                                              }
+                                            ],
+                                            staticClass:
+                                              "slider-order__inp only-number",
+                                            class: {
+                                              required: _vm.errors.has(
+                                                "phoneCon"
+                                              )
+                                            },
+                                            attrs: { name: "phoneCon" },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.consignee
+                                                  .phone
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm.consignee,
+                                                  "phone",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        { staticClass: "slider-order__label" },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    Fax:\n                                                    "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm.consignee
+                                                    .fax,
+                                                expression:
+                                                  "sendOrderForm.consignee.fax"
+                                              }
+                                            ],
+                                            staticClass: "slider-order__inp",
+                                            attrs: { name: "fax" },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.consignee.fax
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm.consignee,
+                                                  "fax",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "body-right" }, [
+                                  _c(
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass:
+                                            "slider-order__label slider-order__label-required"
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    City:\n                                                    "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "validate",
+                                                rawName: "v-validate",
+                                                value: "required",
+                                                expression: "'required'"
+                                              },
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm.consignee
+                                                    .city,
+                                                expression:
+                                                  "sendOrderForm.consignee.city"
+                                              }
+                                            ],
+                                            staticClass: "slider-order__inp",
+                                            class: {
+                                              required: _vm.errors.has(
+                                                "cityCon"
+                                              )
+                                            },
+                                            attrs: { name: "cityCon" },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.consignee.city
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm.consignee,
+                                                  "city",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        { staticClass: "slider-order__label" },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    State (US only):\n                                                    "
+                                          ),
+                                          _c(
+                                            "select",
+                                            {
+                                              directives: [
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value:
+                                                    _vm.sendOrderForm.consignee
+                                                      .state,
+                                                  expression:
+                                                    "sendOrderForm.consignee.state"
+                                                }
+                                              ],
+                                              staticClass:
+                                                "slider-order__select select-order",
+                                              attrs: { name: "state" },
+                                              on: {
+                                                change: function($event) {
+                                                  var $$selectedVal = Array.prototype.filter
+                                                    .call(
+                                                      $event.target.options,
+                                                      function(o) {
+                                                        return o.selected
+                                                      }
+                                                    )
+                                                    .map(function(o) {
+                                                      var val =
+                                                        "_value" in o
+                                                          ? o._value
+                                                          : o.value
+                                                      return val
+                                                    })
+                                                  _vm.$set(
+                                                    _vm.sendOrderForm.consignee,
+                                                    "state",
+                                                    $event.target.multiple
+                                                      ? $$selectedVal
+                                                      : $$selectedVal[0]
+                                                  )
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _c(
+                                                "option",
+                                                { attrs: { value: "" } },
+                                                [_vm._v("Choose country")]
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        { staticClass: "slider-order__label" },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    Province:\n                                                    "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm.consignee
+                                                    .province,
+                                                expression:
+                                                  "sendOrderForm.consignee.province"
+                                              }
+                                            ],
+                                            staticClass: "slider-order__inp",
+                                            attrs: { name: "province" },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.consignee
+                                                  .province
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm.consignee,
+                                                  "province",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass:
+                                            "slider-order__label slider-order__label-required"
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    Country:\n                                                    "
+                                          ),
+                                          _c(
+                                            "select",
+                                            {
+                                              directives: [
+                                                {
+                                                  name: "validate",
+                                                  rawName: "v-validate",
+                                                  value: "required",
+                                                  expression: "'required'"
+                                                },
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value:
+                                                    _vm.sendOrderForm.consignee
+                                                      .country,
+                                                  expression:
+                                                    "sendOrderForm.consignee.country"
+                                                }
+                                              ],
+                                              staticClass:
+                                                "slider-order__select select-order",
+                                              class: {
+                                                required: _vm.errors.has(
+                                                  "countryCon"
+                                                )
+                                              },
+                                              attrs: { name: "countryCon" },
+                                              on: {
+                                                change: function($event) {
+                                                  var $$selectedVal = Array.prototype.filter
+                                                    .call(
+                                                      $event.target.options,
+                                                      function(o) {
+                                                        return o.selected
+                                                      }
+                                                    )
+                                                    .map(function(o) {
+                                                      var val =
+                                                        "_value" in o
+                                                          ? o._value
+                                                          : o.value
+                                                      return val
+                                                    })
+                                                  _vm.$set(
+                                                    _vm.sendOrderForm.consignee,
+                                                    "country",
+                                                    $event.target.multiple
+                                                      ? $$selectedVal
+                                                      : $$selectedVal[0]
+                                                  )
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _c(
+                                                "option",
+                                                { attrs: { value: "" } },
+                                                [_vm._v("Choose country")]
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        { staticClass: "slider-order__label" },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    ZIP:\n                                                    "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm.consignee
+                                                    .zip,
+                                                expression:
+                                                  "sendOrderForm.consignee.zip"
+                                              }
+                                            ],
+                                            staticClass:
+                                              "slider-order__inp only-number",
+                                            attrs: {
+                                              name: "zip",
+                                              maxlength: "10"
+                                            },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.consignee.zip
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm.consignee,
+                                                  "zip",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
                                           })
                                         ]
                                       )
                                     ]
                                   )
                                 ])
-                              : _vm._e()
-                          ])
+                              ])
+                            ]
+                          )
                         ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "slider-order__slide slide-2" }, [
-                      _c("div", { staticClass: "slider-order__title" }, [
-                        _vm._v("CONSIGNEE")
-                      ]),
+                      ),
                       _vm._v(" "),
                       _c(
-                        "form",
-                        {
-                          attrs: { id: "form-consignee" },
-                          on: {
-                            submit: function($event) {
-                              $event.preventDefault()
-                              return _vm.isValidForms($event)
-                            }
-                          }
-                        },
+                        "div",
+                        { staticClass: "slider-order__slide slide-3" },
                         [
-                          _c("div", { staticClass: "slider-order__body" }, [
-                            _c("div", { staticClass: "body-left" }, [
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass:
-                                      "slider-order__label slider-order__label-required"
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    First name:\n                                                    "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "validate",
-                                          rawName: "v-validate",
-                                          value: "required",
-                                          expression: "'required'"
-                                        },
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value:
-                                            _vm.sendOrderForm.consignee
-                                              .firstName,
-                                          expression:
-                                            "sendOrderForm.consignee.firstName"
-                                        }
-                                      ],
-                                      staticClass: "slider-order__inp",
-                                      class: {
-                                        required: _vm.errors.has("firstNameCon")
-                                      },
-                                      attrs: { name: "firstNameCon" },
-                                      domProps: {
-                                        value:
-                                          _vm.sendOrderForm.consignee.firstName
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.consignee,
-                                            "firstName",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass:
-                                      "slider-order__label slider-order__label-required"
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    Second name:\n                                                    "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "validate",
-                                          rawName: "v-validate",
-                                          value: "required",
-                                          expression: "'required'"
-                                        },
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value:
-                                            _vm.sendOrderForm.consignee
-                                              .secondName,
-                                          expression:
-                                            "sendOrderForm.consignee.secondName"
-                                        }
-                                      ],
-                                      staticClass: "slider-order__inp",
-                                      class: {
-                                        required: _vm.errors.has(
-                                          "secondNameCon"
-                                        )
-                                      },
-                                      attrs: { name: "secondNameCon" },
-                                      domProps: {
-                                        value:
-                                          _vm.sendOrderForm.consignee.secondName
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.consignee,
-                                            "secondName",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  { staticClass: "slider-order__label" },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    Address:\n                                                    "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value:
-                                            _vm.sendOrderForm.consignee.address,
-                                          expression:
-                                            "sendOrderForm.consignee.address"
-                                        }
-                                      ],
-                                      staticClass: "slider-order__inp",
-                                      attrs: { name: "addressCon" },
-                                      domProps: {
-                                        value:
-                                          _vm.sendOrderForm.consignee.address
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.consignee,
-                                            "address",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass:
-                                      "slider-order__label slider-order__label-required"
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    E-mail:\n                                                    "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "validate",
-                                          rawName: "v-validate",
-                                          value: "required|email",
-                                          expression: "'required|email'"
-                                        },
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value:
-                                            _vm.sendOrderForm.consignee.email,
-                                          expression:
-                                            "sendOrderForm.consignee.email"
-                                        }
-                                      ],
-                                      staticClass: "slider-order__inp",
-                                      class: {
-                                        required: _vm.errors.has("emailCon")
-                                      },
-                                      attrs: { name: "emailCon" },
-                                      domProps: {
-                                        value: _vm.sendOrderForm.consignee.email
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.consignee,
-                                            "email",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass:
-                                      "slider-order__label slider-order__label-required"
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    Phone:\n                                                    "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "validate",
-                                          rawName: "v-validate",
-                                          value: "required",
-                                          expression: "'required'"
-                                        },
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value:
-                                            _vm.sendOrderForm.consignee.phone,
-                                          expression:
-                                            "sendOrderForm.consignee.phone"
-                                        }
-                                      ],
-                                      staticClass:
-                                        "slider-order__inp only-number",
-                                      class: {
-                                        required: _vm.errors.has("phoneCon")
-                                      },
-                                      attrs: { name: "phoneCon" },
-                                      domProps: {
-                                        value: _vm.sendOrderForm.consignee.phone
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.consignee,
-                                            "phone",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  { staticClass: "slider-order__label" },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    Fax:\n                                                    "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value:
-                                            _vm.sendOrderForm.consignee.fax,
-                                          expression:
-                                            "sendOrderForm.consignee.fax"
-                                        }
-                                      ],
-                                      staticClass: "slider-order__inp",
-                                      attrs: { name: "fax" },
-                                      domProps: {
-                                        value: _vm.sendOrderForm.consignee.fax
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.consignee,
-                                            "fax",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]
-                                )
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "body-right" }, [
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass:
-                                      "slider-order__label slider-order__label-required"
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    City:\n                                                    "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "validate",
-                                          rawName: "v-validate",
-                                          value: "required",
-                                          expression: "'required'"
-                                        },
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value:
-                                            _vm.sendOrderForm.consignee.city,
-                                          expression:
-                                            "sendOrderForm.consignee.city"
-                                        }
-                                      ],
-                                      staticClass: "slider-order__inp",
-                                      class: {
-                                        required: _vm.errors.has("cityCon")
-                                      },
-                                      attrs: { name: "cityCon" },
-                                      domProps: {
-                                        value: _vm.sendOrderForm.consignee.city
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.consignee,
-                                            "city",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  { staticClass: "slider-order__label" },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    State (US only):\n                                                    "
-                                    ),
-                                    _c(
-                                      "select",
-                                      {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value:
-                                              _vm.sendOrderForm.consignee.state,
-                                            expression:
-                                              "sendOrderForm.consignee.state"
-                                          }
-                                        ],
-                                        staticClass:
-                                          "slider-order__select select-order",
-                                        attrs: { name: "state" },
-                                        on: {
-                                          change: function($event) {
-                                            var $$selectedVal = Array.prototype.filter
-                                              .call(
-                                                $event.target.options,
-                                                function(o) {
-                                                  return o.selected
-                                                }
-                                              )
-                                              .map(function(o) {
-                                                var val =
-                                                  "_value" in o
-                                                    ? o._value
-                                                    : o.value
-                                                return val
-                                              })
-                                            _vm.$set(
-                                              _vm.sendOrderForm.consignee,
-                                              "state",
-                                              $event.target.multiple
-                                                ? $$selectedVal
-                                                : $$selectedVal[0]
-                                            )
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _c("option", { attrs: { value: "" } }, [
-                                          _vm._v("Choose country")
-                                        ])
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  { staticClass: "slider-order__label" },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    Province:\n                                                    "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value:
-                                            _vm.sendOrderForm.consignee
-                                              .province,
-                                          expression:
-                                            "sendOrderForm.consignee.province"
-                                        }
-                                      ],
-                                      staticClass: "slider-order__inp",
-                                      attrs: { name: "province" },
-                                      domProps: {
-                                        value:
-                                          _vm.sendOrderForm.consignee.province
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.consignee,
-                                            "province",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass:
-                                      "slider-order__label slider-order__label-required"
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    Country:\n                                                    "
-                                    ),
-                                    _c(
-                                      "select",
-                                      {
-                                        directives: [
-                                          {
-                                            name: "validate",
-                                            rawName: "v-validate",
-                                            value: "required",
-                                            expression: "'required'"
-                                          },
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value:
-                                              _vm.sendOrderForm.consignee
-                                                .country,
-                                            expression:
-                                              "sendOrderForm.consignee.country"
-                                          }
-                                        ],
-                                        staticClass:
-                                          "slider-order__select select-order",
-                                        class: {
-                                          required: _vm.errors.has("countryCon")
-                                        },
-                                        attrs: { name: "countryCon" },
-                                        on: {
-                                          change: function($event) {
-                                            var $$selectedVal = Array.prototype.filter
-                                              .call(
-                                                $event.target.options,
-                                                function(o) {
-                                                  return o.selected
-                                                }
-                                              )
-                                              .map(function(o) {
-                                                var val =
-                                                  "_value" in o
-                                                    ? o._value
-                                                    : o.value
-                                                return val
-                                              })
-                                            _vm.$set(
-                                              _vm.sendOrderForm.consignee,
-                                              "country",
-                                              $event.target.multiple
-                                                ? $$selectedVal
-                                                : $$selectedVal[0]
-                                            )
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _c("option", { attrs: { value: "" } }, [
-                                          _vm._v("Choose country")
-                                        ])
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  { staticClass: "slider-order__label" },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    ZIP:\n                                                    "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value:
-                                            _vm.sendOrderForm.consignee.zip,
-                                          expression:
-                                            "sendOrderForm.consignee.zip"
-                                        }
-                                      ],
-                                      staticClass:
-                                        "slider-order__inp only-number",
-                                      attrs: { name: "zip", maxlength: "10" },
-                                      domProps: {
-                                        value: _vm.sendOrderForm.consignee.zip
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.consignee,
-                                            "zip",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]
-                                )
-                              ])
-                            ])
-                          ])
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "slider-order__slide slide-3" }, [
-                      _c("div", { staticClass: "slider-order__title" }, [
-                        _vm._v("NOTIFY PARTY")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "form",
-                        {
-                          attrs: { id: "form-notify-party" },
-                          on: {
-                            submit: function($event) {
-                              $event.preventDefault()
-                              return _vm.isValidForms($event)
-                            }
-                          }
-                        },
-                        [
+                          _c("div", { staticClass: "slider-order__title" }, [
+                            _vm._v("NOTIFY PARTY")
+                          ]),
+                          _vm._v(" "),
                           _c(
-                            "div",
-                            { staticClass: "slider-order__body-left" },
+                            "form",
+                            {
+                              attrs: { id: "form-notify-party" },
+                              on: {
+                                submit: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.isValidForms($event)
+                                }
+                              }
+                            },
                             [
-                              _c("div", { staticClass: "body-left" }, [
-                                _c(
-                                  "div",
-                                  { staticClass: "slider-order__row" },
-                                  [
+                              _c(
+                                "div",
+                                { staticClass: "slider-order__body-left" },
+                                [
+                                  _c("div", { staticClass: "body-left" }, [
                                     _c(
-                                      "label",
-                                      {
-                                        staticClass:
-                                          "slider-order__label slider-order__label-title"
-                                      },
+                                      "div",
+                                      { staticClass: "slider-order__row" },
                                       [
-                                        _vm._v(
-                                          "\n                                                    Notify Party:\n                                                    "
-                                        ),
                                         _c(
-                                          "select",
+                                          "label",
                                           {
+                                            staticClass:
+                                              "slider-order__label slider-order__label-title"
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                                    Notify Party:\n                                                    "
+                                            ),
+                                            _c(
+                                              "select",
+                                              {
+                                                directives: [
+                                                  {
+                                                    name: "model",
+                                                    rawName: "v-model",
+                                                    value:
+                                                      _vm.sendOrderForm
+                                                        .notifyParty
+                                                        .notifyParty,
+                                                    expression:
+                                                      "sendOrderForm.notifyParty.notifyParty"
+                                                  }
+                                                ],
+                                                staticClass:
+                                                  "slider-order__select select-order",
+                                                attrs: { name: "notifyParty" },
+                                                on: {
+                                                  change: function($event) {
+                                                    var $$selectedVal = Array.prototype.filter
+                                                      .call(
+                                                        $event.target.options,
+                                                        function(o) {
+                                                          return o.selected
+                                                        }
+                                                      )
+                                                      .map(function(o) {
+                                                        var val =
+                                                          "_value" in o
+                                                            ? o._value
+                                                            : o.value
+                                                        return val
+                                                      })
+                                                    _vm.$set(
+                                                      _vm.sendOrderForm
+                                                        .notifyParty,
+                                                      "notifyParty",
+                                                      $event.target.multiple
+                                                        ? $$selectedVal
+                                                        : $$selectedVal[0]
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c(
+                                                  "option",
+                                                  { attrs: { value: "" } },
+                                                  [_vm._v("Choose country")]
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    )
+                                  ])
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "slider-order__body" }, [
+                                _c("div", { staticClass: "body-left" }, [
+                                  _c(
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass:
+                                            "slider-order__label slider-order__label-required"
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    First name:\n                                                    "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "validate",
+                                                rawName: "v-validate",
+                                                value: "required",
+                                                expression: "'required'"
+                                              },
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm.notifyParty
+                                                    .firstName,
+                                                expression:
+                                                  "sendOrderForm.notifyParty.firstName"
+                                              }
+                                            ],
+                                            staticClass: "slider-order__inp",
+                                            class: {
+                                              required: _vm.errors.has(
+                                                "firstNameNot"
+                                              )
+                                            },
+                                            attrs: { name: "firstNameNot" },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.notifyParty
+                                                  .firstName
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm.notifyParty,
+                                                  "firstName",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass:
+                                            "slider-order__label slider-order__label-required"
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    Second name:\n                                                    "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "validate",
+                                                rawName: "v-validate",
+                                                value: "required",
+                                                expression: "'required'"
+                                              },
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm.notifyParty
+                                                    .secondName,
+                                                expression:
+                                                  "sendOrderForm.notifyParty.secondName"
+                                              }
+                                            ],
+                                            staticClass: "slider-order__inp",
+                                            class: {
+                                              required: _vm.errors.has(
+                                                "secondNameNot"
+                                              )
+                                            },
+                                            attrs: { name: "secondNameNot" },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.notifyParty
+                                                  .secondName
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm.notifyParty,
+                                                  "secondName",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        { staticClass: "slider-order__label" },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    Address:\n                                                    "
+                                          ),
+                                          _c("input", {
                                             directives: [
                                               {
                                                 name: "model",
                                                 rawName: "v-model",
                                                 value:
                                                   _vm.sendOrderForm.notifyParty
-                                                    .notifyParty,
+                                                    .address,
                                                 expression:
-                                                  "sendOrderForm.notifyParty.notifyParty"
+                                                  "sendOrderForm.notifyParty.address"
                                               }
                                             ],
-                                            staticClass:
-                                              "slider-order__select select-order",
-                                            attrs: { name: "notifyParty" },
+                                            staticClass: "slider-order__inp",
+                                            attrs: { name: "address" },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.notifyParty
+                                                  .address
+                                            },
                                             on: {
-                                              change: function($event) {
-                                                var $$selectedVal = Array.prototype.filter
-                                                  .call(
-                                                    $event.target.options,
-                                                    function(o) {
-                                                      return o.selected
-                                                    }
-                                                  )
-                                                  .map(function(o) {
-                                                    var val =
-                                                      "_value" in o
-                                                        ? o._value
-                                                        : o.value
-                                                    return val
-                                                  })
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
                                                 _vm.$set(
                                                   _vm.sendOrderForm.notifyParty,
-                                                  "notifyParty",
-                                                  $event.target.multiple
-                                                    ? $$selectedVal
-                                                    : $$selectedVal[0]
-                                                )
-                                              }
-                                            }
-                                          },
-                                          [
-                                            _c(
-                                              "option",
-                                              { attrs: { value: "" } },
-                                              [_vm._v("Choose country")]
-                                            )
-                                          ]
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ])
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "slider-order__body" }, [
-                            _c("div", { staticClass: "body-left" }, [
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass:
-                                      "slider-order__label slider-order__label-required"
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    First name:\n                                                    "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "validate",
-                                          rawName: "v-validate",
-                                          value: "required",
-                                          expression: "'required'"
-                                        },
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value:
-                                            _vm.sendOrderForm.notifyParty
-                                              .firstName,
-                                          expression:
-                                            "sendOrderForm.notifyParty.firstName"
-                                        }
-                                      ],
-                                      staticClass: "slider-order__inp",
-                                      class: {
-                                        required: _vm.errors.has("firstNameNot")
-                                      },
-                                      attrs: { name: "firstNameNot" },
-                                      domProps: {
-                                        value:
-                                          _vm.sendOrderForm.notifyParty
-                                            .firstName
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.notifyParty,
-                                            "firstName",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass:
-                                      "slider-order__label slider-order__label-required"
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    Second name:\n                                                    "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "validate",
-                                          rawName: "v-validate",
-                                          value: "required",
-                                          expression: "'required'"
-                                        },
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value:
-                                            _vm.sendOrderForm.notifyParty
-                                              .secondName,
-                                          expression:
-                                            "sendOrderForm.notifyParty.secondName"
-                                        }
-                                      ],
-                                      staticClass: "slider-order__inp",
-                                      class: {
-                                        required: _vm.errors.has(
-                                          "secondNameNot"
-                                        )
-                                      },
-                                      attrs: { name: "secondNameNot" },
-                                      domProps: {
-                                        value:
-                                          _vm.sendOrderForm.notifyParty
-                                            .secondName
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.notifyParty,
-                                            "secondName",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  { staticClass: "slider-order__label" },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    Address:\n                                                    "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value:
-                                            _vm.sendOrderForm.notifyParty
-                                              .address,
-                                          expression:
-                                            "sendOrderForm.notifyParty.address"
-                                        }
-                                      ],
-                                      staticClass: "slider-order__inp",
-                                      attrs: { name: "address" },
-                                      domProps: {
-                                        value:
-                                          _vm.sendOrderForm.notifyParty.address
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.notifyParty,
-                                            "address",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]
-                                )
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "body-right" }, [
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass:
-                                      "slider-order__label slider-order__label-required"
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    City:\n                                                    "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "validate",
-                                          rawName: "v-validate",
-                                          value: "required",
-                                          expression: "'required'"
-                                        },
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value:
-                                            _vm.sendOrderForm.notifyParty.city,
-                                          expression:
-                                            "sendOrderForm.notifyParty.city"
-                                        }
-                                      ],
-                                      staticClass: "slider-order__inp",
-                                      class: {
-                                        required: _vm.errors.has("cityNot")
-                                      },
-                                      attrs: { name: "cityNot" },
-                                      domProps: {
-                                        value:
-                                          _vm.sendOrderForm.notifyParty.city
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.notifyParty,
-                                            "city",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  { staticClass: "slider-order__label" },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    State (US only):\n                                                    "
-                                    ),
-                                    _c(
-                                      "select",
-                                      {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value:
-                                              _vm.sendOrderForm.notifyParty
-                                                .state,
-                                            expression:
-                                              "sendOrderForm.notifyParty.state"
-                                          }
-                                        ],
-                                        staticClass:
-                                          "slider-order__select select-order",
-                                        attrs: { name: "state" },
-                                        on: {
-                                          change: function($event) {
-                                            var $$selectedVal = Array.prototype.filter
-                                              .call(
-                                                $event.target.options,
-                                                function(o) {
-                                                  return o.selected
-                                                }
-                                              )
-                                              .map(function(o) {
-                                                var val =
-                                                  "_value" in o
-                                                    ? o._value
-                                                    : o.value
-                                                return val
-                                              })
-                                            _vm.$set(
-                                              _vm.sendOrderForm.notifyParty,
-                                              "state",
-                                              $event.target.multiple
-                                                ? $$selectedVal
-                                                : $$selectedVal[0]
-                                            )
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _c("option", { attrs: { value: "" } }, [
-                                          _vm._v("Choose country")
-                                        ])
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  { staticClass: "slider-order__label" },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    Province:\n                                                    "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value:
-                                            _vm.sendOrderForm.notifyParty
-                                              .province,
-                                          expression:
-                                            "sendOrderForm.notifyParty.province"
-                                        }
-                                      ],
-                                      staticClass: "slider-order__inp",
-                                      attrs: { name: "province" },
-                                      domProps: {
-                                        value:
-                                          _vm.sendOrderForm.notifyParty.province
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.notifyParty,
-                                            "province",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass:
-                                      "slider-order__label slider-order__label-required"
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    Country:\n                                                    "
-                                    ),
-                                    _c(
-                                      "select",
-                                      {
-                                        directives: [
-                                          {
-                                            name: "validate",
-                                            rawName: "v-validate",
-                                            value: "required",
-                                            expression: "'required'"
-                                          },
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value:
-                                              _vm.sendOrderForm.notifyParty
-                                                .country,
-                                            expression:
-                                              "sendOrderForm.notifyParty.country"
-                                          }
-                                        ],
-                                        staticClass:
-                                          "slider-order__select select-order",
-                                        class: {
-                                          required: _vm.errors.has("countryNot")
-                                        },
-                                        attrs: { name: "countryNot" },
-                                        on: {
-                                          change: function($event) {
-                                            var $$selectedVal = Array.prototype.filter
-                                              .call(
-                                                $event.target.options,
-                                                function(o) {
-                                                  return o.selected
-                                                }
-                                              )
-                                              .map(function(o) {
-                                                var val =
-                                                  "_value" in o
-                                                    ? o._value
-                                                    : o.value
-                                                return val
-                                              })
-                                            _vm.$set(
-                                              _vm.sendOrderForm.notifyParty,
-                                              "country",
-                                              $event.target.multiple
-                                                ? $$selectedVal
-                                                : $$selectedVal[0]
-                                            )
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _c("option", { attrs: { value: "" } }, [
-                                          _vm._v("Choose country")
-                                        ])
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  { staticClass: "slider-order__label" },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    ZIP:\n                                                    "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value:
-                                            _vm.sendOrderForm.notifyParty.zip,
-                                          expression:
-                                            "sendOrderForm.notifyParty.zip"
-                                        }
-                                      ],
-                                      staticClass:
-                                        "slider-order__inp only-number",
-                                      attrs: { name: "zip", maxlength: "10" },
-                                      domProps: {
-                                        value: _vm.sendOrderForm.notifyParty.zip
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.notifyParty,
-                                            "zip",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]
-                                )
-                              ])
-                            ])
-                          ])
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "slider-order__slide slide-4" }, [
-                      !_vm.vehicleCheck
-                        ? _c("div", [
-                            _c("div", { staticClass: "slider-order__title" }, [
-                              _vm._v("DESCRIPTION OF GOODS")
-                            ]),
-                            _vm._v(" "),
-                            _c("div", [
-                              _vm._v(
-                                "\n                                        Type of goods:\n                                        "
-                              ),
-                              _c("div", { staticClass: "checked-block" }, [
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.description,
-                                      expression: "description"
-                                    }
-                                  ],
-                                  staticClass: "inp-checkbox",
-                                  attrs: {
-                                    name: "description",
-                                    id: "other",
-                                    type: "radio",
-                                    value: "other"
-                                  },
-                                  domProps: {
-                                    checked: _vm._q(_vm.description, "other")
-                                  },
-                                  on: {
-                                    change: function($event) {
-                                      _vm.description = "other"
-                                    }
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass: "checked-block__label",
-                                    attrs: { for: "other" }
-                                  },
-                                  [_vm._v("Other")]
-                                ),
-                                _vm._v(" "),
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.description,
-                                      expression: "description"
-                                    }
-                                  ],
-                                  staticClass: "inp-checkbox",
-                                  attrs: {
-                                    name: "description",
-                                    id: "vehicle",
-                                    type: "radio",
-                                    value: "vehicle"
-                                  },
-                                  domProps: {
-                                    checked: _vm._q(_vm.description, "vehicle")
-                                  },
-                                  on: {
-                                    change: function($event) {
-                                      _vm.description = "vehicle"
-                                    }
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass: "checked-block__label",
-                                    attrs: { for: "vehicle" }
-                                  },
-                                  [_vm._v("Vehicle")]
-                                )
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "form",
-                              {
-                                attrs: { id: "form-description-of-goods" },
-                                on: {
-                                  submit: function($event) {
-                                    $event.preventDefault()
-                                    return _vm.isValidForms($event)
-                                  }
-                                }
-                              },
-                              [
-                                _c(
-                                  "div",
-                                  { staticClass: "slider-order__body-center" },
-                                  [
-                                    _c("div", { staticClass: "body-center" }, [
-                                      _c(
-                                        "div",
-                                        { staticClass: "slider-order__row" },
-                                        [
-                                          _c(
-                                            "div",
-                                            { staticClass: "usd-title" },
-                                            [_vm._v("USD VALUE")]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "slider-order__row" },
-                                        [
-                                          _c(
-                                            "span",
-                                            {
-                                              staticClass:
-                                                "slider-order__number"
-                                            },
-                                            [_vm._v("1")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            directives: [
-                                              {
-                                                name: "model",
-                                                rawName: "v-model",
-                                                value:
-                                                  _vm.sendOrderForm
-                                                    .descriptionOfGoods
-                                                    .description_1,
-                                                expression:
-                                                  "sendOrderForm.descriptionOfGoods.description_1"
-                                              }
-                                            ],
-                                            staticClass:
-                                              "slider-order__inp slider-order__inp-desc",
-                                            domProps: {
-                                              value:
-                                                _vm.sendOrderForm
-                                                  .descriptionOfGoods
-                                                  .description_1
-                                            },
-                                            on: {
-                                              input: function($event) {
-                                                if ($event.target.composing) {
-                                                  return
-                                                }
-                                                _vm.$set(
-                                                  _vm.sendOrderForm
-                                                    .descriptionOfGoods,
-                                                  "description_1",
+                                                  "address",
                                                   $event.target.value
                                                 )
                                               }
                                             }
-                                          }),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            directives: [
-                                              {
-                                                name: "model",
-                                                rawName: "v-model",
-                                                value:
-                                                  _vm.sendOrderForm
-                                                    .descriptionOfGoods
-                                                    .descriptionValue_1,
-                                                expression:
-                                                  "sendOrderForm.descriptionOfGoods.descriptionValue_1"
-                                              }
-                                            ],
-                                            staticClass:
-                                              "slider-order__inp slider-order__inp-usd only-number",
-                                            attrs: { maxlength: "10" },
-                                            domProps: {
-                                              value:
-                                                _vm.sendOrderForm
-                                                  .descriptionOfGoods
-                                                  .descriptionValue_1
-                                            },
-                                            on: {
-                                              input: function($event) {
-                                                if ($event.target.composing) {
-                                                  return
-                                                }
-                                                _vm.$set(
-                                                  _vm.sendOrderForm
-                                                    .descriptionOfGoods,
-                                                  "descriptionValue_1",
-                                                  $event.target.value
-                                                )
-                                              }
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "span",
-                                            { staticClass: "dollar" },
-                                            [_vm._v("$")]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "slider-order__row" },
-                                        [
-                                          _c(
-                                            "span",
-                                            {
-                                              staticClass:
-                                                "slider-order__number"
-                                            },
-                                            [_vm._v("2")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            directives: [
-                                              {
-                                                name: "model",
-                                                rawName: "v-model",
-                                                value:
-                                                  _vm.sendOrderForm
-                                                    .descriptionOfGoods
-                                                    .description_2,
-                                                expression:
-                                                  "sendOrderForm.descriptionOfGoods.description_2"
-                                              }
-                                            ],
-                                            staticClass:
-                                              "slider-order__inp slider-order__inp-desc",
-                                            domProps: {
-                                              value:
-                                                _vm.sendOrderForm
-                                                  .descriptionOfGoods
-                                                  .description_2
-                                            },
-                                            on: {
-                                              input: function($event) {
-                                                if ($event.target.composing) {
-                                                  return
-                                                }
-                                                _vm.$set(
-                                                  _vm.sendOrderForm
-                                                    .descriptionOfGoods,
-                                                  "description_2",
-                                                  $event.target.value
-                                                )
-                                              }
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            directives: [
-                                              {
-                                                name: "model",
-                                                rawName: "v-model",
-                                                value:
-                                                  _vm.sendOrderForm
-                                                    .descriptionOfGoods
-                                                    .descriptionValue_2,
-                                                expression:
-                                                  "sendOrderForm.descriptionOfGoods.descriptionValue_2"
-                                              }
-                                            ],
-                                            staticClass:
-                                              "slider-order__inp slider-order__inp-usd only-number",
-                                            attrs: { maxlength: "10" },
-                                            domProps: {
-                                              value:
-                                                _vm.sendOrderForm
-                                                  .descriptionOfGoods
-                                                  .descriptionValue_2
-                                            },
-                                            on: {
-                                              input: function($event) {
-                                                if ($event.target.composing) {
-                                                  return
-                                                }
-                                                _vm.$set(
-                                                  _vm.sendOrderForm
-                                                    .descriptionOfGoods,
-                                                  "descriptionValue_2",
-                                                  $event.target.value
-                                                )
-                                              }
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "span",
-                                            { staticClass: "dollar" },
-                                            [_vm._v("$")]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "slider-order__row" },
-                                        [
-                                          _c(
-                                            "span",
-                                            {
-                                              staticClass:
-                                                "slider-order__number"
-                                            },
-                                            [_vm._v("3")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            directives: [
-                                              {
-                                                name: "model",
-                                                rawName: "v-model",
-                                                value:
-                                                  _vm.sendOrderForm
-                                                    .descriptionOfGoods
-                                                    .description_3,
-                                                expression:
-                                                  "sendOrderForm.descriptionOfGoods.description_3"
-                                              }
-                                            ],
-                                            staticClass:
-                                              "slider-order__inp slider-order__inp-desc",
-                                            domProps: {
-                                              value:
-                                                _vm.sendOrderForm
-                                                  .descriptionOfGoods
-                                                  .description_3
-                                            },
-                                            on: {
-                                              input: function($event) {
-                                                if ($event.target.composing) {
-                                                  return
-                                                }
-                                                _vm.$set(
-                                                  _vm.sendOrderForm
-                                                    .descriptionOfGoods,
-                                                  "description_3",
-                                                  $event.target.value
-                                                )
-                                              }
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            directives: [
-                                              {
-                                                name: "model",
-                                                rawName: "v-model",
-                                                value:
-                                                  _vm.sendOrderForm
-                                                    .descriptionOfGoods
-                                                    .descriptionValue_3,
-                                                expression:
-                                                  "sendOrderForm.descriptionOfGoods.descriptionValue_3"
-                                              }
-                                            ],
-                                            staticClass:
-                                              "slider-order__inp slider-order__inp-usd only-number",
-                                            attrs: { maxlength: "10" },
-                                            domProps: {
-                                              value:
-                                                _vm.sendOrderForm
-                                                  .descriptionOfGoods
-                                                  .descriptionValue_3
-                                            },
-                                            on: {
-                                              input: function($event) {
-                                                if ($event.target.composing) {
-                                                  return
-                                                }
-                                                _vm.$set(
-                                                  _vm.sendOrderForm
-                                                    .descriptionOfGoods,
-                                                  "descriptionValue_3",
-                                                  $event.target.value
-                                                )
-                                              }
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "span",
-                                            { staticClass: "dollar" },
-                                            [_vm._v("$")]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "slider-order__row" },
-                                        [
-                                          _c(
-                                            "span",
-                                            {
-                                              staticClass:
-                                                "slider-order__number"
-                                            },
-                                            [_vm._v("4")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            directives: [
-                                              {
-                                                name: "model",
-                                                rawName: "v-model",
-                                                value:
-                                                  _vm.sendOrderForm
-                                                    .descriptionOfGoods
-                                                    .description_4,
-                                                expression:
-                                                  "sendOrderForm.descriptionOfGoods.description_4"
-                                              }
-                                            ],
-                                            staticClass:
-                                              "slider-order__inp slider-order__inp-desc",
-                                            domProps: {
-                                              value:
-                                                _vm.sendOrderForm
-                                                  .descriptionOfGoods
-                                                  .description_4
-                                            },
-                                            on: {
-                                              input: function($event) {
-                                                if ($event.target.composing) {
-                                                  return
-                                                }
-                                                _vm.$set(
-                                                  _vm.sendOrderForm
-                                                    .descriptionOfGoods,
-                                                  "description_4",
-                                                  $event.target.value
-                                                )
-                                              }
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            directives: [
-                                              {
-                                                name: "model",
-                                                rawName: "v-model",
-                                                value:
-                                                  _vm.sendOrderForm
-                                                    .descriptionOfGoods
-                                                    .descriptionValue_4,
-                                                expression:
-                                                  "sendOrderForm.descriptionOfGoods.descriptionValue_4"
-                                              }
-                                            ],
-                                            staticClass:
-                                              "slider-order__inp slider-order__inp-usd only-number",
-                                            attrs: { maxlength: "10" },
-                                            domProps: {
-                                              value:
-                                                _vm.sendOrderForm
-                                                  .descriptionOfGoods
-                                                  .descriptionValue_4
-                                            },
-                                            on: {
-                                              input: function($event) {
-                                                if ($event.target.composing) {
-                                                  return
-                                                }
-                                                _vm.$set(
-                                                  _vm.sendOrderForm
-                                                    .descriptionOfGoods,
-                                                  "descriptionValue_4",
-                                                  $event.target.value
-                                                )
-                                              }
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "span",
-                                            { staticClass: "dollar" },
-                                            [_vm._v("$")]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "slider-order__row" },
-                                        [
-                                          _c(
-                                            "span",
-                                            {
-                                              staticClass:
-                                                "slider-order__number"
-                                            },
-                                            [_vm._v("5")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            directives: [
-                                              {
-                                                name: "model",
-                                                rawName: "v-model",
-                                                value:
-                                                  _vm.sendOrderForm
-                                                    .descriptionOfGoods
-                                                    .description_5,
-                                                expression:
-                                                  "sendOrderForm.descriptionOfGoods.description_5"
-                                              }
-                                            ],
-                                            staticClass:
-                                              "slider-order__inp slider-order__inp-desc",
-                                            domProps: {
-                                              value:
-                                                _vm.sendOrderForm
-                                                  .descriptionOfGoods
-                                                  .description_5
-                                            },
-                                            on: {
-                                              input: function($event) {
-                                                if ($event.target.composing) {
-                                                  return
-                                                }
-                                                _vm.$set(
-                                                  _vm.sendOrderForm
-                                                    .descriptionOfGoods,
-                                                  "description_5",
-                                                  $event.target.value
-                                                )
-                                              }
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            directives: [
-                                              {
-                                                name: "model",
-                                                rawName: "v-model",
-                                                value:
-                                                  _vm.sendOrderForm
-                                                    .descriptionOfGoods
-                                                    .descriptionValue_5,
-                                                expression:
-                                                  "sendOrderForm.descriptionOfGoods.descriptionValue_5"
-                                              }
-                                            ],
-                                            staticClass:
-                                              "slider-order__inp slider-order__inp-usd only-number",
-                                            attrs: { maxlength: "10" },
-                                            domProps: {
-                                              value:
-                                                _vm.sendOrderForm
-                                                  .descriptionOfGoods
-                                                  .descriptionValue_5
-                                            },
-                                            on: {
-                                              input: function($event) {
-                                                if ($event.target.composing) {
-                                                  return
-                                                }
-                                                _vm.$set(
-                                                  _vm.sendOrderForm
-                                                    .descriptionOfGoods,
-                                                  "descriptionValue_5",
-                                                  $event.target.value
-                                                )
-                                              }
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "span",
-                                            { staticClass: "dollar" },
-                                            [_vm._v("$")]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "slider-order__row" },
-                                        [
-                                          _c(
-                                            "span",
-                                            {
-                                              staticClass:
-                                                "slider-order__number"
-                                            },
-                                            [_vm._v("6")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            directives: [
-                                              {
-                                                name: "model",
-                                                rawName: "v-model",
-                                                value:
-                                                  _vm.sendOrderForm
-                                                    .descriptionOfGoods
-                                                    .description_6,
-                                                expression:
-                                                  "sendOrderForm.descriptionOfGoods.description_6"
-                                              }
-                                            ],
-                                            staticClass:
-                                              "slider-order__inp slider-order__inp-desc",
-                                            domProps: {
-                                              value:
-                                                _vm.sendOrderForm
-                                                  .descriptionOfGoods
-                                                  .description_6
-                                            },
-                                            on: {
-                                              input: function($event) {
-                                                if ($event.target.composing) {
-                                                  return
-                                                }
-                                                _vm.$set(
-                                                  _vm.sendOrderForm
-                                                    .descriptionOfGoods,
-                                                  "description_6",
-                                                  $event.target.value
-                                                )
-                                              }
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            directives: [
-                                              {
-                                                name: "model",
-                                                rawName: "v-model",
-                                                value:
-                                                  _vm.sendOrderForm
-                                                    .descriptionOfGoods
-                                                    .descriptionValue_6,
-                                                expression:
-                                                  "sendOrderForm.descriptionOfGoods.descriptionValue_6"
-                                              }
-                                            ],
-                                            staticClass:
-                                              "slider-order__inp slider-order__inp-usd only-number",
-                                            attrs: { maxlength: "10" },
-                                            domProps: {
-                                              value:
-                                                _vm.sendOrderForm
-                                                  .descriptionOfGoods
-                                                  .descriptionValue_6
-                                            },
-                                            on: {
-                                              input: function($event) {
-                                                if ($event.target.composing) {
-                                                  return
-                                                }
-                                                _vm.$set(
-                                                  _vm.sendOrderForm
-                                                    .descriptionOfGoods,
-                                                  "descriptionValue_6",
-                                                  $event.target.value
-                                                )
-                                              }
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "span",
-                                            { staticClass: "dollar" },
-                                            [_vm._v("$")]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "slider-order__row" },
-                                        [
-                                          _c(
-                                            "span",
-                                            {
-                                              staticClass:
-                                                "slider-order__number"
-                                            },
-                                            [_vm._v("7")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            directives: [
-                                              {
-                                                name: "model",
-                                                rawName: "v-model",
-                                                value:
-                                                  _vm.sendOrderForm
-                                                    .descriptionOfGoods
-                                                    .description_7,
-                                                expression:
-                                                  "sendOrderForm.descriptionOfGoods.description_7"
-                                              }
-                                            ],
-                                            staticClass:
-                                              "slider-order__inp slider-order__inp-desc",
-                                            domProps: {
-                                              value:
-                                                _vm.sendOrderForm
-                                                  .descriptionOfGoods
-                                                  .description_7
-                                            },
-                                            on: {
-                                              input: function($event) {
-                                                if ($event.target.composing) {
-                                                  return
-                                                }
-                                                _vm.$set(
-                                                  _vm.sendOrderForm
-                                                    .descriptionOfGoods,
-                                                  "description_7",
-                                                  $event.target.value
-                                                )
-                                              }
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            directives: [
-                                              {
-                                                name: "model",
-                                                rawName: "v-model",
-                                                value:
-                                                  _vm.sendOrderForm
-                                                    .descriptionOfGoods
-                                                    .descriptionValue_7,
-                                                expression:
-                                                  "sendOrderForm.descriptionOfGoods.descriptionValue_7"
-                                              }
-                                            ],
-                                            staticClass:
-                                              "slider-order__inp slider-order__inp-usd only-number",
-                                            attrs: { maxlength: "10" },
-                                            domProps: {
-                                              value:
-                                                _vm.sendOrderForm
-                                                  .descriptionOfGoods
-                                                  .descriptionValue_7
-                                            },
-                                            on: {
-                                              input: function($event) {
-                                                if ($event.target.composing) {
-                                                  return
-                                                }
-                                                _vm.$set(
-                                                  _vm.sendOrderForm
-                                                    .descriptionOfGoods,
-                                                  "descriptionValue_7",
-                                                  $event.target.value
-                                                )
-                                              }
-                                            }
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "span",
-                                            { staticClass: "dollar" },
-                                            [_vm._v("$")]
-                                          )
+                                          })
                                         ]
                                       )
-                                    ])
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "itinerary-block" }, [
-                                  _c("span", { staticClass: "itinerary" }, [
-                                    _vm._v("ITINERARY")
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "label",
-                                    {
-                                      staticClass:
-                                        "slider-order__label slider-order__label-required slider-order__label-from"
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                                From:\n                                                "
-                                      ),
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "validate",
-                                            rawName: "v-validate",
-                                            value: "required",
-                                            expression: "'required'"
-                                          },
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value:
-                                              _vm.sendOrderForm
-                                                .descriptionOfGoods.from,
-                                            expression:
-                                              "sendOrderForm.descriptionOfGoods.from"
-                                          }
-                                        ],
-                                        staticClass: "slider-order__inp",
-                                        class: {
-                                          required: _vm.errors.has(
-                                            "itineraryFrom"
-                                          )
-                                        },
-                                        attrs: { name: "itineraryFrom" },
-                                        domProps: {
-                                          value:
-                                            _vm.sendOrderForm.descriptionOfGoods
-                                              .from
-                                        },
-                                        on: {
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.$set(
-                                              _vm.sendOrderForm
-                                                .descriptionOfGoods,
-                                              "from",
-                                              $event.target.value
-                                            )
-                                          }
-                                        }
-                                      })
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "label",
-                                    {
-                                      staticClass:
-                                        "slider-order__label slider-order__label-required slider-order__label-to"
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                                To:\n                                                "
-                                      ),
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value:
-                                              _vm.sendOrderForm
-                                                .descriptionOfGoods.to,
-                                            expression:
-                                              "sendOrderForm.descriptionOfGoods.to"
-                                          }
-                                        ],
-                                        staticClass: "slider-order__inp",
-                                        attrs: { name: "itineraryTo" },
-                                        domProps: {
-                                          value:
-                                            _vm.sendOrderForm.descriptionOfGoods
-                                              .to
-                                        },
-                                        on: {
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.$set(
-                                              _vm.sendOrderForm
-                                                .descriptionOfGoods,
-                                              "to",
-                                              $event.target.value
-                                            )
-                                          }
-                                        }
-                                      })
                                     ]
                                   )
                                 ]),
                                 _vm._v(" "),
-                                _c("div", { staticClass: "additional-block" }, [
-                                  _c("span", { staticClass: "additional" }, [
-                                    _vm._v("Additional fees and charges:")
-                                  ]),
-                                  _vm._v(" "),
+                                _c("div", { staticClass: "body-right" }, [
                                   _c(
-                                    "span",
-                                    { staticClass: "insurance-text" },
-                                    [_vm._v("Insurance")]
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass:
+                                            "slider-order__label slider-order__label-required"
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    City:\n                                                    "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "validate",
+                                                rawName: "v-validate",
+                                                value: "required",
+                                                expression: "'required'"
+                                              },
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm.notifyParty
+                                                    .city,
+                                                expression:
+                                                  "sendOrderForm.notifyParty.city"
+                                              }
+                                            ],
+                                            staticClass: "slider-order__inp",
+                                            class: {
+                                              required: _vm.errors.has(
+                                                "cityNot"
+                                              )
+                                            },
+                                            attrs: { name: "cityNot" },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.notifyParty
+                                                  .city
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm.notifyParty,
+                                                  "city",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
                                   ),
                                   _vm._v(" "),
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value:
-                                          _vm.sendOrderForm.descriptionOfGoods
-                                            .insurance,
-                                        expression:
-                                          "sendOrderForm.descriptionOfGoods.insurance"
-                                      }
-                                    ],
-                                    staticClass: "inp-checkbox",
-                                    attrs: {
-                                      name: "insurance",
-                                      id: "insurance-air",
-                                      type: "checkbox"
-                                    },
-                                    domProps: {
-                                      checked: Array.isArray(
-                                        _vm.sendOrderForm.descriptionOfGoods
-                                          .insurance
-                                      )
-                                        ? _vm._i(
-                                            _vm.sendOrderForm.descriptionOfGoods
-                                              .insurance,
-                                            null
-                                          ) > -1
-                                        : _vm.sendOrderForm.descriptionOfGoods
-                                            .insurance
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a =
-                                            _vm.sendOrderForm.descriptionOfGoods
-                                              .insurance,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              _vm.$set(
-                                                _vm.sendOrderForm
-                                                  .descriptionOfGoods,
-                                                "insurance",
-                                                $$a.concat([$$v])
+                                  _c(
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        { staticClass: "slider-order__label" },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    State (US only):\n                                                    "
+                                          ),
+                                          _c(
+                                            "select",
+                                            {
+                                              directives: [
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value:
+                                                    _vm.sendOrderForm
+                                                      .notifyParty.state,
+                                                  expression:
+                                                    "sendOrderForm.notifyParty.state"
+                                                }
+                                              ],
+                                              staticClass:
+                                                "slider-order__select select-order",
+                                              attrs: { name: "state" },
+                                              on: {
+                                                change: function($event) {
+                                                  var $$selectedVal = Array.prototype.filter
+                                                    .call(
+                                                      $event.target.options,
+                                                      function(o) {
+                                                        return o.selected
+                                                      }
+                                                    )
+                                                    .map(function(o) {
+                                                      var val =
+                                                        "_value" in o
+                                                          ? o._value
+                                                          : o.value
+                                                      return val
+                                                    })
+                                                  _vm.$set(
+                                                    _vm.sendOrderForm
+                                                      .notifyParty,
+                                                    "state",
+                                                    $event.target.multiple
+                                                      ? $$selectedVal
+                                                      : $$selectedVal[0]
+                                                  )
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _c(
+                                                "option",
+                                                { attrs: { value: "" } },
+                                                [_vm._v("Choose country")]
                                               )
-                                          } else {
-                                            $$i > -1 &&
-                                              _vm.$set(
-                                                _vm.sendOrderForm
-                                                  .descriptionOfGoods,
-                                                "insurance",
-                                                $$a
-                                                  .slice(0, $$i)
-                                                  .concat($$a.slice($$i + 1))
-                                              )
-                                          }
-                                        } else {
-                                          _vm.$set(
-                                            _vm.sendOrderForm
-                                              .descriptionOfGoods,
-                                            "insurance",
-                                            $$c
+                                            ]
                                           )
-                                        }
-                                      }
-                                    }
-                                  }),
+                                        ]
+                                      )
+                                    ]
+                                  ),
                                   _vm._v(" "),
-                                  _c("label", {
-                                    staticClass: "checked-block__label",
-                                    attrs: { for: "insurance-air" }
-                                  })
+                                  _c(
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        { staticClass: "slider-order__label" },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    Province:\n                                                    "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm.notifyParty
+                                                    .province,
+                                                expression:
+                                                  "sendOrderForm.notifyParty.province"
+                                              }
+                                            ],
+                                            staticClass: "slider-order__inp",
+                                            attrs: { name: "province" },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.notifyParty
+                                                  .province
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm.notifyParty,
+                                                  "province",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass:
+                                            "slider-order__label slider-order__label-required"
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    Country:\n                                                    "
+                                          ),
+                                          _c(
+                                            "select",
+                                            {
+                                              directives: [
+                                                {
+                                                  name: "validate",
+                                                  rawName: "v-validate",
+                                                  value: "required",
+                                                  expression: "'required'"
+                                                },
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value:
+                                                    _vm.sendOrderForm
+                                                      .notifyParty.country,
+                                                  expression:
+                                                    "sendOrderForm.notifyParty.country"
+                                                }
+                                              ],
+                                              staticClass:
+                                                "slider-order__select select-order",
+                                              class: {
+                                                required: _vm.errors.has(
+                                                  "countryNot"
+                                                )
+                                              },
+                                              attrs: { name: "countryNot" },
+                                              on: {
+                                                change: function($event) {
+                                                  var $$selectedVal = Array.prototype.filter
+                                                    .call(
+                                                      $event.target.options,
+                                                      function(o) {
+                                                        return o.selected
+                                                      }
+                                                    )
+                                                    .map(function(o) {
+                                                      var val =
+                                                        "_value" in o
+                                                          ? o._value
+                                                          : o.value
+                                                      return val
+                                                    })
+                                                  _vm.$set(
+                                                    _vm.sendOrderForm
+                                                      .notifyParty,
+                                                    "country",
+                                                    $event.target.multiple
+                                                      ? $$selectedVal
+                                                      : $$selectedVal[0]
+                                                  )
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _c(
+                                                "option",
+                                                { attrs: { value: "" } },
+                                                [_vm._v("Choose country")]
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        { staticClass: "slider-order__label" },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    ZIP:\n                                                    "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm.notifyParty
+                                                    .zip,
+                                                expression:
+                                                  "sendOrderForm.notifyParty.zip"
+                                              }
+                                            ],
+                                            staticClass:
+                                              "slider-order__inp only-number",
+                                            attrs: {
+                                              name: "zip",
+                                              maxlength: "10"
+                                            },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.notifyParty
+                                                  .zip
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm.notifyParty,
+                                                  "zip",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  )
                                 ])
-                              ]
-                            )
-                          ])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm.vehicleCheck
-                        ? _c("div", [
-                            _c("div", { staticClass: "slider-order__title" }, [
-                              _vm._v("VEHICLE")
-                            ]),
-                            _vm._v(" "),
-                            _c("div", [
-                              _vm._v(
-                                "\n                                        Type of goods:\n                                        "
-                              ),
-                              _c("div", { staticClass: "checked-block" }, [
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.description,
-                                      expression: "description"
-                                    }
-                                  ],
-                                  staticClass: "inp-checkbox",
-                                  attrs: {
-                                    name: "description",
-                                    id: "other2",
-                                    type: "radio",
-                                    value: "other"
-                                  },
-                                  domProps: {
-                                    checked: _vm._q(_vm.description, "other")
-                                  },
-                                  on: {
-                                    change: function($event) {
-                                      _vm.description = "other"
-                                    }
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass: "checked-block__label",
-                                    attrs: { for: "other2" }
-                                  },
-                                  [_vm._v("Other")]
-                                ),
-                                _vm._v(" "),
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.description,
-                                      expression: "description"
-                                    }
-                                  ],
-                                  staticClass: "inp-checkbox",
-                                  attrs: {
-                                    name: "description",
-                                    id: "vehicle2",
-                                    type: "radio",
-                                    value: "vehicle"
-                                  },
-                                  domProps: {
-                                    checked: _vm._q(_vm.description, "vehicle")
-                                  },
-                                  on: {
-                                    change: function($event) {
-                                      _vm.description = "vehicle"
-                                    }
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass: "checked-block__label",
-                                    attrs: { for: "vehicle2" }
-                                  },
-                                  [_vm._v("Vehicle")]
-                                )
                               ])
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "form",
-                              {
-                                attrs: { id: "form-vehicle" },
-                                on: {
-                                  submit: function($event) {
-                                    $event.preventDefault()
-                                    return _vm.isValidForms($event)
-                                  }
-                                }
-                              },
-                              [
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "slider-order__slide slide-4" },
+                        [
+                          !_vm.vehicleCheck
+                            ? _c("div", [
                                 _c(
                                   "div",
-                                  { staticClass: "slider-order__body" },
+                                  { staticClass: "slider-order__title" },
+                                  [_vm._v("DESCRIPTION OF GOODS")]
+                                ),
+                                _vm._v(" "),
+                                _c("div", [
+                                  _vm._v(
+                                    "\n                                        Type of goods:\n                                        "
+                                  ),
+                                  _c("div", { staticClass: "checked-block" }, [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.description,
+                                          expression: "description"
+                                        }
+                                      ],
+                                      staticClass: "inp-checkbox",
+                                      attrs: {
+                                        name: "description",
+                                        id: "other",
+                                        type: "radio",
+                                        value: "other"
+                                      },
+                                      domProps: {
+                                        checked: _vm._q(
+                                          _vm.description,
+                                          "other"
+                                        )
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          _vm.description = "other"
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "checked-block__label",
+                                        attrs: { for: "other" }
+                                      },
+                                      [_vm._v("Other")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.description,
+                                          expression: "description"
+                                        }
+                                      ],
+                                      staticClass: "inp-checkbox",
+                                      attrs: {
+                                        name: "description",
+                                        id: "vehicle",
+                                        type: "radio",
+                                        value: "vehicle"
+                                      },
+                                      domProps: {
+                                        checked: _vm._q(
+                                          _vm.description,
+                                          "vehicle"
+                                        )
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          _vm.description = "vehicle"
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "checked-block__label",
+                                        attrs: { for: "vehicle" }
+                                      },
+                                      [_vm._v("Vehicle")]
+                                    )
+                                  ])
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "form",
+                                  {
+                                    attrs: { id: "form-description-of-goods" },
+                                    on: {
+                                      submit: function($event) {
+                                        $event.preventDefault()
+                                        return _vm.isValidForms($event)
+                                      }
+                                    }
+                                  },
                                   [
                                     _c(
                                       "div",
-                                      { staticClass: "body-left body-vehicle" },
+                                      {
+                                        staticClass: "slider-order__body-center"
+                                      },
                                       [
                                         _c(
                                           "div",
-                                          { staticClass: "slider-order__row" },
+                                          { staticClass: "body-center" },
                                           [
                                             _c(
-                                              "label",
+                                              "div",
                                               {
-                                                staticClass:
-                                                  "slider-order__label slider-order__label-required"
+                                                staticClass: "slider-order__row"
                                               },
                                               [
-                                                _vm._v(
-                                                  "\n                                                        Year:\n                                                        "
-                                                ),
-                                                _c("input", {
-                                                  directives: [
-                                                    {
-                                                      name: "validate",
-                                                      rawName: "v-validate",
-                                                      value: "required",
-                                                      expression: "'required'"
-                                                    },
-                                                    {
-                                                      name: "model",
-                                                      rawName: "v-model",
-                                                      value:
-                                                        _vm.sendOrderForm
-                                                          .vehicle.year,
-                                                      expression:
-                                                        "sendOrderForm.vehicle.year"
-                                                    }
-                                                  ],
-                                                  staticClass:
-                                                    "slider-order__inp only-number",
-                                                  class: {
-                                                    required: _vm.errors.has(
-                                                      "year"
-                                                    )
-                                                  },
-                                                  attrs: { name: "year" },
-                                                  domProps: {
-                                                    value:
-                                                      _vm.sendOrderForm.vehicle
-                                                        .year
-                                                  },
-                                                  on: {
-                                                    input: function($event) {
-                                                      if (
-                                                        $event.target.composing
-                                                      ) {
-                                                        return
-                                                      }
-                                                      _vm.$set(
-                                                        _vm.sendOrderForm
-                                                          .vehicle,
-                                                        "year",
-                                                        $event.target.value
-                                                      )
-                                                    }
-                                                  }
-                                                })
+                                                _c(
+                                                  "div",
+                                                  { staticClass: "usd-title" },
+                                                  [_vm._v("USD VALUE")]
+                                                )
                                               ]
-                                            )
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          { staticClass: "slider-order__row" },
-                                          [
+                                            ),
+                                            _vm._v(" "),
                                             _c(
-                                              "label",
+                                              "div",
                                               {
-                                                staticClass:
-                                                  "slider-order__label slider-order__label-required"
+                                                staticClass: "slider-order__row"
                                               },
                                               [
-                                                _vm._v(
-                                                  "\n                                                        Make:\n                                                        "
+                                                _c(
+                                                  "span",
+                                                  {
+                                                    staticClass:
+                                                      "slider-order__number"
+                                                  },
+                                                  [_vm._v("1")]
                                                 ),
+                                                _vm._v(" "),
                                                 _c("input", {
                                                   directives: [
-                                                    {
-                                                      name: "validate",
-                                                      rawName: "v-validate",
-                                                      value: "required",
-                                                      expression: "'required'"
-                                                    },
                                                     {
                                                       name: "model",
                                                       rawName: "v-model",
                                                       value:
                                                         _vm.sendOrderForm
-                                                          .vehicle.make,
+                                                          .descriptionOfGoods
+                                                          .description_1,
                                                       expression:
-                                                        "sendOrderForm.vehicle.make"
+                                                        "sendOrderForm.descriptionOfGoods.description_1"
                                                     }
                                                   ],
                                                   staticClass:
-                                                    "slider-order__inp",
-                                                  class: {
-                                                    required: _vm.errors.has(
-                                                      "make"
-                                                    )
-                                                  },
-                                                  attrs: { name: "make" },
+                                                    "slider-order__inp slider-order__inp-desc",
                                                   domProps: {
                                                     value:
-                                                      _vm.sendOrderForm.vehicle
-                                                        .make
+                                                      _vm.sendOrderForm
+                                                        .descriptionOfGoods
+                                                        .description_1
                                                   },
                                                   on: {
                                                     input: function($event) {
@@ -66938,62 +66204,96 @@ var render = function() {
                                                       }
                                                       _vm.$set(
                                                         _vm.sendOrderForm
-                                                          .vehicle,
-                                                        "make",
+                                                          .descriptionOfGoods,
+                                                        "description_1",
                                                         $event.target.value
                                                       )
                                                     }
                                                   }
-                                                })
+                                                }),
+                                                _vm._v(" "),
+                                                _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value:
+                                                        _vm.sendOrderForm
+                                                          .descriptionOfGoods
+                                                          .descriptionValue_1,
+                                                      expression:
+                                                        "sendOrderForm.descriptionOfGoods.descriptionValue_1"
+                                                    }
+                                                  ],
+                                                  staticClass:
+                                                    "slider-order__inp slider-order__inp-usd only-number",
+                                                  attrs: { maxlength: "10" },
+                                                  domProps: {
+                                                    value:
+                                                      _vm.sendOrderForm
+                                                        .descriptionOfGoods
+                                                        .descriptionValue_1
+                                                  },
+                                                  on: {
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        _vm.sendOrderForm
+                                                          .descriptionOfGoods,
+                                                        "descriptionValue_1",
+                                                        $event.target.value
+                                                      )
+                                                    }
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "span",
+                                                  { staticClass: "dollar" },
+                                                  [_vm._v("$")]
+                                                )
                                               ]
-                                            )
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          { staticClass: "slider-order__row" },
-                                          [
+                                            ),
+                                            _vm._v(" "),
                                             _c(
-                                              "label",
+                                              "div",
                                               {
-                                                staticClass:
-                                                  "slider-order__label slider-order__label-required"
+                                                staticClass: "slider-order__row"
                                               },
                                               [
-                                                _vm._v(
-                                                  "\n                                                        Model:\n                                                        "
+                                                _c(
+                                                  "span",
+                                                  {
+                                                    staticClass:
+                                                      "slider-order__number"
+                                                  },
+                                                  [_vm._v("2")]
                                                 ),
+                                                _vm._v(" "),
                                                 _c("input", {
                                                   directives: [
-                                                    {
-                                                      name: "validate",
-                                                      rawName: "v-validate",
-                                                      value: "required",
-                                                      expression: "'required'"
-                                                    },
                                                     {
                                                       name: "model",
                                                       rawName: "v-model",
                                                       value:
                                                         _vm.sendOrderForm
-                                                          .vehicle.model,
+                                                          .descriptionOfGoods
+                                                          .description_2,
                                                       expression:
-                                                        "sendOrderForm.vehicle.model"
+                                                        "sendOrderForm.descriptionOfGoods.description_2"
                                                     }
                                                   ],
                                                   staticClass:
-                                                    "slider-order__inp",
-                                                  class: {
-                                                    required: _vm.errors.has(
-                                                      "model"
-                                                    )
-                                                  },
-                                                  attrs: { name: "model" },
+                                                    "slider-order__inp slider-order__inp-desc",
                                                   domProps: {
                                                     value:
-                                                      _vm.sendOrderForm.vehicle
-                                                        .model
+                                                      _vm.sendOrderForm
+                                                        .descriptionOfGoods
+                                                        .description_2
                                                   },
                                                   on: {
                                                     input: function($event) {
@@ -67004,13 +66304,558 @@ var render = function() {
                                                       }
                                                       _vm.$set(
                                                         _vm.sendOrderForm
-                                                          .vehicle,
-                                                        "model",
+                                                          .descriptionOfGoods,
+                                                        "description_2",
                                                         $event.target.value
                                                       )
                                                     }
                                                   }
-                                                })
+                                                }),
+                                                _vm._v(" "),
+                                                _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value:
+                                                        _vm.sendOrderForm
+                                                          .descriptionOfGoods
+                                                          .descriptionValue_2,
+                                                      expression:
+                                                        "sendOrderForm.descriptionOfGoods.descriptionValue_2"
+                                                    }
+                                                  ],
+                                                  staticClass:
+                                                    "slider-order__inp slider-order__inp-usd only-number",
+                                                  attrs: { maxlength: "10" },
+                                                  domProps: {
+                                                    value:
+                                                      _vm.sendOrderForm
+                                                        .descriptionOfGoods
+                                                        .descriptionValue_2
+                                                  },
+                                                  on: {
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        _vm.sendOrderForm
+                                                          .descriptionOfGoods,
+                                                        "descriptionValue_2",
+                                                        $event.target.value
+                                                      )
+                                                    }
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "span",
+                                                  { staticClass: "dollar" },
+                                                  [_vm._v("$")]
+                                                )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass: "slider-order__row"
+                                              },
+                                              [
+                                                _c(
+                                                  "span",
+                                                  {
+                                                    staticClass:
+                                                      "slider-order__number"
+                                                  },
+                                                  [_vm._v("3")]
+                                                ),
+                                                _vm._v(" "),
+                                                _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value:
+                                                        _vm.sendOrderForm
+                                                          .descriptionOfGoods
+                                                          .description_3,
+                                                      expression:
+                                                        "sendOrderForm.descriptionOfGoods.description_3"
+                                                    }
+                                                  ],
+                                                  staticClass:
+                                                    "slider-order__inp slider-order__inp-desc",
+                                                  domProps: {
+                                                    value:
+                                                      _vm.sendOrderForm
+                                                        .descriptionOfGoods
+                                                        .description_3
+                                                  },
+                                                  on: {
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        _vm.sendOrderForm
+                                                          .descriptionOfGoods,
+                                                        "description_3",
+                                                        $event.target.value
+                                                      )
+                                                    }
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value:
+                                                        _vm.sendOrderForm
+                                                          .descriptionOfGoods
+                                                          .descriptionValue_3,
+                                                      expression:
+                                                        "sendOrderForm.descriptionOfGoods.descriptionValue_3"
+                                                    }
+                                                  ],
+                                                  staticClass:
+                                                    "slider-order__inp slider-order__inp-usd only-number",
+                                                  attrs: { maxlength: "10" },
+                                                  domProps: {
+                                                    value:
+                                                      _vm.sendOrderForm
+                                                        .descriptionOfGoods
+                                                        .descriptionValue_3
+                                                  },
+                                                  on: {
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        _vm.sendOrderForm
+                                                          .descriptionOfGoods,
+                                                        "descriptionValue_3",
+                                                        $event.target.value
+                                                      )
+                                                    }
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "span",
+                                                  { staticClass: "dollar" },
+                                                  [_vm._v("$")]
+                                                )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass: "slider-order__row"
+                                              },
+                                              [
+                                                _c(
+                                                  "span",
+                                                  {
+                                                    staticClass:
+                                                      "slider-order__number"
+                                                  },
+                                                  [_vm._v("4")]
+                                                ),
+                                                _vm._v(" "),
+                                                _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value:
+                                                        _vm.sendOrderForm
+                                                          .descriptionOfGoods
+                                                          .description_4,
+                                                      expression:
+                                                        "sendOrderForm.descriptionOfGoods.description_4"
+                                                    }
+                                                  ],
+                                                  staticClass:
+                                                    "slider-order__inp slider-order__inp-desc",
+                                                  domProps: {
+                                                    value:
+                                                      _vm.sendOrderForm
+                                                        .descriptionOfGoods
+                                                        .description_4
+                                                  },
+                                                  on: {
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        _vm.sendOrderForm
+                                                          .descriptionOfGoods,
+                                                        "description_4",
+                                                        $event.target.value
+                                                      )
+                                                    }
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value:
+                                                        _vm.sendOrderForm
+                                                          .descriptionOfGoods
+                                                          .descriptionValue_4,
+                                                      expression:
+                                                        "sendOrderForm.descriptionOfGoods.descriptionValue_4"
+                                                    }
+                                                  ],
+                                                  staticClass:
+                                                    "slider-order__inp slider-order__inp-usd only-number",
+                                                  attrs: { maxlength: "10" },
+                                                  domProps: {
+                                                    value:
+                                                      _vm.sendOrderForm
+                                                        .descriptionOfGoods
+                                                        .descriptionValue_4
+                                                  },
+                                                  on: {
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        _vm.sendOrderForm
+                                                          .descriptionOfGoods,
+                                                        "descriptionValue_4",
+                                                        $event.target.value
+                                                      )
+                                                    }
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "span",
+                                                  { staticClass: "dollar" },
+                                                  [_vm._v("$")]
+                                                )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass: "slider-order__row"
+                                              },
+                                              [
+                                                _c(
+                                                  "span",
+                                                  {
+                                                    staticClass:
+                                                      "slider-order__number"
+                                                  },
+                                                  [_vm._v("5")]
+                                                ),
+                                                _vm._v(" "),
+                                                _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value:
+                                                        _vm.sendOrderForm
+                                                          .descriptionOfGoods
+                                                          .description_5,
+                                                      expression:
+                                                        "sendOrderForm.descriptionOfGoods.description_5"
+                                                    }
+                                                  ],
+                                                  staticClass:
+                                                    "slider-order__inp slider-order__inp-desc",
+                                                  domProps: {
+                                                    value:
+                                                      _vm.sendOrderForm
+                                                        .descriptionOfGoods
+                                                        .description_5
+                                                  },
+                                                  on: {
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        _vm.sendOrderForm
+                                                          .descriptionOfGoods,
+                                                        "description_5",
+                                                        $event.target.value
+                                                      )
+                                                    }
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value:
+                                                        _vm.sendOrderForm
+                                                          .descriptionOfGoods
+                                                          .descriptionValue_5,
+                                                      expression:
+                                                        "sendOrderForm.descriptionOfGoods.descriptionValue_5"
+                                                    }
+                                                  ],
+                                                  staticClass:
+                                                    "slider-order__inp slider-order__inp-usd only-number",
+                                                  attrs: { maxlength: "10" },
+                                                  domProps: {
+                                                    value:
+                                                      _vm.sendOrderForm
+                                                        .descriptionOfGoods
+                                                        .descriptionValue_5
+                                                  },
+                                                  on: {
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        _vm.sendOrderForm
+                                                          .descriptionOfGoods,
+                                                        "descriptionValue_5",
+                                                        $event.target.value
+                                                      )
+                                                    }
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "span",
+                                                  { staticClass: "dollar" },
+                                                  [_vm._v("$")]
+                                                )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass: "slider-order__row"
+                                              },
+                                              [
+                                                _c(
+                                                  "span",
+                                                  {
+                                                    staticClass:
+                                                      "slider-order__number"
+                                                  },
+                                                  [_vm._v("6")]
+                                                ),
+                                                _vm._v(" "),
+                                                _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value:
+                                                        _vm.sendOrderForm
+                                                          .descriptionOfGoods
+                                                          .description_6,
+                                                      expression:
+                                                        "sendOrderForm.descriptionOfGoods.description_6"
+                                                    }
+                                                  ],
+                                                  staticClass:
+                                                    "slider-order__inp slider-order__inp-desc",
+                                                  domProps: {
+                                                    value:
+                                                      _vm.sendOrderForm
+                                                        .descriptionOfGoods
+                                                        .description_6
+                                                  },
+                                                  on: {
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        _vm.sendOrderForm
+                                                          .descriptionOfGoods,
+                                                        "description_6",
+                                                        $event.target.value
+                                                      )
+                                                    }
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value:
+                                                        _vm.sendOrderForm
+                                                          .descriptionOfGoods
+                                                          .descriptionValue_6,
+                                                      expression:
+                                                        "sendOrderForm.descriptionOfGoods.descriptionValue_6"
+                                                    }
+                                                  ],
+                                                  staticClass:
+                                                    "slider-order__inp slider-order__inp-usd only-number",
+                                                  attrs: { maxlength: "10" },
+                                                  domProps: {
+                                                    value:
+                                                      _vm.sendOrderForm
+                                                        .descriptionOfGoods
+                                                        .descriptionValue_6
+                                                  },
+                                                  on: {
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        _vm.sendOrderForm
+                                                          .descriptionOfGoods,
+                                                        "descriptionValue_6",
+                                                        $event.target.value
+                                                      )
+                                                    }
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "span",
+                                                  { staticClass: "dollar" },
+                                                  [_vm._v("$")]
+                                                )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass: "slider-order__row"
+                                              },
+                                              [
+                                                _c(
+                                                  "span",
+                                                  {
+                                                    staticClass:
+                                                      "slider-order__number"
+                                                  },
+                                                  [_vm._v("7")]
+                                                ),
+                                                _vm._v(" "),
+                                                _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value:
+                                                        _vm.sendOrderForm
+                                                          .descriptionOfGoods
+                                                          .description_7,
+                                                      expression:
+                                                        "sendOrderForm.descriptionOfGoods.description_7"
+                                                    }
+                                                  ],
+                                                  staticClass:
+                                                    "slider-order__inp slider-order__inp-desc",
+                                                  domProps: {
+                                                    value:
+                                                      _vm.sendOrderForm
+                                                        .descriptionOfGoods
+                                                        .description_7
+                                                  },
+                                                  on: {
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        _vm.sendOrderForm
+                                                          .descriptionOfGoods,
+                                                        "description_7",
+                                                        $event.target.value
+                                                      )
+                                                    }
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c("input", {
+                                                  directives: [
+                                                    {
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value:
+                                                        _vm.sendOrderForm
+                                                          .descriptionOfGoods
+                                                          .descriptionValue_7,
+                                                      expression:
+                                                        "sendOrderForm.descriptionOfGoods.descriptionValue_7"
+                                                    }
+                                                  ],
+                                                  staticClass:
+                                                    "slider-order__inp slider-order__inp-usd only-number",
+                                                  attrs: { maxlength: "10" },
+                                                  domProps: {
+                                                    value:
+                                                      _vm.sendOrderForm
+                                                        .descriptionOfGoods
+                                                        .descriptionValue_7
+                                                  },
+                                                  on: {
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        _vm.sendOrderForm
+                                                          .descriptionOfGoods,
+                                                        "descriptionValue_7",
+                                                        $event.target.value
+                                                      )
+                                                    }
+                                                  }
+                                                }),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "span",
+                                                  { staticClass: "dollar" },
+                                                  [_vm._v("$")]
+                                                )
                                               ]
                                             )
                                           ]
@@ -67018,1076 +66863,2351 @@ var render = function() {
                                       ]
                                     ),
                                     _vm._v(" "),
-                                    _c("div", { staticClass: "body-right" }, [
-                                      _c(
-                                        "div",
-                                        { staticClass: "slider-order__row" },
-                                        [
-                                          _c(
-                                            "label",
-                                            {
-                                              staticClass:
-                                                "slider-order__label slider-order__label-required"
-                                            },
-                                            [
-                                              _vm._v(
-                                                "\n                                                        Body:\n                                                        "
-                                              ),
-                                              _c("input", {
-                                                directives: [
-                                                  {
-                                                    name: "validate",
-                                                    rawName: "v-validate",
-                                                    value: "required",
-                                                    expression: "'required'"
-                                                  },
-                                                  {
-                                                    name: "model",
-                                                    rawName: "v-model",
-                                                    value:
-                                                      _vm.sendOrderForm.vehicle
-                                                        .body,
-                                                    expression:
-                                                      "sendOrderForm.vehicle.body"
-                                                  }
-                                                ],
-                                                staticClass:
-                                                  "slider-order__inp",
-                                                class: {
-                                                  required: _vm.errors.has(
-                                                    "body"
-                                                  )
-                                                },
-                                                attrs: { name: "body" },
-                                                domProps: {
-                                                  value:
-                                                    _vm.sendOrderForm.vehicle
-                                                      .body
-                                                },
-                                                on: {
-                                                  input: function($event) {
-                                                    if (
-                                                      $event.target.composing
-                                                    ) {
-                                                      return
-                                                    }
-                                                    _vm.$set(
-                                                      _vm.sendOrderForm.vehicle,
-                                                      "body",
-                                                      $event.target.value
-                                                    )
-                                                  }
-                                                }
-                                              })
-                                            ]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "slider-order__row" },
-                                        [
-                                          _c(
-                                            "label",
-                                            {
-                                              staticClass:
-                                                "slider-order__label slider-order__label-required"
-                                            },
-                                            [
-                                              _vm._v(
-                                                "\n                                                        Colour:\n                                                        "
-                                              ),
-                                              _c("input", {
-                                                directives: [
-                                                  {
-                                                    name: "validate",
-                                                    rawName: "v-validate",
-                                                    value: "required",
-                                                    expression: "'required'"
-                                                  },
-                                                  {
-                                                    name: "model",
-                                                    rawName: "v-model",
-                                                    value:
-                                                      _vm.sendOrderForm.vehicle
-                                                        .colour,
-                                                    expression:
-                                                      "sendOrderForm.vehicle.colour"
-                                                  }
-                                                ],
-                                                staticClass:
-                                                  "slider-order__inp",
-                                                class: {
-                                                  required: _vm.errors.has(
-                                                    "colour"
-                                                  )
-                                                },
-                                                attrs: { name: "colour" },
-                                                domProps: {
-                                                  value:
-                                                    _vm.sendOrderForm.vehicle
-                                                      .colour
-                                                },
-                                                on: {
-                                                  input: function($event) {
-                                                    if (
-                                                      $event.target.composing
-                                                    ) {
-                                                      return
-                                                    }
-                                                    _vm.$set(
-                                                      _vm.sendOrderForm.vehicle,
-                                                      "colour",
-                                                      $event.target.value
-                                                    )
-                                                  }
-                                                }
-                                              })
-                                            ]
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "slider-order__row" },
-                                        [
-                                          _c(
-                                            "label",
-                                            {
-                                              staticClass:
-                                                "slider-order__label slider-order__label-required"
-                                            },
-                                            [
-                                              _vm._v(
-                                                "\n                                                        6 Last VIN#:\n                                                        "
-                                              ),
-                                              _c("input", {
-                                                directives: [
-                                                  {
-                                                    name: "validate",
-                                                    rawName: "v-validate",
-                                                    value: "required",
-                                                    expression: "'required'"
-                                                  },
-                                                  {
-                                                    name: "model",
-                                                    rawName: "v-model",
-                                                    value:
-                                                      _vm.sendOrderForm.vehicle
-                                                        .vin,
-                                                    expression:
-                                                      "sendOrderForm.vehicle.vin"
-                                                  }
-                                                ],
-                                                staticClass:
-                                                  "slider-order__inp",
-                                                class: {
-                                                  required: _vm.errors.has(
-                                                    "vin"
-                                                  )
-                                                },
-                                                attrs: { name: "vin" },
-                                                domProps: {
-                                                  value:
-                                                    _vm.sendOrderForm.vehicle
-                                                      .vin
-                                                },
-                                                on: {
-                                                  input: function($event) {
-                                                    if (
-                                                      $event.target.composing
-                                                    ) {
-                                                      return
-                                                    }
-                                                    _vm.$set(
-                                                      _vm.sendOrderForm.vehicle,
-                                                      "vin",
-                                                      $event.target.value
-                                                    )
-                                                  }
-                                                }
-                                              })
-                                            ]
-                                          )
-                                        ]
-                                      )
-                                    ])
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "slider-order__row slider-order__row-center"
-                                  },
-                                  [
                                     _c(
-                                      "label",
-                                      {
-                                        staticClass:
-                                          "slider-order__label slider-order__label-required slider-order__label-vehicle"
-                                      },
+                                      "div",
+                                      { staticClass: "itinerary-block" },
                                       [
-                                        _vm._v(
-                                          "\n                                                Value of vehicle:\n                                                "
+                                        _c(
+                                          "span",
+                                          { staticClass: "itinerary" },
+                                          [_vm._v("ITINERARY")]
                                         ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "label",
+                                          {
+                                            staticClass:
+                                              "slider-order__label slider-order__label-required slider-order__label-from"
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                                From:\n                                                "
+                                            ),
+                                            _c("input", {
+                                              directives: [
+                                                {
+                                                  name: "validate",
+                                                  rawName: "v-validate",
+                                                  value: "required",
+                                                  expression: "'required'"
+                                                },
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value:
+                                                    _vm.sendOrderForm
+                                                      .descriptionOfGoods.from,
+                                                  expression:
+                                                    "sendOrderForm.descriptionOfGoods.from"
+                                                }
+                                              ],
+                                              staticClass: "slider-order__inp",
+                                              class: {
+                                                required: _vm.errors.has(
+                                                  "itineraryFrom"
+                                                )
+                                              },
+                                              attrs: { name: "itineraryFrom" },
+                                              domProps: {
+                                                value:
+                                                  _vm.sendOrderForm
+                                                    .descriptionOfGoods.from
+                                              },
+                                              on: {
+                                                input: function($event) {
+                                                  if ($event.target.composing) {
+                                                    return
+                                                  }
+                                                  _vm.$set(
+                                                    _vm.sendOrderForm
+                                                      .descriptionOfGoods,
+                                                    "from",
+                                                    $event.target.value
+                                                  )
+                                                }
+                                              }
+                                            })
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "label",
+                                          {
+                                            staticClass:
+                                              "slider-order__label slider-order__label-required slider-order__label-to"
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                                To:\n                                                "
+                                            ),
+                                            _c("input", {
+                                              directives: [
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value:
+                                                    _vm.sendOrderForm
+                                                      .descriptionOfGoods.to,
+                                                  expression:
+                                                    "sendOrderForm.descriptionOfGoods.to"
+                                                }
+                                              ],
+                                              staticClass: "slider-order__inp",
+                                              attrs: { name: "itineraryTo" },
+                                              domProps: {
+                                                value:
+                                                  _vm.sendOrderForm
+                                                    .descriptionOfGoods.to
+                                              },
+                                              on: {
+                                                input: function($event) {
+                                                  if ($event.target.composing) {
+                                                    return
+                                                  }
+                                                  _vm.$set(
+                                                    _vm.sendOrderForm
+                                                      .descriptionOfGoods,
+                                                    "to",
+                                                    $event.target.value
+                                                  )
+                                                }
+                                              }
+                                            })
+                                          ]
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "additional-block" },
+                                      [
+                                        _c(
+                                          "span",
+                                          { staticClass: "additional" },
+                                          [
+                                            _vm._v(
+                                              "Additional fees and charges:"
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "span",
+                                          { staticClass: "insurance-text" },
+                                          [_vm._v("Insurance")]
+                                        ),
+                                        _vm._v(" "),
                                         _c("input", {
                                           directives: [
                                             {
-                                              name: "validate",
-                                              rawName: "v-validate",
-                                              value: "required",
-                                              expression: "'required'"
-                                            },
+                                              name: "model",
+                                              rawName: "v-model",
+                                              value:
+                                                _vm.sendOrderForm
+                                                  .descriptionOfGoods.insurance,
+                                              expression:
+                                                "sendOrderForm.descriptionOfGoods.insurance"
+                                            }
+                                          ],
+                                          staticClass: "inp-checkbox",
+                                          attrs: {
+                                            name: "insurance",
+                                            id: "insurance-air",
+                                            type: "checkbox"
+                                          },
+                                          domProps: {
+                                            checked: Array.isArray(
+                                              _vm.sendOrderForm
+                                                .descriptionOfGoods.insurance
+                                            )
+                                              ? _vm._i(
+                                                  _vm.sendOrderForm
+                                                    .descriptionOfGoods
+                                                    .insurance,
+                                                  null
+                                                ) > -1
+                                              : _vm.sendOrderForm
+                                                  .descriptionOfGoods.insurance
+                                          },
+                                          on: {
+                                            change: function($event) {
+                                              var $$a =
+                                                  _vm.sendOrderForm
+                                                    .descriptionOfGoods
+                                                    .insurance,
+                                                $$el = $event.target,
+                                                $$c = $$el.checked
+                                                  ? true
+                                                  : false
+                                              if (Array.isArray($$a)) {
+                                                var $$v = null,
+                                                  $$i = _vm._i($$a, $$v)
+                                                if ($$el.checked) {
+                                                  $$i < 0 &&
+                                                    _vm.$set(
+                                                      _vm.sendOrderForm
+                                                        .descriptionOfGoods,
+                                                      "insurance",
+                                                      $$a.concat([$$v])
+                                                    )
+                                                } else {
+                                                  $$i > -1 &&
+                                                    _vm.$set(
+                                                      _vm.sendOrderForm
+                                                        .descriptionOfGoods,
+                                                      "insurance",
+                                                      $$a
+                                                        .slice(0, $$i)
+                                                        .concat(
+                                                          $$a.slice($$i + 1)
+                                                        )
+                                                    )
+                                                }
+                                              } else {
+                                                _vm.$set(
+                                                  _vm.sendOrderForm
+                                                    .descriptionOfGoods,
+                                                  "insurance",
+                                                  $$c
+                                                )
+                                              }
+                                            }
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c("label", {
+                                          staticClass: "checked-block__label",
+                                          attrs: { for: "insurance-air" }
+                                        })
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.vehicleCheck
+                            ? _c("div", [
+                                _c(
+                                  "div",
+                                  { staticClass: "slider-order__title" },
+                                  [_vm._v("VEHICLE")]
+                                ),
+                                _vm._v(" "),
+                                _c("div", [
+                                  _vm._v(
+                                    "\n                                        Type of goods:\n                                        "
+                                  ),
+                                  _c("div", { staticClass: "checked-block" }, [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.description,
+                                          expression: "description"
+                                        }
+                                      ],
+                                      staticClass: "inp-checkbox",
+                                      attrs: {
+                                        name: "description",
+                                        id: "other2",
+                                        type: "radio",
+                                        value: "other"
+                                      },
+                                      domProps: {
+                                        checked: _vm._q(
+                                          _vm.description,
+                                          "other"
+                                        )
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          _vm.description = "other"
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "checked-block__label",
+                                        attrs: { for: "other2" }
+                                      },
+                                      [_vm._v("Other")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.description,
+                                          expression: "description"
+                                        }
+                                      ],
+                                      staticClass: "inp-checkbox",
+                                      attrs: {
+                                        name: "description",
+                                        id: "vehicle2",
+                                        type: "radio",
+                                        value: "vehicle"
+                                      },
+                                      domProps: {
+                                        checked: _vm._q(
+                                          _vm.description,
+                                          "vehicle"
+                                        )
+                                      },
+                                      on: {
+                                        change: function($event) {
+                                          _vm.description = "vehicle"
+                                        }
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "label",
+                                      {
+                                        staticClass: "checked-block__label",
+                                        attrs: { for: "vehicle2" }
+                                      },
+                                      [_vm._v("Vehicle")]
+                                    )
+                                  ])
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "form",
+                                  {
+                                    attrs: { id: "form-vehicle" },
+                                    on: {
+                                      submit: function($event) {
+                                        $event.preventDefault()
+                                        return _vm.isValidForms($event)
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "slider-order__body" },
+                                      [
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "body-left body-vehicle"
+                                          },
+                                          [
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass: "slider-order__row"
+                                              },
+                                              [
+                                                _c(
+                                                  "label",
+                                                  {
+                                                    staticClass:
+                                                      "slider-order__label slider-order__label-required"
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                        Year:\n                                                        "
+                                                    ),
+                                                    _c("input", {
+                                                      directives: [
+                                                        {
+                                                          name: "validate",
+                                                          rawName: "v-validate",
+                                                          value: "required",
+                                                          expression:
+                                                            "'required'"
+                                                        },
+                                                        {
+                                                          name: "model",
+                                                          rawName: "v-model",
+                                                          value:
+                                                            _vm.sendOrderForm
+                                                              .vehicle.year,
+                                                          expression:
+                                                            "sendOrderForm.vehicle.year"
+                                                        }
+                                                      ],
+                                                      staticClass:
+                                                        "slider-order__inp only-number",
+                                                      class: {
+                                                        required: _vm.errors.has(
+                                                          "year"
+                                                        )
+                                                      },
+                                                      attrs: { name: "year" },
+                                                      domProps: {
+                                                        value:
+                                                          _vm.sendOrderForm
+                                                            .vehicle.year
+                                                      },
+                                                      on: {
+                                                        input: function(
+                                                          $event
+                                                        ) {
+                                                          if (
+                                                            $event.target
+                                                              .composing
+                                                          ) {
+                                                            return
+                                                          }
+                                                          _vm.$set(
+                                                            _vm.sendOrderForm
+                                                              .vehicle,
+                                                            "year",
+                                                            $event.target.value
+                                                          )
+                                                        }
+                                                      }
+                                                    })
+                                                  ]
+                                                )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass: "slider-order__row"
+                                              },
+                                              [
+                                                _c(
+                                                  "label",
+                                                  {
+                                                    staticClass:
+                                                      "slider-order__label slider-order__label-required"
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                        Make:\n                                                        "
+                                                    ),
+                                                    _c("input", {
+                                                      directives: [
+                                                        {
+                                                          name: "validate",
+                                                          rawName: "v-validate",
+                                                          value: "required",
+                                                          expression:
+                                                            "'required'"
+                                                        },
+                                                        {
+                                                          name: "model",
+                                                          rawName: "v-model",
+                                                          value:
+                                                            _vm.sendOrderForm
+                                                              .vehicle.make,
+                                                          expression:
+                                                            "sendOrderForm.vehicle.make"
+                                                        }
+                                                      ],
+                                                      staticClass:
+                                                        "slider-order__inp",
+                                                      class: {
+                                                        required: _vm.errors.has(
+                                                          "make"
+                                                        )
+                                                      },
+                                                      attrs: { name: "make" },
+                                                      domProps: {
+                                                        value:
+                                                          _vm.sendOrderForm
+                                                            .vehicle.make
+                                                      },
+                                                      on: {
+                                                        input: function(
+                                                          $event
+                                                        ) {
+                                                          if (
+                                                            $event.target
+                                                              .composing
+                                                          ) {
+                                                            return
+                                                          }
+                                                          _vm.$set(
+                                                            _vm.sendOrderForm
+                                                              .vehicle,
+                                                            "make",
+                                                            $event.target.value
+                                                          )
+                                                        }
+                                                      }
+                                                    })
+                                                  ]
+                                                )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass: "slider-order__row"
+                                              },
+                                              [
+                                                _c(
+                                                  "label",
+                                                  {
+                                                    staticClass:
+                                                      "slider-order__label slider-order__label-required"
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                        Model:\n                                                        "
+                                                    ),
+                                                    _c("input", {
+                                                      directives: [
+                                                        {
+                                                          name: "validate",
+                                                          rawName: "v-validate",
+                                                          value: "required",
+                                                          expression:
+                                                            "'required'"
+                                                        },
+                                                        {
+                                                          name: "model",
+                                                          rawName: "v-model",
+                                                          value:
+                                                            _vm.sendOrderForm
+                                                              .vehicle.model,
+                                                          expression:
+                                                            "sendOrderForm.vehicle.model"
+                                                        }
+                                                      ],
+                                                      staticClass:
+                                                        "slider-order__inp",
+                                                      class: {
+                                                        required: _vm.errors.has(
+                                                          "model"
+                                                        )
+                                                      },
+                                                      attrs: { name: "model" },
+                                                      domProps: {
+                                                        value:
+                                                          _vm.sendOrderForm
+                                                            .vehicle.model
+                                                      },
+                                                      on: {
+                                                        input: function(
+                                                          $event
+                                                        ) {
+                                                          if (
+                                                            $event.target
+                                                              .composing
+                                                          ) {
+                                                            return
+                                                          }
+                                                          _vm.$set(
+                                                            _vm.sendOrderForm
+                                                              .vehicle,
+                                                            "model",
+                                                            $event.target.value
+                                                          )
+                                                        }
+                                                      }
+                                                    })
+                                                  ]
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          { staticClass: "body-right" },
+                                          [
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass: "slider-order__row"
+                                              },
+                                              [
+                                                _c(
+                                                  "label",
+                                                  {
+                                                    staticClass:
+                                                      "slider-order__label slider-order__label-required"
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                        Body:\n                                                        "
+                                                    ),
+                                                    _c("input", {
+                                                      directives: [
+                                                        {
+                                                          name: "validate",
+                                                          rawName: "v-validate",
+                                                          value: "required",
+                                                          expression:
+                                                            "'required'"
+                                                        },
+                                                        {
+                                                          name: "model",
+                                                          rawName: "v-model",
+                                                          value:
+                                                            _vm.sendOrderForm
+                                                              .vehicle.body,
+                                                          expression:
+                                                            "sendOrderForm.vehicle.body"
+                                                        }
+                                                      ],
+                                                      staticClass:
+                                                        "slider-order__inp",
+                                                      class: {
+                                                        required: _vm.errors.has(
+                                                          "body"
+                                                        )
+                                                      },
+                                                      attrs: { name: "body" },
+                                                      domProps: {
+                                                        value:
+                                                          _vm.sendOrderForm
+                                                            .vehicle.body
+                                                      },
+                                                      on: {
+                                                        input: function(
+                                                          $event
+                                                        ) {
+                                                          if (
+                                                            $event.target
+                                                              .composing
+                                                          ) {
+                                                            return
+                                                          }
+                                                          _vm.$set(
+                                                            _vm.sendOrderForm
+                                                              .vehicle,
+                                                            "body",
+                                                            $event.target.value
+                                                          )
+                                                        }
+                                                      }
+                                                    })
+                                                  ]
+                                                )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass: "slider-order__row"
+                                              },
+                                              [
+                                                _c(
+                                                  "label",
+                                                  {
+                                                    staticClass:
+                                                      "slider-order__label slider-order__label-required"
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                        Colour:\n                                                        "
+                                                    ),
+                                                    _c("input", {
+                                                      directives: [
+                                                        {
+                                                          name: "validate",
+                                                          rawName: "v-validate",
+                                                          value: "required",
+                                                          expression:
+                                                            "'required'"
+                                                        },
+                                                        {
+                                                          name: "model",
+                                                          rawName: "v-model",
+                                                          value:
+                                                            _vm.sendOrderForm
+                                                              .vehicle.colour,
+                                                          expression:
+                                                            "sendOrderForm.vehicle.colour"
+                                                        }
+                                                      ],
+                                                      staticClass:
+                                                        "slider-order__inp",
+                                                      class: {
+                                                        required: _vm.errors.has(
+                                                          "colour"
+                                                        )
+                                                      },
+                                                      attrs: { name: "colour" },
+                                                      domProps: {
+                                                        value:
+                                                          _vm.sendOrderForm
+                                                            .vehicle.colour
+                                                      },
+                                                      on: {
+                                                        input: function(
+                                                          $event
+                                                        ) {
+                                                          if (
+                                                            $event.target
+                                                              .composing
+                                                          ) {
+                                                            return
+                                                          }
+                                                          _vm.$set(
+                                                            _vm.sendOrderForm
+                                                              .vehicle,
+                                                            "colour",
+                                                            $event.target.value
+                                                          )
+                                                        }
+                                                      }
+                                                    })
+                                                  ]
+                                                )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass: "slider-order__row"
+                                              },
+                                              [
+                                                _c(
+                                                  "label",
+                                                  {
+                                                    staticClass:
+                                                      "slider-order__label slider-order__label-required"
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      "\n                                                        6 Last VIN#:\n                                                        "
+                                                    ),
+                                                    _c("input", {
+                                                      directives: [
+                                                        {
+                                                          name: "validate",
+                                                          rawName: "v-validate",
+                                                          value: "required",
+                                                          expression:
+                                                            "'required'"
+                                                        },
+                                                        {
+                                                          name: "model",
+                                                          rawName: "v-model",
+                                                          value:
+                                                            _vm.sendOrderForm
+                                                              .vehicle.vin,
+                                                          expression:
+                                                            "sendOrderForm.vehicle.vin"
+                                                        }
+                                                      ],
+                                                      staticClass:
+                                                        "slider-order__inp",
+                                                      class: {
+                                                        required: _vm.errors.has(
+                                                          "vin"
+                                                        )
+                                                      },
+                                                      attrs: { name: "vin" },
+                                                      domProps: {
+                                                        value:
+                                                          _vm.sendOrderForm
+                                                            .vehicle.vin
+                                                      },
+                                                      on: {
+                                                        input: function(
+                                                          $event
+                                                        ) {
+                                                          if (
+                                                            $event.target
+                                                              .composing
+                                                          ) {
+                                                            return
+                                                          }
+                                                          _vm.$set(
+                                                            _vm.sendOrderForm
+                                                              .vehicle,
+                                                            "vin",
+                                                            $event.target.value
+                                                          )
+                                                        }
+                                                      }
+                                                    })
+                                                  ]
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "slider-order__row slider-order__row-center"
+                                      },
+                                      [
+                                        _c(
+                                          "label",
+                                          {
+                                            staticClass:
+                                              "slider-order__label slider-order__label-required slider-order__label-vehicle"
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                                Value of vehicle:\n                                                "
+                                            ),
+                                            _c("input", {
+                                              directives: [
+                                                {
+                                                  name: "validate",
+                                                  rawName: "v-validate",
+                                                  value: "required",
+                                                  expression: "'required'"
+                                                },
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value:
+                                                    _vm.sendOrderForm.vehicle
+                                                      .valueVehicle,
+                                                  expression:
+                                                    "sendOrderForm.vehicle.valueVehicle"
+                                                }
+                                              ],
+                                              staticClass:
+                                                "slider-order__inp slider-order__inp-vehicle only-number",
+                                              class: {
+                                                required: _vm.errors.has(
+                                                  "valueVehicle"
+                                                )
+                                              },
+                                              attrs: { name: "valueVehicle" },
+                                              domProps: {
+                                                value:
+                                                  _vm.sendOrderForm.vehicle
+                                                    .valueVehicle
+                                              },
+                                              on: {
+                                                input: function($event) {
+                                                  if ($event.target.composing) {
+                                                    return
+                                                  }
+                                                  _vm.$set(
+                                                    _vm.sendOrderForm.vehicle,
+                                                    "valueVehicle",
+                                                    $event.target.value
+                                                  )
+                                                }
+                                              }
+                                            }),
+                                            _vm._v(" "),
+                                            _c(
+                                              "span",
+                                              { staticClass: "dollar" },
+                                              [_vm._v("$")]
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "additional-block" },
+                                      [
+                                        _c(
+                                          "span",
+                                          { staticClass: "additional" },
+                                          [
+                                            _vm._v(
+                                              "Additional fees and charges:"
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "span",
+                                          { staticClass: "insurance-text" },
+                                          [_vm._v("Insurance (1.5%)")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("input", {
+                                          directives: [
                                             {
                                               name: "model",
                                               rawName: "v-model",
                                               value:
                                                 _vm.sendOrderForm.vehicle
-                                                  .valueVehicle,
+                                                  .insurance,
                                               expression:
-                                                "sendOrderForm.vehicle.valueVehicle"
+                                                "sendOrderForm.vehicle.insurance"
                                             }
                                           ],
-                                          staticClass:
-                                            "slider-order__inp slider-order__inp-vehicle only-number",
-                                          class: {
-                                            required: _vm.errors.has(
-                                              "valueVehicle"
-                                            )
+                                          staticClass: "inp-checkbox",
+                                          attrs: {
+                                            name: "insurance",
+                                            id: "insurance-ocean",
+                                            type: "checkbox"
                                           },
-                                          attrs: { name: "valueVehicle" },
                                           domProps: {
-                                            value:
+                                            checked: Array.isArray(
                                               _vm.sendOrderForm.vehicle
-                                                .valueVehicle
+                                                .insurance
+                                            )
+                                              ? _vm._i(
+                                                  _vm.sendOrderForm.vehicle
+                                                    .insurance,
+                                                  null
+                                                ) > -1
+                                              : _vm.sendOrderForm.vehicle
+                                                  .insurance
                                           },
                                           on: {
-                                            input: function($event) {
-                                              if ($event.target.composing) {
-                                                return
+                                            change: function($event) {
+                                              var $$a =
+                                                  _vm.sendOrderForm.vehicle
+                                                    .insurance,
+                                                $$el = $event.target,
+                                                $$c = $$el.checked
+                                                  ? true
+                                                  : false
+                                              if (Array.isArray($$a)) {
+                                                var $$v = null,
+                                                  $$i = _vm._i($$a, $$v)
+                                                if ($$el.checked) {
+                                                  $$i < 0 &&
+                                                    _vm.$set(
+                                                      _vm.sendOrderForm.vehicle,
+                                                      "insurance",
+                                                      $$a.concat([$$v])
+                                                    )
+                                                } else {
+                                                  $$i > -1 &&
+                                                    _vm.$set(
+                                                      _vm.sendOrderForm.vehicle,
+                                                      "insurance",
+                                                      $$a
+                                                        .slice(0, $$i)
+                                                        .concat(
+                                                          $$a.slice($$i + 1)
+                                                        )
+                                                    )
+                                                }
+                                              } else {
+                                                _vm.$set(
+                                                  _vm.sendOrderForm.vehicle,
+                                                  "insurance",
+                                                  $$c
+                                                )
                                               }
-                                              _vm.$set(
-                                                _vm.sendOrderForm.vehicle,
-                                                "valueVehicle",
-                                                $event.target.value
-                                              )
                                             }
                                           }
                                         }),
                                         _vm._v(" "),
-                                        _c("span", { staticClass: "dollar" }, [
-                                          _vm._v("$")
-                                        ])
+                                        _c("label", {
+                                          staticClass: "checked-block__label",
+                                          attrs: { for: "insurance-ocean" }
+                                        })
                                       ]
                                     )
                                   ]
-                                ),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "additional-block" }, [
-                                  _c("span", { staticClass: "additional" }, [
-                                    _vm._v("Additional fees and charges:")
-                                  ]),
-                                  _vm._v(" "),
+                                )
+                              ])
+                            : _vm._e()
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "slider-order__slide slide-5" },
+                        [
+                          _c(
+                            "form",
+                            {
+                              attrs: { id: "form-send-documents-to" },
+                              on: {
+                                submit: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.isValidForms($event)
+                                }
+                              }
+                            },
+                            [
+                              _c(
+                                "div",
+                                { staticClass: "slider-order__title" },
+                                [_vm._v("SEND DOCUMENTS TO:")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "slider-order__body-left" },
+                                [
+                                  _c("div", { staticClass: "body-left" }, [
+                                    _c(
+                                      "div",
+                                      { staticClass: "slider-order__row" },
+                                      [
+                                        _c(
+                                          "label",
+                                          {
+                                            staticClass:
+                                              "slider-order__label slider-order__label-title"
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                                    Air Waybill:\n                                                    "
+                                            ),
+                                            _c(
+                                              "select",
+                                              {
+                                                directives: [
+                                                  {
+                                                    name: "model",
+                                                    rawName: "v-model",
+                                                    value:
+                                                      _vm.sendOrderForm
+                                                        .sendDocuments.waybill,
+                                                    expression:
+                                                      "sendOrderForm.sendDocuments.waybill"
+                                                  }
+                                                ],
+                                                staticClass:
+                                                  "slider-order__select select-order",
+                                                attrs: { name: "airWaybill" },
+                                                on: {
+                                                  change: function($event) {
+                                                    var $$selectedVal = Array.prototype.filter
+                                                      .call(
+                                                        $event.target.options,
+                                                        function(o) {
+                                                          return o.selected
+                                                        }
+                                                      )
+                                                      .map(function(o) {
+                                                        var val =
+                                                          "_value" in o
+                                                            ? o._value
+                                                            : o.value
+                                                        return val
+                                                      })
+                                                    _vm.$set(
+                                                      _vm.sendOrderForm
+                                                        .sendDocuments,
+                                                      "waybill",
+                                                      $event.target.multiple
+                                                        ? $$selectedVal
+                                                        : $$selectedVal[0]
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c(
+                                                  "option",
+                                                  { attrs: { value: "" } },
+                                                  [_vm._v("Choose country")]
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    )
+                                  ])
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "slider-order__body" }, [
+                                _c("div", { staticClass: "body-left" }, [
                                   _c(
-                                    "span",
-                                    { staticClass: "insurance-text" },
-                                    [_vm._v("Insurance (1.5%)")]
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass:
+                                            "slider-order__label slider-order__label-required"
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    First name:\n                                                    "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "validate",
+                                                rawName: "v-validate",
+                                                value: "required",
+                                                expression: "'required'"
+                                              },
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm
+                                                    .sendDocuments.firstName,
+                                                expression:
+                                                  "sendOrderForm.sendDocuments.firstName"
+                                              }
+                                            ],
+                                            staticClass: "slider-order__inp",
+                                            class: {
+                                              required: _vm.errors.has(
+                                                "firstNameDoc"
+                                              )
+                                            },
+                                            attrs: { name: "firstNameDoc" },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.sendDocuments
+                                                  .firstName
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm
+                                                    .sendDocuments,
+                                                  "firstName",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
                                   ),
                                   _vm._v(" "),
-                                  _c("input", {
-                                    directives: [
-                                      {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value:
-                                          _vm.sendOrderForm.vehicle.insurance,
-                                        expression:
-                                          "sendOrderForm.vehicle.insurance"
-                                      }
-                                    ],
-                                    staticClass: "inp-checkbox",
-                                    attrs: {
-                                      name: "insurance",
-                                      id: "insurance-ocean",
-                                      type: "checkbox"
-                                    },
-                                    domProps: {
-                                      checked: Array.isArray(
-                                        _vm.sendOrderForm.vehicle.insurance
+                                  _c(
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass:
+                                            "slider-order__label slider-order__label-required"
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    Second name:\n                                                    "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "validate",
+                                                rawName: "v-validate",
+                                                value: "required",
+                                                expression: "'required'"
+                                              },
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm
+                                                    .sendDocuments.secondName,
+                                                expression:
+                                                  "sendOrderForm.sendDocuments.secondName"
+                                              }
+                                            ],
+                                            staticClass: "slider-order__inp",
+                                            class: {
+                                              required: _vm.errors.has(
+                                                "secondNameDoc"
+                                              )
+                                            },
+                                            attrs: { name: "secondNameDoc" },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.sendDocuments
+                                                  .secondName
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm
+                                                    .sendDocuments,
+                                                  "secondName",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ]
                                       )
-                                        ? _vm._i(
-                                            _vm.sendOrderForm.vehicle.insurance,
-                                            null
-                                          ) > -1
-                                        : _vm.sendOrderForm.vehicle.insurance
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        var $$a =
-                                            _vm.sendOrderForm.vehicle.insurance,
-                                          $$el = $event.target,
-                                          $$c = $$el.checked ? true : false
-                                        if (Array.isArray($$a)) {
-                                          var $$v = null,
-                                            $$i = _vm._i($$a, $$v)
-                                          if ($$el.checked) {
-                                            $$i < 0 &&
-                                              _vm.$set(
-                                                _vm.sendOrderForm.vehicle,
-                                                "insurance",
-                                                $$a.concat([$$v])
-                                              )
-                                          } else {
-                                            $$i > -1 &&
-                                              _vm.$set(
-                                                _vm.sendOrderForm.vehicle,
-                                                "insurance",
-                                                $$a
-                                                  .slice(0, $$i)
-                                                  .concat($$a.slice($$i + 1))
-                                              )
-                                          }
-                                        } else {
-                                          _vm.$set(
-                                            _vm.sendOrderForm.vehicle,
-                                            "insurance",
-                                            $$c
-                                          )
-                                        }
-                                      }
-                                    }
-                                  }),
+                                    ]
+                                  ),
                                   _vm._v(" "),
-                                  _c("label", {
-                                    staticClass: "checked-block__label",
-                                    attrs: { for: "insurance-ocean" }
-                                  })
-                                ])
-                              ]
-                            )
-                          ])
-                        : _vm._e()
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "slider-order__slide slide-5" }, [
-                      _c(
-                        "form",
-                        {
-                          attrs: { id: "form-send-documents-to" },
-                          on: {
-                            submit: function($event) {
-                              $event.preventDefault()
-                              return _vm.isValidForms($event)
-                            }
-                          }
-                        },
-                        [
-                          _c("div", { staticClass: "slider-order__title" }, [
-                            _vm._v("SEND DOCUMENTS TO:")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticClass: "slider-order__body-left" },
-                            [
-                              _c("div", { staticClass: "body-left" }, [
-                                _c(
-                                  "div",
-                                  { staticClass: "slider-order__row" },
-                                  [
-                                    _c(
-                                      "label",
-                                      {
-                                        staticClass:
-                                          "slider-order__label slider-order__label-title"
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                                                    Air Waybill:\n                                                    "
-                                        ),
-                                        _c(
-                                          "select",
-                                          {
+                                  _c(
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        { staticClass: "slider-order__label" },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    Address:\n                                                    "
+                                          ),
+                                          _c("input", {
                                             directives: [
                                               {
                                                 name: "model",
                                                 rawName: "v-model",
                                                 value:
                                                   _vm.sendOrderForm
-                                                    .sendDocuments.waybill,
+                                                    .sendDocuments.address,
                                                 expression:
-                                                  "sendOrderForm.sendDocuments.waybill"
+                                                  "sendOrderForm.sendDocuments.address"
                                               }
                                             ],
-                                            staticClass:
-                                              "slider-order__select select-order",
-                                            attrs: { name: "airWaybill" },
+                                            staticClass: "slider-order__inp",
+                                            attrs: { name: "address" },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.sendDocuments
+                                                  .address
+                                            },
                                             on: {
-                                              change: function($event) {
-                                                var $$selectedVal = Array.prototype.filter
-                                                  .call(
-                                                    $event.target.options,
-                                                    function(o) {
-                                                      return o.selected
-                                                    }
-                                                  )
-                                                  .map(function(o) {
-                                                    var val =
-                                                      "_value" in o
-                                                        ? o._value
-                                                        : o.value
-                                                    return val
-                                                  })
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
                                                 _vm.$set(
                                                   _vm.sendOrderForm
                                                     .sendDocuments,
-                                                  "waybill",
-                                                  $event.target.multiple
-                                                    ? $$selectedVal
-                                                    : $$selectedVal[0]
+                                                  "address",
+                                                  $event.target.value
                                                 )
                                               }
                                             }
-                                          },
-                                          [
-                                            _c(
-                                              "option",
-                                              { attrs: { value: "" } },
-                                              [_vm._v("Choose country")]
-                                            )
-                                          ]
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ])
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "slider-order__body" }, [
-                            _c("div", { staticClass: "body-left" }, [
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass:
-                                      "slider-order__label slider-order__label-required"
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    First name:\n                                                    "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "validate",
-                                          rawName: "v-validate",
-                                          value: "required",
-                                          expression: "'required'"
-                                        },
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value:
-                                            _vm.sendOrderForm.sendDocuments
-                                              .firstName,
-                                          expression:
-                                            "sendOrderForm.sendDocuments.firstName"
-                                        }
-                                      ],
-                                      staticClass: "slider-order__inp",
-                                      class: {
-                                        required: _vm.errors.has("firstNameDoc")
-                                      },
-                                      attrs: { name: "firstNameDoc" },
-                                      domProps: {
-                                        value:
-                                          _vm.sendOrderForm.sendDocuments
-                                            .firstName
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.sendDocuments,
-                                            "firstName",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass:
-                                      "slider-order__label slider-order__label-required"
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    Second name:\n                                                    "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "validate",
-                                          rawName: "v-validate",
-                                          value: "required",
-                                          expression: "'required'"
-                                        },
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value:
-                                            _vm.sendOrderForm.sendDocuments
-                                              .secondName,
-                                          expression:
-                                            "sendOrderForm.sendDocuments.secondName"
-                                        }
-                                      ],
-                                      staticClass: "slider-order__inp",
-                                      class: {
-                                        required: _vm.errors.has(
-                                          "secondNameDoc"
-                                        )
-                                      },
-                                      attrs: { name: "secondNameDoc" },
-                                      domProps: {
-                                        value:
-                                          _vm.sendOrderForm.sendDocuments
-                                            .secondName
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.sendDocuments,
-                                            "secondName",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  { staticClass: "slider-order__label" },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    Address:\n                                                    "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value:
-                                            _vm.sendOrderForm.sendDocuments
-                                              .address,
-                                          expression:
-                                            "sendOrderForm.sendDocuments.address"
-                                        }
-                                      ],
-                                      staticClass: "slider-order__inp",
-                                      attrs: { name: "address" },
-                                      domProps: {
-                                        value:
-                                          _vm.sendOrderForm.sendDocuments
-                                            .address
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.sendDocuments,
-                                            "address",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]
-                                )
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "body-right" }, [
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass:
-                                      "slider-order__label slider-order__label-required"
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    City:\n                                                    "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "validate",
-                                          rawName: "v-validate",
-                                          value: "required",
-                                          expression: "'required'"
-                                        },
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value:
-                                            _vm.sendOrderForm.sendDocuments
-                                              .city,
-                                          expression:
-                                            "sendOrderForm.sendDocuments.city"
-                                        }
-                                      ],
-                                      staticClass: "slider-order__inp",
-                                      class: {
-                                        required: _vm.errors.has("cityDoc")
-                                      },
-                                      attrs: { name: "cityDoc" },
-                                      domProps: {
-                                        value:
-                                          _vm.sendOrderForm.sendDocuments.city
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.sendDocuments,
-                                            "city",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  { staticClass: "slider-order__label" },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    State (US only):\n                                                    "
-                                    ),
-                                    _c(
-                                      "select",
-                                      {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value:
-                                              _vm.sendOrderForm.sendDocuments
-                                                .state,
-                                            expression:
-                                              "sendOrderForm.sendDocuments.state"
-                                          }
-                                        ],
-                                        staticClass:
-                                          "slider-order__select select-order",
-                                        attrs: { name: "state" },
-                                        on: {
-                                          change: function($event) {
-                                            var $$selectedVal = Array.prototype.filter
-                                              .call(
-                                                $event.target.options,
-                                                function(o) {
-                                                  return o.selected
-                                                }
-                                              )
-                                              .map(function(o) {
-                                                var val =
-                                                  "_value" in o
-                                                    ? o._value
-                                                    : o.value
-                                                return val
-                                              })
-                                            _vm.$set(
-                                              _vm.sendOrderForm.sendDocuments,
-                                              "state",
-                                              $event.target.multiple
-                                                ? $$selectedVal
-                                                : $$selectedVal[0]
-                                            )
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _c("option", { attrs: { value: "" } }, [
-                                          _vm._v("Choose country")
-                                        ])
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  { staticClass: "slider-order__label" },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    Province:\n                                                    "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value:
-                                            _vm.sendOrderForm.sendDocuments
-                                              .province,
-                                          expression:
-                                            "sendOrderForm.sendDocuments.province"
-                                        }
-                                      ],
-                                      staticClass: "slider-order__inp",
-                                      attrs: { name: "province" },
-                                      domProps: {
-                                        value:
-                                          _vm.sendOrderForm.sendDocuments
-                                            .province
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.sendDocuments,
-                                            "province",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass:
-                                      "slider-order__label slider-order__label-required"
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    Country:\n                                                    "
-                                    ),
-                                    _c(
-                                      "select",
-                                      {
-                                        directives: [
-                                          {
-                                            name: "validate",
-                                            rawName: "v-validate",
-                                            value: "required",
-                                            expression: "'required'"
-                                          },
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value:
-                                              _vm.sendOrderForm.sendDocuments
-                                                .country,
-                                            expression:
-                                              "sendOrderForm.sendDocuments.country"
-                                          }
-                                        ],
-                                        staticClass:
-                                          "slider-order__select select-order",
-                                        class: {
-                                          required: _vm.errors.has("countryDoc")
-                                        },
-                                        attrs: { name: "countryDoc" },
-                                        on: {
-                                          change: function($event) {
-                                            var $$selectedVal = Array.prototype.filter
-                                              .call(
-                                                $event.target.options,
-                                                function(o) {
-                                                  return o.selected
-                                                }
-                                              )
-                                              .map(function(o) {
-                                                var val =
-                                                  "_value" in o
-                                                    ? o._value
-                                                    : o.value
-                                                return val
-                                              })
-                                            _vm.$set(
-                                              _vm.sendOrderForm.sendDocuments,
-                                              "country",
-                                              $event.target.multiple
-                                                ? $$selectedVal
-                                                : $$selectedVal[0]
-                                            )
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _c("option", { attrs: { value: "" } }, [
-                                          _vm._v("Choose country")
-                                        ])
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "slider-order__row" }, [
-                                _c(
-                                  "label",
-                                  { staticClass: "slider-order__label" },
-                                  [
-                                    _vm._v(
-                                      "\n                                                    ZIP:\n                                                    "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value:
-                                            _vm.sendOrderForm.sendDocuments.zip,
-                                          expression:
-                                            "sendOrderForm.sendDocuments.zip"
-                                        }
-                                      ],
-                                      staticClass:
-                                        "slider-order__inp only-number",
-                                      attrs: { name: "zip", maxlength: "10" },
-                                      domProps: {
-                                        value:
-                                          _vm.sendOrderForm.sendDocuments.zip
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.sendDocuments,
-                                            "zip",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]
-                                )
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            !_vm.foreignCheck ||
-                            (_vm.foreignCheck && _vm.vehicleCheck)
-                              ? _c("div", { staticClass: "body-bottom" }, [
-                                  _c(
-                                    "div",
-                                    { staticClass: "body-bottom__upload" },
-                                    [_vm._v("Please, upload you ID photo")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    { staticClass: "upload-file-container" },
-                                    [
-                                      _c(
-                                        "div",
-                                        {
-                                          staticClass:
-                                            "upload-file-container__text"
-                                        },
-                                        [
-                                          _c(
-                                            "span",
-                                            {
-                                              staticClass:
-                                                "upload-file-container__btn"
-                                            },
-                                            [_vm._v("Choose file")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            staticClass:
-                                              "upload-file-container__photo",
-                                            attrs: {
-                                              type: "file",
-                                              name: "sendDocumentsUploadFile"
-                                            },
-                                            on: {
-                                              change: _vm.uploadFileDocuments
-                                            }
-                                          })
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        {
-                                          staticClass:
-                                            "upload-file-container__image-demo"
-                                        },
-                                        [
-                                          _c("img", {
-                                            staticClass: "image-demo",
-                                            attrs: { src: "#", alt: "" }
                                           })
                                         ]
                                       )
                                     ]
                                   )
-                                ])
-                              : _vm._e()
-                          ])
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "slider-order__slide slide-6" }, [
-                      !_vm.foreignCheck
-                        ? _c("div", { staticClass: "usspi-block" }, [
-                            _c("div", { staticClass: "usspi-block__title" }, [
-                              _vm._v(
-                                "\n                                        WRITTEN AUTHORIZATION TO PREPARE OR "
-                              ),
-                              _c("br"),
-                              _vm._v(
-                                "TRANSMIT SHIPPER’S EXPORT\n                                        INFORMATION\n                                    "
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("form", { attrs: { id: "usspi-form" } }, [
-                              _c(
-                                "div",
-                                { staticClass: "usspi-block__content" },
-                                [
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "body-right" }, [
                                   _c(
                                     "div",
-                                    { staticClass: "content-authorize" },
-                                    [
-                                      _vm._v(
-                                        "\n                                                I,\n                                                "
-                                      ),
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value:
-                                              _vm.sendOrderForm.usppi
-                                                .firstExporterName,
-                                            expression:
-                                              "sendOrderForm.usppi.firstExporterName"
-                                          }
-                                        ],
-                                        staticClass: "inp-content",
-                                        attrs: { name: "firstExporterName" },
-                                        domProps: {
-                                          value:
-                                            _vm.sendOrderForm.usppi
-                                              .firstExporterName
-                                        },
-                                        on: {
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.$set(
-                                              _vm.sendOrderForm.usppi,
-                                              "firstExporterName",
-                                              $event.target.value
-                                            )
-                                          }
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c("input", {
-                                        directives: [
-                                          {
-                                            name: "model",
-                                            rawName: "v-model",
-                                            value:
-                                              _vm.sendOrderForm.usppi
-                                                .secondExporterName,
-                                            expression:
-                                              "sendOrderForm.usppi.secondExporterName"
-                                          }
-                                        ],
-                                        staticClass: "inp-content",
-                                        attrs: { name: "secondExporterName" },
-                                        domProps: {
-                                          value:
-                                            _vm.sendOrderForm.usppi
-                                              .secondExporterName
-                                        },
-                                        on: {
-                                          input: function($event) {
-                                            if ($event.target.composing) {
-                                              return
-                                            }
-                                            _vm.$set(
-                                              _vm.sendOrderForm.usppi,
-                                              "secondExporterName",
-                                              $event.target.value
-                                            )
-                                          }
-                                        }
-                                      }),
-                                      _vm._v(
-                                        ", authorize\n                                            "
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(
-                                    "\n                                            TMM international, to act as forwarding agent for export control and\n                                            customs\n                                            purposes and to sign any Shipper’s Export Declaration (SED), or transmit\n                                            such export\n                                            information electronically, which may be required by law or regulation\n                                            in connection\n                                            with the exportation or transportation of any merchandise on behalf of\n                                            said U.S.\n                                            Principal Party in Interest. The U.S. Principal Party in Interest\n                                            certifies that\n                                            necessary and proper documentation to accurately complete the SED or\n                                            transmit the\n                                            information electronically is and will be provided to the said\n                                            forwarding Agent. The\n                                            U.S. Principal Party in Interest further understands that civil and\n                                            criminal\n                                            penalties may be imposed for making false or fraudulent statements or\n                                            for the\n                                            violation of any United State laws or regulations on exportation and\n                                            agrees to be\n                                            bound by all statements of said agent based upon information or\n                                            documentation\n                                            provided by exporter to said agent.\n                                            "
-                                  ),
-                                  _c(
-                                    "div",
-                                    { staticClass: "content-signature" },
+                                    { staticClass: "slider-order__row" },
                                     [
                                       _c(
                                         "label",
-                                        { staticClass: "label-content" },
+                                        {
+                                          staticClass:
+                                            "slider-order__label slider-order__label-required"
+                                        },
                                         [
                                           _vm._v(
-                                            "\n                                                    Signature:\n                                                    "
+                                            "\n                                                    City:\n                                                    "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "validate",
+                                                rawName: "v-validate",
+                                                value: "required",
+                                                expression: "'required'"
+                                              },
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm
+                                                    .sendDocuments.city,
+                                                expression:
+                                                  "sendOrderForm.sendDocuments.city"
+                                              }
+                                            ],
+                                            staticClass: "slider-order__inp",
+                                            class: {
+                                              required: _vm.errors.has(
+                                                "cityDoc"
+                                              )
+                                            },
+                                            attrs: { name: "cityDoc" },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.sendDocuments
+                                                  .city
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm
+                                                    .sendDocuments,
+                                                  "city",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        { staticClass: "slider-order__label" },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    State (US only):\n                                                    "
+                                          ),
+                                          _c(
+                                            "select",
+                                            {
+                                              directives: [
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value:
+                                                    _vm.sendOrderForm
+                                                      .sendDocuments.state,
+                                                  expression:
+                                                    "sendOrderForm.sendDocuments.state"
+                                                }
+                                              ],
+                                              staticClass:
+                                                "slider-order__select select-order",
+                                              attrs: { name: "state" },
+                                              on: {
+                                                change: function($event) {
+                                                  var $$selectedVal = Array.prototype.filter
+                                                    .call(
+                                                      $event.target.options,
+                                                      function(o) {
+                                                        return o.selected
+                                                      }
+                                                    )
+                                                    .map(function(o) {
+                                                      var val =
+                                                        "_value" in o
+                                                          ? o._value
+                                                          : o.value
+                                                      return val
+                                                    })
+                                                  _vm.$set(
+                                                    _vm.sendOrderForm
+                                                      .sendDocuments,
+                                                    "state",
+                                                    $event.target.multiple
+                                                      ? $$selectedVal
+                                                      : $$selectedVal[0]
+                                                  )
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _c(
+                                                "option",
+                                                { attrs: { value: "" } },
+                                                [_vm._v("Choose country")]
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        { staticClass: "slider-order__label" },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    Province:\n                                                    "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm
+                                                    .sendDocuments.province,
+                                                expression:
+                                                  "sendOrderForm.sendDocuments.province"
+                                              }
+                                            ],
+                                            staticClass: "slider-order__inp",
+                                            attrs: { name: "province" },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.sendDocuments
+                                                  .province
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm
+                                                    .sendDocuments,
+                                                  "province",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass:
+                                            "slider-order__label slider-order__label-required"
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    Country:\n                                                    "
+                                          ),
+                                          _c(
+                                            "select",
+                                            {
+                                              directives: [
+                                                {
+                                                  name: "validate",
+                                                  rawName: "v-validate",
+                                                  value: "required",
+                                                  expression: "'required'"
+                                                },
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value:
+                                                    _vm.sendOrderForm
+                                                      .sendDocuments.country,
+                                                  expression:
+                                                    "sendOrderForm.sendDocuments.country"
+                                                }
+                                              ],
+                                              staticClass:
+                                                "slider-order__select select-order",
+                                              class: {
+                                                required: _vm.errors.has(
+                                                  "countryDoc"
+                                                )
+                                              },
+                                              attrs: { name: "countryDoc" },
+                                              on: {
+                                                change: function($event) {
+                                                  var $$selectedVal = Array.prototype.filter
+                                                    .call(
+                                                      $event.target.options,
+                                                      function(o) {
+                                                        return o.selected
+                                                      }
+                                                    )
+                                                    .map(function(o) {
+                                                      var val =
+                                                        "_value" in o
+                                                          ? o._value
+                                                          : o.value
+                                                      return val
+                                                    })
+                                                  _vm.$set(
+                                                    _vm.sendOrderForm
+                                                      .sendDocuments,
+                                                    "country",
+                                                    $event.target.multiple
+                                                      ? $$selectedVal
+                                                      : $$selectedVal[0]
+                                                  )
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _c(
+                                                "option",
+                                                { attrs: { value: "" } },
+                                                [_vm._v("Choose country")]
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "slider-order__row" },
+                                    [
+                                      _c(
+                                        "label",
+                                        { staticClass: "slider-order__label" },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    ZIP:\n                                                    "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm
+                                                    .sendDocuments.zip,
+                                                expression:
+                                                  "sendOrderForm.sendDocuments.zip"
+                                              }
+                                            ],
+                                            staticClass:
+                                              "slider-order__inp only-number",
+                                            attrs: {
+                                              name: "zip",
+                                              maxlength: "10"
+                                            },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.sendDocuments
+                                                  .zip
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm
+                                                    .sendDocuments,
+                                                  "zip",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                !_vm.foreignCheck ||
+                                (_vm.foreignCheck && _vm.vehicleCheck)
+                                  ? _c("div", { staticClass: "body-bottom" }, [
+                                      _c(
+                                        "div",
+                                        { staticClass: "body-bottom__upload" },
+                                        [_vm._v("Please, upload you ID photo")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass: "upload-file-container"
+                                        },
+                                        [
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass:
+                                                "upload-file-container__text"
+                                            },
+                                            [
+                                              _c(
+                                                "span",
+                                                {
+                                                  staticClass:
+                                                    "upload-file-container__btn"
+                                                },
+                                                [_vm._v("Choose file")]
+                                              ),
+                                              _vm._v(" "),
+                                              _c("input", {
+                                                staticClass:
+                                                  "upload-file-container__photo",
+                                                attrs: {
+                                                  type: "file",
+                                                  name:
+                                                    "sendDocumentsUploadFile"
+                                                },
+                                                on: {
+                                                  change:
+                                                    _vm.uploadFileDocuments
+                                                }
+                                              })
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass:
+                                                "upload-file-container__image-demo"
+                                            },
+                                            [
+                                              _c("img", {
+                                                staticClass: "image-demo",
+                                                attrs: { src: "#", alt: "" }
+                                              })
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    ])
+                                  : _vm._e()
+                              ])
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "slider-order__slide slide-6" },
+                        [
+                          !_vm.foreignCheck
+                            ? _c("div", { staticClass: "usspi-block" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "usspi-block__title" },
+                                  [
+                                    _vm._v(
+                                      "\n                                        WRITTEN AUTHORIZATION TO PREPARE OR "
+                                    ),
+                                    _c("br"),
+                                    _vm._v(
+                                      "TRANSMIT SHIPPER’S EXPORT\n                                        INFORMATION\n                                    "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("form", { attrs: { id: "usspi-form" } }, [
+                                  _c(
+                                    "div",
+                                    { staticClass: "usspi-block__content" },
+                                    [
+                                      _c(
+                                        "div",
+                                        { staticClass: "content-authorize" },
+                                        [
+                                          _vm._v(
+                                            "\n                                                I,\n                                                "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm.usppi
+                                                    .firstExporterName,
+                                                expression:
+                                                  "sendOrderForm.usppi.firstExporterName"
+                                              }
+                                            ],
+                                            staticClass: "inp-content",
+                                            attrs: {
+                                              name: "firstExporterName"
+                                            },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.usppi
+                                                  .firstExporterName
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm.usppi,
+                                                  "firstExporterName",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm.usppi
+                                                    .secondExporterName,
+                                                expression:
+                                                  "sendOrderForm.usppi.secondExporterName"
+                                              }
+                                            ],
+                                            staticClass: "inp-content",
+                                            attrs: {
+                                              name: "secondExporterName"
+                                            },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.usppi
+                                                  .secondExporterName
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm.usppi,
+                                                  "secondExporterName",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          }),
+                                          _vm._v(
+                                            ", authorize\n                                            "
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(
+                                        "\n                                            TMM international, to act as forwarding agent for export control and\n                                            customs\n                                            purposes and to sign any Shipper’s Export Declaration (SED), or transmit\n                                            such export\n                                            information electronically, which may be required by law or regulation\n                                            in connection\n                                            with the exportation or transportation of any merchandise on behalf of\n                                            said U.S.\n                                            Principal Party in Interest. The U.S. Principal Party in Interest\n                                            certifies that\n                                            necessary and proper documentation to accurately complete the SED or\n                                            transmit the\n                                            information electronically is and will be provided to the said\n                                            forwarding Agent. The\n                                            U.S. Principal Party in Interest further understands that civil and\n                                            criminal\n                                            penalties may be imposed for making false or fraudulent statements or\n                                            for the\n                                            violation of any United State laws or regulations on exportation and\n                                            agrees to be\n                                            bound by all statements of said agent based upon information or\n                                            documentation\n                                            provided by exporter to said agent.\n                                            "
+                                      ),
+                                      _c(
+                                        "div",
+                                        { staticClass: "content-signature" },
+                                        [
+                                          _c(
+                                            "label",
+                                            { staticClass: "label-content" },
+                                            [
+                                              _vm._v(
+                                                "\n                                                    Signature:\n                                                    "
+                                              ),
+                                              _c(
+                                                "span",
+                                                { staticClass: "canvas" },
+                                                [
+                                                  _c("VueSignaturePad", {
+                                                    ref: "usppiSignaturePad",
+                                                    staticClass:
+                                                      "signature-pad",
+                                                    attrs: {
+                                                      width: "300px",
+                                                      height: "200px"
+                                                    }
+                                                  }),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "span",
+                                                    {
+                                                      staticClass:
+                                                        "canvas__btn-clear",
+                                                      on: {
+                                                        click:
+                                                          _vm.usppiSignatureClear
+                                                      }
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "\n                                                            Clear\n                                                        "
+                                                      )
+                                                    ]
+                                                  )
+                                                ],
+                                                1
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        { staticClass: "content-print" },
+                                        [
+                                          _c(
+                                            "label",
+                                            { staticClass: "label-content" },
+                                            [
+                                              _vm._v(
+                                                "\n                                                    Print Name:\n                                                    "
+                                              ),
+                                              _c("input", {
+                                                directives: [
+                                                  {
+                                                    name: "model",
+                                                    rawName: "v-model",
+                                                    value:
+                                                      _vm.sendOrderForm.usppi
+                                                        .printName,
+                                                    expression:
+                                                      "sendOrderForm.usppi.printName"
+                                                  }
+                                                ],
+                                                staticClass:
+                                                  "inp-content inp-print",
+                                                attrs: { name: "printName" },
+                                                domProps: {
+                                                  value:
+                                                    _vm.sendOrderForm.usppi
+                                                      .printName
+                                                },
+                                                on: {
+                                                  input: function($event) {
+                                                    if (
+                                                      $event.target.composing
+                                                    ) {
+                                                      return
+                                                    }
+                                                    _vm.$set(
+                                                      _vm.sendOrderForm.usppi,
+                                                      "printName",
+                                                      $event.target.value
+                                                    )
+                                                  }
+                                                }
+                                              })
+                                            ]
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        { staticClass: "content-ein" },
+                                        [
+                                          _c(
+                                            "label",
+                                            { staticClass: "label-content" },
+                                            [
+                                              _vm._v(
+                                                "\n                                                    E.I.N. (TAX ID):\n                                                    "
+                                              ),
+                                              _c("input", {
+                                                directives: [
+                                                  {
+                                                    name: "model",
+                                                    rawName: "v-model",
+                                                    value:
+                                                      _vm.sendOrderForm.usppi
+                                                        .einTaxId,
+                                                    expression:
+                                                      "sendOrderForm.usppi.einTaxId"
+                                                  }
+                                                ],
+                                                staticClass:
+                                                  "inp-content inp-ein",
+                                                attrs: { name: "einTaxId" },
+                                                domProps: {
+                                                  value:
+                                                    _vm.sendOrderForm.usppi
+                                                      .einTaxId
+                                                },
+                                                on: {
+                                                  input: function($event) {
+                                                    if (
+                                                      $event.target.composing
+                                                    ) {
+                                                      return
+                                                    }
+                                                    _vm.$set(
+                                                      _vm.sendOrderForm.usppi,
+                                                      "einTaxId",
+                                                      $event.target.value
+                                                    )
+                                                  }
+                                                }
+                                              })
+                                            ]
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        { staticClass: "content-title" },
+                                        [
+                                          _c(
+                                            "label",
+                                            { staticClass: "label-content" },
+                                            [
+                                              _vm._v(
+                                                "\n                                                    Title:\n                                                    "
+                                              ),
+                                              _c("input", {
+                                                directives: [
+                                                  {
+                                                    name: "model",
+                                                    rawName: "v-model",
+                                                    value:
+                                                      _vm.sendOrderForm.usppi
+                                                        .titleFirst,
+                                                    expression:
+                                                      "sendOrderForm.usppi.titleFirst"
+                                                  }
+                                                ],
+                                                staticClass:
+                                                  "inp-content inp-title",
+                                                attrs: { name: "titleFirst" },
+                                                domProps: {
+                                                  value:
+                                                    _vm.sendOrderForm.usppi
+                                                      .titleFirst
+                                                },
+                                                on: {
+                                                  input: function($event) {
+                                                    if (
+                                                      $event.target.composing
+                                                    ) {
+                                                      return
+                                                    }
+                                                    _vm.$set(
+                                                      _vm.sendOrderForm.usppi,
+                                                      "titleFirst",
+                                                      $event.target.value
+                                                    )
+                                                  }
+                                                }
+                                              }),
+                                              _vm._v("*"),
+                                              _c("input", {
+                                                directives: [
+                                                  {
+                                                    name: "model",
+                                                    rawName: "v-model",
+                                                    value:
+                                                      _vm.sendOrderForm.usppi
+                                                        .titleSecond,
+                                                    expression:
+                                                      "sendOrderForm.usppi.titleSecond"
+                                                  }
+                                                ],
+                                                staticClass: "inp-content",
+                                                attrs: { name: "titleSecond" },
+                                                domProps: {
+                                                  value:
+                                                    _vm.sendOrderForm.usppi
+                                                      .titleSecond
+                                                },
+                                                on: {
+                                                  input: function($event) {
+                                                    if (
+                                                      $event.target.composing
+                                                    ) {
+                                                      return
+                                                    }
+                                                    _vm.$set(
+                                                      _vm.sendOrderForm.usppi,
+                                                      "titleSecond",
+                                                      $event.target.value
+                                                    )
+                                                  }
+                                                }
+                                              })
+                                            ]
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        { staticClass: "content-date" },
+                                        [
+                                          _c(
+                                            "label",
+                                            { staticClass: "label-content" },
+                                            [
+                                              _vm._v(
+                                                "\n                                                    Date:\n                                                    "
+                                              ),
+                                              _c("input", {
+                                                directives: [
+                                                  {
+                                                    name: "model",
+                                                    rawName: "v-model",
+                                                    value:
+                                                      _vm.sendOrderForm.usppi
+                                                        .dateFirst,
+                                                    expression:
+                                                      "sendOrderForm.usppi.dateFirst"
+                                                  }
+                                                ],
+                                                staticClass:
+                                                  "inp-content inp-date",
+                                                attrs: { name: "dateFirst" },
+                                                domProps: {
+                                                  value:
+                                                    _vm.sendOrderForm.usppi
+                                                      .dateFirst
+                                                },
+                                                on: {
+                                                  input: function($event) {
+                                                    if (
+                                                      $event.target.composing
+                                                    ) {
+                                                      return
+                                                    }
+                                                    _vm.$set(
+                                                      _vm.sendOrderForm.usppi,
+                                                      "dateFirst",
+                                                      $event.target.value
+                                                    )
+                                                  }
+                                                }
+                                              }),
+                                              _vm._v("*"),
+                                              _c("input", {
+                                                directives: [
+                                                  {
+                                                    name: "model",
+                                                    rawName: "v-model",
+                                                    value:
+                                                      _vm.sendOrderForm.usppi
+                                                        .dateSecond,
+                                                    expression:
+                                                      "sendOrderForm.usppi.dateSecond"
+                                                  }
+                                                ],
+                                                staticClass: "inp-content",
+                                                attrs: { name: "dateSecond" },
+                                                domProps: {
+                                                  value:
+                                                    _vm.sendOrderForm.usppi
+                                                      .dateSecond
+                                                },
+                                                on: {
+                                                  input: function($event) {
+                                                    if (
+                                                      $event.target.composing
+                                                    ) {
+                                                      return
+                                                    }
+                                                    _vm.$set(
+                                                      _vm.sendOrderForm.usppi,
+                                                      "dateSecond",
+                                                      $event.target.value
+                                                    )
+                                                  }
+                                                }
+                                              })
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                ])
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.foreignCheck
+                            ? _c("div", { staticClass: "fppi-block" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "fppi-block__title" },
+                                  [
+                                    _vm._v(
+                                      "\n                                        EXPORT WRITTEN AUTHORIZATION FOR F.P.P.I."
+                                    ),
+                                    _c("br"),
+                                    _vm._v(
+                                      "\n                                        (Foreign Principal Party in Interest)\n                                    "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "fppi-block__subtitle" },
+                                  [
+                                    _vm._v(
+                                      "\n                                        WRITTEN AUTHORIZATION"
+                                    ),
+                                    _c("br"),
+                                    _vm._v(
+                                      "\n                                        TO PREPARE OR TRANSMIT ELECTRONIC EXPORT INFORMATION (EEI)\n                                    "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("form", { attrs: { id: "fppi-form" } }, [
+                                  _c(
+                                    "div",
+                                    { staticClass: "fppi-block__content" },
+                                    [
+                                      _c("p", [
+                                        _vm._v(
+                                          "\n                                                Know all men by these presents, that\n                                                "
+                                        ),
+                                        _c(
+                                          "span",
+                                          { staticClass: "content-name" },
+                                          [
+                                            _c("input", {
+                                              directives: [
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value:
+                                                    _vm.sendOrderForm.fppi.name,
+                                                  expression:
+                                                    "sendOrderForm.fppi.name"
+                                                }
+                                              ],
+                                              staticClass: "inp-fppi",
+                                              attrs: { type: "text" },
+                                              domProps: {
+                                                value:
+                                                  _vm.sendOrderForm.fppi.name
+                                              },
+                                              on: {
+                                                input: function($event) {
+                                                  if ($event.target.composing) {
+                                                    return
+                                                  }
+                                                  _vm.$set(
+                                                    _vm.sendOrderForm.fppi,
+                                                    "name",
+                                                    $event.target.value
+                                                  )
+                                                }
+                                              }
+                                            })
+                                          ]
+                                        ),
+                                        _vm._v(
+                                          "\n                                                the F.P.P.I,\n                                            "
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("p", [
+                                        _vm._v(
+                                          "\n                                                Organized and doing business under the laws of (International\n                                                Country)\n                                                "
+                                        ),
+                                        _c(
+                                          "span",
+                                          { staticClass: "content-country" },
+                                          [
+                                            _c("input", {
+                                              directives: [
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value:
+                                                    _vm.sendOrderForm.fppi
+                                                      .country,
+                                                  expression:
+                                                    "sendOrderForm.fppi.country"
+                                                }
+                                              ],
+                                              staticClass: "inp-fppi",
+                                              attrs: { type: "text" },
+                                              domProps: {
+                                                value:
+                                                  _vm.sendOrderForm.fppi.country
+                                              },
+                                              on: {
+                                                input: function($event) {
+                                                  if ($event.target.composing) {
+                                                    return
+                                                  }
+                                                  _vm.$set(
+                                                    _vm.sendOrderForm.fppi,
+                                                    "country",
+                                                    $event.target.value
+                                                  )
+                                                }
+                                              }
+                                            })
+                                          ]
+                                        ),
+                                        _c("br"),
+                                        _vm._v(
+                                          "\n                                                And having an office and place of business located\n                                                "
+                                        ),
+                                        _c(
+                                          "span",
+                                          { staticClass: "content-address" },
+                                          [
+                                            _c("input", {
+                                              directives: [
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value:
+                                                    _vm.sendOrderForm.fppi
+                                                      .address,
+                                                  expression:
+                                                    "sendOrderForm.fppi.address"
+                                                }
+                                              ],
+                                              staticClass: "inp-fppi",
+                                              attrs: { type: "text" },
+                                              domProps: {
+                                                value:
+                                                  _vm.sendOrderForm.fppi.address
+                                              },
+                                              on: {
+                                                input: function($event) {
+                                                  if ($event.target.composing) {
+                                                    return
+                                                  }
+                                                  _vm.$set(
+                                                    _vm.sendOrderForm.fppi,
+                                                    "address",
+                                                    $event.target.value
+                                                  )
+                                                }
+                                              }
+                                            })
+                                          ]
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("p", [
+                                        _vm._v(
+                                          "\n                                                Hereby\n                                                authorizes ATMLMPINUTESRANATINIOCNA.Land on its behalf as a true and\n                                                lawful agent of the Foreign Principal Party in Interest (FPPI) for,\n                                                and\n                                                in the name, place and stead of the FPPI, from this date, either in\n                                                writing, electronically, or by other authorized means to:\n                                            "
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("p", [
+                                        _vm._v(
+                                          "\n                                                Act as\n                                                Forwarding Agent for Export Control, U.S. Census Bureau (Census\n                                                Bureau)\n                                                reporting, and U.S. Customs and Border Protection (CBP) purposes.\n                                                Also,\n                                                to prepare and transmit any Electronic Export Information (EEI) or\n                                                other\n                                                documents or records required to be filed by the Census Bureau, CBP,\n                                                the\n                                                Bureau of Industry and Security, or any other U.S. Government\n                                                agency,\n                                                and perform any other act that may be required by law or regulation\n                                                in\n                                                connection with the exportation or transportation of any goods\n                                                shipped\n                                                or consigned by or the USPPI, and to receive or ship any goods on\n                                                behalf\n                                                of the F.P.P.I.\n                                            "
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("p", [
+                                        _vm._v(
+                                          "\n                                                The FPPI hereby certifies that all statements and\n                                                information contained in the documentation provided to the\n                                                authorized\n                                                agent and relating to exportation will be true and correct.\n                                                Furthermore,\n                                                the FPPI (Foreign Principal Party in Interest) understands that\n                                                civil\n                                                and criminal penalties may be imposed for making false or fraudulent\n                                                statements or for the violation of any United States laws or\n                                                regulations\n                                                on exportation.\n                                            "
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("p", [
+                                        _vm._v(
+                                          "\n                                                This power of attorney is to remain in full forces and\n                                                effect until revocation in writing is duly given by the Foreign\n                                                Principal Party in Interest and received by the Authorized Agent.\n                                            "
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c(
+                                        "label",
+                                        { staticClass: "content-lbl" },
+                                        [
+                                          _vm._v(
+                                            "\n                                                In Witness Whereof,\n                                                "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm.fppi
+                                                    .witnessWhereof,
+                                                expression:
+                                                  "sendOrderForm.fppi.witnessWhereof"
+                                              }
+                                            ],
+                                            staticClass: "inp-fppi",
+                                            attrs: { type: "text" },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.fppi
+                                                  .witnessWhereof
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm.fppi,
+                                                  "witnessWhereof",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "label",
+                                        { staticClass: "content-lbl" },
+                                        [
+                                          _vm._v(
+                                            "\n                                                Witness:\n                                                "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm.fppi
+                                                    .witness,
+                                                expression:
+                                                  "sendOrderForm.fppi.witness"
+                                              }
+                                            ],
+                                            staticClass: "inp-fppi",
+                                            attrs: { type: "text" },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.fppi.witness
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm.fppi,
+                                                  "witness",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "label",
+                                        { staticClass: "content-lbl" },
+                                        [
+                                          _vm._v(
+                                            "\n                                                Signature:\n                                                "
                                           ),
                                           _c(
                                             "span",
                                             { staticClass: "canvas" },
                                             [
                                               _c("VueSignaturePad", {
-                                                ref: "usppiSignaturePad",
+                                                ref: "fppiSignaturePad",
                                                 staticClass: "signature-pad",
                                                 attrs: {
                                                   width: "300px",
@@ -68102,12 +69222,12 @@ var render = function() {
                                                     "canvas__btn-clear",
                                                   on: {
                                                     click:
-                                                      _vm.usppiSignatureClear
+                                                      _vm.fppiSignatureClear
                                                   }
                                                 },
                                                 [
                                                   _vm._v(
-                                                    "\n                                                            Clear\n                                                        "
+                                                    "\n                                                        Clear\n                                                    "
                                                   )
                                                 ]
                                               )
@@ -68115,764 +69235,336 @@ var render = function() {
                                             1
                                           )
                                         ]
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "content-print" }, [
-                                    _c(
-                                      "label",
-                                      { staticClass: "label-content" },
-                                      [
-                                        _vm._v(
-                                          "\n                                                    Print Name:\n                                                    "
-                                        ),
-                                        _c("input", {
-                                          directives: [
-                                            {
-                                              name: "model",
-                                              rawName: "v-model",
-                                              value:
-                                                _vm.sendOrderForm.usppi
-                                                  .printName,
-                                              expression:
-                                                "sendOrderForm.usppi.printName"
-                                            }
-                                          ],
-                                          staticClass: "inp-content inp-print",
-                                          attrs: { name: "printName" },
-                                          domProps: {
-                                            value:
-                                              _vm.sendOrderForm.usppi.printName
-                                          },
-                                          on: {
-                                            input: function($event) {
-                                              if ($event.target.composing) {
-                                                return
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "label",
+                                        { staticClass: "content-lbl" },
+                                        [
+                                          _vm._v(
+                                            "\n                                                Title:\n                                                "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm.fppi.title,
+                                                expression:
+                                                  "sendOrderForm.fppi.title"
                                               }
-                                              _vm.$set(
-                                                _vm.sendOrderForm.usppi,
-                                                "printName",
-                                                $event.target.value
-                                              )
-                                            }
-                                          }
-                                        })
-                                      ]
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "content-ein" }, [
-                                    _c(
-                                      "label",
-                                      { staticClass: "label-content" },
-                                      [
-                                        _vm._v(
-                                          "\n                                                    E.I.N. (TAX ID):\n                                                    "
-                                        ),
-                                        _c("input", {
-                                          directives: [
-                                            {
-                                              name: "model",
-                                              rawName: "v-model",
+                                            ],
+                                            staticClass: "inp-fppi",
+                                            attrs: { type: "text" },
+                                            domProps: {
                                               value:
-                                                _vm.sendOrderForm.usppi
-                                                  .einTaxId,
-                                              expression:
-                                                "sendOrderForm.usppi.einTaxId"
-                                            }
-                                          ],
-                                          staticClass: "inp-content inp-ein",
-                                          attrs: { name: "einTaxId" },
-                                          domProps: {
-                                            value:
-                                              _vm.sendOrderForm.usppi.einTaxId
-                                          },
-                                          on: {
-                                            input: function($event) {
-                                              if ($event.target.composing) {
-                                                return
-                                              }
-                                              _vm.$set(
-                                                _vm.sendOrderForm.usppi,
-                                                "einTaxId",
-                                                $event.target.value
-                                              )
-                                            }
-                                          }
-                                        })
-                                      ]
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "content-title" }, [
-                                    _c(
-                                      "label",
-                                      { staticClass: "label-content" },
-                                      [
-                                        _vm._v(
-                                          "\n                                                    Title:\n                                                    "
-                                        ),
-                                        _c("input", {
-                                          directives: [
-                                            {
-                                              name: "model",
-                                              rawName: "v-model",
-                                              value:
-                                                _vm.sendOrderForm.usppi
-                                                  .titleFirst,
-                                              expression:
-                                                "sendOrderForm.usppi.titleFirst"
-                                            }
-                                          ],
-                                          staticClass: "inp-content inp-title",
-                                          attrs: { name: "titleFirst" },
-                                          domProps: {
-                                            value:
-                                              _vm.sendOrderForm.usppi.titleFirst
-                                          },
-                                          on: {
-                                            input: function($event) {
-                                              if ($event.target.composing) {
-                                                return
-                                              }
-                                              _vm.$set(
-                                                _vm.sendOrderForm.usppi,
-                                                "titleFirst",
-                                                $event.target.value
-                                              )
-                                            }
-                                          }
-                                        }),
-                                        _vm._v("*"),
-                                        _c("input", {
-                                          directives: [
-                                            {
-                                              name: "model",
-                                              rawName: "v-model",
-                                              value:
-                                                _vm.sendOrderForm.usppi
-                                                  .titleSecond,
-                                              expression:
-                                                "sendOrderForm.usppi.titleSecond"
-                                            }
-                                          ],
-                                          staticClass: "inp-content",
-                                          attrs: { name: "titleSecond" },
-                                          domProps: {
-                                            value:
-                                              _vm.sendOrderForm.usppi
-                                                .titleSecond
-                                          },
-                                          on: {
-                                            input: function($event) {
-                                              if ($event.target.composing) {
-                                                return
-                                              }
-                                              _vm.$set(
-                                                _vm.sendOrderForm.usppi,
-                                                "titleSecond",
-                                                $event.target.value
-                                              )
-                                            }
-                                          }
-                                        })
-                                      ]
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "content-date" }, [
-                                    _c(
-                                      "label",
-                                      { staticClass: "label-content" },
-                                      [
-                                        _vm._v(
-                                          "\n                                                    Date:\n                                                    "
-                                        ),
-                                        _c("input", {
-                                          directives: [
-                                            {
-                                              name: "model",
-                                              rawName: "v-model",
-                                              value:
-                                                _vm.sendOrderForm.usppi
-                                                  .dateFirst,
-                                              expression:
-                                                "sendOrderForm.usppi.dateFirst"
-                                            }
-                                          ],
-                                          staticClass: "inp-content inp-date",
-                                          attrs: { name: "dateFirst" },
-                                          domProps: {
-                                            value:
-                                              _vm.sendOrderForm.usppi.dateFirst
-                                          },
-                                          on: {
-                                            input: function($event) {
-                                              if ($event.target.composing) {
-                                                return
-                                              }
-                                              _vm.$set(
-                                                _vm.sendOrderForm.usppi,
-                                                "dateFirst",
-                                                $event.target.value
-                                              )
-                                            }
-                                          }
-                                        }),
-                                        _vm._v("*"),
-                                        _c("input", {
-                                          directives: [
-                                            {
-                                              name: "model",
-                                              rawName: "v-model",
-                                              value:
-                                                _vm.sendOrderForm.usppi
-                                                  .dateSecond,
-                                              expression:
-                                                "sendOrderForm.usppi.dateSecond"
-                                            }
-                                          ],
-                                          staticClass: "inp-content",
-                                          attrs: { name: "dateSecond" },
-                                          domProps: {
-                                            value:
-                                              _vm.sendOrderForm.usppi.dateSecond
-                                          },
-                                          on: {
-                                            input: function($event) {
-                                              if ($event.target.composing) {
-                                                return
-                                              }
-                                              _vm.$set(
-                                                _vm.sendOrderForm.usppi,
-                                                "dateSecond",
-                                                $event.target.value
-                                              )
-                                            }
-                                          }
-                                        })
-                                      ]
-                                    )
-                                  ])
-                                ]
-                              )
-                            ])
-                          ])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm.foreignCheck
-                        ? _c("div", { staticClass: "fppi-block" }, [
-                            _c("div", { staticClass: "fppi-block__title" }, [
-                              _vm._v(
-                                "\n                                        EXPORT WRITTEN AUTHORIZATION FOR F.P.P.I."
-                              ),
-                              _c("br"),
-                              _vm._v(
-                                "\n                                        (Foreign Principal Party in Interest)\n                                    "
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "fppi-block__subtitle" }, [
-                              _vm._v(
-                                "\n                                        WRITTEN AUTHORIZATION"
-                              ),
-                              _c("br"),
-                              _vm._v(
-                                "\n                                        TO PREPARE OR TRANSMIT ELECTRONIC EXPORT INFORMATION (EEI)\n                                    "
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("form", { attrs: { id: "fppi-form" } }, [
-                              _c(
-                                "div",
-                                { staticClass: "fppi-block__content" },
-                                [
-                                  _c("p", [
-                                    _vm._v(
-                                      "\n                                                Know all men by these presents, that\n                                                "
-                                    ),
-                                    _c(
-                                      "span",
-                                      { staticClass: "content-name" },
-                                      [
-                                        _c("input", {
-                                          directives: [
-                                            {
-                                              name: "model",
-                                              rawName: "v-model",
-                                              value:
-                                                _vm.sendOrderForm.fppi.name,
-                                              expression:
-                                                "sendOrderForm.fppi.name"
-                                            }
-                                          ],
-                                          staticClass: "inp-fppi",
-                                          attrs: { type: "text" },
-                                          domProps: {
-                                            value: _vm.sendOrderForm.fppi.name
-                                          },
-                                          on: {
-                                            input: function($event) {
-                                              if ($event.target.composing) {
-                                                return
-                                              }
-                                              _vm.$set(
-                                                _vm.sendOrderForm.fppi,
-                                                "name",
-                                                $event.target.value
-                                              )
-                                            }
-                                          }
-                                        })
-                                      ]
-                                    ),
-                                    _vm._v(
-                                      "\n                                                the F.P.P.I,\n                                            "
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("p", [
-                                    _vm._v(
-                                      "\n                                                Organized and doing business under the laws of (International\n                                                Country)\n                                                "
-                                    ),
-                                    _c(
-                                      "span",
-                                      { staticClass: "content-country" },
-                                      [
-                                        _c("input", {
-                                          directives: [
-                                            {
-                                              name: "model",
-                                              rawName: "v-model",
-                                              value:
-                                                _vm.sendOrderForm.fppi.country,
-                                              expression:
-                                                "sendOrderForm.fppi.country"
-                                            }
-                                          ],
-                                          staticClass: "inp-fppi",
-                                          attrs: { type: "text" },
-                                          domProps: {
-                                            value:
-                                              _vm.sendOrderForm.fppi.country
-                                          },
-                                          on: {
-                                            input: function($event) {
-                                              if ($event.target.composing) {
-                                                return
-                                              }
-                                              _vm.$set(
-                                                _vm.sendOrderForm.fppi,
-                                                "country",
-                                                $event.target.value
-                                              )
-                                            }
-                                          }
-                                        })
-                                      ]
-                                    ),
-                                    _c("br"),
-                                    _vm._v(
-                                      "\n                                                And having an office and place of business located\n                                                "
-                                    ),
-                                    _c(
-                                      "span",
-                                      { staticClass: "content-address" },
-                                      [
-                                        _c("input", {
-                                          directives: [
-                                            {
-                                              name: "model",
-                                              rawName: "v-model",
-                                              value:
-                                                _vm.sendOrderForm.fppi.address,
-                                              expression:
-                                                "sendOrderForm.fppi.address"
-                                            }
-                                          ],
-                                          staticClass: "inp-fppi",
-                                          attrs: { type: "text" },
-                                          domProps: {
-                                            value:
-                                              _vm.sendOrderForm.fppi.address
-                                          },
-                                          on: {
-                                            input: function($event) {
-                                              if ($event.target.composing) {
-                                                return
-                                              }
-                                              _vm.$set(
-                                                _vm.sendOrderForm.fppi,
-                                                "address",
-                                                $event.target.value
-                                              )
-                                            }
-                                          }
-                                        })
-                                      ]
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("p", [
-                                    _vm._v(
-                                      "\n                                                Hereby\n                                                authorizes ATMLMPINUTESRANATINIOCNA.Land on its behalf as a true and\n                                                lawful agent of the Foreign Principal Party in Interest (FPPI) for,\n                                                and\n                                                in the name, place and stead of the FPPI, from this date, either in\n                                                writing, electronically, or by other authorized means to:\n                                            "
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("p", [
-                                    _vm._v(
-                                      "\n                                                Act as\n                                                Forwarding Agent for Export Control, U.S. Census Bureau (Census\n                                                Bureau)\n                                                reporting, and U.S. Customs and Border Protection (CBP) purposes.\n                                                Also,\n                                                to prepare and transmit any Electronic Export Information (EEI) or\n                                                other\n                                                documents or records required to be filed by the Census Bureau, CBP,\n                                                the\n                                                Bureau of Industry and Security, or any other U.S. Government\n                                                agency,\n                                                and perform any other act that may be required by law or regulation\n                                                in\n                                                connection with the exportation or transportation of any goods\n                                                shipped\n                                                or consigned by or the USPPI, and to receive or ship any goods on\n                                                behalf\n                                                of the F.P.P.I.\n                                            "
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("p", [
-                                    _vm._v(
-                                      "\n                                                The FPPI hereby certifies that all statements and\n                                                information contained in the documentation provided to the\n                                                authorized\n                                                agent and relating to exportation will be true and correct.\n                                                Furthermore,\n                                                the FPPI (Foreign Principal Party in Interest) understands that\n                                                civil\n                                                and criminal penalties may be imposed for making false or fraudulent\n                                                statements or for the violation of any United States laws or\n                                                regulations\n                                                on exportation.\n                                            "
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("p", [
-                                    _vm._v(
-                                      "\n                                                This power of attorney is to remain in full forces and\n                                                effect until revocation in writing is duly given by the Foreign\n                                                Principal Party in Interest and received by the Authorized Agent.\n                                            "
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("label", { staticClass: "content-lbl" }, [
-                                    _vm._v(
-                                      "\n                                                In Witness Whereof,\n                                                "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value:
-                                            _vm.sendOrderForm.fppi
-                                              .witnessWhereof,
-                                          expression:
-                                            "sendOrderForm.fppi.witnessWhereof"
-                                        }
-                                      ],
-                                      staticClass: "inp-fppi",
-                                      attrs: { type: "text" },
-                                      domProps: {
-                                        value:
-                                          _vm.sendOrderForm.fppi.witnessWhereof
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.fppi,
-                                            "witnessWhereof",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("label", { staticClass: "content-lbl" }, [
-                                    _vm._v(
-                                      "\n                                                Witness:\n                                                "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value: _vm.sendOrderForm.fppi.witness,
-                                          expression:
-                                            "sendOrderForm.fppi.witness"
-                                        }
-                                      ],
-                                      staticClass: "inp-fppi",
-                                      attrs: { type: "text" },
-                                      domProps: {
-                                        value: _vm.sendOrderForm.fppi.witness
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.fppi,
-                                            "witness",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("label", { staticClass: "content-lbl" }, [
-                                    _vm._v(
-                                      "\n                                                Signature:\n                                                "
-                                    ),
-                                    _c(
-                                      "span",
-                                      { staticClass: "canvas" },
-                                      [
-                                        _c("VueSignaturePad", {
-                                          ref: "fppiSignaturePad",
-                                          staticClass: "signature-pad",
-                                          attrs: {
-                                            width: "300px",
-                                            height: "200px"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c(
-                                          "span",
-                                          {
-                                            staticClass: "canvas__btn-clear",
+                                                _vm.sendOrderForm.fppi.title
+                                            },
                                             on: {
-                                              click: _vm.fppiSignatureClear
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm.fppi,
+                                                  "title",
+                                                  $event.target.value
+                                                )
+                                              }
                                             }
-                                          },
-                                          [
-                                            _vm._v(
-                                              "\n                                                        Clear\n                                                    "
-                                            )
-                                          ]
+                                          })
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "label",
+                                        { staticClass: "content-lbl" },
+                                        [
+                                          _vm._v(
+                                            "\n                                                Date:\n                                                "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm.fppi.date,
+                                                expression:
+                                                  "sendOrderForm.fppi.date"
+                                              }
+                                            ],
+                                            staticClass: "inp-fppi",
+                                            attrs: { type: "text" },
+                                            domProps: {
+                                              value: _vm.sendOrderForm.fppi.date
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm.fppi,
+                                                  "date",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "label",
+                                        { staticClass: "content-lbl" },
+                                        [
+                                          _vm._v(
+                                            "\n                                                Foreign Principal in Part in Interest (FPPI) V.A.T.#\n                                                "
+                                          ),
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value:
+                                                  _vm.sendOrderForm.fppi
+                                                    .foreign,
+                                                expression:
+                                                  "sendOrderForm.fppi.foreign"
+                                              }
+                                            ],
+                                            staticClass: "inp-fppi",
+                                            attrs: { type: "text" },
+                                            domProps: {
+                                              value:
+                                                _vm.sendOrderForm.fppi.foreign
+                                            },
+                                            on: {
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  _vm.sendOrderForm.fppi,
+                                                  "foreign",
+                                                  $event.target.value
+                                                )
+                                              }
+                                            }
+                                          })
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("p", [
+                                        _vm._v(
+                                          "Export shipments are subject to inspection by U.S. Customs Service,\n                                                ALPI USA INC., and/or Office of Export Enforcement."
                                         )
-                                      ],
-                                      1
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("label", { staticClass: "content-lbl" }, [
-                                    _vm._v(
-                                      "\n                                                Title:\n                                                "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value: _vm.sendOrderForm.fppi.title,
-                                          expression: "sendOrderForm.fppi.title"
-                                        }
-                                      ],
-                                      staticClass: "inp-fppi",
-                                      attrs: { type: "text" },
-                                      domProps: {
-                                        value: _vm.sendOrderForm.fppi.title
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.fppi,
-                                            "title",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("label", { staticClass: "content-lbl" }, [
-                                    _vm._v(
-                                      "\n                                                Date:\n                                                "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value: _vm.sendOrderForm.fppi.date,
-                                          expression: "sendOrderForm.fppi.date"
-                                        }
-                                      ],
-                                      staticClass: "inp-fppi",
-                                      attrs: { type: "text" },
-                                      domProps: {
-                                        value: _vm.sendOrderForm.fppi.date
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.fppi,
-                                            "date",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("label", { staticClass: "content-lbl" }, [
-                                    _vm._v(
-                                      "\n                                                Foreign Principal in Part in Interest (FPPI) V.A.T.#\n                                                "
-                                    ),
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value: _vm.sendOrderForm.fppi.foreign,
-                                          expression:
-                                            "sendOrderForm.fppi.foreign"
-                                        }
-                                      ],
-                                      staticClass: "inp-fppi",
-                                      attrs: { type: "text" },
-                                      domProps: {
-                                        value: _vm.sendOrderForm.fppi.foreign
-                                      },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.sendOrderForm.fppi,
-                                            "foreign",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("p", [
-                                    _vm._v(
-                                      "Export shipments are subject to inspection by U.S. Customs Service,\n                                                ALPI USA INC., and/or Office of Export Enforcement."
-                                    )
-                                  ])
-                                ]
-                              )
-                            ])
-                          ])
-                        : _vm._e()
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "slider-order__slide slide-7" }, [
-                      _c("div", { staticClass: "slider-order__title" }, [
-                        _vm._v("DESCRIPTION OF GOODS")
-                      ]),
-                      _vm._v(" "),
-                      _c("form", { attrs: { id: "form-comment" } }, [
-                        _c("div", { staticClass: "slider-order__comment" }, [
-                          _c("label", { attrs: { for: "comment" } }, [
-                            _vm._v("Comment")
-                          ]),
-                          _vm._v(" "),
-                          _c("textarea", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.sendOrderForm.comments.comment,
-                                expression: "sendOrderForm.comments.comment"
-                              }
-                            ],
-                            staticClass: "slider-order__textarea",
-                            attrs: { name: "comment", id: "comment" },
-                            domProps: {
-                              value: _vm.sendOrderForm.comments.comment
-                            },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.sendOrderForm.comments,
-                                  "comment",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          })
-                        ])
-                      ]),
+                                      ])
+                                    ]
+                                  )
+                                ])
+                              ])
+                            : _vm._e()
+                        ]
+                      ),
                       _vm._v(" "),
                       _c(
                         "div",
-                        {
-                          staticClass:
-                            "slider-order__row slider-order__row-center"
-                        },
+                        { staticClass: "slider-order__slide slide-7" },
                         [
-                          _c("input", {
-                            staticClass: "inp-checkbox",
-                            attrs: { id: "agree-checked", type: "checkbox" }
-                          }),
+                          _c("div", { staticClass: "slider-order__title" }, [
+                            _vm._v("DESCRIPTION OF GOODS")
+                          ]),
+                          _vm._v(" "),
+                          _c("form", { attrs: { id: "form-comment" } }, [
+                            _c(
+                              "div",
+                              { staticClass: "slider-order__comment" },
+                              [
+                                _c("label", { attrs: { for: "comment" } }, [
+                                  _vm._v("Comment")
+                                ]),
+                                _vm._v(" "),
+                                _c("textarea", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.sendOrderForm.comments.comment,
+                                      expression:
+                                        "sendOrderForm.comments.comment"
+                                    }
+                                  ],
+                                  staticClass: "slider-order__textarea",
+                                  attrs: { name: "comment", id: "comment" },
+                                  domProps: {
+                                    value: _vm.sendOrderForm.comments.comment
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.sendOrderForm.comments,
+                                        "comment",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ]
+                            )
+                          ]),
                           _vm._v(" "),
                           _c(
-                            "label",
+                            "div",
                             {
-                              staticClass: "checked-block__label",
-                              attrs: { for: "agree-checked" }
+                              staticClass:
+                                "slider-order__row slider-order__row-center rules-block"
                             },
                             [
-                              _vm._v(
-                                "\n                                        I have read and agree with\n                                        "
-                              ),
+                              _c("input", {
+                                staticClass: "inp-checkbox",
+                                attrs: { id: "agree-checked", type: "checkbox" }
+                              }),
+                              _vm._v(" "),
                               _c(
-                                "a",
+                                "label",
                                 {
-                                  staticClass: "slider-order__href",
-                                  attrs: { href: "#" }
+                                  staticClass:
+                                    "checked-block__label checked-block__label-rules",
+                                  attrs: { for: "agree-checked" }
                                 },
                                 [
                                   _vm._v(
-                                    "\n                                            rules & regulations\n                                        "
+                                    "\n                                        I have read and agree with\n                                    "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "span",
+                                {
+                                  staticClass: "slider-order__rules",
+                                  on: { click: _vm.togglePopup }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                        rules & regulations\n                                    "
                                   )
                                 ]
                               )
                             ]
                           ),
                           _vm._v(" "),
-                          _c("span", { staticClass: "additional" })
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "slider-order__row" }, [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn-continue btn-disabled",
-                            attrs: { id: "btn-continue", disabled: "" },
-                            on: { click: _vm.btnSendForms }
-                          },
-                          [
-                            _vm._v(
-                              "\n                                        Continue\n                                    "
+                          _c("div", { staticClass: "slider-order__row" }, [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn-continue btn-disabled",
+                                attrs: { id: "btn-continue", disabled: "" },
+                                on: { click: _vm.btnSendForms }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                        Continue\n                                    "
+                                )
+                              ]
                             )
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: "required-fields",
-                          attrs: { id: "required-fields" }
-                        },
-                        [_vm._v("Fill in required fields")]
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "required-fields",
+                              attrs: { id: "required-fields" }
+                            },
+                            [_vm._v("Fill in required fields")]
+                          )
+                        ]
                       )
-                    ])
-                  ]
-                )
-              ],
-              1
-            )
+                    ]
+                  )
+                ],
+                1
+              )
+            ])
           ])
         ])
-      ])
-    ])
+      ]),
+      _vm._v(" "),
+      _c("popup-rules-regulations", {
+        attrs: { openRules: _vm.openRules },
+        on: { closeRules: _vm.closeRules }
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/PopupRulesRegulations/PopupRulesRegulations.vue?vue&type=template&id=decaf734&scoped=true&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/PopupRulesRegulations/PopupRulesRegulations.vue?vue&type=template&id=decaf734&scoped=true& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("transition", { attrs: { name: "rules-regulations" } }, [
+    _vm.openRules
+      ? _c(
+          "div",
+          {
+            attrs: { id: "rules", "data-close": "true" },
+            on: {
+              click: function($event) {
+                $event.stopPropagation()
+                return _vm.closeRules($event)
+              }
+            }
+          },
+          [
+            _c("div", { staticClass: "rules-popup" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "rules-popup__close",
+                  attrs: { "data-close": "true" },
+                  on: {
+                    click: function($event) {
+                      $event.stopPropagation()
+                      return _vm.closeRules($event)
+                    }
+                  }
+                },
+                [_vm._v("×")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "rules-popup__head" }, [
+                _vm._v("Rules & Regulations")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "rules-popup__desc" })
+            ])
+          ]
+        )
+      : _vm._e()
   ])
 }
 var staticRenderFns = []
@@ -85226,6 +85918,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/assets/js/components/PopupRulesRegulations/PopupRulesRegulations.vue":
+/*!****************************************************************************************!*\
+  !*** ./resources/assets/js/components/PopupRulesRegulations/PopupRulesRegulations.vue ***!
+  \****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PopupRulesRegulations_vue_vue_type_template_id_decaf734_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PopupRulesRegulations.vue?vue&type=template&id=decaf734&scoped=true& */ "./resources/assets/js/components/PopupRulesRegulations/PopupRulesRegulations.vue?vue&type=template&id=decaf734&scoped=true&");
+/* harmony import */ var _PopupRulesRegulations_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PopupRulesRegulations.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/PopupRulesRegulations/PopupRulesRegulations.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _PopupRulesRegulations_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PopupRulesRegulations_vue_vue_type_template_id_decaf734_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PopupRulesRegulations_vue_vue_type_template_id_decaf734_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "decaf734",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/assets/js/components/PopupRulesRegulations/PopupRulesRegulations.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/PopupRulesRegulations/PopupRulesRegulations.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************!*\
+  !*** ./resources/assets/js/components/PopupRulesRegulations/PopupRulesRegulations.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PopupRulesRegulations_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./PopupRulesRegulations.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/PopupRulesRegulations/PopupRulesRegulations.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PopupRulesRegulations_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/PopupRulesRegulations/PopupRulesRegulations.vue?vue&type=template&id=decaf734&scoped=true&":
+/*!***********************************************************************************************************************************!*\
+  !*** ./resources/assets/js/components/PopupRulesRegulations/PopupRulesRegulations.vue?vue&type=template&id=decaf734&scoped=true& ***!
+  \***********************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PopupRulesRegulations_vue_vue_type_template_id_decaf734_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./PopupRulesRegulations.vue?vue&type=template&id=decaf734&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/PopupRulesRegulations/PopupRulesRegulations.vue?vue&type=template&id=decaf734&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PopupRulesRegulations_vue_vue_type_template_id_decaf734_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PopupRulesRegulations_vue_vue_type_template_id_decaf734_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/assets/js/components/RateCalculatorComponent/RateCalculatorComponent.vue":
 /*!********************************************************************************************!*\
   !*** ./resources/assets/js/components/RateCalculatorComponent/RateCalculatorComponent.vue ***!
@@ -85594,352 +86355,7 @@ $('body').on('click', '#agree-checked', function () {
   } else {
     $('#btn-continue').addClass('btn-disabled').prop('disabled', true);
   }
-}); // === FORM SUBMIT === //
-
-/*$('body').on('click', '#btn-continue', function () {
-
-    let $buttonActive = $('.buttons-control__btn.active').attr('data-order');
-
-    let $valid = true;
-
-    if (!validFormShipper()) {
-        $valid = false;
-    }
-
-    if (!validFormConsignee()) {
-        $valid = false;
-    }
-
-    if (!validFormSendDocumentsTo()) {
-        $valid = false;
-    }
-
-    if (!validFormNotifyParty()) {
-        $valid = false;
-    }
-
-    if ($buttonActive === 'air') {
-        if (!validFormDescriptionsOfGoods()) {
-            $valid = false;
-        }
-    } else {
-        if (!validFormVehicle()) {
-            $valid = false;
-        }
-    }
-
-
-    if ($valid) {
-        validFormSuccess();
-    } else {
-        $('#required-fields').fadeIn();
-        setTimeout(function () {
-            $('#required-fields').fadeOut();
-        }, 5000);
-    }
-
-});*/
-// === FORMS VALIDATION === //
-
-function validFormShipper() {
-  var $valid = true;
-
-  if (!validInp($('#form-shipper [name="tid"]'))) {
-    $valid = false;
-  }
-
-  if (!validInp($('#form-shipper [name="firstName"]'))) {
-    $valid = false;
-  }
-
-  if (!validInp($('#form-shipper [name="secondName"]'))) {
-    $valid = false;
-  }
-
-  if (!validEmail($('#form-shipper [name="email"]'))) {
-    $valid = false;
-  }
-
-  if (!validInp($('#form-shipper [name="phone"]'))) {
-    $valid = false;
-  }
-
-  if (!validInp($('#form-shipper [name="city"]'))) {
-    $valid = false;
-  }
-
-  if (!validInp($('#form-shipper [name="country"]'))) {
-    $valid = false;
-  }
-
-  if ($valid) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-function validFormConsignee() {
-  var $valid = true;
-
-  if (!validInp($('#form-consignee [name="tid"]'))) {
-    $valid = false;
-  }
-
-  if (!validInp($('#form-consignee [name="firstName"]'))) {
-    $valid = false;
-  }
-
-  if (!validInp($('#form-consignee [name="secondName"]'))) {
-    $valid = false;
-  }
-
-  if (!validEmail($('#form-consignee [name="email"]'))) {
-    $valid = false;
-  }
-
-  if (!validInp($('#form-consignee [name="phone"]'))) {
-    $valid = false;
-  }
-
-  if (!validInp($('#form-consignee [name="city"]'))) {
-    $valid = false;
-  }
-
-  if (!validInp($('#form-consignee [name="country"]'))) {
-    $valid = false;
-  }
-
-  if ($valid) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-function validFormSendDocumentsTo() {
-  var $valid = true;
-
-  if (!validInp($('#form-send-documents-to [name="firstName"]'))) {
-    $valid = false;
-  }
-
-  if (!validInp($('#form-send-documents-to [name="secondName"]'))) {
-    $valid = false;
-  }
-
-  if (!validInp($('#form-send-documents-to [name="city"]'))) {
-    $valid = false;
-  }
-
-  if (!validInp($('#form-send-documents-to [name="country"]'))) {
-    $valid = false;
-  }
-
-  if ($valid) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-function validFormNotifyParty() {
-  var $valid = true;
-
-  if (!validInp($('#form-notify-party [name="firstName"]'))) {
-    $valid = false;
-  }
-
-  if (!validInp($('#form-notify-party [name="secondName"]'))) {
-    $valid = false;
-  }
-
-  if (!validInp($('#form-notify-party [name="city"]'))) {
-    $valid = false;
-  }
-
-  if (!validInp($('#form-notify-party [name="country"]'))) {
-    $valid = false;
-  }
-
-  if ($valid) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-function validFormDescriptionsOfGoods() {
-  var $valid = true;
-
-  if (!validInp($('#form-description-of-goods [name="from"]'))) {
-    $valid = false;
-  }
-
-  if (!validInp($('#form-description-of-goods [name="to"]'))) {
-    $valid = false;
-  }
-
-  if ($valid) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-function validFormVehicle() {
-  var $valid = true;
-
-  if (!validInp($('#form-vehicle [name="year"]'))) {
-    $valid = false;
-  }
-
-  if (!validInp($('#form-vehicle [name="make"]'))) {
-    $valid = false;
-  }
-
-  if (!validInp($('#form-vehicle [name="model"]'))) {
-    $valid = false;
-  }
-
-  if (!validInp($('#form-vehicle [name="body"]'))) {
-    $valid = false;
-  }
-
-  if (!validInp($('#form-vehicle [name="colour"]'))) {
-    $valid = false;
-  }
-
-  if (!validInp($('#form-vehicle [name="vin"]'))) {
-    $valid = false;
-  }
-
-  if (!validInp($('#form-vehicle [name="valueOfVehicle"]'))) {
-    $valid = false;
-  }
-
-  if ($valid) {
-    return true;
-  } else {
-    return false;
-  }
-} // === DATA VALIDATION=== //
-
-
-function validInp(_this) {
-  var $val = _this.val();
-
-  if ($val === '' || $val === null || $val === undefined) {
-    _this.addClass('required-input');
-
-    return false;
-  }
-
-  return true;
-}
-
-function validEmail(_this) {
-  var $inpVal = _this.val();
-
-  var $regExp = /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/;
-
-  if ($inpVal === '' || !$regExp.test($inpVal)) {
-    _this.addClass('required-input');
-
-    return false;
-  }
-
-  return true;
-} // === FORM SEND === //
-
-
-function validFormSuccess() {
-  // sendFormShipper();
-  // alert('Success!');
-  // === RESET === //
-  $('form').trigger('reset');
-  $('#btn-continue').addClass('btn-disabled').prop('disabled', true);
-  $('#agree-checked').prop('checked', false);
-} // === FORM SHIPPER === //
-
-
-function sendFormShipper() {// let $arrFormShipper = $('#form-shipper').serializeArray(); // name value
-  // let $arrFormConsignee = $('#form-consignee').serializeArray();
-  // let $arrFormSendDocumentTo = $('#form-send-documents-to').serializeArray();
-  // let $arrFormNotifyParty = $('#form-notify-party').serializeArray();
-  // let $arrFormDescriptionOfGoods = $('#form-description-of-goods').serializeArray();
-  // let $arrFormVehicle = $('#form-vehicle').serializeArray();
-  // let $arrFormComment = $('#form-comment').serializeArray();
-  // console.log($arrFormShipper);
-  // console.log($arrFormConsignee);
-  // console.log($arrFormSendDocumentTo);
-  // console.log($arrFormNotifyParty);
-  // console.log($arrFormDescriptionOfGoods);
-  // console.log($arrFormVehicle);
-  // console.log($arrFormComment);
-  // let $sendForms = {
-  //     shipper: {},
-  //     consignee: {},
-  //     sendDocumentTo: {},
-  //     notifyParty: {},
-  //     descriptionOfGoods: {},
-  //     vehicle: {},
-  //     comment: {}
-  // };
-  //
-  // for (let i = 0; i < $arrFormShipper.length; i++) {
-  //     $sendForms.shipper[$arrFormShipper[i].name] = ($arrFormShipper[i].value === 'on') ? true : $arrFormShipper[i].value;
-  // }
-  //
-  // for (let i = 0; i < $arrFormConsignee.length; i++) {
-  //     $sendForms.consignee[$arrFormConsignee[i].name] = $arrFormConsignee[i].value;
-  // }
-  //
-  // for (let i = 0; i < $arrFormSendDocumentTo.length; i++) {
-  //     $sendForms.sendDocumentTo[$arrFormSendDocumentTo[i].name] = $arrFormSendDocumentTo[i].value;
-  // }
-  //
-  // for (let i = 0; i < $arrFormNotifyParty.length; i++) {
-  //     $sendForms.notifyParty[$arrFormNotifyParty[i].name] = $arrFormNotifyParty[i].value;
-  // }
-  //
-  // for (let i = 0; i < $arrFormDescriptionOfGoods.length; i++) {
-  //     $sendForms.descriptionOfGoods[$arrFormDescriptionOfGoods[i].name] = ($arrFormDescriptionOfGoods[i].value === 'on') ? true : $arrFormDescriptionOfGoods[i].value;
-  // }
-  //
-  // for (let i = 0; i < $arrFormVehicle.length; i++) {
-  //     $sendForms.vehicle[$arrFormVehicle[i].name] = ($arrFormVehicle[i].value === 'on') ? true : $arrFormVehicle[i].value;
-  // }
-  //
-  // for (let i = 0; i < $arrFormComment.length; i++) {
-  //     $sendForms.comment[$arrFormComment[i].name] = $arrFormComment[i].value;
-  // }
-  //
-  // console.log('%c send form', 'color: green; font-size: 16px; font-weight: 600;', $sendForms);
-  //
-  // sendFormHandler($sendForms);
-}
-
-function sendFormHandler(data) {// $.ajax({
-  //     type: "POST",
-  //     url: "/api/email/air_shipping_order",
-  //     data: $.param(data),
-  //     success: function () {
-  //         $('#message-success').addClass('fadeIn');
-  //         $('#form-quick-quote').trigger("reset");
-  //         setTimeout(function () {
-  //             $('#message-success').removeClass('fadeIn');
-  //         }, 4000);
-  //     },
-  //     error: function (error) {
-  //         console.log('Error', error);
-  //         $('#message-server-error').addClass('fadeIn');
-  //         setTimeout(function () {
-  //             $('#message-server-error').removeClass('fadeIn');
-  //         }, 4000);
-  //     }
-  // });
-}
+});
 
 /***/ }),
 

@@ -118,6 +118,7 @@
 </template>
 
 <script>
+
     export default {
         name: "RateCalculatorComponent",
         props: {

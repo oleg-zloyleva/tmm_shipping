@@ -91,8 +91,13 @@
       margin-left: 30px;
 
       &__label {
-        margin-right: 30px;
+        margin-right: 25px;
+        margin-bottom: 0;
         cursor: pointer;
+
+        &-rules {
+          margin-right: 5px;
+        }
       }
     }
 
@@ -189,9 +194,11 @@
       padding: 30px 40px;
     }
 
-    &__href {
+    &__rules {
+      font-size: 14px;
       color: $colorLightRed;
       font-weight: 600;
+      cursor: pointer;
     }
 
     &__row {
@@ -248,10 +255,6 @@
     }
 
     .itinerary-block {
-      text-align: center;
-    }
-
-    .additional-block {
       text-align: center;
     }
 
@@ -563,78 +566,7 @@
     font-weight: normal;
     box-shadow: none;
   }
-
-  // === CUSTOM SELECT === //
-  /*.select2-container {
-    border-bottom: 1px solid #d8d8d8;
-    margin-left: 15px;
-
-    .select2-choice {
-      position: relative;
-      top: 3px;
-      display: inline-block;
-      width: 185px;
-      height: 20px;
-      line-height: 20px;
-      background: #fff;
-      border: none;
-      text-align: left;
-      padding: 0 5px;
-      font-size: 16px;
-      font-weight: normal;
-      box-shadow: none;
-
-      & > .select2-chosen {
-        font-size: 14px;
-      }
-
-      .select2-arrow {
-        display: inline-block;
-        width: 13px;
-        height: 100%;
-        position: absolute;
-        top: 5px;
-        right: 0;
-        border: none;
-        background: #fff;
-
-        b {
-          display: block;
-          width: 0;
-          height: 0;
-          border-left: 4px solid transparent;
-          border-right: 4px solid transparent;
-          border-top: 6px solid $colorLightRed;
-        }
-      }
-    }
-  }*/
 }
-
-
-// === CUSTOM SELECT === //
-/*.calculate-order-dropdown {
-  border: 1px solid $colorLightGrey;
-}
-
-.calculate-order-dropdown {
-  .select2-highlighted {
-    background: $colorLightRed;
-  }
-
-  .select2-result-label {
-    padding: 3px 5px;
-    font-size: 14px;
-    line-height: 16px;
-  }
-
-  .select2-search {
-    input {
-      font-size: 14px;
-      padding: 2px 20px 3px 5px;
-    }
-  }
-}*/
 
 
 // === MEDIA QUERIES === //
@@ -778,6 +710,21 @@
 
       .additional {
         display: block;
+      }
+
+      .rules-block {
+        flex-wrap: wrap;
+
+        .checked-block__label {
+          text-align: center;
+          width: 100%;
+          margin-bottom: 5px;
+        }
+      }
+
+      &__rules {
+        text-align: center;
+        width: 100%;
       }
     }
 
