@@ -12952,7 +12952,7 @@ Vue.component('popup-rules-regulations', __webpack_require__(/*! ../PopupRulesRe
         infinite: false,
         draggable: false,
         adaptiveHeight: true,
-        initialSlide: 6,
+        // initialSlide: 6,
         customPaging: function customPaging(slider, i) {
           var $dots = ['Shipper', 'Consignee', 'Notify', 'Description', 'Title', 'USPPI', 'Comments'];
           return $dots[i];

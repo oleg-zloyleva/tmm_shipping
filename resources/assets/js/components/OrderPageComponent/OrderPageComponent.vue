@@ -1112,7 +1112,7 @@
                     infinite: false,
                     draggable: false,
                     adaptiveHeight: true,
-                    initialSlide: 6,
+                    // initialSlide: 6,
 
                     customPaging: function (slider, i) {
                         let $dots = ['Shipper', 'Consignee', 'Notify', 'Description', 'Title', 'USPPI', 'Comments'];
