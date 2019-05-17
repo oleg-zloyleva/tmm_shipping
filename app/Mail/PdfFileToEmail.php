@@ -45,8 +45,11 @@ class PdfFileToEmail extends Mailable implements ShouldQueue
     {
         $content = DomPDF::loadView($this->pdfViewName, $this->request)->stream();
 
+        $address = config('mail.address');
+
         return $this
-            ->from('info@tmminternational.com')
+            ->from($address)
+            ->to($address)
             ->subject($this->subjectName)
             ->view($this->viewName)
             ->attachData($content, $this->pdfName, ['mime' => 'application/pdf']);

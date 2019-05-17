@@ -19,16 +19,9 @@ use Illuminate\Support\Facades\Mail;
 
 class EmailNotification extends Controller
 {
-    protected $to;
-
-    public function __construct()
-    {
-        $this->to = 'info@tmminternational.com';
-    }
-
     public function quickQuote(QuickQuoteRequest $request)
     {
-        Mail::to($this->to)->queue(
+        Mail::send(
             new PdfFileToEmail(
                 'mails.quick_quote',
                 'pdf.quick_quote',
@@ -51,7 +44,7 @@ class EmailNotification extends Controller
 
     public function contactUs(ContactUsRequest $request)
     {
-        Mail::to($this->to)->queue(
+        Mail::send(
             new PdfFileToEmail(
                 "mails.contact_us",
                 'pdf.contact_us',
@@ -73,56 +66,24 @@ class EmailNotification extends Controller
 
     public function rateOrder(RateOrderRequest $request)
     {
-        $data = [
-            'name' => $request->Name,
-            'phone' => $request->Phone,
-        ];
-
-        if ($request->GroundAuctionId) {
-            $data['groundAuction'] = Auction::findOrFail($request->GroundAuctionId)->name;
-            $data['groundLocation'] = GroundLocation::findOrFail($request->GroundLocationId)->name;
-            $data['groundExitPort'] = GroundExitPort::findOrFail($request->GroundExitPortId)->name;
-
-            $data['groundPrice'] = GroundDeliveryPrice::query()->where([
-                'auction_id' => $request->GroundAuctionId,
-                'ground_location_id' => $request->GroundLocationId,
-                'ground_exit_port_id' => $request->GroundExitPortId,
-            ])->firstOrFail()->price;
-        }
-
-        if ($request->OceanExitPortId) {
-            $data['oceanExitPort'] = OceanExitPort::findOrFail($request->OceanExitPortId)->name;
-            $data['oceanDestinationPort'] = OceanDestinationPort::findOrFail($request->OceanDestinationPortId)->name;
-
-            $data['oceanPrice'] = OceanDeliveryPrice::query()->where([
-                'ocean_exit_port_id' => $request->OceanExitPortId,
-                'ocean_destination_port_id' => $request->OceanDestinationPortId,
-            ])->firstOrFail()->price;
-        }
-
-        Mail::to($this->to)->queue(
+        Mail::send(
             new PdfFileToEmail(
                 "mails.rate_order",
                 'pdf.rate_order',
                 "rate_order.pdf",
                 "Rate Order letter",
-                $data
+                $request->input()
             )
         );
 
         return response()->json([
             "status" => "ok",
-            "GroundAuctionId" => $request->GroundAuctionId,
-            "GroundLocationId" => $request->GroundLocationId,
-            "GroundExitPortId" => $request->GroundExitPortId,
-            "OceanExitPortId" => $request->OceanExitPortId,
-            "OceanDestinationPortId" => $request->OceanDestinationPortId,
         ]);
     }
 
     public function shipperOrder(ShipperOrderRequest $request)
     {
-        Mail::to($this->to)->queue(
+        Mail::send(
             new PdfFileToEmail(
                 "mails.shipper_order",
                 'pdf.shipper_order',

@@ -60,6 +60,8 @@ return [
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 
+    'address' => env('MAIL_ADDRESS', 'info@tmminternational.com'),
+
     /*
     |--------------------------------------------------------------------------
     | E-Mail Encryption Protocol
