@@ -34,7 +34,7 @@
                                         <label for="citizen" class="checked-block__label">US citizen</label>
                                         <input name="delivery" id="business" class="inp-checkbox" type="radio"
                                                value="business" v-model="delivery">
-                                        <label for="business" class="checked-block__label">Business</label>
+                                        <label for="business" class="checked-block__label">US business</label>
                                         <input name="delivery" id="foreign" class="inp-checkbox" type="radio"
                                                value="foreign" v-model="delivery">
                                         <label for="foreign" class="checked-block__label">Foreign</label>
@@ -44,12 +44,12 @@
                                             <div class="body-left">
                                                 <div class="slider-order__row">
                                                     <label class="slider-order__label slider-order__label-required">
-                                                        TID/SS#:
-                                                        <input name="tid"
+                                                        {{ einTitle }}:
+                                                        <input name="ein"
                                                                class="slider-order__inp"
                                                                v-validate="'required'"
-                                                               :class="{'required': errors.has('tid')}"
-                                                               v-model="sendOrderForm.shipper.tid">
+                                                               :class="{'required': errors.has('ein')}"
+                                                               v-model="sendOrderForm.shipper.ein">
                                                     </label>
                                                 </div>
                                                 <div class="slider-order__row">
@@ -126,7 +126,7 @@
                                                         <select name="state"
                                                                 class="slider-order__select select-order"
                                                                 v-model="sendOrderForm.shipper.state">
-                                                            <option value="">Choose country</option>
+                                                            <option value="">Choose state</option>
                                                         </select>
                                                     </label>
                                                 </div>
@@ -253,7 +253,7 @@
                                                         State (US only):
                                                         <select name="state" class="slider-order__select select-order"
                                                                 v-model="sendOrderForm.consignee.state">
-                                                            <option value="">Choose country</option>
+                                                            <option value="">Choose state</option>
                                                         </select>
                                                     </label>
                                                 </div>
@@ -294,12 +294,14 @@
                                         <div class="slider-order__body-left">
                                             <div class="body-left">
                                                 <div class="slider-order__row">
-                                                    <label class="slider-order__label slider-order__label-title">
+                                                    <label class="slider-order__label slider-order__label-title slider-order__label-required">
                                                         Notify Party:
                                                         <select name="notifyParty"
                                                                 class="slider-order__select select-order"
+                                                                v-validate="'required'"
+                                                                :class="{'required': errors.has('notifyParty')}"
                                                                 v-model="sendOrderForm.notifyParty.notifyParty">
-                                                            <option value="">Choose country</option>
+                                                            <option value="">Choose</option>
                                                         </select>
                                                     </label>
                                                 </div>
@@ -352,7 +354,7 @@
                                                         <select name="state"
                                                                 class="slider-order__select select-order"
                                                                 v-model="sendOrderForm.notifyParty.state">
-                                                            <option value="">Choose country</option>
+                                                            <option value="">Choose state</option>
                                                         </select>
                                                     </label>
                                                 </div>
@@ -594,7 +596,7 @@
                                             </div>
                                             <div class="additional-block">
                                                 <span class="additional">Additional fees and charges:</span>
-                                                <span class="insurance-text">Insurance (1.5%)</span>
+                                                <span class="insurance-text">Insurance (1%)</span>
                                                 <input name="insurance" id="insurance-ocean" class="inp-checkbox"
                                                        type="checkbox" v-model="sendOrderForm.vehicle.insurance">
                                                 <label for="insurance-ocean" class="checked-block__label"></label>
@@ -614,7 +616,7 @@
                                                         <select name="airWaybill"
                                                                 class="slider-order__select select-order"
                                                                 v-model="sendOrderForm.sendDocuments.waybill">
-                                                            <option value="">Choose country</option>
+                                                            <option value="">Choose</option>
                                                         </select>
                                                     </label>
                                                 </div>
@@ -666,7 +668,7 @@
                                                         State (US only):
                                                         <select name="state" class="slider-order__select select-order"
                                                                 v-model="sendOrderForm.sendDocuments.state">
-                                                            <option value="">Choose country</option>
+                                                            <option value="">Choose state</option>
                                                         </select>
                                                     </label>
                                                 </div>
@@ -716,7 +718,7 @@
                                         </div>
                                     </form>
                                 </div>
-                                <!-- USPPI -->
+                                <!-- USPPI && FPPI-->
                                 <div class="slider-order__slide slide-6">
                                     <div class="usspi-block" v-if="!foreignCheck">
                                         <div class="usspi-block__title">
@@ -886,11 +888,11 @@
                                                     effect until revocation in writing is duly given by the Foreign
                                                     Principal Party in Interest and received by the Authorized Agent.
                                                 </p>
-                                                <label class="content-lbl">
+                                                <!--<label class="content-lbl">
                                                     In Witness Whereof,
                                                     <input class="inp-fppi" type="text"
                                                            v-model="sendOrderForm.fppi.witnessWhereof">
-                                                </label>
+                                                </label>-->
                                                 <label class="content-lbl">
                                                     Witness:
                                                     <input type="text" class="inp-fppi"
@@ -994,10 +996,11 @@
                 businessCheck: false,
                 foreignCheck: false,
                 isValidateForms: false,
+                einTitle: 'EIN/SS#',
                 sendOrderForm: {
                     typeTransport: 'air',
                     shipper: {
-                        tid: '',
+                        ein: '',
                         firstName: '',
                         secondName: '',
                         address: '',
@@ -1102,6 +1105,7 @@
                         comment: ''
                     }
                 },
+                dots: ['Shipper', 'Consignee', 'Notify', 'Description', 'Title', 'USPPI', 'Comments'],
                 slickOptions: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
@@ -1113,10 +1117,8 @@
                     draggable: false,
                     adaptiveHeight: true,
                     // initialSlide: 6,
-
-                    customPaging: function (slider, i) {
-                        let $dots = ['Shipper', 'Consignee', 'Notify', 'Description', 'Title', 'USPPI', 'Comments'];
-                        return $dots[i];
+                    customPaging: (slider, i) => {
+                        return this.dots[i];
                     }
                 },
                 openRules: false
@@ -1258,14 +1260,23 @@
                     case 'citizen':
                         this.businessCheck = false;
                         this.foreignCheck = false;
+                        this.einTitle = 'EIN/SS#';
+                        this.dots[5] = 'USPPI';
+                        this.reInit();
                         break;
                     case 'business':
                         this.businessCheck = true;
                         this.foreignCheck = false;
+                        this.einTitle = 'EIN/SS#';
+                        this.dots[5] = 'USPPI';
+                        this.reInit();
                         break;
                     case 'foreign':
                         this.businessCheck = false;
                         this.foreignCheck = true;
+                        this.einTitle = 'BUSINESS ID#';
+                        this.dots[5] = 'FPPI';
+                        this.reInit();
                         break;
                     default:
                         break;

@@ -12818,6 +12818,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 Vue.component('popup-rules-regulations', __webpack_require__(/*! ../PopupRulesRegulations/PopupRulesRegulations */ "./resources/assets/js/components/PopupRulesRegulations/PopupRulesRegulations.vue").default);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -12826,6 +12828,8 @@ Vue.component('popup-rules-regulations', __webpack_require__(/*! ../PopupRulesRe
     Slick: vue_slick__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
+    var _this = this;
+
     return {
       transport: 'air',
       delivery: 'citizen',
@@ -12834,10 +12838,11 @@ Vue.component('popup-rules-regulations', __webpack_require__(/*! ../PopupRulesRe
       businessCheck: false,
       foreignCheck: false,
       isValidateForms: false,
+      einTitle: 'EIN/SS#',
       sendOrderForm: {
         typeTransport: 'air',
         shipper: {
-          tid: '',
+          ein: '',
           firstName: '',
           secondName: '',
           address: '',
@@ -12942,6 +12947,7 @@ Vue.component('popup-rules-regulations', __webpack_require__(/*! ../PopupRulesRe
           comment: ''
         }
       },
+      dots: ['Shipper', 'Consignee', 'Notify', 'Description', 'Title', 'USPPI', 'Comments'],
       slickOptions: {
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -12954,8 +12960,7 @@ Vue.component('popup-rules-regulations', __webpack_require__(/*! ../PopupRulesRe
         adaptiveHeight: true,
         // initialSlide: 6,
         customPaging: function customPaging(slider, i) {
-          var $dots = ['Shipper', 'Consignee', 'Notify', 'Description', 'Title', 'USPPI', 'Comments'];
-          return $dots[i];
+          return _this.dots[i];
         }
       },
       openRules: false
@@ -12963,20 +12968,20 @@ Vue.component('popup-rules-regulations', __webpack_require__(/*! ../PopupRulesRe
   },
   methods: {
     isValidForms: function isValidForms() {
-      var _this = this;
+      var _this2 = this;
 
       this.$validator.validateAll().then(function (result) {
         if (result) {
           console.log('%c Form Submitted!', 'color: green; font-weight: 600;');
-          _this.isValidateForms = true;
+          _this2.isValidateForms = true;
 
-          _this.submitForms();
+          _this2.submitForms();
 
           return;
         }
 
         console.log('%c Correct them errors!', 'color: red; font-weight: 600;');
-        _this.isValidateForms = false;
+        _this2.isValidateForms = false;
         $('#required-fields').fadeIn();
         setTimeout(function () {
           $('#required-fields').fadeOut();
@@ -13019,7 +13024,7 @@ Vue.component('popup-rules-regulations', __webpack_require__(/*! ../PopupRulesRe
       this.readURLShipper(el.target);
     },
     readURLShipper: function readURLShipper(input) {
-      var _this2 = this;
+      var _this3 = this;
 
       // console.log(input);
       if (input.files && input.files[0]) {
@@ -13027,7 +13032,7 @@ Vue.component('popup-rules-regulations', __webpack_require__(/*! ../PopupRulesRe
 
         reader.onload = function (e) {
           $(input).closest('.upload-file-container').find('.image-demo').attr('src', e.target.result);
-          _this2.sendOrderForm.shipper.uploadFile = e.target.result;
+          _this3.sendOrderForm.shipper.uploadFile = e.target.result;
         };
 
         reader.readAsDataURL(input.files[0]);
@@ -13037,7 +13042,7 @@ Vue.component('popup-rules-regulations', __webpack_require__(/*! ../PopupRulesRe
       this.readURLDocuments(el.target);
     },
     readURLDocuments: function readURLDocuments(input) {
-      var _this3 = this;
+      var _this4 = this;
 
       // console.log(input);
       if (input.files && input.files[0]) {
@@ -13045,7 +13050,7 @@ Vue.component('popup-rules-regulations', __webpack_require__(/*! ../PopupRulesRe
 
         reader.onload = function (e) {
           $(input).closest('.upload-file-container').find('.image-demo').attr('src', e.target.result);
-          _this3.sendOrderForm.sendDocuments.uploadFile = e.target.result;
+          _this4.sendOrderForm.sendDocuments.uploadFile = e.target.result;
         };
 
         reader.readAsDataURL(input.files[0]);
@@ -13086,10 +13091,10 @@ Vue.component('popup-rules-regulations', __webpack_require__(/*! ../PopupRulesRe
       this.$refs.slick.prev();
     },
     reInit: function reInit() {
-      var _this4 = this;
+      var _this5 = this;
 
       this.$nextTick(function () {
-        _this4.$refs.slick.reSlick();
+        _this5.$refs.slick.reSlick();
       });
     }
   },
@@ -13100,16 +13105,25 @@ Vue.component('popup-rules-regulations', __webpack_require__(/*! ../PopupRulesRe
         case 'citizen':
           this.businessCheck = false;
           this.foreignCheck = false;
+          this.einTitle = 'EIN/SS#';
+          this.dots[5] = 'USPPI';
+          this.reInit();
           break;
 
         case 'business':
           this.businessCheck = true;
           this.foreignCheck = false;
+          this.einTitle = 'EIN/SS#';
+          this.dots[5] = 'USPPI';
+          this.reInit();
           break;
 
         case 'foreign':
           this.businessCheck = false;
           this.foreignCheck = true;
+          this.einTitle = 'BUSINESS ID#';
+          this.dots[5] = 'FPPI';
+          this.reInit();
           break;
 
         default:
@@ -63929,7 +63943,7 @@ var render = function() {
                                 staticClass: "checked-block__label",
                                 attrs: { for: "business" }
                               },
-                              [_vm._v("Business")]
+                              [_vm._v("US business")]
                             ),
                             _vm._v(" "),
                             _c("input", {
@@ -63994,7 +64008,9 @@ var render = function() {
                                         },
                                         [
                                           _vm._v(
-                                            "\n                                                    TID/SS#:\n                                                    "
+                                            "\n                                                    " +
+                                              _vm._s(_vm.einTitle) +
+                                              ":\n                                                    "
                                           ),
                                           _c("input", {
                                             directives: [
@@ -64008,19 +64024,19 @@ var render = function() {
                                                 name: "model",
                                                 rawName: "v-model",
                                                 value:
-                                                  _vm.sendOrderForm.shipper.tid,
+                                                  _vm.sendOrderForm.shipper.ein,
                                                 expression:
-                                                  "sendOrderForm.shipper.tid"
+                                                  "sendOrderForm.shipper.ein"
                                               }
                                             ],
                                             staticClass: "slider-order__inp",
                                             class: {
-                                              required: _vm.errors.has("tid")
+                                              required: _vm.errors.has("ein")
                                             },
-                                            attrs: { name: "tid" },
+                                            attrs: { name: "ein" },
                                             domProps: {
                                               value:
-                                                _vm.sendOrderForm.shipper.tid
+                                                _vm.sendOrderForm.shipper.ein
                                             },
                                             on: {
                                               input: function($event) {
@@ -64029,7 +64045,7 @@ var render = function() {
                                                 }
                                                 _vm.$set(
                                                   _vm.sendOrderForm.shipper,
-                                                  "tid",
+                                                  "ein",
                                                   $event.target.value
                                                 )
                                               }
@@ -64496,7 +64512,7 @@ var render = function() {
                                               _c(
                                                 "option",
                                                 { attrs: { value: "" } },
-                                                [_vm._v("Choose country")]
+                                                [_vm._v("Choose state")]
                                               )
                                             ]
                                           )
@@ -65239,7 +65255,7 @@ var render = function() {
                                               _c(
                                                 "option",
                                                 { attrs: { value: "" } },
-                                                [_vm._v("Choose country")]
+                                                [_vm._v("Choose state")]
                                               )
                                             ]
                                           )
@@ -65467,7 +65483,7 @@ var render = function() {
                                           "label",
                                           {
                                             staticClass:
-                                              "slider-order__label slider-order__label-title"
+                                              "slider-order__label slider-order__label-title slider-order__label-required"
                                           },
                                           [
                                             _vm._v(
@@ -65477,6 +65493,12 @@ var render = function() {
                                               "select",
                                               {
                                                 directives: [
+                                                  {
+                                                    name: "validate",
+                                                    rawName: "v-validate",
+                                                    value: "required",
+                                                    expression: "'required'"
+                                                  },
                                                   {
                                                     name: "model",
                                                     rawName: "v-model",
@@ -65490,6 +65512,11 @@ var render = function() {
                                                 ],
                                                 staticClass:
                                                   "slider-order__select select-order",
+                                                class: {
+                                                  required: _vm.errors.has(
+                                                    "notifyParty"
+                                                  )
+                                                },
                                                 attrs: { name: "notifyParty" },
                                                 on: {
                                                   change: function($event) {
@@ -65522,7 +65549,7 @@ var render = function() {
                                                 _c(
                                                   "option",
                                                   { attrs: { value: "" } },
-                                                  [_vm._v("Choose country")]
+                                                  [_vm._v("Choose")]
                                                 )
                                               ]
                                             )
@@ -65831,7 +65858,7 @@ var render = function() {
                                               _c(
                                                 "option",
                                                 { attrs: { value: "" } },
-                                                [_vm._v("Choose country")]
+                                                [_vm._v("Choose state")]
                                               )
                                             ]
                                           )
@@ -67732,7 +67759,7 @@ var render = function() {
                                         _c(
                                           "span",
                                           { staticClass: "insurance-text" },
-                                          [_vm._v("Insurance (1.5%)")]
+                                          [_vm._v("Insurance (1%)")]
                                         ),
                                         _vm._v(" "),
                                         _c("input", {
@@ -67910,7 +67937,7 @@ var render = function() {
                                                 _c(
                                                   "option",
                                                   { attrs: { value: "" } },
-                                                  [_vm._v("Choose country")]
+                                                  [_vm._v("Choose")]
                                                 )
                                               ]
                                             )
@@ -68223,7 +68250,7 @@ var render = function() {
                                               _c(
                                                 "option",
                                                 { attrs: { value: "" } },
-                                                [_vm._v("Choose country")]
+                                                [_vm._v("Choose state")]
                                               )
                                             ]
                                           )
@@ -69111,48 +69138,6 @@ var render = function() {
                                           "\n                                                This power of attorney is to remain in full forces and\n                                                effect until revocation in writing is duly given by the Foreign\n                                                Principal Party in Interest and received by the Authorized Agent.\n                                            "
                                         )
                                       ]),
-                                      _vm._v(" "),
-                                      _c(
-                                        "label",
-                                        { staticClass: "content-lbl" },
-                                        [
-                                          _vm._v(
-                                            "\n                                                In Witness Whereof,\n                                                "
-                                          ),
-                                          _c("input", {
-                                            directives: [
-                                              {
-                                                name: "model",
-                                                rawName: "v-model",
-                                                value:
-                                                  _vm.sendOrderForm.fppi
-                                                    .witnessWhereof,
-                                                expression:
-                                                  "sendOrderForm.fppi.witnessWhereof"
-                                              }
-                                            ],
-                                            staticClass: "inp-fppi",
-                                            attrs: { type: "text" },
-                                            domProps: {
-                                              value:
-                                                _vm.sendOrderForm.fppi
-                                                  .witnessWhereof
-                                            },
-                                            on: {
-                                              input: function($event) {
-                                                if ($event.target.composing) {
-                                                  return
-                                                }
-                                                _vm.$set(
-                                                  _vm.sendOrderForm.fppi,
-                                                  "witnessWhereof",
-                                                  $event.target.value
-                                                )
-                                              }
-                                            }
-                                          })
-                                        ]
-                                      ),
                                       _vm._v(" "),
                                       _c(
                                         "label",
