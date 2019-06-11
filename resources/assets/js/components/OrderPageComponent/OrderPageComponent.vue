@@ -608,7 +608,7 @@
                                 <div class="slider-order__slide slide-5">
                                     <form id="form-send-documents-to" @submit.prevent="isValidForms">
                                         <div class="slider-order__title">SEND DOCUMENTS TO:</div>
-                                        <div class="slider-order__body-left">
+                                        <div class="slider-order__body-left" v-if="airWaybill">
                                             <div class="body-left">
                                                 <div class="slider-order__row">
                                                     <label class="slider-order__label slider-order__label-title">
@@ -701,7 +701,7 @@
                                             </div>
                                             <div class="body-bottom"
                                                  v-if="!foreignCheck || (foreignCheck && vehicleCheck)">
-                                                <div class="body-bottom__upload">Please, upload you ID photo</div>
+                                                <div class="body-bottom__upload">Please, upload you bill of sale</div>
                                                 <div class="upload-file-container">
                                                     <div class="upload-file-container__text">
                                                         <span class="upload-file-container__btn">Choose file</span>
@@ -996,6 +996,7 @@
                 businessCheck: false,
                 foreignCheck: false,
                 isValidateForms: false,
+                airWaybill: true,
                 einTitle: 'EIN/SS#',
                 sendOrderForm: {
                     typeTransport: 'air',
@@ -1289,6 +1290,19 @@
             },
             transport(value) {
                 // console.log(value);
+                switch (value) {
+                    case 'air':
+                        this.airWaybill = true;
+                        break;
+                    case 'ocean':
+                        this.airWaybill = false;
+                        break;
+                    case 'ground':
+                        this.airWaybill = false;
+                        break;
+                    default:
+                        break;
+                }
                 this.sendOrderForm.typeTransport = value;
             }
         }

@@ -12838,6 +12838,7 @@ Vue.component('popup-rules-regulations', __webpack_require__(/*! ../PopupRulesRe
       businessCheck: false,
       foreignCheck: false,
       isValidateForms: false,
+      airWaybill: true,
       einTitle: 'EIN/SS#',
       sendOrderForm: {
         typeTransport: 'air',
@@ -13137,6 +13138,23 @@ Vue.component('popup-rules-regulations', __webpack_require__(/*! ../PopupRulesRe
     },
     transport: function transport(value) {
       // console.log(value);
+      switch (value) {
+        case 'air':
+          this.airWaybill = true;
+          break;
+
+        case 'ocean':
+          this.airWaybill = false;
+          break;
+
+        case 'ground':
+          this.airWaybill = false;
+          break;
+
+        default:
+          break;
+      }
+
       this.sendOrderForm.typeTransport = value;
     }
   }
@@ -67870,84 +67888,90 @@ var render = function() {
                                 [_vm._v("SEND DOCUMENTS TO:")]
                               ),
                               _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "slider-order__body-left" },
-                                [
-                                  _c("div", { staticClass: "body-left" }, [
-                                    _c(
-                                      "div",
-                                      { staticClass: "slider-order__row" },
-                                      [
+                              _vm.airWaybill
+                                ? _c(
+                                    "div",
+                                    { staticClass: "slider-order__body-left" },
+                                    [
+                                      _c("div", { staticClass: "body-left" }, [
                                         _c(
-                                          "label",
-                                          {
-                                            staticClass:
-                                              "slider-order__label slider-order__label-title"
-                                          },
+                                          "div",
+                                          { staticClass: "slider-order__row" },
                                           [
-                                            _vm._v(
-                                              "\n                                                    Air Waybill:\n                                                    "
-                                            ),
                                             _c(
-                                              "select",
+                                              "label",
                                               {
-                                                directives: [
-                                                  {
-                                                    name: "model",
-                                                    rawName: "v-model",
-                                                    value:
-                                                      _vm.sendOrderForm
-                                                        .sendDocuments.waybill,
-                                                    expression:
-                                                      "sendOrderForm.sendDocuments.waybill"
-                                                  }
-                                                ],
                                                 staticClass:
-                                                  "slider-order__select select-order",
-                                                attrs: { name: "airWaybill" },
-                                                on: {
-                                                  change: function($event) {
-                                                    var $$selectedVal = Array.prototype.filter
-                                                      .call(
-                                                        $event.target.options,
-                                                        function(o) {
-                                                          return o.selected
-                                                        }
-                                                      )
-                                                      .map(function(o) {
-                                                        var val =
-                                                          "_value" in o
-                                                            ? o._value
-                                                            : o.value
-                                                        return val
-                                                      })
-                                                    _vm.$set(
-                                                      _vm.sendOrderForm
-                                                        .sendDocuments,
-                                                      "waybill",
-                                                      $event.target.multiple
-                                                        ? $$selectedVal
-                                                        : $$selectedVal[0]
-                                                    )
-                                                  }
-                                                }
+                                                  "slider-order__label slider-order__label-title"
                                               },
                                               [
+                                                _vm._v(
+                                                  "\n                                                    Air Waybill:\n                                                    "
+                                                ),
                                                 _c(
-                                                  "option",
-                                                  { attrs: { value: "" } },
-                                                  [_vm._v("Choose")]
+                                                  "select",
+                                                  {
+                                                    directives: [
+                                                      {
+                                                        name: "model",
+                                                        rawName: "v-model",
+                                                        value:
+                                                          _vm.sendOrderForm
+                                                            .sendDocuments
+                                                            .waybill,
+                                                        expression:
+                                                          "sendOrderForm.sendDocuments.waybill"
+                                                      }
+                                                    ],
+                                                    staticClass:
+                                                      "slider-order__select select-order",
+                                                    attrs: {
+                                                      name: "airWaybill"
+                                                    },
+                                                    on: {
+                                                      change: function($event) {
+                                                        var $$selectedVal = Array.prototype.filter
+                                                          .call(
+                                                            $event.target
+                                                              .options,
+                                                            function(o) {
+                                                              return o.selected
+                                                            }
+                                                          )
+                                                          .map(function(o) {
+                                                            var val =
+                                                              "_value" in o
+                                                                ? o._value
+                                                                : o.value
+                                                            return val
+                                                          })
+                                                        _vm.$set(
+                                                          _vm.sendOrderForm
+                                                            .sendDocuments,
+                                                          "waybill",
+                                                          $event.target.multiple
+                                                            ? $$selectedVal
+                                                            : $$selectedVal[0]
+                                                        )
+                                                      }
+                                                    }
+                                                  },
+                                                  [
+                                                    _c(
+                                                      "option",
+                                                      { attrs: { value: "" } },
+                                                      [_vm._v("Choose")]
+                                                    )
+                                                  ]
                                                 )
                                               ]
                                             )
                                           ]
                                         )
-                                      ]
-                                    )
-                                  ])
-                                ]
-                              ),
+                                      ])
+                                    ]
+                                  )
+                                : _vm._e(),
                               _vm._v(" "),
                               _c("div", { staticClass: "slider-order__body" }, [
                                 _c("div", { staticClass: "body-left" }, [
@@ -68450,7 +68474,11 @@ var render = function() {
                                       _c(
                                         "div",
                                         { staticClass: "body-bottom__upload" },
-                                        [_vm._v("Please, upload you ID photo")]
+                                        [
+                                          _vm._v(
+                                            "Please, upload you bill of sale"
+                                          )
+                                        ]
                                       ),
                                       _vm._v(" "),
                                       _c(
