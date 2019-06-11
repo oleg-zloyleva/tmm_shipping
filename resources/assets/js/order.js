@@ -21,10 +21,10 @@ $.getJSON("./js/air_order.json", function (data) {
         $('[name="countryDoc"]').append($option);
     }
 
-    for (let i = 0; i < $airWaybill.length; i++) {
+    /*for (let i = 0; i < $airWaybill.length; i++) {
         let $option = '<option value="' + $airWaybill[i] + '">' + $airWaybill[i] + '</option>';
         $('[name="airWaybill"]').append($option);
-    }
+    }*/
 
     for (let i = 0; i < $notifyParty.length; i++) {
         let $option = '<option value="' + $notifyParty[i] + '">' + $notifyParty[i] + '</option>';

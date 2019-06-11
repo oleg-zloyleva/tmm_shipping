@@ -73,10 +73,12 @@
                                                     </label>
                                                 </div>
                                                 <div class="slider-order__row">
-                                                    <label class="slider-order__label">
+                                                    <label class="slider-order__label slider-order__label-required">
                                                         Address:
                                                         <input name="address"
                                                                class="slider-order__inp"
+                                                               v-validate="'required'"
+                                                               :class="{'required': errors.has('address')}"
                                                                v-model="sendOrderForm.shipper.address">
                                                     </label>
                                                 </div>
@@ -201,10 +203,12 @@
                                                     </label>
                                                 </div>
                                                 <div class="slider-order__row">
-                                                    <label class="slider-order__label">
+                                                    <label class="slider-order__label slider-order__label-required">
                                                         Address:
                                                         <input name="addressCon"
                                                                class="slider-order__inp"
+                                                               v-validate="'required'"
+                                                               :class="{'required': errors.has('addressCon')}"
                                                                v-model="sendOrderForm.consignee.address">
                                                     </label>
                                                 </div>
@@ -330,9 +334,12 @@
                                                     </label>
                                                 </div>
                                                 <div class="slider-order__row">
-                                                    <label class="slider-order__label">
+                                                    <label class="slider-order__label slider-order__label-required">
                                                         Address:
-                                                        <input name="address" class="slider-order__inp"
+                                                        <input name="address"
+                                                               class="slider-order__inp"
+                                                               v-validate="'required'"
+                                                               :class="{'required': errors.has('address')}"
                                                                v-model="sendOrderForm.notifyParty.address">
                                                     </label>
                                                 </div>
@@ -617,6 +624,8 @@
                                                                 class="slider-order__select select-order"
                                                                 v-model="sendOrderForm.sendDocuments.waybill">
                                                             <option value="">Choose</option>
+                                                            <option value="Same as shipper">Same as shipper</option>
+                                                            <option value="Same as consignee">Same as consignee</option>
                                                         </select>
                                                     </label>
                                                 </div>
@@ -645,9 +654,12 @@
                                                     </label>
                                                 </div>
                                                 <div class="slider-order__row">
-                                                    <label class="slider-order__label">
+                                                    <label class="slider-order__label slider-order__label-required">
                                                         Address:
-                                                        <input name="address" class="slider-order__inp"
+                                                        <input name="address"
+                                                               class="slider-order__inp"
+                                                               v-validate="'required'"
+                                                               :class="{'required': errors.has('address')}"
                                                                v-model="sendOrderForm.sendDocuments.address">
                                                     </label>
                                                 </div>

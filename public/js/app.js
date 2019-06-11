@@ -12820,6 +12820,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 Vue.component('popup-rules-regulations', __webpack_require__(/*! ../PopupRulesRegulations/PopupRulesRegulations */ "./resources/assets/js/components/PopupRulesRegulations/PopupRulesRegulations.vue").default);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -64204,13 +64216,22 @@ var render = function() {
                                     [
                                       _c(
                                         "label",
-                                        { staticClass: "slider-order__label" },
+                                        {
+                                          staticClass:
+                                            "slider-order__label slider-order__label-required"
+                                        },
                                         [
                                           _vm._v(
                                             "\n                                                    Address:\n                                                    "
                                           ),
                                           _c("input", {
                                             directives: [
+                                              {
+                                                name: "validate",
+                                                rawName: "v-validate",
+                                                value: "required",
+                                                expression: "'required'"
+                                              },
                                               {
                                                 name: "model",
                                                 rawName: "v-model",
@@ -64222,6 +64243,11 @@ var render = function() {
                                               }
                                             ],
                                             staticClass: "slider-order__inp",
+                                            class: {
+                                              required: _vm.errors.has(
+                                                "address"
+                                              )
+                                            },
                                             attrs: { name: "address" },
                                             domProps: {
                                               value:
@@ -64938,13 +64964,22 @@ var render = function() {
                                     [
                                       _c(
                                         "label",
-                                        { staticClass: "slider-order__label" },
+                                        {
+                                          staticClass:
+                                            "slider-order__label slider-order__label-required"
+                                        },
                                         [
                                           _vm._v(
                                             "\n                                                    Address:\n                                                    "
                                           ),
                                           _c("input", {
                                             directives: [
+                                              {
+                                                name: "validate",
+                                                rawName: "v-validate",
+                                                value: "required",
+                                                expression: "'required'"
+                                              },
                                               {
                                                 name: "model",
                                                 rawName: "v-model",
@@ -64956,6 +64991,11 @@ var render = function() {
                                               }
                                             ],
                                             staticClass: "slider-order__inp",
+                                            class: {
+                                              required: _vm.errors.has(
+                                                "addressCon"
+                                              )
+                                            },
                                             attrs: { name: "addressCon" },
                                             domProps: {
                                               value:
@@ -65711,13 +65751,22 @@ var render = function() {
                                     [
                                       _c(
                                         "label",
-                                        { staticClass: "slider-order__label" },
+                                        {
+                                          staticClass:
+                                            "slider-order__label slider-order__label-required"
+                                        },
                                         [
                                           _vm._v(
                                             "\n                                                    Address:\n                                                    "
                                           ),
                                           _c("input", {
                                             directives: [
+                                              {
+                                                name: "validate",
+                                                rawName: "v-validate",
+                                                value: "required",
+                                                expression: "'required'"
+                                              },
                                               {
                                                 name: "model",
                                                 rawName: "v-model",
@@ -65729,6 +65778,11 @@ var render = function() {
                                               }
                                             ],
                                             staticClass: "slider-order__inp",
+                                            class: {
+                                              required: _vm.errors.has(
+                                                "address"
+                                              )
+                                            },
                                             attrs: { name: "address" },
                                             domProps: {
                                               value:
@@ -67961,6 +68015,36 @@ var render = function() {
                                                       "option",
                                                       { attrs: { value: "" } },
                                                       [_vm._v("Choose")]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "option",
+                                                      {
+                                                        attrs: {
+                                                          value:
+                                                            "Same as shipper"
+                                                        }
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "Same as shipper"
+                                                        )
+                                                      ]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "option",
+                                                      {
+                                                        attrs: {
+                                                          value:
+                                                            "Same as consignee"
+                                                        }
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "Same as consignee"
+                                                        )
+                                                      ]
                                                     )
                                                   ]
                                                 )
@@ -68107,13 +68191,22 @@ var render = function() {
                                     [
                                       _c(
                                         "label",
-                                        { staticClass: "slider-order__label" },
+                                        {
+                                          staticClass:
+                                            "slider-order__label slider-order__label-required"
+                                        },
                                         [
                                           _vm._v(
                                             "\n                                                    Address:\n                                                    "
                                           ),
                                           _c("input", {
                                             directives: [
+                                              {
+                                                name: "validate",
+                                                rawName: "v-validate",
+                                                value: "required",
+                                                expression: "'required'"
+                                              },
                                               {
                                                 name: "model",
                                                 rawName: "v-model",
@@ -68125,6 +68218,11 @@ var render = function() {
                                               }
                                             ],
                                             staticClass: "slider-order__inp",
+                                            class: {
+                                              required: _vm.errors.has(
+                                                "address"
+                                              )
+                                            },
                                             attrs: { name: "address" },
                                             domProps: {
                                               value:
@@ -86339,17 +86437,16 @@ $.getJSON("./js/air_order.json", function (data) {
     $('[name="countryNot"]').append(_$option);
     $('[name="countryDoc"]').append(_$option);
   }
+  /*for (let i = 0; i < $airWaybill.length; i++) {
+      let $option = '<option value="' + $airWaybill[i] + '">' + $airWaybill[i] + '</option>';
+      $('[name="airWaybill"]').append($option);
+  }*/
 
-  for (var _i2 = 0; _i2 < $airWaybill.length; _i2++) {
-    var _$option2 = '<option value="' + $airWaybill[_i2] + '">' + $airWaybill[_i2] + '</option>';
 
-    $('[name="airWaybill"]').append(_$option2);
-  }
+  for (var _i2 = 0; _i2 < $notifyParty.length; _i2++) {
+    var _$option2 = '<option value="' + $notifyParty[_i2] + '">' + $notifyParty[_i2] + '</option>';
 
-  for (var _i3 = 0; _i3 < $notifyParty.length; _i3++) {
-    var _$option3 = '<option value="' + $notifyParty[_i3] + '">' + $notifyParty[_i3] + '</option>';
-
-    $('[name="notifyParty"]').append(_$option3);
+    $('[name="notifyParty"]').append(_$option2);
   }
 }); // ===== ORDER ===== //
 
