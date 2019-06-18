@@ -12898,6 +12898,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 Vue.component('popup-rules-regulations', __webpack_require__(/*! ../PopupRulesRegulations/PopupRulesRegulations */ "./resources/assets/js/components/PopupRulesRegulations/PopupRulesRegulations.vue").default);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -12909,6 +12923,8 @@ Vue.component('popup-rules-regulations', __webpack_require__(/*! ../PopupRulesRe
     var _this = this;
 
     return {
+      states: ["Alabama", "Alaska", "American Samoa", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "District Of Columbia", "Federated States Of Micronesia", "Florida", "Georgia", "Guam", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Marshall Islands", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Northern Mariana Islands", "Ohio", "Oklahoma", "Oregon", "Palau", "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virgin Islands", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"],
+      countries: ["Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla", "Antarctica", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "British Indian Ocean Territory", "Brunei Darussalam", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Central African Republic", "Chad", "Chile", "China", "Christmas Island", "Cocos (Keeling) Islands", "Colombia", "Comoros", "Congo, (Dem. Rep.)", "Congo, (Rep.)", "Cook Islands", "Costa Rica", "Cote d'Ivoire", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Falkland Islands", "Faroe Islands", "Fiji", "Finland", "France", "French Guiana", "French Polynesia", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guadeloupe", "Guam", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Holy See (Vatican City State)", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Installations in International Waters", "Iran, Islamic Republic of", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea, Democratic People's Republic of", "Korea, Republic of", "Kuwait", "Kyrgyzstan", "Lao People's Democratic Republic", "Latvia", "Lebanon", "Lesotho", "Liberia", "Liechtenstein", "Lithuania", "Luxembourg", "Macedonia, The former Yugoslav Republic of", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Martinique", "Mauritania", "Mauritius", "Mayotte", "Mexico", "Micronesia, Federated States of", "Moldova, Republic of", "Monaco", "Mongolia", "Montserrat", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Niue", "Norfolk Island", "Northern Mariana Islands", "Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Pitcairn", "Poland", "Portugal", "Puerto Rico", "Qatar", "Romania", "Russian Federation", "Rwanda", "Saint Helena", "Saint Kitts and Nevis", "Saint Lucia", "Saint Pierre and Miquelon", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia and Montenegro", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Georgia and the South Sandwich Islands", "Spain", "Sri Lanka", "Sudan", "Suriname", "Swaziland", "Sweden", "Switzerland", "Syrian Arab Republic", "Taiwan, Province of China", "Tajikistan", "Tanzania, United Republic of", "Thailand", "Timor-Leste", "Togo", "Tokelau", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks and Caicos Islands", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Viet Nam", "Virgin Islands, British", "Virgin Islands, U.S.", "Wallis and Futuna", "Western Sahara", "Yemen", "Zambia", "Zimbabwe"],
       transport: 'air',
       delivery: 'citizen',
       description: 'other',
@@ -13047,8 +13063,7 @@ Vue.component('popup-rules-regulations', __webpack_require__(/*! ../PopupRulesRe
         infinite: false,
         draggable: false,
         adaptiveHeight: true,
-        initialSlide: 3,
-        // ?????
+        // initialSlide: 3, // ?????
         customPaging: function customPaging(slider, i) {
           return _this.dots[i];
         }
@@ -13175,7 +13190,6 @@ Vue.component('popup-rules-regulations', __webpack_require__(/*! ../PopupRulesRe
       this.openRules = false;
     },
     einId: function einId(e) {
-      console.log(e.target.value);
       this.sendOrderForm.usppi.einTaxId = e.target.value;
     },
     next: function next() {
@@ -13225,17 +13239,10 @@ Vue.component('popup-rules-regulations', __webpack_require__(/*! ../PopupRulesRe
       }
     },
     description: function description(value) {
-      console.log(value);
+      // console.log(value);
       this.vehicleCheck = !this.vehicleCheck;
       this.description = value;
-
-      if (value === 'vehicle') {
-        this.typeOfGoods = true;
-        this.reInit();
-      } else {
-        this.typeOfGoods = false;
-        this.reInit();
-      }
+      value === 'vehicle' ? this.typeOfGoods = true : this.typeOfGoods = false;
     },
     transport: function transport(value) {
       // console.log(value);
@@ -64652,8 +64659,21 @@ var render = function() {
                                                 "option",
                                                 { attrs: { value: "" } },
                                                 [_vm._v("Choose state")]
-                                              )
-                                            ]
+                                              ),
+                                              _vm._v(" "),
+                                              _vm._l(_vm.states, function(
+                                                state
+                                              ) {
+                                                return _c(
+                                                  "option",
+                                                  {
+                                                    domProps: { value: state }
+                                                  },
+                                                  [_vm._v(_vm._s(state))]
+                                                )
+                                              })
+                                            ],
+                                            2
                                           )
                                         ]
                                       )
@@ -64781,8 +64801,21 @@ var render = function() {
                                                 "option",
                                                 { attrs: { value: "" } },
                                                 [_vm._v("Choose country")]
-                                              )
-                                            ]
+                                              ),
+                                              _vm._v(" "),
+                                              _vm._l(_vm.countries, function(
+                                                country
+                                              ) {
+                                                return _c(
+                                                  "option",
+                                                  {
+                                                    domProps: { value: country }
+                                                  },
+                                                  [_vm._v(_vm._s(country))]
+                                                )
+                                              })
+                                            ],
+                                            2
                                           )
                                         ]
                                       )
@@ -65409,8 +65442,21 @@ var render = function() {
                                                 "option",
                                                 { attrs: { value: "" } },
                                                 [_vm._v("Choose state")]
-                                              )
-                                            ]
+                                              ),
+                                              _vm._v(" "),
+                                              _vm._l(_vm.states, function(
+                                                state
+                                              ) {
+                                                return _c(
+                                                  "option",
+                                                  {
+                                                    domProps: { value: state }
+                                                  },
+                                                  [_vm._v(_vm._s(state))]
+                                                )
+                                              })
+                                            ],
+                                            2
                                           )
                                         ]
                                       )
@@ -65538,8 +65584,21 @@ var render = function() {
                                                 "option",
                                                 { attrs: { value: "" } },
                                                 [_vm._v("Choose country")]
-                                              )
-                                            ]
+                                              ),
+                                              _vm._v(" "),
+                                              _vm._l(_vm.countries, function(
+                                                country
+                                              ) {
+                                                return _c(
+                                                  "option",
+                                                  {
+                                                    domProps: { value: country }
+                                                  },
+                                                  [_vm._v(_vm._s(country))]
+                                                )
+                                              })
+                                            ],
+                                            2
                                           )
                                         ]
                                       )
@@ -65703,6 +65762,26 @@ var render = function() {
                                                   "option",
                                                   { attrs: { value: "" } },
                                                   [_vm._v("Choose")]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "option",
+                                                  {
+                                                    attrs: {
+                                                      value: "Same as shipper"
+                                                    }
+                                                  },
+                                                  [_vm._v("Same as shipper")]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "option",
+                                                  {
+                                                    attrs: {
+                                                      value: "Same as consignee"
+                                                    }
+                                                  },
+                                                  [_vm._v("Same as consignee")]
                                                 )
                                               ]
                                             )
@@ -66461,8 +66540,21 @@ var render = function() {
                                                 "option",
                                                 { attrs: { value: "" } },
                                                 [_vm._v("Choose state")]
-                                              )
-                                            ]
+                                              ),
+                                              _vm._v(" "),
+                                              _vm._l(_vm.states, function(
+                                                state
+                                              ) {
+                                                return _c(
+                                                  "option",
+                                                  {
+                                                    domProps: { value: state }
+                                                  },
+                                                  [_vm._v(_vm._s(state))]
+                                                )
+                                              })
+                                            ],
+                                            2
                                           )
                                         ]
                                       )
@@ -66591,8 +66683,21 @@ var render = function() {
                                                 "option",
                                                 { attrs: { value: "" } },
                                                 [_vm._v("Choose country")]
-                                              )
-                                            ]
+                                              ),
+                                              _vm._v(" "),
+                                              _vm._l(_vm.countries, function(
+                                                country
+                                              ) {
+                                                return _c(
+                                                  "option",
+                                                  {
+                                                    domProps: { value: country }
+                                                  },
+                                                  [_vm._v(_vm._s(country))]
+                                                )
+                                              })
+                                            ],
+                                            2
                                           )
                                         ]
                                       )
@@ -67512,58 +67617,87 @@ var render = function() {
                                             _vm._v(
                                               "\n                                                From:\n                                                "
                                             ),
-                                            _c("select", {
-                                              directives: [
-                                                {
-                                                  name: "validate",
-                                                  rawName: "v-validate",
-                                                  value: "required",
-                                                  expression: "'required'"
-                                                },
-                                                {
-                                                  name: "model",
-                                                  rawName: "v-model",
-                                                  value:
-                                                    _vm.sendOrderForm
-                                                      .descriptionOfGoods.from,
-                                                  expression:
-                                                    "sendOrderForm.descriptionOfGoods.from"
-                                                }
-                                              ],
-                                              staticClass: "slider-order__inp",
-                                              class: {
-                                                required: _vm.errors.has(
-                                                  "itineraryFrom"
-                                                )
-                                              },
-                                              attrs: { name: "itineraryFrom" },
-                                              on: {
-                                                change: function($event) {
-                                                  var $$selectedVal = Array.prototype.filter
-                                                    .call(
-                                                      $event.target.options,
-                                                      function(o) {
-                                                        return o.selected
-                                                      }
-                                                    )
-                                                    .map(function(o) {
-                                                      var val =
-                                                        "_value" in o
-                                                          ? o._value
-                                                          : o.value
-                                                      return val
-                                                    })
-                                                  _vm.$set(
-                                                    _vm.sendOrderForm
-                                                      .descriptionOfGoods,
-                                                    "from",
-                                                    $event.target.multiple
-                                                      ? $$selectedVal
-                                                      : $$selectedVal[0]
+                                            _c(
+                                              "select",
+                                              {
+                                                directives: [
+                                                  {
+                                                    name: "validate",
+                                                    rawName: "v-validate",
+                                                    value: "required",
+                                                    expression: "'required'"
+                                                  },
+                                                  {
+                                                    name: "model",
+                                                    rawName: "v-model",
+                                                    value:
+                                                      _vm.sendOrderForm
+                                                        .descriptionOfGoods
+                                                        .from,
+                                                    expression:
+                                                      "sendOrderForm.descriptionOfGoods.from"
+                                                  }
+                                                ],
+                                                staticClass:
+                                                  "slider-order__inp",
+                                                class: {
+                                                  required: _vm.errors.has(
+                                                    "itineraryFrom"
                                                   )
+                                                },
+                                                attrs: {
+                                                  name: "itineraryFrom"
+                                                },
+                                                on: {
+                                                  change: function($event) {
+                                                    var $$selectedVal = Array.prototype.filter
+                                                      .call(
+                                                        $event.target.options,
+                                                        function(o) {
+                                                          return o.selected
+                                                        }
+                                                      )
+                                                      .map(function(o) {
+                                                        var val =
+                                                          "_value" in o
+                                                            ? o._value
+                                                            : o.value
+                                                        return val
+                                                      })
+                                                    _vm.$set(
+                                                      _vm.sendOrderForm
+                                                        .descriptionOfGoods,
+                                                      "from",
+                                                      $event.target.multiple
+                                                        ? $$selectedVal
+                                                        : $$selectedVal[0]
+                                                    )
+                                                  }
                                                 }
-                                              }
-                                            })
+                                              },
+                                              [
+                                                _c(
+                                                  "option",
+                                                  { attrs: { value: "" } },
+                                                  [_vm._v("Choose country")]
+                                                ),
+                                                _vm._v(" "),
+                                                _vm._l(_vm.countries, function(
+                                                  country
+                                                ) {
+                                                  return _c(
+                                                    "option",
+                                                    {
+                                                      domProps: {
+                                                        value: country
+                                                      }
+                                                    },
+                                                    [_vm._v(_vm._s(country))]
+                                                  )
+                                                })
+                                              ],
+                                              2
+                                            )
                                           ]
                                         ),
                                         _vm._v(" "),
@@ -67577,47 +67711,73 @@ var render = function() {
                                             _vm._v(
                                               "\n                                                To:\n                                                "
                                             ),
-                                            _c("select", {
-                                              directives: [
-                                                {
-                                                  name: "model",
-                                                  rawName: "v-model",
-                                                  value:
-                                                    _vm.sendOrderForm
-                                                      .descriptionOfGoods.to,
-                                                  expression:
-                                                    "sendOrderForm.descriptionOfGoods.to"
-                                                }
-                                              ],
-                                              staticClass: "slider-order__inp",
-                                              attrs: { name: "itineraryTo" },
-                                              on: {
-                                                change: function($event) {
-                                                  var $$selectedVal = Array.prototype.filter
-                                                    .call(
-                                                      $event.target.options,
-                                                      function(o) {
-                                                        return o.selected
-                                                      }
+                                            _c(
+                                              "select",
+                                              {
+                                                directives: [
+                                                  {
+                                                    name: "model",
+                                                    rawName: "v-model",
+                                                    value:
+                                                      _vm.sendOrderForm
+                                                        .descriptionOfGoods.to,
+                                                    expression:
+                                                      "sendOrderForm.descriptionOfGoods.to"
+                                                  }
+                                                ],
+                                                staticClass:
+                                                  "slider-order__inp",
+                                                attrs: { name: "itineraryTo" },
+                                                on: {
+                                                  change: function($event) {
+                                                    var $$selectedVal = Array.prototype.filter
+                                                      .call(
+                                                        $event.target.options,
+                                                        function(o) {
+                                                          return o.selected
+                                                        }
+                                                      )
+                                                      .map(function(o) {
+                                                        var val =
+                                                          "_value" in o
+                                                            ? o._value
+                                                            : o.value
+                                                        return val
+                                                      })
+                                                    _vm.$set(
+                                                      _vm.sendOrderForm
+                                                        .descriptionOfGoods,
+                                                      "to",
+                                                      $event.target.multiple
+                                                        ? $$selectedVal
+                                                        : $$selectedVal[0]
                                                     )
-                                                    .map(function(o) {
-                                                      var val =
-                                                        "_value" in o
-                                                          ? o._value
-                                                          : o.value
-                                                      return val
-                                                    })
-                                                  _vm.$set(
-                                                    _vm.sendOrderForm
-                                                      .descriptionOfGoods,
-                                                    "to",
-                                                    $event.target.multiple
-                                                      ? $$selectedVal
-                                                      : $$selectedVal[0]
-                                                  )
+                                                  }
                                                 }
-                                              }
-                                            })
+                                              },
+                                              [
+                                                _c(
+                                                  "option",
+                                                  { attrs: { value: "" } },
+                                                  [_vm._v("Choose country")]
+                                                ),
+                                                _vm._v(" "),
+                                                _vm._l(_vm.countries, function(
+                                                  country
+                                                ) {
+                                                  return _c(
+                                                    "option",
+                                                    {
+                                                      domProps: {
+                                                        value: country
+                                                      }
+                                                    },
+                                                    [_vm._v(_vm._s(country))]
+                                                  )
+                                                })
+                                              ],
+                                              2
+                                            )
                                           ]
                                         )
                                       ]
@@ -68970,8 +69130,23 @@ var render = function() {
                                                       "option",
                                                       { attrs: { value: "" } },
                                                       [_vm._v("Choose state")]
-                                                    )
-                                                  ]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _vm._l(_vm.states, function(
+                                                      state
+                                                    ) {
+                                                      return _c(
+                                                        "option",
+                                                        {
+                                                          domProps: {
+                                                            value: state
+                                                          }
+                                                        },
+                                                        [_vm._v(_vm._s(state))]
+                                                      )
+                                                    })
+                                                  ],
+                                                  2
                                                 )
                                               ]
                                             )
@@ -69112,8 +69287,28 @@ var render = function() {
                                                       "option",
                                                       { attrs: { value: "" } },
                                                       [_vm._v("Choose country")]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _vm._l(
+                                                      _vm.countries,
+                                                      function(country) {
+                                                        return _c(
+                                                          "option",
+                                                          {
+                                                            domProps: {
+                                                              value: country
+                                                            }
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              _vm._s(country)
+                                                            )
+                                                          ]
+                                                        )
+                                                      }
                                                     )
-                                                  ]
+                                                  ],
+                                                  2
                                                 )
                                               ]
                                             )
@@ -86957,36 +87152,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// === SELECT ADD === //
-$.getJSON("./js/air_order.json", function (data) {
-  console.log('%c data air order', 'color: red; font-weight: 600; font-size: 16px;', data);
-  var $state = data.shipper.state;
-  var $country = data.shipper.country;
-  var $notifyParty = data.notifyParty.notifyParty;
-
-  for (var i = 0; i < $state.length; i++) {
-    var $option = '<option value="' + $state[i] + '">' + $state[i] + '</option>';
-    $('[name="state"]').append($option);
-  }
-
-  for (var _i = 0; _i < $country.length; _i++) {
-    var _$option = '<option value="' + $country[_i] + '">' + $country[_i] + '</option>';
-
-    $('[name="country"]').append(_$option);
-    $('[name="countryCon"]').append(_$option);
-    $('[name="countryNot"]').append(_$option);
-    $('[name="countryDoc"]').append(_$option);
-    $('[name="itineraryFrom"]').append(_$option);
-    $('[name="itineraryTo"]').append(_$option);
-  }
-
-  for (var _i2 = 0; _i2 < $notifyParty.length; _i2++) {
-    var _$option2 = '<option value="' + $notifyParty[_i2] + '">' + $notifyParty[_i2] + '</option>';
-
-    $('[name="notifyParty"]').append(_$option2);
-  }
-}); // ===== ORDER ===== //
-
+// ===== ORDER ===== //
 $('body').on('click', '.buttons-control__btn', function () {
   var $this = $(this);
 

@@ -4042,10 +4042,12 @@ select.required {
   font-size: 14px;
   padding: 10px;
   cursor: pointer;
+  transition: all 0.1s linear;
 }
 
 #order .buttons-control__btn.active {
   color: #272829;
+  font-weight: 600;
 }
 
 #order .order-block {
@@ -4077,7 +4079,7 @@ select.required {
 }
 
 #order .slider-order__slide.slide-5 {
-  min-height: 483px;
+  min-height: 50px;
 }
 
 #order .slider-order__slide.slide-7 {
@@ -4115,7 +4117,7 @@ select.required {
 #order .slider-order .checked-block {
   display: inline-flex;
   align-items: center;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   margin-left: 30px;
 }
 
@@ -4395,7 +4397,7 @@ select.required {
   text-align: left;
   padding: 0 5px;
   margin-left: 15px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: normal;
   box-shadow: none;
 }
@@ -4616,10 +4618,6 @@ select.required {
 @media screen and (max-width: 1199px) {
   #order .buttons-control__btn {
     width: 220px;
-  }
-
-  #order .buttons-control__btn.active {
-    color: #272829;
   }
 
   #order .slider-order__body-left {

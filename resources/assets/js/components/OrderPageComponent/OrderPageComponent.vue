@@ -130,6 +130,7 @@
                                                                 class="slider-order__select select-order"
                                                                 v-model="sendOrderForm.shipper.state">
                                                             <option value="">Choose state</option>
+                                                            <option v-for="state in states" :value="state">{{ state }}</option>
                                                         </select>
                                                     </label>
                                                 </div>
@@ -149,6 +150,7 @@
                                                                 :class="{'required': errors.has('country')}"
                                                                 v-model="sendOrderForm.shipper.country">
                                                             <option value="">Choose country</option>
+                                                            <option v-for="country in countries" :value="country">{{ country }}</option>
                                                         </select>
                                                     </label>
                                                 </div>
@@ -259,6 +261,7 @@
                                                         <select name="state" class="slider-order__select select-order"
                                                                 v-model="sendOrderForm.consignee.state">
                                                             <option value="">Choose state</option>
+                                                            <option v-for="state in states" :value="state">{{ state }}</option>
                                                         </select>
                                                     </label>
                                                 </div>
@@ -278,6 +281,7 @@
                                                                 :class="{'required': errors.has('countryCon')}"
                                                                 v-model="sendOrderForm.consignee.country">
                                                             <option value="">Choose country</option>
+                                                            <option v-for="country in countries" :value="country">{{ country }}</option>
                                                         </select>
                                                     </label>
                                                 </div>
@@ -307,6 +311,8 @@
                                                                 :class="{'required': errors.has('notifyParty')}"
                                                                 v-model="sendOrderForm.notifyParty.notifyParty">
                                                             <option value="">Choose</option>
+                                                            <option value="Same as shipper">Same as shipper</option>
+                                                            <option value="Same as consignee">Same as consignee</option>
                                                         </select>
                                                     </label>
                                                 </div>
@@ -425,6 +431,7 @@
                                                                 class="slider-order__select select-order"
                                                                 v-model="sendOrderForm.notifyParty.state">
                                                             <option value="">Choose state</option>
+                                                            <option v-for="state in states" :value="state">{{ state }}</option>
                                                         </select>
                                                     </label>
                                                 </div>
@@ -444,6 +451,7 @@
                                                                 :class="{'required': errors.has('countryNot')}"
                                                                 v-model="sendOrderForm.notifyParty.country">
                                                             <option value="">Choose country</option>
+                                                            <option v-for="country in countries" :value="country">{{ country }}</option>
                                                         </select>
                                                     </label>
                                                 </div>
@@ -554,6 +562,8 @@
                                                             v-validate="'required'"
                                                             :class="{'required': errors.has('itineraryFrom')}"
                                                             v-model="sendOrderForm.descriptionOfGoods.from">
+                                                        <option value="">Choose country</option>
+                                                        <option v-for="country in countries" :value="country">{{ country }}</option>
                                                     </select>
                                                 </label>
                                                 <label class="slider-order__label slider-order__label-required slider-order__label-to">
@@ -561,6 +571,8 @@
                                                     <select name="itineraryTo"
                                                             class="slider-order__inp"
                                                             v-model="sendOrderForm.descriptionOfGoods.to">
+                                                        <option value="">Choose country</option>
+                                                        <option v-for="country in countries" :value="country">{{ country }}</option>
                                                     </select>
                                                 </label>
                                             </div>
@@ -746,6 +758,7 @@
                                                         <select name="state" class="slider-order__select select-order"
                                                                 v-model="sendOrderForm.sendDocuments.state">
                                                             <option value="">Choose state</option>
+                                                            <option v-for="state in states" :value="state">{{ state }}</option>
                                                         </select>
                                                     </label>
                                                 </div>
@@ -765,6 +778,7 @@
                                                                 :class="{'required': errors.has('countryDoc')}"
                                                                 v-model="sendOrderForm.sendDocuments.country">
                                                             <option value="">Choose country</option>
+                                                            <option v-for="country in countries" :value="country">{{ country }}</option>
                                                         </select>
                                                     </label>
                                                 </div>
@@ -1067,6 +1081,300 @@
         components: {Slick},
         data() {
             return {
+                states: [
+                    "Alabama",
+                    "Alaska",
+                    "American Samoa",
+                    "Arizona",
+                    "Arkansas",
+                    "California",
+                    "Colorado",
+                    "Connecticut",
+                    "Delaware",
+                    "District Of Columbia",
+                    "Federated States Of Micronesia",
+                    "Florida",
+                    "Georgia",
+                    "Guam",
+                    "Hawaii",
+                    "Idaho",
+                    "Illinois",
+                    "Indiana",
+                    "Iowa",
+                    "Kansas",
+                    "Kentucky",
+                    "Louisiana",
+                    "Maine",
+                    "Marshall Islands",
+                    "Maryland",
+                    "Massachusetts",
+                    "Michigan",
+                    "Minnesota",
+                    "Mississippi",
+                    "Missouri",
+                    "Montana",
+                    "Nebraska",
+                    "Nevada",
+                    "New Hampshire",
+                    "New Jersey",
+                    "New Mexico",
+                    "New York",
+                    "North Carolina",
+                    "North Dakota",
+                    "Northern Mariana Islands",
+                    "Ohio",
+                    "Oklahoma",
+                    "Oregon",
+                    "Palau",
+                    "Pennsylvania",
+                    "Puerto Rico",
+                    "Rhode Island",
+                    "South Carolina",
+                    "South Dakota",
+                    "Tennessee",
+                    "Texas",
+                    "Utah",
+                    "Vermont",
+                    "Virgin Islands",
+                    "Virginia",
+                    "Washington",
+                    "West Virginia",
+                    "Wisconsin",
+                    "Wyoming"
+                ],
+                countries: [
+                    "Afghanistan",
+                    "Albania",
+                    "Algeria",
+                    "American Samoa",
+                    "Andorra",
+                    "Angola",
+                    "Anguilla",
+                    "Antarctica",
+                    "Antigua and Barbuda",
+                    "Argentina",
+                    "Armenia",
+                    "Aruba",
+                    "Australia",
+                    "Austria",
+                    "Azerbaijan",
+                    "Bahamas",
+                    "Bahrain",
+                    "Bangladesh",
+                    "Barbados",
+                    "Belarus",
+                    "Belgium",
+                    "Belize",
+                    "Benin",
+                    "Bermuda",
+                    "Bhutan",
+                    "Bolivia",
+                    "Bosnia and Herzegovina",
+                    "Botswana",
+                    "Brazil",
+                    "British Indian Ocean Territory",
+                    "Brunei Darussalam",
+                    "Bulgaria",
+                    "Burkina Faso",
+                    "Burundi",
+                    "Cambodia",
+                    "Cameroon",
+                    "Canada",
+                    "Cape Verde",
+                    "Cayman Islands",
+                    "Central African Republic",
+                    "Chad",
+                    "Chile",
+                    "China",
+                    "Christmas Island",
+                    "Cocos (Keeling) Islands",
+                    "Colombia",
+                    "Comoros",
+                    "Congo, (Dem. Rep.)",
+                    "Congo, (Rep.)",
+                    "Cook Islands",
+                    "Costa Rica",
+                    "Cote d'Ivoire",
+                    "Croatia",
+                    "Cuba",
+                    "Cyprus",
+                    "Czech Republic",
+                    "Denmark",
+                    "Djibouti",
+                    "Dominica",
+                    "Dominican Republic",
+                    "Ecuador",
+                    "Egypt",
+                    "El Salvador",
+                    "Equatorial Guinea",
+                    "Eritrea",
+                    "Estonia",
+                    "Ethiopia",
+                    "Falkland Islands",
+                    "Faroe Islands",
+                    "Fiji",
+                    "Finland",
+                    "France",
+                    "French Guiana",
+                    "French Polynesia",
+                    "Gabon",
+                    "Gambia",
+                    "Georgia",
+                    "Germany",
+                    "Ghana",
+                    "Gibraltar",
+                    "Greece",
+                    "Greenland",
+                    "Grenada",
+                    "Guadeloupe",
+                    "Guam",
+                    "Guatemala",
+                    "Guinea",
+                    "Guinea-Bissau",
+                    "Guyana",
+                    "Haiti",
+                    "Holy See (Vatican City State)",
+                    "Honduras",
+                    "Hong Kong",
+                    "Hungary",
+                    "Iceland",
+                    "India",
+                    "Indonesia",
+                    "Installations in International Waters",
+                    "Iran, Islamic Republic of",
+                    "Iraq",
+                    "Ireland",
+                    "Israel",
+                    "Italy",
+                    "Jamaica",
+                    "Japan",
+                    "Jordan",
+                    "Kazakhstan",
+                    "Kenya",
+                    "Kiribati",
+                    "Korea, Democratic People's Republic of",
+                    "Korea, Republic of",
+                    "Kuwait",
+                    "Kyrgyzstan",
+                    "Lao People's Democratic Republic",
+                    "Latvia",
+                    "Lebanon",
+                    "Lesotho",
+                    "Liberia",
+                    "Liechtenstein",
+                    "Lithuania",
+                    "Luxembourg",
+                    "Macedonia, The former Yugoslav Republic of",
+                    "Madagascar",
+                    "Malawi",
+                    "Malaysia",
+                    "Maldives",
+                    "Mali",
+                    "Malta",
+                    "Marshall Islands",
+                    "Martinique",
+                    "Mauritania",
+                    "Mauritius",
+                    "Mayotte",
+                    "Mexico",
+                    "Micronesia, Federated States of",
+                    "Moldova, Republic of",
+                    "Monaco",
+                    "Mongolia",
+                    "Montserrat",
+                    "Morocco",
+                    "Mozambique",
+                    "Myanmar",
+                    "Namibia",
+                    "Nauru",
+                    "Nepal",
+                    "Netherlands",
+                    "Netherlands Antilles",
+                    "New Caledonia",
+                    "New Zealand",
+                    "Nicaragua",
+                    "Niger",
+                    "Nigeria",
+                    "Niue",
+                    "Norfolk Island",
+                    "Northern Mariana Islands",
+                    "Norway",
+                    "Oman",
+                    "Pakistan",
+                    "Palau",
+                    "Panama",
+                    "Papua New Guinea",
+                    "Paraguay",
+                    "Peru",
+                    "Philippines",
+                    "Pitcairn",
+                    "Poland",
+                    "Portugal",
+                    "Puerto Rico",
+                    "Qatar",
+                    "Romania",
+                    "Russian Federation",
+                    "Rwanda",
+                    "Saint Helena",
+                    "Saint Kitts and Nevis",
+                    "Saint Lucia",
+                    "Saint Pierre and Miquelon",
+                    "Saint Vincent and the Grenadines",
+                    "Samoa",
+                    "San Marino",
+                    "Sao Tome and Principe",
+                    "Saudi Arabia",
+                    "Senegal",
+                    "Serbia and Montenegro",
+                    "Seychelles",
+                    "Sierra Leone",
+                    "Singapore",
+                    "Slovakia",
+                    "Slovenia",
+                    "Solomon Islands",
+                    "Somalia",
+                    "South Africa",
+                    "South Georgia and the South Sandwich Islands",
+                    "Spain",
+                    "Sri Lanka",
+                    "Sudan",
+                    "Suriname",
+                    "Swaziland",
+                    "Sweden",
+                    "Switzerland",
+                    "Syrian Arab Republic",
+                    "Taiwan, Province of China",
+                    "Tajikistan",
+                    "Tanzania, United Republic of",
+                    "Thailand",
+                    "Timor-Leste",
+                    "Togo",
+                    "Tokelau",
+                    "Tonga",
+                    "Trinidad and Tobago",
+                    "Tunisia",
+                    "Turkey",
+                    "Turkmenistan",
+                    "Turks and Caicos Islands",
+                    "Tuvalu",
+                    "Uganda",
+                    "Ukraine",
+                    "United Arab Emirates",
+                    "United Kingdom",
+                    "United States",
+                    "Uruguay",
+                    "Uzbekistan",
+                    "Vanuatu",
+                    "Venezuela",
+                    "Viet Nam",
+                    "Virgin Islands, British",
+                    "Virgin Islands, U.S.",
+                    "Wallis and Futuna",
+                    "Western Sahara",
+                    "Yemen",
+                    "Zambia",
+                    "Zimbabwe"
+                ],
                 transport: 'air',
                 delivery: 'citizen',
                 description: 'other',
@@ -1205,7 +1513,7 @@
                     infinite: false,
                     draggable: false,
                     adaptiveHeight: true,
-                    initialSlide: 3, // ?????
+                    // initialSlide: 3, // ?????
                     customPaging: (slider, i) => {
                         return this.dots[i];
                     }
@@ -1330,7 +1638,6 @@
                 this.openRules = false;
             },
             einId(e) {
-                console.log(e.target.value);
                 this.sendOrderForm.usppi.einTaxId = e.target.value;
             },
 
@@ -1376,16 +1683,10 @@
                 }
             },
             description(value) {
-                console.log(value);
+                // console.log(value);
                 this.vehicleCheck = !this.vehicleCheck;
                 this.description = value;
-                if (value === 'vehicle') {
-                    this.typeOfGoods = true;
-                    this.reInit();
-                } else {
-                    this.typeOfGoods = false;
-                    this.reInit();
-                }
+                (value === 'vehicle') ? this.typeOfGoods = true : this.typeOfGoods = false;
             },
             transport(value) {
                 // console.log(value);

@@ -21,9 +21,11 @@
       font-size: 14px;
       padding: 10px;
       cursor: pointer;
+      transition: all .1s linear;
 
       &.active {
         color: $colorDarkGrey;
+        font-weight: 600;
       }
     }
   }
@@ -55,7 +57,7 @@
       }
 
       &.slide-5 {
-        min-height: 483px;
+        min-height: 50px;
       }
 
       &.slide-7 {
@@ -94,7 +96,7 @@
     .checked-block {
       display: inline-flex;
       align-items: center;
-      margin-bottom: 50px;
+      margin-bottom: 20px;
       margin-left: 30px;
 
       &__label {
@@ -377,7 +379,7 @@
     text-align: left;
     padding: 0 5px;
     margin-left: 15px;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: normal;
     box-shadow: none;
   }
@@ -610,10 +612,6 @@
     .buttons-control {
       &__btn {
         width: 220px;
-
-        &.active {
-          color: $colorDarkGrey;
-        }
       }
     }
 
