@@ -889,7 +889,7 @@
     ]
   },
   "notifyParty": {
-    "notifyParty": ["Same as shipper", "Same as consignee", "Same as title"],
+    "notifyParty": ["Same as shipper", "Same as consignee"],
     "state": [
       "Alabama",
       "Alaska",

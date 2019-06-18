@@ -49,7 +49,8 @@
                                                                class="slider-order__inp"
                                                                v-validate="'required'"
                                                                :class="{'required': errors.has('ein')}"
-                                                               v-model="sendOrderForm.shipper.ein">
+                                                               v-model="sendOrderForm.shipper.ein"
+                                                               @input="einId">
                                                     </label>
                                                 </div>
                                                 <div class="slider-order__row">
@@ -311,6 +312,68 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <!-- ADD NEW BLOCK FOR AIR AND OCEAN-->
+                                        <div class="add-new-block" v-if="showNewNotifyBlock">
+                                            <span class="btn-add-new" @click="addNewNotifyBlock = !addNewNotifyBlock">Add new</span>
+                                            <div class="add-new" v-if="addNewNotifyBlock">
+                                                <div class="add-new__left">
+                                                    <div class="slider-order__row">
+                                                        <label class="slider-order__label slider-order__label-required">
+                                                            First name:
+                                                            <input name="firstName"
+                                                                   class="slider-order__inp"
+                                                                   v-validate="'required'"
+                                                                   :class="{'required': errors.has('firstName')}"
+                                                                   v-model="sendOrderForm.notifyParty.addNew.firstName">
+                                                        </label>
+                                                    </div>
+                                                    <div class="slider-order__row">
+                                                        <label class="slider-order__label slider-order__label-required">
+                                                            Second name:
+                                                            <input name="secondName"
+                                                                   class="slider-order__inp"
+                                                                   v-validate="'required'"
+                                                                   :class="{'required': errors.has('secondName')}"
+                                                                   v-model="sendOrderForm.notifyParty.addNew.secondName">
+                                                        </label>
+                                                    </div>
+                                                    <div class="slider-order__row">
+                                                        <label class="slider-order__label slider-order__label-required">
+                                                            Address:
+                                                            <input name="address"
+                                                                   class="slider-order__inp"
+                                                                   v-validate="'required'"
+                                                                   :class="{'required': errors.has('address')}"
+                                                                   v-model="sendOrderForm.notifyParty.addNew.address">
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="add-new__right">
+                                                    <div class="slider-order__row">
+                                                        <label class="slider-order__label slider-order__label-required">
+                                                            E-mail:
+                                                            <input name="email"
+                                                                   class="slider-order__inp"
+                                                                   v-validate="'required'"
+                                                                   :class="{'required': errors.has('email')}"
+                                                                   v-model="sendOrderForm.notifyParty.addNew.email">
+                                                        </label>
+                                                    </div>
+                                                    <div class="slider-order__row">
+                                                        <label class="slider-order__label slider-order__label-required">
+                                                            Phone:
+                                                            <input name="phone"
+                                                                   class="slider-order__inp"
+                                                                   v-validate="'required'"
+                                                                   :class="{'required': errors.has('phone')}"
+                                                                   v-model="sendOrderForm.notifyParty.addNew.phone">
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <div class="slider-order__body">
                                             <div class="body-left">
                                                 <div class="slider-order__row">
@@ -486,17 +549,19 @@
                                                 <span class="itinerary">ITINERARY</span>
                                                 <label class="slider-order__label slider-order__label-required slider-order__label-from">
                                                     From:
-                                                    <input name="itineraryFrom"
-                                                           class="slider-order__inp"
-                                                           v-validate="'required'"
-                                                           :class="{'required': errors.has('itineraryFrom')}"
-                                                           v-model="sendOrderForm.descriptionOfGoods.from">
+                                                    <select name="itineraryFrom"
+                                                            class="slider-order__inp"
+                                                            v-validate="'required'"
+                                                            :class="{'required': errors.has('itineraryFrom')}"
+                                                            v-model="sendOrderForm.descriptionOfGoods.from">
+                                                    </select>
                                                 </label>
                                                 <label class="slider-order__label slider-order__label-required slider-order__label-to">
                                                     To:
-                                                    <input name="itineraryTo"
-                                                           class="slider-order__inp"
-                                                           v-model="sendOrderForm.descriptionOfGoods.to">
+                                                    <select name="itineraryTo"
+                                                            class="slider-order__inp"
+                                                            v-model="sendOrderForm.descriptionOfGoods.to">
+                                                    </select>
                                                 </label>
                                             </div>
                                             <div class="additional-block">
@@ -613,7 +678,7 @@
                                 </div>
                                 <!-- SEND DOCUMENTS TO -->
                                 <div class="slider-order__slide slide-5">
-                                    <form id="form-send-documents-to" @submit.prevent="isValidForms">
+                                    <form id="form-send-documents-to" @submit.prevent="isValidForms" v-if="typeOfGoods">
                                         <div class="slider-order__title">SEND DOCUMENTS TO:</div>
                                         <div class="slider-order__body-left" v-if="airWaybill">
                                             <div class="body-left">
@@ -800,7 +865,7 @@
                                                                v-model="sendOrderForm.usppi.einTaxId">
                                                     </label>
                                                 </div>
-                                                <div class="content-title">
+                                                <!--<div class="content-title">
                                                     <label class="label-content">
                                                         Title:
                                                         <input class="inp-content inp-title" name="titleFirst"
@@ -808,7 +873,7 @@
                                                             class="inp-content" name="titleSecond"
                                                             v-model="sendOrderForm.usppi.titleSecond">
                                                     </label>
-                                                </div>
+                                                </div>-->
                                                 <div class="content-date">
                                                     <label class="label-content">
                                                         Date:
@@ -958,7 +1023,8 @@
                                     </form>
                                     <div class="slider-order__row slider-order__row-center rules-block">
                                         <input id="agree-checked" class="inp-checkbox" type="checkbox">
-                                        <label for="agree-checked" class="checked-block__label checked-block__label-rules">
+                                        <label for="agree-checked"
+                                               class="checked-block__label checked-block__label-rules">
                                             I have read and agree with
                                         </label>
                                         <span class="slider-order__rules" @click="togglePopup">
@@ -1010,6 +1076,9 @@
                 isValidateForms: false,
                 airWaybill: true,
                 einTitle: 'EIN/SS#',
+                addNewNotifyBlock: false,
+                showNewNotifyBlock: true,
+                typeOfGoods: false,
                 sendOrderForm: {
                     typeTransport: 'air',
                     shipper: {
@@ -1049,7 +1118,14 @@
                         state: '',
                         province: '',
                         country: '',
-                        zip: ''
+                        zip: '',
+                        addNew: {
+                            firstName: '',
+                            secondName: '',
+                            address: '',
+                            email: '',
+                            phone: ''
+                        }
                     },
                     descriptionOfGoods: {
                         description_1: '',
@@ -1098,8 +1174,8 @@
                         signature: '',
                         printName: '',
                         einTaxId: '',
-                        titleFirst: '',
-                        titleSecond: '',
+                        // titleFirst: '',
+                        // titleSecond: '',
                         dateFirst: '',
                         dateSecond: ''
                     },
@@ -1129,7 +1205,7 @@
                     infinite: false,
                     draggable: false,
                     adaptiveHeight: true,
-                    // initialSlide: 6,
+                    initialSlide: 3, // ?????
                     customPaging: (slider, i) => {
                         return this.dots[i];
                     }
@@ -1253,6 +1329,10 @@
             closeRules() {
                 this.openRules = false;
             },
+            einId(e) {
+                console.log(e.target.value);
+                this.sendOrderForm.usppi.einTaxId = e.target.value;
+            },
 
             next() {
                 this.$refs.slick.next();
@@ -1296,21 +1376,31 @@
                 }
             },
             description(value) {
-                // console.log(value);
+                console.log(value);
                 this.vehicleCheck = !this.vehicleCheck;
                 this.description = value;
+                if (value === 'vehicle') {
+                    this.typeOfGoods = true;
+                    this.reInit();
+                } else {
+                    this.typeOfGoods = false;
+                    this.reInit();
+                }
             },
             transport(value) {
                 // console.log(value);
                 switch (value) {
                     case 'air':
                         this.airWaybill = true;
+                        this.showNewNotifyBlock = true;
                         break;
                     case 'ocean':
                         this.airWaybill = false;
+                        this.showNewNotifyBlock = true;
                         break;
                     case 'ground':
                         this.airWaybill = false;
+                        this.showNewNotifyBlock = false;
                         break;
                     default:
                         break;

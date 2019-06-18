@@ -37,7 +37,6 @@
   }
 
   .slider-order {
-    //position: relative;
     margin: 0;
 
     &__slide {
@@ -47,8 +46,16 @@
         min-height: 650px;
       }
 
+      &.slide-3 {
+        min-height: 545px;
+      }
+
       &.slide-4 {
         min-height: 470px;
+      }
+
+      &.slide-5 {
+        min-height: 483px;
       }
 
       &.slide-7 {
@@ -124,7 +131,7 @@
       min-height: 32px;
 
       &-title {
-        margin-bottom: 30px;
+        margin-bottom: 10px;
       }
 
       &-required:before {
@@ -150,7 +157,7 @@
     &__inp {
       display: inline-block;
       position: relative;
-      width: 185px;
+      width: 170px;
       border: none;
       border-bottom: 1px solid #d8d8d8;
       font-size: 14px;
@@ -294,6 +301,33 @@
       box-shadow: 0 0 5px $colorLightRed;
     }
 
+    .add-new-block {
+      margin-bottom: 10px;
+
+      .btn-add-new {
+        display: inline-block;
+        border: none;
+        background-color: $colorLightRed;
+        color: #fff;
+        border-radius: 4px;
+        padding: 3px 10px;
+        font-size: 14px;
+        margin-left: 30px;
+        cursor: pointer;
+      }
+
+      .add-new {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin-bottom: 10px;
+
+        &__right {
+          min-width: 285px;
+        }
+      }
+    }
+
 
     // === SLICK === //
     &__arrow-prev,
@@ -330,6 +364,22 @@
     #ocean-block {
       display: none;
     }
+  }
+
+  .select-order {
+    display: inline-block;
+    width: 170px;
+    height: 20px;
+    line-height: 20px;
+    background: #fff;
+    border: none;
+    border-bottom: 1px solid #d8d8d8;
+    text-align: left;
+    padding: 0 5px;
+    margin-left: 15px;
+    font-size: 16px;
+    font-weight: normal;
+    box-shadow: none;
   }
 
   .usspi-block {
@@ -550,21 +600,6 @@
 
   .slick-disabled {
     display: none !important;
-  }
-
-  .select-order {
-    display: inline-block;
-    width: 185px;
-    height: 20px;
-    line-height: 20px;
-    background: #fff;
-    border: none;
-    border-bottom: 1px solid #d8d8d8;
-    text-align: left;
-    padding: 0 5px;
-    font-size: 16px;
-    font-weight: normal;
-    box-shadow: none;
   }
 }
 

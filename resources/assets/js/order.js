@@ -5,7 +5,6 @@ $.getJSON("./js/air_order.json", function (data) {
 
     let $state = data.shipper.state;
     let $country = data.shipper.country;
-    let $airWaybill = data.sendDocumentsTo.airWaybill;
     let $notifyParty = data.notifyParty.notifyParty;
 
     for (let i = 0; i < $state.length; i++) {
@@ -19,12 +18,9 @@ $.getJSON("./js/air_order.json", function (data) {
         $('[name="countryCon"]').append($option);
         $('[name="countryNot"]').append($option);
         $('[name="countryDoc"]').append($option);
+        $('[name="itineraryFrom"]').append($option);
+        $('[name="itineraryTo"]').append($option);
     }
-
-    /*for (let i = 0; i < $airWaybill.length; i++) {
-        let $option = '<option value="' + $airWaybill[i] + '">' + $airWaybill[i] + '</option>';
-        $('[name="airWaybill"]').append($option);
-    }*/
 
     for (let i = 0; i < $notifyParty.length; i++) {
         let $option = '<option value="' + $notifyParty[i] + '">' + $notifyParty[i] + '</option>';
