@@ -68027,9 +68027,10 @@ var render = function() {
                                                         {
                                                           name: "validate",
                                                           rawName: "v-validate",
-                                                          value: "required",
+                                                          value:
+                                                            "required|numeric",
                                                           expression:
-                                                            "'required'"
+                                                            "'required|numeric'"
                                                         },
                                                         {
                                                           name: "model",
@@ -68470,8 +68471,9 @@ var render = function() {
                                                 {
                                                   name: "validate",
                                                   rawName: "v-validate",
-                                                  value: "required",
-                                                  expression: "'required'"
+                                                  value: "required|numeric",
+                                                  expression:
+                                                    "'required|numeric'"
                                                 },
                                                 {
                                                   name: "model",

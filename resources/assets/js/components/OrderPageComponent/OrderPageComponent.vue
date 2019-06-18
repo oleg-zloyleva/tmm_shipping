@@ -608,7 +608,7 @@
                                                             Year:
                                                             <input name="year"
                                                                    class="slider-order__inp only-number"
-                                                                   v-validate="'required'"
+                                                                   v-validate="'required|numeric'"
                                                                    :class="{'required': errors.has('year')}"
                                                                    v-model="sendOrderForm.vehicle.year">
                                                         </label>
@@ -672,7 +672,7 @@
                                                     Value of vehicle:
                                                     <input name="valueVehicle"
                                                            class="slider-order__inp slider-order__inp-vehicle only-number"
-                                                           v-validate="'required'"
+                                                           v-validate="'required|numeric'"
                                                            :class="{'required': errors.has('valueVehicle')}"
                                                            v-model="sendOrderForm.vehicle.valueVehicle">
                                                     <span class="dollar">&dollar;</span>
